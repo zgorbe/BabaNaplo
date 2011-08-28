@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8"?><endpoints xmlns="http://java.sun.com/xml/ns/jax-ws/ri/runtime" version="2.1">  <endpoint name="TeamsWS" implementation="com.zotyo.javatest.Teams" url-pattern="/teams" /></endpoints>
