@@ -1,10 +1,7 @@
 package com.zotyo.javatest;
 
-import java.io.File;
-import java.net.URL;
 
 import org.eclipse.jetty.server.Server;
-import org.eclipse.jetty.server.handler.*;
 import org.eclipse.jetty.webapp.WebAppContext;
 
 /**
