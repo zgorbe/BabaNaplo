@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context antiJARLocking="true" path="/">
+	<Resource name="jdbc/DiaryDS" auth="Container" type="javax.sql.DataSource"
+               maxActive="100" maxIdle="30" maxWait="10000"
+               username="#{ @dbUrl.getUserInfo().split(':')[0] }" 
+               password="#{ @dbUrl.getUserInfo().split(':')[1] }"
+               driverClassName="${database.driverClassName}"
+               url="#{ 'jdbc:postgresql://' + @dbUrl.getHost() + @dbUrl.getPath() }" />
+
+</Context>
