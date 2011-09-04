@@ -33,6 +33,9 @@ public class Main {
         root.setDescriptor(webappDirLocation+"/WEB-INF/web.xml");
         root.setResourceBase(webappDirLocation);
         
+        root.setConfigurationClasses(new String[] {"org.mortbay.jetty.webapp.WebInfConfiguration",
+        		"org.mortbay.jetty.plus.webapp.EnvConfiguration","org.mortbay.jetty.plus.webapp.Configuration",
+        		"org.mortbay.jetty.webapp.JettyWebXmlConfiguration","org.mortbay.jetty.webapp.TagLibConfiguration"});
         //Parent loader priority is a class loader setting that Jetty accepts.
         //By default Jetty will behave like most web containers in that it will
         //allow your application to replace non-server libraries that are part of the
