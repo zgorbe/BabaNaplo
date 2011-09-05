@@ -33,10 +33,10 @@ public class Main {
         root.setDescriptor(webappDirLocation+"/WEB-INF/web.xml");
         root.setResourceBase(webappDirLocation);
         
-        /*root.setConfigurationClasses(new String[] {"org.eclipse.jetty.webapp.WebInfConfiguration","org.eclipse.jetty.webapp.WebXmlConfiguration",
+        root.setConfigurationClasses(new String[] {"org.eclipse.jetty.webapp.WebInfConfiguration","org.eclipse.jetty.webapp.WebXmlConfiguration",
         		"org.eclipse.jetty.webapp.MetaInfConfiguration","org.eclipse.jetty.webapp.FragmentConfiguration","org.eclipse.jetty.plus.webapp.EnvConfiguration",
         		"org.eclipse.jetty.plus.webapp.PlusConfiguration","org.eclipse.jetty.webapp.JettyWebXmlConfiguration","org.eclipse.jetty.webapp.TagLibConfiguration"});
-        */
+        
         
         //Parent loader priority is a class loader setting that Jetty accepts.
         //By default Jetty will behave like most web containers in that it will

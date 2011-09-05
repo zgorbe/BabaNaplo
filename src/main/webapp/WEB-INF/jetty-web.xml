@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Configure id='wac' class="org.eclipse.jetty.webapp.WebAppContext">
+<New id="myds" class="org.eclipse.jetty.plus.jndi.Resource">
+  <Arg><Ref id="wac"/></Arg>
+  <Arg>jdbc/DiaryDS</Arg>
+  <Arg>
+    <New class="javax.sql.DataSource">
+	<Set name="Url">jdbc:mysql://localhost:3306/diary</Set>
+        <Set name="User">root</Set>
+    </New>
+  </Arg>
+</New>
+</Configure>
