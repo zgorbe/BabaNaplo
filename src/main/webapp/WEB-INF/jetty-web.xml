@@ -5,9 +5,10 @@
   <Arg><Ref id="wac"/></Arg>
   <Arg>jdbc/DiaryDS</Arg>
   <Arg>
-    <New class="javax.sql.DataSource">
-	<Set name="Url">jdbc:mysql://localhost:3306/diary</Set>
-        <Set name="User">root</Set>
+    <New class="org.apache.commons.dbcp.BasicDataSource">
+      <Set name="driverClassName">com.mysql.jdbc.Driver</Set>
+      <Set name="url">jdbc:mysql://localhost:3306/diary</Set>
+      <Set name="username">root</Set>
     </New>
   </Arg>
 </New>
