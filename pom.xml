@@ -178,6 +178,7 @@
                   <phase>compile</phase>
                   <configuration>
                     <target>
+                      <delete file="src/main/webapp/WEB-INF/jetty-web.xml"/>
 					  <copy file="src/main/resources/jetty-configs/jetty-web.dev.xml"
                            tofile="src/main/webapp/WEB-INF/jetty-web.xml"/>                       
                     </target>
@@ -241,6 +242,7 @@
                   <phase>compile</phase>
                   <configuration>
                     <target>
+                      <delete file="src/main/webapp/WEB-INF/jetty-web.xml"/>
 					  <copy file="src/main/resources/jetty-configs/jetty-web.prod.xml"
                            tofile="src/main/webapp/WEB-INF/jetty-web.xml"/>                       
                     </target>
