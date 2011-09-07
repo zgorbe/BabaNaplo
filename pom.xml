@@ -178,9 +178,8 @@
                   <phase>compile</phase>
                   <configuration>
                     <target>
-                      <delete file="${project.build.outputDirectory}/META-INF/context.xml"/>
-					  <copy file="src/main/resources/META-INF/context.dev.xml"
-                           tofile="${project.build.outputDirectory}/META-INF/context.xml"/>                       
+					  <copy file="src/main/resources/jetty-configs/jetty-web.dev.xml"
+                           tofile="src/main/webapp/WEB-INF/jetty-web.xml"/>                       
                     </target>
                   </configuration>
                   <goals>
@@ -233,6 +232,25 @@
                     <target>${java.version}</target>
                 </configuration>
             </plugin>
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-antrun-plugin</artifactId>
+              <version>1.6</version>
+              <executions>
+                <execution>
+                  <phase>compile</phase>
+                  <configuration>
+                    <target>
+					  <copy file="src/main/resources/jetty-configs/jetty-web.prod.xml"
+                           tofile="src/main/webapp/WEB-INF/jetty-web.xml"/>                       
+                    </target>
+                  </configuration>
+                  <goals>
+                    <goal>run</goal>
+                  </goals>
+                </execution>
+              </executions>
+            </plugin>                
 
             <!-- The maven app assembler plugin will generate a script that sets up the classpath and runs your project -->
             <plugin>
