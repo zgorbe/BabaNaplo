@@ -13,16 +13,24 @@
     <context:annotation-config />
     <context:component-scan base-package="com.zotyo.diary" />
 
-  
-  
-  
 	<!-- ====================== DataSource ==================== -->
+
+	<bean id="urlString" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean" >
+		<property name="targetClass" value="java.lang.String" />
+		<property name="staticMethod" value="java.lang.System.getenv" />
+		<property name="arguments">
+		<list>
+		    <value>DATABASE_URL</value>
+		</list>
+		</property>
+	</bean>
+
 	<bean class="com.zotyo.heroku.dbutil.DatabaseUrl" id="dbUrl">
-   		<constructor-arg value="${DATABASE_URL}"/>
+   		<constructor-arg value="#{ @urlString }"/>
 	</bean>
 	
 	<bean class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" id="dataSource">
-	  <property name="driverClassName" value="${database.driverClassName}"/>
+	  <property name="driverClassName" value="org.postgresql.Driver"/>
 	  <property name="url" value="#{ @dbUrl.getUrl() }"/>
 	  <property name="username" value="#{ @dbUrl.getUsername() }"/>
 	  <property name="password" value="#{ @dbUrl.getPassword() }"/>

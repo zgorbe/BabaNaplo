@@ -10,13 +10,12 @@ public class DatabaseUrl {
 	
 	public DatabaseUrl(String url) {
 		databaseUrl = url;
+		System.out.println("DATABASE_URL: " + databaseUrl);
 	}
 	
 	public String getUrl() {
-		int atIndex = databaseUrl.indexOf('@');
-		int perIndex = databaseUrl.indexOf('/', atIndex);
 		return "jdbc:postgresql://" + 
-			databaseUrl.substring(atIndex + 1, perIndex) + databaseUrl.substring(perIndex + 1);
+			databaseUrl.split("@")[1];
 	}
 	
 	public String getUsername() {
