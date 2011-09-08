@@ -17,16 +17,16 @@
   
   
 	<!-- ====================== DataSource ==================== -->
-	<bean class="java.net.URI" id="dbUrl">
-    <constructor-arg value="${DATABASE_URL}"/>
-  </bean>
+	<bean class="com.zotyo.heroku.dbutil.DatabaseUrl" id="dbUrl">
+   		<constructor-arg value="${DATABASE_URL}"/>
+	</bean>
 	
-  <bean class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" id="dataSource">
-    <property name="driverClassName" value="${database.driverClassName}"/>
-    <property name="url" value="#{ 'jdbc:postgresql://' + @dbUrl.getHost() + @dbUrl.getPath() }"/>
-    <property name="username" value="#{ @dbUrl.getUserInfo().split(':')[0] }"/>
-    <property name="password" value="#{ @dbUrl.getUserInfo().split(':')[1] }"/>
-  </bean>
+	<bean class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" id="dataSource">
+	  <property name="driverClassName" value="${database.driverClassName}"/>
+	  <property name="url" value="#{ @dbUrl.getUrl() }"/>
+	  <property name="username" value="#{ @dbUrl.getUsername() }"/>
+	  <property name="password" value="#{ @dbUrl.getPassword() }"/>
+	</bean>
   
 	<!-- ====================== EntityManagerFactory ==================== -->
 	
