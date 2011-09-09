@@ -2,15 +2,13 @@ package com.zotyo.diary.pojos;
 
 import java.util.Date;
 
-import javax.xml.datatype.Duration;
-
 public class Event {
 	private String description;
 	private Date startTime;
-	private Duration duration;
+	private long duration;
 	
 	public Event() {}
-	public Event(String description, Date startTime, Duration duration) {
+	public Event(String description, Date startTime, long duration) {
 		setDescription(description);
 		setStartTime(startTime);
 		setDuration(duration);
@@ -27,10 +25,10 @@ public class Event {
 	public void setStartTime(Date startTime) {
 		this.startTime = startTime;
 	}
-	public Duration getDuration() {
+	public long getDuration() {
 		return duration;
 	}
-	public void setDuration(Duration duration) {
+	public void setDuration(long duration) {
 		this.duration = duration;
 	}
 	
