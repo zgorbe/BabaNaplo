@@ -9,7 +9,6 @@ public class Day {
 	private List<Event> eventsOfTheDay;
 	private String descriptionOfTheDay;
 	
-	
 	public Day() { eventsOfTheDay = new ArrayList<Event>(); }
 	public Day(Date theDay, Event initialEvent, String descriptionOfTheDay) {
 		this();

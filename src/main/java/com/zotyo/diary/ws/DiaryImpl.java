@@ -20,13 +20,11 @@ public class DiaryImpl extends SpringBeanAutowiringSupport implements Diary {
 	private DiaryDAO diaryDAO;
 	
 	public List<Event> getEventsForADay(Date theDay) {
-		// TODO Auto-generated method stub
-		return null;
+		return diaryDAO.getEventsForADay(theDay);
 	}
 
 	public List<Day> getDaysForAMonth(int month) {
-		// TODO Auto-generated method stub
-		return null;
+		return diaryDAO.getDaysForAMonth(month);
 	}
 	
 	public List<Day> getAllDaysInDiary() {
@@ -42,7 +40,6 @@ public class DiaryImpl extends SpringBeanAutowiringSupport implements Diary {
 	}
 
 	public void addEvent(Date theDay, Event event) {
-		// TODO Auto-generated method stub
-		
+		diaryDAO.addEvent(theDay, event);
 	}
 }
