@@ -14,19 +14,19 @@ import com.zotyo.diary.pojos.Event;
 @WebService
 public interface Diary {
 	@WebMethod
-	@WebResult(partName = "Event")
+	@WebResult(name = "Event")
 	List<Event> getEventsForADay(Date theDay);
 
 	@WebMethod
-	@WebResult(partName = "Day")
+	@WebResult(name = "Day")
 	List<Day> getDaysForAMonth(int month);
 	
 	@WebMethod
-	@WebResult(partName = "Day")
+	@WebResult(name = "Day")
 	List<Day> getAllDaysInDiary();
 	
 	@WebMethod
-	@WebResult(partName = "Event")
+	@WebResult(name = "Event")
 	List<Event> getAllEvents();
 	
 	@WebMethod

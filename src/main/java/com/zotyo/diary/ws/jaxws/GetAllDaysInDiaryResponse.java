@@ -13,25 +13,25 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "getAllDaysInDiaryResponse", namespace = "http://ws.diary.zotyo.com/")
 public class GetAllDaysInDiaryResponse {
 
-    @XmlElement(name = "return", namespace = "")
-    private List<com.zotyo.diary.pojos.Day> _return;
+    @XmlElement(name = "Day", namespace = "")
+    private List<com.zotyo.diary.pojos.Day> day;
 
     /**
      * 
      * @return
      *     returns List<Day>
      */
-    public List<com.zotyo.diary.pojos.Day> getReturn() {
-        return this._return;
+    public List<com.zotyo.diary.pojos.Day> getDay() {
+        return this.day;
     }
 
     /**
      * 
-     * @param _return
-     *     the value for the _return property
+     * @param day
+     *     the value for the day property
      */
-    public void setReturn(List<com.zotyo.diary.pojos.Day> _return) {
-        this._return = _return;
+    public void setDay(List<com.zotyo.diary.pojos.Day> day) {
+        this.day = day;
     }
 
 }

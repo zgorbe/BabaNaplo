@@ -13,25 +13,25 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "getEventsForADayResponse", namespace = "http://ws.diary.zotyo.com/")
 public class GetEventsForADayResponse {
 
-    @XmlElement(name = "return", namespace = "")
-    private List<com.zotyo.diary.pojos.Event> _return;
+    @XmlElement(name = "Event", namespace = "")
+    private List<com.zotyo.diary.pojos.Event> event;
 
     /**
      * 
      * @return
      *     returns List<Event>
      */
-    public List<com.zotyo.diary.pojos.Event> getReturn() {
-        return this._return;
+    public List<com.zotyo.diary.pojos.Event> getEvent() {
+        return this.event;
     }
 
     /**
      * 
-     * @param _return
-     *     the value for the _return property
+     * @param event
+     *     the value for the event property
      */
-    public void setReturn(List<com.zotyo.diary.pojos.Event> _return) {
-        this._return = _return;
+    public void setEvent(List<com.zotyo.diary.pojos.Event> event) {
+        this.event = event;
     }
 
 }
