@@ -41,11 +41,10 @@ public class EventEntity {
     private DayEntity theDay;
     
 	public EventEntity() {}
-	public EventEntity(String description, Date startTime, long duration, DayEntity theDay) {
+	public EventEntity(String description, Date startTime, long duration) {
 		setDescription(description);
 		setStartTime(startTime);
 		setDuration(duration);
-		setTheDay(theDay);
 	}
 	
 	public Integer getId() {

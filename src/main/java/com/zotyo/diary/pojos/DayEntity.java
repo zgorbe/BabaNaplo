@@ -33,7 +33,7 @@ public class DayEntity {
 	@Temporal(TemporalType.TIMESTAMP) 
 	private Date theDay;
 	
-    @OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.REMOVE, mappedBy = "theDay")
+    @OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.REMOVE, mappedBy = "theDay")
 	private List<EventEntity> eventsOfTheDay = new ArrayList<EventEntity>();
 	
 	@Lob
