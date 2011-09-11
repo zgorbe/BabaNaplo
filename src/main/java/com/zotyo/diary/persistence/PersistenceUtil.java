@@ -36,7 +36,9 @@ public class PersistenceUtil {
 		rv.setDescriptionOfTheDay(day.getDescriptionOfTheDay());
 		List<EventEntity> events = new ArrayList<EventEntity>();
 		for (Event e : day.getEventsOfTheDay()) {
-			events.add(getEventEntity(e));
+			EventEntity ee = getEventEntity(e);
+			ee.setTheDay(rv);
+			events.add(ee);
 		}
 		rv.setEventsOfTheDay(events);
 		return rv;
