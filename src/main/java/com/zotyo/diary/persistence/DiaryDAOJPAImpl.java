@@ -6,7 +6,9 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,6 +21,8 @@ import com.zotyo.diary.pojos.EventEntity;
 @Repository
 public class DiaryDAOJPAImpl implements DiaryDAO {
 
+	private static Logger logger = Logger.getLogger(DiaryDAOJPAImpl.class);
+	
     @PersistenceContext(unitName = "DiaryPU")
     private EntityManager em;
     
@@ -28,8 +32,18 @@ public class DiaryDAOJPAImpl implements DiaryDAO {
 	}
 
 	public void addEvent(Date theDay, Event event) {
-		// TODO Auto-generated method stub
-		
+        Query query = em.createNamedQuery("DayEntity.findByTheDay");
+        query.setParameter("theDay", theDay);
+        List<DayEntity> result = query.getResultList();
+        
+        if (result.size() == 0) {
+        	logger.info("Date not found in database - " + theDay);
+            return;
+        }
+        DayEntity de = result.get(0);
+        EventEntity ee = PersistenceUtil.getEventEntity(event);
+        ee.setTheDay(de);
+        em.persist(ee);
 	}
 
 	public List<Day> getAllDaysInDiary() {

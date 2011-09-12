@@ -1,5 +1,6 @@
 package com.zotyo.diary.ws;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -36,10 +37,22 @@ public class DiaryImpl extends SpringBeanAutowiringSupport implements Diary {
 	}
 
 	public void addDay(Day day) {
+		day.setTheDay(resetHMS(day.getTheDay()));
 		diaryDAO.addDay(day);
 	}
 
 	public void addEvent(Date theDay, Event event) {
+		theDay = resetHMS(theDay);
 		diaryDAO.addEvent(theDay, event);
+	}
+	
+	private Date resetHMS(Date d) {
+		//resetting hours:minutes:seconds to zero		
+		Calendar cal=Calendar.getInstance();
+		cal.setTime(d);
+		cal.set(Calendar.HOUR_OF_DAY, 0);
+		cal.set(Calendar.MINUTE, 0);
+		cal.set(Calendar.SECOND, 0);
+		return cal.getTime();
 	}
 }

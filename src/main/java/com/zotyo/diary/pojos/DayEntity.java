@@ -18,9 +18,14 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 @Entity
 @Table(name = "days", uniqueConstraints={@UniqueConstraint(columnNames={"the_day"})})
+@NamedQueries({
+    @NamedQuery(name = "DayEntity.findByTheDay", query = "SELECT d FROM DayEntity d WHERE d.theDay = :theDay")
+    })
 public class DayEntity {
 	
 	@Id
