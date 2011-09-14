@@ -44,6 +44,11 @@ public class MainClient {
 		for (Event e : events) {
 			System.out.println(e.getDescription());
 		}
+		
+		List<Day> days = diary.getDaysForAMonth(2011, 8);
+		for (Day d : days) {
+			System.out.println(d.getDescriptionOfTheDay());
+		}
 /*		Event event1 = new Event();
 		event1.setDescription("Ez a harmadik teszt esemeny");
 		event1.setDuration(1000 * 60 * 60 * 11);

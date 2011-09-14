@@ -9,11 +9,16 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlRootElement(name = "getDaysForAMonth", namespace = "http://ws.diary.zotyo.com/")
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "getDaysForAMonth", namespace = "http://ws.diary.zotyo.com/")
+@XmlType(name = "getDaysForAMonth", namespace = "http://ws.diary.zotyo.com/", propOrder = {
+    "arg0",
+    "arg1"
+})
 public class GetDaysForAMonth {
 
     @XmlElement(name = "arg0", namespace = "")
     private int arg0;
+    @XmlElement(name = "arg1", namespace = "")
+    private int arg1;
 
     /**
      * 
@@ -31,6 +36,24 @@ public class GetDaysForAMonth {
      */
     public void setArg0(int arg0) {
         this.arg0 = arg0;
+    }
+
+    /**
+     * 
+     * @return
+     *     returns int
+     */
+    public int getArg1() {
+        return this.arg1;
+    }
+
+    /**
+     * 
+     * @param arg1
+     *     the value for the arg1 property
+     */
+    public void setArg1(int arg1) {
+        this.arg1 = arg1;
     }
 
 }

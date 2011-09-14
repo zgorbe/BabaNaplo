@@ -75,6 +75,7 @@ public interface Diary {
 
     /**
      * 
+     * @param arg1
      * @param arg0
      * @return
      *     returns java.util.List<com.zotyo.diary.client.Day>
@@ -85,7 +86,9 @@ public interface Diary {
     @ResponseWrapper(localName = "getDaysForAMonthResponse", targetNamespace = "http://ws.diary.zotyo.com/", className = "com.zotyo.diary.client.GetDaysForAMonthResponse")
     public List<Day> getDaysForAMonth(
         @WebParam(name = "arg0", targetNamespace = "")
-        int arg0);
+        int arg0,
+        @WebParam(name = "arg1", targetNamespace = "")
+        int arg1);
 
     /**
      * 

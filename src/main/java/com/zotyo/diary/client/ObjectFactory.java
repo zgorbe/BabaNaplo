@@ -43,19 +43,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetAllEvents }
+     * Create an instance of {@link Day }
      * 
      */
-    public GetAllEvents createGetAllEvents() {
-        return new GetAllEvents();
-    }
-
-    /**
-     * Create an instance of {@link GetAllDaysInDiaryResponse }
-     * 
-     */
-    public GetAllDaysInDiaryResponse createGetAllDaysInDiaryResponse() {
-        return new GetAllDaysInDiaryResponse();
+    public Day createDay() {
+        return new Day();
     }
 
     /**
@@ -67,11 +59,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetEventsForADayResponse }
+     * Create an instance of {@link GetAllDaysInDiaryResponse }
      * 
      */
-    public GetEventsForADayResponse createGetEventsForADayResponse() {
-        return new GetEventsForADayResponse();
+    public GetAllDaysInDiaryResponse createGetAllDaysInDiaryResponse() {
+        return new GetAllDaysInDiaryResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetDaysForAMonth }
+     * 
+     */
+    public GetDaysForAMonth createGetDaysForAMonth() {
+        return new GetDaysForAMonth();
     }
 
     /**
@@ -91,11 +91,35 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Day }
+     * Create an instance of {@link GetEventsForADay }
      * 
      */
-    public Day createDay() {
-        return new Day();
+    public GetEventsForADay createGetEventsForADay() {
+        return new GetEventsForADay();
+    }
+
+    /**
+     * Create an instance of {@link GetDaysForAMonthResponse }
+     * 
+     */
+    public GetDaysForAMonthResponse createGetDaysForAMonthResponse() {
+        return new GetDaysForAMonthResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetAllEvents }
+     * 
+     */
+    public GetAllEvents createGetAllEvents() {
+        return new GetAllEvents();
+    }
+
+    /**
+     * Create an instance of {@link GetEventsForADayResponse }
+     * 
+     */
+    public GetEventsForADayResponse createGetEventsForADayResponse() {
+        return new GetEventsForADayResponse();
     }
 
     /**
@@ -112,30 +136,6 @@ public class ObjectFactory {
      */
     public Event createEvent() {
         return new Event();
-    }
-
-    /**
-     * Create an instance of {@link GetDaysForAMonth }
-     * 
-     */
-    public GetDaysForAMonth createGetDaysForAMonth() {
-        return new GetDaysForAMonth();
-    }
-
-    /**
-     * Create an instance of {@link GetEventsForADay }
-     * 
-     */
-    public GetEventsForADay createGetEventsForADay() {
-        return new GetEventsForADay();
-    }
-
-    /**
-     * Create an instance of {@link GetDaysForAMonthResponse }
-     * 
-     */
-    public GetDaysForAMonthResponse createGetDaysForAMonthResponse() {
-        return new GetDaysForAMonthResponse();
     }
 
     /**

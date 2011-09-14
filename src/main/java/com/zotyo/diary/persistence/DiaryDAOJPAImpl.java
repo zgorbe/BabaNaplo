@@ -1,7 +1,9 @@
 package com.zotyo.diary.persistence;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -34,7 +36,7 @@ public class DiaryDAOJPAImpl implements DiaryDAO {
 	public void addEvent(Date theDay, Event event) {
         Query query = em.createNamedQuery("DayEntity.findByTheDay");
         query.setParameter("theDay", theDay);
-        List<DayEntity> result = query.getResultList();
+        List<DayEntity> result = (List<DayEntity>)query.getResultList();
         
         if (result.size() == 0) {
         	logger.warn("Date not found in database - " + theDay);
@@ -64,9 +66,25 @@ public class DiaryDAOJPAImpl implements DiaryDAO {
 		return rv;
 	}
 
-	public List<Day> getDaysForAMonth(int month) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Day> getDaysForAMonth(int year, int month) {
+		List<Day> rv = new ArrayList<Day>();
+		Calendar startDay = GregorianCalendar.getInstance();
+		startDay.set(year, month, 1);
+		
+		Calendar endDay = GregorianCalendar.getInstance();
+		endDay.set(year, month, 1);
+		endDay.set(GregorianCalendar.DAY_OF_MONTH, endDay.getActualMaximum(GregorianCalendar.DAY_OF_MONTH));
+		
+		Query query = em.createNamedQuery("DayEntity.findByMonth");
+        query.setParameter("startDay", startDay.getTime());
+        query.setParameter("endDay", endDay.getTime());
+        List<DayEntity> result = (List<DayEntity>)query.getResultList();
+        
+        for (DayEntity de : result) {
+        	rv.add(PersistenceUtil.getDay(de));
+        }
+        
+		return rv;
 	}
 
 	public List<Event> getEventsForADay(Date theDay) {

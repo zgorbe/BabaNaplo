@@ -8,7 +8,7 @@ import com.zotyo.diary.pojos.Event;
 
 public interface DiaryDAO {
 	List<Event> getEventsForADay(Date theDay);
-	List<Day> getDaysForAMonth(int month);
+	List<Day> getDaysForAMonth(int year, int month);
 	List<Day> getAllDaysInDiary();
 	List<Event> getAllEvents();
 	

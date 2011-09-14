@@ -43,7 +43,7 @@ public class DiaryDAOMockImpl implements DiaryDAO {
 		return events;
 	}
 
-	public List<Day> getDaysForAMonth(int month) {
+	public List<Day> getDaysForAMonth(int year, int month) {
 		// TODO Auto-generated method stub
 		return null;
 	}

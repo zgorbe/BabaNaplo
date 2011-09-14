@@ -19,7 +19,7 @@ public interface Diary {
 
 	@WebMethod
 	@WebResult(name = "Day")
-	List<Day> getDaysForAMonth(int month);
+	List<Day> getDaysForAMonth(int year, int month);
 	
 	@WebMethod
 	@WebResult(name = "Day")

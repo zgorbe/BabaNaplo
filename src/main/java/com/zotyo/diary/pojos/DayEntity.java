@@ -24,7 +24,8 @@ import javax.persistence.NamedQuery;
 @Entity
 @Table(name = "days", uniqueConstraints={@UniqueConstraint(columnNames={"the_day"})})
 @NamedQueries({
-    @NamedQuery(name = "DayEntity.findByTheDay", query = "SELECT d FROM DayEntity d WHERE d.theDay = :theDay")
+    @NamedQuery(name = "DayEntity.findByTheDay", query = "SELECT d FROM DayEntity d WHERE d.theDay = :theDay"),
+    @NamedQuery(name = "DayEntity.findByMonth", query = "SELECT d FROM DayEntity d WHERE d.theDay >= :startDay and d.theDay <= :endDay")
     })
 public class DayEntity {
 	

@@ -21,7 +21,7 @@ import com.zotyo.diary.pojos.Event;
 
 @WebService(endpointInterface = "com.zotyo.diary.ws.Diary")
 public class DiaryImpl extends SpringBeanAutowiringSupport implements Diary {
-
+	
 	@Resource
 	private WebServiceContext context; 
 	
@@ -32,8 +32,8 @@ public class DiaryImpl extends SpringBeanAutowiringSupport implements Diary {
 		return diaryDAO.getEventsForADay(resetHMS(theDay));
 	}
 
-	public List<Day> getDaysForAMonth(int month) {
-		return diaryDAO.getDaysForAMonth(month);
+	public List<Day> getDaysForAMonth(int year, int month) {
+		return diaryDAO.getDaysForAMonth(year, month);
 	}
 	
 	public List<Day> getAllDaysInDiary() {
@@ -65,6 +65,8 @@ public class DiaryImpl extends SpringBeanAutowiringSupport implements Diary {
 	}
 	
 	// This method could be used if not extending from SpringBeanAutowiringSupport
+	// problem: getMessageContext() can only be called while servicing a request
+	// @PostConstruct
 	private void getDAOBean() {
 		ServletContext servletContext = (ServletContext) context.getMessageContext().get("javax.xml.ws.servlet.context");
 		WebApplicationContext webApplicationContext = WebApplicationContextUtils.getRequiredWebApplicationContext(servletContext);
