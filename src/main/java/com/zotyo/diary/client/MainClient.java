@@ -1,6 +1,7 @@
 package com.zotyo.diary.client;
 
 import java.util.GregorianCalendar;
+import java.util.List;
 
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
@@ -20,7 +21,7 @@ public class MainClient {
 	public static void main(String[] args) {
 		DiaryImplService service = new DiaryImplService();
 		Diary diary = service.getDiaryImplPort();
-		Day day = new Day();
+/*		Day day = new Day();
 		day.setDescriptionOfTheDay("Ez lesz az elso teszt nap a naploban");
 		day.setTheDay(df.newXMLGregorianCalendar(new GregorianCalendar(2011, 8, 12, 14, 13, 12)));
 		
@@ -38,14 +39,18 @@ public class MainClient {
 		day.getEventsOfTheDay().add(event2);
 		diary.addDay(day);
 
-/*
-		Event event1 = new Event();
+*/
+		List<Event> events = diary.getEventsForADay(df.newXMLGregorianCalendar(new GregorianCalendar(2011, 8, 12, 14, 13, 12)));
+		for (Event e : events) {
+			System.out.println(e.getDescription());
+		}
+/*		Event event1 = new Event();
 		event1.setDescription("Ez a harmadik teszt esemeny");
 		event1.setDuration(1000 * 60 * 60 * 11);
 		event1.setStartTime(df.newXMLGregorianCalendar(new GregorianCalendar(2011, 8, 12, 10, 10, 0)));
 		
 		diary.addEvent(df.newXMLGregorianCalendar(new GregorianCalendar(2011, 8, 11, 14, 13, 12)), event1);
-*/		
+	*/	
 	}
 	
 }

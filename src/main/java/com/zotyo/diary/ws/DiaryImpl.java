@@ -21,7 +21,7 @@ public class DiaryImpl extends SpringBeanAutowiringSupport implements Diary {
 	private DiaryDAO diaryDAO;
 	
 	public List<Event> getEventsForADay(Date theDay) {
-		return diaryDAO.getEventsForADay(theDay);
+		return diaryDAO.getEventsForADay(resetHMS(theDay));
 	}
 
 	public List<Day> getDaysForAMonth(int month) {

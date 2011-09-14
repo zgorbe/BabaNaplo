@@ -37,7 +37,7 @@ public class DiaryDAOJPAImpl implements DiaryDAO {
         List<DayEntity> result = query.getResultList();
         
         if (result.size() == 0) {
-        	logger.info("Date not found in database - " + theDay);
+        	logger.warn("Date not found in database - " + theDay);
             return;
         }
         DayEntity de = result.get(0);
@@ -70,8 +70,20 @@ public class DiaryDAOJPAImpl implements DiaryDAO {
 	}
 
 	public List<Event> getEventsForADay(Date theDay) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Event> events = new ArrayList<Event>();
+        Query query = em.createNamedQuery("DayEntity.findByTheDay");
+        query.setParameter("theDay", theDay);
+        List<DayEntity> result = query.getResultList();
+        
+        if (result.size() == 0) {
+        	logger.warn("Date not found in database - " + theDay);
+            return events;
+        }
+        
+        for (EventEntity ee : result.get(0).getEventsOfTheDay()) {
+        	events.add(PersistenceUtil.getEvent(ee));
+        }
+		return events;
 	}
 
 }
