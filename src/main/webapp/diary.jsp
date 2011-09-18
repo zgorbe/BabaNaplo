@@ -19,19 +19,26 @@
         <title>Net napló</title>		
 	</head>
 	<body>
-		<div id="datepicker1" style="font-size: 12px;"></div>
-		<script type="text/javascript">
-			$(function(){
-				$('#datepicker1').datepicker({
-					numberOfMonths: 3,
-					onSelect: function(dateText, inst) { getEventsOfTheDay(dateText); }
-				});		
-			});
-		</script>
-		<div id="events">
-			<jsp:include page="events.jsp" />
-		</div>
-		<a href="#" onclick="addday();">Új nap hozzáadása</a>
-        <div id="add_div"></div>
+		<div id="container">
+			<div id="content">
+				<div id="datepicker1" style="font-size: 12px;"></div>
+				<script type="text/javascript">
+					$(function(){
+						$('#datepicker1').datepicker({
+							numberOfMonths: 3,
+							onSelect: function(dateText, inst) { getEventsOfTheDay(dateText); }
+						});		
+					});
+				</script>
+				<div id="events">
+					<jsp:include page="events.jsp" />
+				</div>
+				<a href="#" onclick="addday();">Új nap hozzáadása</a>
+		        <div id="add_div"></div>
+	        </div>
+	        <div id="footer">
+      			Net Napló, 2011
+    		</div>
+        </div>
 	</body>
 </html>
