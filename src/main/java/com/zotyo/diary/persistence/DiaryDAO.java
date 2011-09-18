@@ -11,6 +11,7 @@ public interface DiaryDAO {
 	List<Day> getDaysForAMonth(int year, int month);
 	List<Day> getAllDaysInDiary();
 	List<Event> getAllEvents();
+	Day getDay(Date theDay);
 	
 	void addDay(Day day);
 	void addEvent(Date theDay, Event event);

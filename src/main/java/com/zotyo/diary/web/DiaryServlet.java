@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Properties;
@@ -20,6 +21,8 @@ import javax.xml.namespace.QName;
 
 import org.apache.log4j.Logger;
 
+import com.zotyo.diary.client.Day;
+import com.zotyo.diary.client.Event;
 import com.zotyo.diary.client.Diary;
 import com.zotyo.diary.client.DiaryImplService;
 
@@ -52,7 +55,15 @@ public class DiaryServlet extends HttpServlet {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) 
 											throws ServletException, IOException {
+		
 		String theDayString = request.getParameter("theDay");
+		String command = request.getParameter("cmd");
+		if ("addday".equals(command)) {
+			RequestDispatcher rd = getServletContext().getRequestDispatcher("/addday.jsp");
+			rd.forward(request, response);
+			
+			return;
+		}
 		if (theDayString != null && theDayString.length() > 0) {
 			SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
 			Date theDay = null;
@@ -65,15 +76,28 @@ public class DiaryServlet extends HttpServlet {
 			
 			GregorianCalendar theDayCal = new GregorianCalendar();
 			theDayCal.setTime(theDay);
-			request.setAttribute("eventsOfTheDay", 
-					diary.getEventsForADay(df.newXMLGregorianCalendar(theDayCal)));
+			Day d = diary.getDay(df.newXMLGregorianCalendar(theDayCal));
+			if (d != null) {
+				request.setAttribute("eventsOfTheDay", d.getEventsOfTheDay());
+				request.setAttribute("descriptionOfTheDay", d.getDescriptionOfTheDay());
+			} else {
+				request.setAttribute("eventsOfTheDay", new ArrayList<Event>());
+			}
 			request.setAttribute("theDay", theDayString);
+			
+
 			RequestDispatcher rd = getServletContext().getRequestDispatcher("/events.jsp");
 			rd.forward(request, response);
 		}
 		else {
-			request.setAttribute("eventsOfTheDay", 
-								diary.getEventsForADay(df.newXMLGregorianCalendar(new GregorianCalendar())));
+			Day d = diary.getDay(df.newXMLGregorianCalendar(new GregorianCalendar()));
+			if (d != null) {
+				request.setAttribute("eventsOfTheDay", d.getEventsOfTheDay());
+				request.setAttribute("descriptionOfTheDay", d.getDescriptionOfTheDay());
+			} else {
+				request.setAttribute("eventsOfTheDay", new ArrayList<Event>());
+			}
+			
 	        RequestDispatcher rd = getServletContext().getRequestDispatcher("/diary.jsp");
 	        rd.forward(request, response);
 		}

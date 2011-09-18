@@ -39,6 +39,10 @@ public class DiaryImpl extends SpringBeanAutowiringSupport implements Diary {
 	public List<Day> getAllDaysInDiary() {
 		return diaryDAO.getAllDaysInDiary();
 	}
+	
+	public Day getDay(Date theDay) {
+		return diaryDAO.getDay(resetHMS(theDay));
+	}
 
 	public List<Event> getAllEvents() {
 		return diaryDAO.getAllEvents();
@@ -72,4 +76,5 @@ public class DiaryImpl extends SpringBeanAutowiringSupport implements Diary {
 		WebApplicationContext webApplicationContext = WebApplicationContextUtils.getRequiredWebApplicationContext(servletContext);
 		diaryDAO = (DiaryDAO) webApplicationContext.getAutowireCapableBeanFactory().getBean("diaryDAOJPAImpl");		
 	}
+
 }

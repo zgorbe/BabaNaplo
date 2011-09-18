@@ -75,4 +75,10 @@ public class DiaryDAOMockImpl implements DiaryDAO {
 		diary.add(day1);
 		diary.add(day2);
 	}
+
+	@Override
+	public Day getDay(Date theDay) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

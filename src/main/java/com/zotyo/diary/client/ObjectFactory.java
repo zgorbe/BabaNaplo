@@ -26,11 +26,13 @@ public class ObjectFactory {
 
     private final static QName _GetDaysForAMonthResponse_QNAME = new QName("http://ws.diary.zotyo.com/", "getDaysForAMonthResponse");
     private final static QName _GetAllDaysInDiaryResponse_QNAME = new QName("http://ws.diary.zotyo.com/", "getAllDaysInDiaryResponse");
+    private final static QName _GetDayResponse_QNAME = new QName("http://ws.diary.zotyo.com/", "getDayResponse");
     private final static QName _GetDaysForAMonth_QNAME = new QName("http://ws.diary.zotyo.com/", "getDaysForAMonth");
     private final static QName _AddDay_QNAME = new QName("http://ws.diary.zotyo.com/", "addDay");
     private final static QName _GetAllEventsResponse_QNAME = new QName("http://ws.diary.zotyo.com/", "getAllEventsResponse");
     private final static QName _GetAllDaysInDiary_QNAME = new QName("http://ws.diary.zotyo.com/", "getAllDaysInDiary");
     private final static QName _AddEvent_QNAME = new QName("http://ws.diary.zotyo.com/", "addEvent");
+    private final static QName _GetDay_QNAME = new QName("http://ws.diary.zotyo.com/", "getDay");
     private final static QName _GetEventsForADayResponse_QNAME = new QName("http://ws.diary.zotyo.com/", "getEventsForADayResponse");
     private final static QName _GetAllEvents_QNAME = new QName("http://ws.diary.zotyo.com/", "getAllEvents");
     private final static QName _GetEventsForADay_QNAME = new QName("http://ws.diary.zotyo.com/", "getEventsForADay");
@@ -43,75 +45,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Day }
-     * 
-     */
-    public Day createDay() {
-        return new Day();
-    }
-
-    /**
-     * Create an instance of {@link AddDay }
-     * 
-     */
-    public AddDay createAddDay() {
-        return new AddDay();
-    }
-
-    /**
-     * Create an instance of {@link GetAllDaysInDiaryResponse }
-     * 
-     */
-    public GetAllDaysInDiaryResponse createGetAllDaysInDiaryResponse() {
-        return new GetAllDaysInDiaryResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetDaysForAMonth }
-     * 
-     */
-    public GetDaysForAMonth createGetDaysForAMonth() {
-        return new GetDaysForAMonth();
-    }
-
-    /**
-     * Create an instance of {@link AddEvent }
-     * 
-     */
-    public AddEvent createAddEvent() {
-        return new AddEvent();
-    }
-
-    /**
-     * Create an instance of {@link GetAllEventsResponse }
-     * 
-     */
-    public GetAllEventsResponse createGetAllEventsResponse() {
-        return new GetAllEventsResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetEventsForADay }
-     * 
-     */
-    public GetEventsForADay createGetEventsForADay() {
-        return new GetEventsForADay();
-    }
-
-    /**
-     * Create an instance of {@link GetDaysForAMonthResponse }
-     * 
-     */
-    public GetDaysForAMonthResponse createGetDaysForAMonthResponse() {
-        return new GetDaysForAMonthResponse();
-    }
-
-    /**
      * Create an instance of {@link GetAllEvents }
      * 
      */
     public GetAllEvents createGetAllEvents() {
         return new GetAllEvents();
+    }
+
+    /**
+     * Create an instance of {@link Day }
+     * 
+     */
+    public Day createDay() {
+        return new Day();
     }
 
     /**
@@ -123,11 +69,27 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetAllDaysInDiary }
+     * Create an instance of {@link GetAllEventsResponse }
      * 
      */
-    public GetAllDaysInDiary createGetAllDaysInDiary() {
-        return new GetAllDaysInDiary();
+    public GetAllEventsResponse createGetAllEventsResponse() {
+        return new GetAllEventsResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetDay }
+     * 
+     */
+    public GetDay createGetDay() {
+        return new GetDay();
+    }
+
+    /**
+     * Create an instance of {@link GetEventsForADay }
+     * 
+     */
+    public GetEventsForADay createGetEventsForADay() {
+        return new GetEventsForADay();
     }
 
     /**
@@ -136,6 +98,62 @@ public class ObjectFactory {
      */
     public Event createEvent() {
         return new Event();
+    }
+
+    /**
+     * Create an instance of {@link AddDay }
+     * 
+     */
+    public AddDay createAddDay() {
+        return new AddDay();
+    }
+
+    /**
+     * Create an instance of {@link AddEvent }
+     * 
+     */
+    public AddEvent createAddEvent() {
+        return new AddEvent();
+    }
+
+    /**
+     * Create an instance of {@link GetDaysForAMonth }
+     * 
+     */
+    public GetDaysForAMonth createGetDaysForAMonth() {
+        return new GetDaysForAMonth();
+    }
+
+    /**
+     * Create an instance of {@link GetAllDaysInDiary }
+     * 
+     */
+    public GetAllDaysInDiary createGetAllDaysInDiary() {
+        return new GetAllDaysInDiary();
+    }
+
+    /**
+     * Create an instance of {@link GetAllDaysInDiaryResponse }
+     * 
+     */
+    public GetAllDaysInDiaryResponse createGetAllDaysInDiaryResponse() {
+        return new GetAllDaysInDiaryResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetDayResponse }
+     * 
+     */
+    public GetDayResponse createGetDayResponse() {
+        return new GetDayResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetDaysForAMonthResponse }
+     * 
+     */
+    public GetDaysForAMonthResponse createGetDaysForAMonthResponse() {
+        return new GetDaysForAMonthResponse();
     }
 
     /**
@@ -154,6 +172,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://ws.diary.zotyo.com/", name = "getAllDaysInDiaryResponse")
     public JAXBElement<GetAllDaysInDiaryResponse> createGetAllDaysInDiaryResponse(GetAllDaysInDiaryResponse value) {
         return new JAXBElement<GetAllDaysInDiaryResponse>(_GetAllDaysInDiaryResponse_QNAME, GetAllDaysInDiaryResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetDayResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://ws.diary.zotyo.com/", name = "getDayResponse")
+    public JAXBElement<GetDayResponse> createGetDayResponse(GetDayResponse value) {
+        return new JAXBElement<GetDayResponse>(_GetDayResponse_QNAME, GetDayResponse.class, null, value);
     }
 
     /**
@@ -199,6 +226,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://ws.diary.zotyo.com/", name = "addEvent")
     public JAXBElement<AddEvent> createAddEvent(AddEvent value) {
         return new JAXBElement<AddEvent>(_AddEvent_QNAME, AddEvent.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetDay }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://ws.diary.zotyo.com/", name = "getDay")
+    public JAXBElement<GetDay> createGetDay(GetDay value) {
+        return new JAXBElement<GetDay>(_GetDay_QNAME, GetDay.class, null, value);
     }
 
     /**

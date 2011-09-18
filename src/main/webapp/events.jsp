@@ -5,7 +5,8 @@
 
 <c:choose>
 	<c:when test="${fn:length(eventsOfTheDay) > 0}">
-		<c:out value="${theDay}" /> eseményei a naplóban:<br />
+		<b><c:out value="${theDay}" /> eseményei a naplóban:</b><br />
+		A nap leírása: <c:out value="${descriptionOfTheDay}" /> <br />
 		<ul>
 			<c:forEach items="${eventsOfTheDay}" var="event">
 				<li><c:out value="${event.description}" /></li>

@@ -9,13 +9,14 @@
 	<head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <link href="<c:url value="/css/style.css" />" rel="stylesheet" type="text/css" media="screen" />
+        <link href="<c:url value="/css/table.css" />" rel="stylesheet" type="text/css" media="screen" />
         <link href="<c:url value="/css/jquery-ui-1.8.9.custom.css" />" rel="stylesheet" type="text/css" media="screen" />
           
 		<script type="text/javascript" src="<c:url value="/js/jquery-1.4.2.js" />"></script>
 		<script type="text/javascript" src="<c:url value="/js/jquery-ui-1.8.9.custom.min.js" />"></script>
 		<script type="text/javascript" src="<c:url value="/js/jquery-ui-timepicker-addon.js" />"></script>
 		<script type="text/javascript" src="<c:url value="/js/main.js" />"></script>
-        <title>Your web diary</title>		
+        <title>Net napló</title>		
 	</head>
 	<body>
 		<div id="datepicker1" style="font-size: 12px;"></div>
@@ -30,8 +31,7 @@
 		<div id="events">
 			<jsp:include page="events.jsp" />
 		</div>
-        <div id="add_div">
-            <jsp:include page="addday.jsp" />
-        </div>
+		<a href="#" onclick="addday();">Új nap hozzáadása</a>
+        <div id="add_div"></div>
 	</body>
 </html>

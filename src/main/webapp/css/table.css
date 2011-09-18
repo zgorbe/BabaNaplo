@@ -1,0 +1,54 @@
+.box-table-a
+{
+  margin: 0px;
+  text-align: left;
+  border-collapse: collapse;
+}
+.box-table-a th
+{
+  font-weight: normal;
+  padding: 5px 10px;
+  background: #3760A8;
+  border-bottom: 1px solid #fff;
+  color: white;
+}
+
+.box-table-a tr {
+  background: #e8edff;
+  border-bottom: 1px solid #fff;
+  border-top: 1px solid transparent;
+}
+
+.box-table-a td
+{
+  padding: 3px 10px;
+}
+.box-table-a tr:hover
+{
+  background: #d0dafd;
+  color: #3B5998;
+}
+.box-table-a a:link, .box-table-a a:visited {
+  text-decoration: none;
+}
+.box-table-a a:hover {
+  text-decoration: underline;
+}
+
+.box-table-a td.status_new {
+    background-color: #89fab4;
+    color: #016f2a;
+}
+.box-table-a td.status_lost {
+    background-color: #faa389;
+    color: #9c0109;
+}
+
+.box-table-a td.status_won {
+    background-color: #f5cf36;
+    color: white;
+}
+
+.box-table-a tr.own {    
+    background-color: #fed67c;
+}

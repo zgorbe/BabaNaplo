@@ -4,27 +4,32 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <form action="/diaryweb" method="POST" accept-charset="UTF-8">
-    <p>
-        <label for="theDay">A nap dátuma:</label>
-        <input type="text" name="theDay" />
-    </p>
-    <p>
-        <label for="name">Leírása:</label>
-        <textarea name="descriptionOfTheDay" cols="30" rows="10" ></textarea>
-    </p>
-    
-    <p>
-        <label for="startDate">Az esemény kezdete:</label>
-        <input type="text" name="startDate" />
-    </p>
-    <p>
-        <label for="duration">Az esemény időtartama:</label>
-        <input type="text" name="duration" />
-    </p>
-	<p>
-        <label for="initialEvent">Az esemény:</label>
-        <textarea name="initialEvent" cols="30" rows="10" ></textarea>
-    </p>    
-    <p><input type="submit" value="Küldés" /></p>
+	<table class="box-table-a">
+	    <tr>
+	        <td><label for="theDay">A nap dátuma:</label></td>
+	        <td><input type="text" name="theDay" /></td>
+	    </tr>
+	    <tr>
+	        <td><label for="name">Leírása:</label></td>
+	        <td><textarea name="descriptionOfTheDay" cols="56" rows="6" ></textarea></td>
+	    </tr>
+	    
+	    <tr>
+	        <td><label for="startDate">Az esemény kezdete:</label></td>
+	        <td><input type="text" name="startDate" /></td>
+	    </tr>
+	    <tr>
+	        <td><label for="duration">Az esemény időtartama:</label></td>
+	        <td><input type="text" name="duration" /></td>
+	    </tr>
+		<tr>
+	        <td><label for="initialEvent">Az esemény:</label></td>
+	        <td><textarea name="initialEvent" cols="56" rows="6" ></textarea></td>
+	    </tr>    
+	    <tr>
+	    	<td><input type="submit" value="Küldés" /></td>
+	    	<td><input type="button" value="Mégse" onclick="hide_add_div();" /></td>
+	    </tr>
+    </table>
     <input type="hidden" name="action" value="add_day" />
 </form>

@@ -26,6 +26,10 @@ public interface Diary {
 	List<Day> getAllDaysInDiary();
 	
 	@WebMethod
+	@WebResult(name = "Day")
+	Day getDay(Date theDay);
+	
+	@WebMethod
 	@WebResult(name = "Event")
 	List<Event> getAllEvents();
 	

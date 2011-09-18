@@ -104,4 +104,18 @@ public interface Diary {
         @WebParam(name = "arg0", targetNamespace = "")
         XMLGregorianCalendar arg0);
 
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns com.zotyo.diary.client.Day
+     */
+    @WebMethod
+    @WebResult(name = "Day", targetNamespace = "")
+    @RequestWrapper(localName = "getDay", targetNamespace = "http://ws.diary.zotyo.com/", className = "com.zotyo.diary.client.GetDay")
+    @ResponseWrapper(localName = "getDayResponse", targetNamespace = "http://ws.diary.zotyo.com/", className = "com.zotyo.diary.client.GetDayResponse")
+    public Day getDay(
+        @WebParam(name = "arg0", targetNamespace = "")
+        XMLGregorianCalendar arg0);
+
 }
