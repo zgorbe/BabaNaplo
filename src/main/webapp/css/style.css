@@ -1,0 +1,120 @@
+body {
+    font-family: helvetica, arial;
+    font-size: 16px;
+    background: #F5F7FA;
+    padding-top: 20px; 
+    padding-bottom: 20px;
+}
+
+#container
+{
+    margin: 0 auto;
+    width: 800px;
+    border: 1px solid #2E5186;
+}
+
+#header_container
+{
+    background: #E0EFFD;
+    padding: 5px 0px 0px 15px;
+    border-bottom: 1px solid #2E5186;
+    height: 52px;
+}
+
+#header
+{
+    float: left;
+}
+
+#logout
+{
+    text-align: right;
+    padding: 5px 10px 0px;
+}
+
+#logout a {
+    color: #3B5998;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#navigation
+{
+    float: left;
+    width: 800px;
+    background: #3760A8;
+    border-bottom: 1px solid #2E5186;
+}
+
+#navigation ul
+{
+    margin: 0;
+    padding: 0;
+}
+
+#navigation ul li {
+    list-style-type: none;
+    display: inline;
+}
+
+#navigation li a {
+    display: block;
+    float: left;
+    padding: 8px 10px;
+    color:#fff;
+    text-decoration: none;
+    border-right: 1px solid #fff;
+}
+
+#navigation li a:hover { 
+    background: #E0EFFD;
+    color: #000;
+}
+
+#viewing {
+    padding: 3px 3px 0px 0px;
+    color:#fff;
+    text-align: right;
+}
+#content {
+    clear: left;
+    padding: 10px 30px;
+    line-height: 1.5;
+    text-align: justify;
+    background: #EDF5F7;
+}
+
+#content a {
+    color: #3B5998;
+    font-weight: bold;
+}
+
+#content li {
+    padding: 10px;
+}
+
+#footer {
+    background: #3760A8;
+    color: white;
+    text-align: right;
+    padding: 15px;
+}
+
+#div_pwd_change {
+    padding: 5px;
+    border: 1px solid red;
+}
+#roadmap_nav {
+    text-align: right;
+    font-size: 14px;
+}
+.milestones {
+    padding-bottom: 20px;
+}
+/* css for timepicker */
+.ui-timepicker-div .ui-widget-header{ margin-bottom: 5px; }
+.ui-timepicker-div dl{ text-align: left; }
+.ui-timepicker-div dl dt{ height: 25px; }
+.ui-timepicker-div dl dd{ margin: -25px 0 10px 65px; }
+.ui-timepicker-div td { font-size: 90%; }
+

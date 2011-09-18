@@ -3,6 +3,9 @@ package com.zotyo.diary.web;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Properties;
 
@@ -49,10 +52,31 @@ public class DiaryServlet extends HttpServlet {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) 
 											throws ServletException, IOException {
-		request.setAttribute("eventsOfTheDay", 
-							diary.getEventsForADay(df.newXMLGregorianCalendar(new GregorianCalendar())));
-        RequestDispatcher rd = getServletContext().getRequestDispatcher("/diary.jsp");
-        rd.forward(request, response);
+		String theDayString = request.getParameter("theDay");
+		if (theDayString != null && theDayString.length() > 0) {
+			SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
+			Date theDay = null;
+			try {
+				theDay = format.parse(request.getParameter("theDay"));
+			} catch (ParseException e) {
+				logger.error(e);
+			}
+			if (theDay == null) theDay = new Date();
+			
+			GregorianCalendar theDayCal = new GregorianCalendar();
+			theDayCal.setTime(theDay);
+			request.setAttribute("eventsOfTheDay", 
+					diary.getEventsForADay(df.newXMLGregorianCalendar(theDayCal)));
+			request.setAttribute("theDay", theDayString);
+			RequestDispatcher rd = getServletContext().getRequestDispatcher("/events.jsp");
+			rd.forward(request, response);
+		}
+		else {
+			request.setAttribute("eventsOfTheDay", 
+								diary.getEventsForADay(df.newXMLGregorianCalendar(new GregorianCalendar())));
+	        RequestDispatcher rd = getServletContext().getRequestDispatcher("/diary.jsp");
+	        rd.forward(request, response);
+		}
 	}
 
 	@Override
