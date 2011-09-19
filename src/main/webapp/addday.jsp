@@ -7,7 +7,7 @@
 	<table class="box-table-a">
 	    <tr>
 	        <td><label for="theDay">A nap dátuma:</label></td>
-	        <td><input type="text" name="theDay" /></td>
+	        <td><input id="theDayInput" type="text" name="theDay" disabled="disabled" /></td>
 	    </tr>
 	    <tr>
 	        <td><label for="name">Leírása:</label></td>
@@ -16,7 +16,7 @@
 	    
 	    <tr>
 	        <td><label for="startDate">Az esemény kezdete:</label></td>
-	        <td><input type="text" name="startDate" /></td>
+	        <td><input id="startDateInput" type="text" name="startDate" /></td>
 	    </tr>
 	    <tr>
 	        <td><label for="duration">Az esemény időtartama:</label></td>
@@ -33,3 +33,9 @@
     </table>
     <input type="hidden" name="action" value="add_day" />
 </form>
+<script type="text/javascript">
+	$(function(){
+		$("#theDayInput").val(selectedDay);
+		$('#startDateInput').datetimepicker();			
+	});
+</script>

@@ -8,6 +8,7 @@ function getEventsOfTheDay(dateText) {
 		url: '/diaryweb',
 		success: function(data, type, xmlhttp){
 			$("#events").html(data);
+			$("#theDayInput").val(selectedDay);
 		}
 	});
 }

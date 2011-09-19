@@ -64,8 +64,8 @@ public class DiaryServlet extends HttpServlet {
 			
 			return;
 		}
+		SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
 		if (theDayString != null && theDayString.length() > 0) {
-			SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
 			Date theDay = null;
 			try {
 				theDay = format.parse(request.getParameter("theDay"));
@@ -92,6 +92,8 @@ public class DiaryServlet extends HttpServlet {
 		else {
 			Day d = diary.getDay(df.newXMLGregorianCalendar(new GregorianCalendar()));
 			if (d != null) {
+				theDayString = format.format(new Date());
+				request.setAttribute("theDay", theDayString);
 				request.setAttribute("eventsOfTheDay", d.getEventsOfTheDay());
 				request.setAttribute("descriptionOfTheDay", d.getDescriptionOfTheDay());
 			} else {

@@ -96,6 +96,7 @@ body {
 
 
 /* css for timepicker */
+.ui-timepicker-div { font-size: 12px; }
 .ui-timepicker-div .ui-widget-header{ margin-bottom: 5px; }
 .ui-timepicker-div dl{ text-align: left; }
 .ui-timepicker-div dl dt{ height: 25px; }
