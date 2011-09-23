@@ -1,4 +1,4 @@
-var selectedDay;
+var selectedDay = getFormattedNow();
 
 function getEventsOfTheDay(dateText) {
 	selectedDay = dateText;
@@ -27,4 +27,18 @@ function addday() {
 
 function hide_add_div() {
 	$("#add_div").hide();
+}
+
+function getFormattedNow() {
+	var now = new Date();
+	var months = now.getMonth() + 1;
+	var days = now.getDate();
+	var year = now.getFullYear();
+	if (months < 10) {
+		months = '0' + months;
+	}
+	if (days < 10) {
+		days = '0' + days;
+	}
+	return months + '/' + days + '/' + year; 
 }

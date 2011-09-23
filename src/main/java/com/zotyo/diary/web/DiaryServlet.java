@@ -110,7 +110,11 @@ public class DiaryServlet extends HttpServlet {
 											throws ServletException, IOException {
 		String action = request.getParameter("action");
 		if ("add_day".equals(action)) {
-			
+			String theDay = request.getParameter("theDay");
+			String descriptionOfTheDay = request.getParameter("descriptionOfTheDay");
+			String duration = request.getParameter("duration");
+			String initialEvent = request.getParameter("initialEvent");
+			String startDate = request.getParameter("startDate");
 		} else if ("add_event".equals(action)) {
 			
 		}
