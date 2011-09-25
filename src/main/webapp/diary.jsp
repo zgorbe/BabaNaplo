@@ -21,6 +21,8 @@
 	<body>
 		<div id="container">
 			<div id="content">
+				<a href="#" onclick="addday();">Új nap hozzáadása</a>&nbsp;&nbsp;
+				<a href="#" onclick="addevent();">Új esemény hozzáadása</a>
 				<div id="datepicker1" style="font-size: 12px;"></div>
 				<script type="text/javascript">
 					$(function(){
@@ -33,7 +35,6 @@
 				<div id="events">
 					<jsp:include page="events.jsp" />
 				</div>
-				<a href="#" onclick="addday();">Új nap hozzáadása</a>
 		        <div id="add_div"></div>
 	        </div>
 	        <div id="footer">

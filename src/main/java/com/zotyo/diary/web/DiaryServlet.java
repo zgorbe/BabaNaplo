@@ -31,6 +31,7 @@ public class DiaryServlet extends HttpServlet {
 	private static Logger logger = Logger.getLogger(DiaryServlet.class); 
 	
 	private Diary diary;
+	private DiaryHelper diaryHelper;
 	private DatatypeFactory df;
 	
 	public void init() throws ServletException {
@@ -42,7 +43,7 @@ public class DiaryServlet extends HttpServlet {
 			URL wsdlURL = new URL(props.getProperty("wsdlURL"));
 			DiaryImplService diaryService = new DiaryImplService(wsdlURL, new QName("http://ws.diary.zotyo.com/", "DiaryImplService")); 
 			diary = diaryService.getDiaryImplPort();
-
+			diaryHelper = new DiaryHelper();
             df = DatatypeFactory.newInstance();
 			
 		} catch(IOException ioex) {
@@ -60,6 +61,12 @@ public class DiaryServlet extends HttpServlet {
 		String command = request.getParameter("cmd");
 		if ("addday".equals(command)) {
 			RequestDispatcher rd = getServletContext().getRequestDispatcher("/addday.jsp");
+			rd.forward(request, response);
+			
+			return;
+		}
+		if ("addevent".equals(command)) {
+			RequestDispatcher rd = getServletContext().getRequestDispatcher("/addevent.jsp");
 			rd.forward(request, response);
 			
 			return;
@@ -109,14 +116,40 @@ public class DiaryServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response) 
 											throws ServletException, IOException {
 		String action = request.getParameter("action");
+		
+		String theDay = request.getParameter("theDay");
+		String descriptionOfTheDay = request.getParameter("descriptionOfTheDay");
+		String duration = request.getParameter("duration");
+		String initialEvent = request.getParameter("initialEvent");
+		String startDate = request.getParameter("startDate");
+		
 		if ("add_day".equals(action)) {
-			String theDay = request.getParameter("theDay");
-			String descriptionOfTheDay = request.getParameter("descriptionOfTheDay");
-			String duration = request.getParameter("duration");
-			String initialEvent = request.getParameter("initialEvent");
-			String startDate = request.getParameter("startDate");
+			if (theDay != null && theDay.length() > 0) {
+				Day day = new Day();
+				GregorianCalendar theDayCal = diaryHelper.getDayCal(theDay);
+				day.setTheDay(df.newXMLGregorianCalendar(theDayCal));
+				day.setDescriptionOfTheDay(descriptionOfTheDay);
+				
+				Event event = new Event();
+				event.setDescription(initialEvent);
+				event.setDuration(diaryHelper.getDuration(duration));
+				GregorianCalendar startDateCal = diaryHelper.getStartDateCal(startDate);
+				event.setStartTime(df.newXMLGregorianCalendar(startDateCal));
+				day.getEventsOfTheDay().add(event);
+				diary.addDay(day);
+			}
 		} else if ("add_event".equals(action)) {
-			
+			GregorianCalendar theDayCal = diaryHelper.getDayCal(theDay);
+			Event event = new Event();
+			event.setDescription(initialEvent);
+			event.setDuration(diaryHelper.getDuration(duration));
+			GregorianCalendar startDateCal = diaryHelper.getStartDateCal(startDate);
+			event.setStartTime(df.newXMLGregorianCalendar(startDateCal));
+			diary.addEvent(df.newXMLGregorianCalendar(theDayCal), event);
 		}
+		
+        RequestDispatcher rd = getServletContext().getRequestDispatcher("/diary.jsp");
+        rd.forward(request, response);
 	}
+	
 }

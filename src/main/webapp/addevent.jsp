@@ -10,11 +10,6 @@
 	        <td><input id="theDayInput" type="text" name="theDay" readonly="readonly" /></td>
 	    </tr>
 	    <tr>
-	        <td><label for="name">Leírása:</label></td>
-	        <td><textarea name="descriptionOfTheDay" cols="56" rows="2" ></textarea></td>
-	    </tr>
-	    
-	    <tr>
 	        <td><label for="startDate">Az esemény kezdete:</label></td>
 	        <td><input id="startDateInput" type="text" name="startDate" /></td>
 	    </tr>
@@ -31,7 +26,7 @@
 	    	<td><input type="button" value="Mégse" onclick="hide_add_div();" /></td>
 	    </tr>
     </table>
-    <input type="hidden" name="action" value="add_day" />
+    <input type="hidden" name="action" value="add_event" />
 </form>
 <script type="text/javascript">
 	$(function(){
