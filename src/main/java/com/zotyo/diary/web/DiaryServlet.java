@@ -97,7 +97,10 @@ public class DiaryServlet extends HttpServlet {
 			rd.forward(request, response);
 		}
 		else {
-			Day d = diary.getDay(df.newXMLGregorianCalendar(new GregorianCalendar()));
+			Date theDay = new Date();
+			GregorianCalendar theDayCal = new GregorianCalendar();
+			theDayCal.setTime(theDay);
+			Day d = diary.getDay(df.newXMLGregorianCalendar(theDayCal));
 			if (d != null) {
 				theDayString = format.format(new Date());
 				request.setAttribute("theDay", theDayString);
