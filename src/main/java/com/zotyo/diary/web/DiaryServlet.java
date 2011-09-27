@@ -32,12 +32,15 @@ public class DiaryServlet extends HttpServlet {
 	
 	private Diary diary;
 	private DatatypeFactory df;
+	private String keyword;
 	
 	public void init() throws ServletException {
 		try {
 			InputStream inputStream = ClassLoader.getSystemResourceAsStream("diary.properties");
 			Properties props = new Properties();
 			props.load(inputStream);
+			
+			keyword = props.getProperty("keyword");
 			
 			URL wsdlURL = new URL(props.getProperty("wsdlURL"));
 			DiaryImplService diaryService = new DiaryImplService(wsdlURL, new QName("http://ws.diary.zotyo.com/", "DiaryImplService")); 
@@ -116,6 +119,13 @@ public class DiaryServlet extends HttpServlet {
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) 
 											throws ServletException, IOException {
+		
+		String key = request.getParameter("keyword");
+		if (!DiaryHelper.md5(key).equals(keyword)) {
+			response.sendRedirect("/diaryweb");
+			return;
+		}
+		
 		String action = request.getParameter("action");
 		
 		String theDay = request.getParameter("theDay");

@@ -5,6 +5,10 @@
 
 <form action="/diaryweb" method="POST" accept-charset="UTF-8">
 	<table class="box-table-a">
+		<tr style="background-color: maroon;">
+	        <td><label for="keyword">A keyword:</label></td>
+	        <td><input id="keywordInput" type="text" name="keyword" /></td>
+	    </tr>	 
 	    <tr>
 	        <td><label for="theDay">A nap dátuma:</label></td>
 	        <td><input id="theDayInput" type="text" name="theDay" readonly="readonly" /></td>
@@ -25,7 +29,7 @@
 		<tr>
 	        <td><label for="initialEvent">Az esemény:</label></td>
 	        <td><textarea name="initialEvent" cols="56" rows="6" ></textarea></td>
-	    </tr>    
+	    </tr>
 	    <tr>
 	    	<td><input type="submit" value="Küldés" /></td>
 	    	<td><input type="button" value="Mégse" onclick="hide_add_div();" /></td>
