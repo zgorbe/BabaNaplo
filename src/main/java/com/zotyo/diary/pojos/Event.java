@@ -31,5 +31,4 @@ public class Event {
 	public void setDuration(long duration) {
 		this.duration = duration;
 	}
-	
 }

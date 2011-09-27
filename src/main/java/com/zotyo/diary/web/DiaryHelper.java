@@ -7,11 +7,13 @@ import java.util.GregorianCalendar;
 
 import org.apache.log4j.Logger;
 
+import com.zotyo.diary.client.Event;
+
 public class DiaryHelper {
 	
 	private static Logger logger = Logger.getLogger(DiaryHelper.class); 
 	
-	public GregorianCalendar getDayCal(String theDay) {
+	public static GregorianCalendar getDayCal(String theDay) {
 		SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
 		Date theDayDate = null;
 		try {
@@ -30,7 +32,7 @@ public class DiaryHelper {
 		return theDayCal;
 	}
 	
-	public GregorianCalendar getStartDateCal(String startDate) {
+	public static GregorianCalendar getStartDateCal(String startDate) {
 		SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy hh:mm");
 		Date startDateDate = null;
 		try {
@@ -49,7 +51,7 @@ public class DiaryHelper {
 		return startDateCal;
 	}
 
-	public long getDuration(String duration) {
+	public static long getDuration(String duration) {
 		if (duration == null || duration.length() < 1) {
 			return 0;
 		}
@@ -60,7 +62,8 @@ public class DiaryHelper {
 		return (1000 * 60 * minute) + (1000 * 60 * 60 * hour);
 	}
 	
-	public String getDurationInHHMM(long duration) {
+	public static synchronized String getDurationInHHMM(Event e) {
+		long duration = e.getDuration();
 		int hour = (int)(duration / (1000 * 60 * 60));
 		int minute = (int)((duration - (hour * 1000 * 60 * 60)) / (1000 * 60));
 		String hh = (hour < 10) ? "0" + hour : "" + hour;

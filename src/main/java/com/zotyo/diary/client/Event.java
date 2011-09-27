@@ -105,5 +105,5 @@ public class Event {
     public void setStartTime(XMLGregorianCalendar value) {
         this.startTime = value;
     }
-
+    
 }
