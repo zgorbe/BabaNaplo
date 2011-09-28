@@ -19,8 +19,7 @@ function addday() {
 		data: "cmd=addday",
 		url: '/diaryweb',
 		success: function(data, type, xmlhttp){
-			$("#add_div").html(data);
-			$("#add_div").show();
+			$("#content").html(data);
 		}
 	});
 }
@@ -30,13 +29,9 @@ function addevent() {
 		data: "cmd=addevent",
 		url: '/diaryweb',
 		success: function(data, type, xmlhttp){
-			$("#add_div").html(data);
-			$("#add_div").show();
+			$("#content").html(data);
 		}
 	});	
-}
-function hide_add_div() {
-	$("#add_div").hide();
 }
 
 function getFormattedNow() {

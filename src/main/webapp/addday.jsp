@@ -3,6 +3,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
+<b>Új nap hozzáadása</b>
 <form action="/diaryweb" method="POST" accept-charset="UTF-8">
 	<table class="box-table-a">
 		<tr style="background-color: maroon;">
@@ -11,7 +12,7 @@
 	    </tr>	 
 	    <tr>
 	        <td><label for="theDay">A nap dátuma:</label></td>
-	        <td><input id="theDayInput" type="text" name="theDay" readonly="readonly" /></td>
+	        <td><input id="theDayInput" type="text" name="theDay" /></td>
 	    </tr>
 	    <tr>
 	        <td><label for="name">Leírása:</label></td>
@@ -32,7 +33,7 @@
 	    </tr>
 	    <tr>
 	    	<td><input type="submit" value="Küldés" /></td>
-	    	<td><input type="button" value="Mégse" onclick="hide_add_div();" /></td>
+	    	<td><input type="button" value="Mégse" onclick="document.location='/diaryweb';" /></td>
 	    </tr>
     </table>
     <input type="hidden" name="action" value="add_day" />
@@ -40,6 +41,7 @@
 <script type="text/javascript">
 	$(function(){
 		$("#theDayInput").val(selectedDay);
+		$("#theDayInput").datepicker();
 		$('#startDateInput').datetimepicker();
 		$('#durationInput').timepicker({});
 	});

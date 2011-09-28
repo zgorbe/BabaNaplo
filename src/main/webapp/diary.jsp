@@ -20,9 +20,17 @@
 	</head>
 	<body>
 		<div id="container">
+			<div id="navigation">
+				<ul>
+					<li><a id="a_home" href="/diaryweb">Home</a></li>
+					<li><a id="a_addday" href="#" onclick="addday();">Új nap</a></li>
+					<li><a id="a_addevent" href="#" onclick="addevent();">Új esemény</a></li>
+					<li><a id="a_allday" href="#">Összes nap</a></li>
+					<li><a id="a_allevent" href="#">Összes esemény</a></li>
+				</ul>
+			</div>
+
 			<div id="content">
-				<a href="#" onclick="addday();">Új nap hozzáadása</a>&nbsp;&nbsp;
-				<a href="#" onclick="addevent();">Új esemény hozzáadása</a>
 				<div id="datepicker1" style="font-size: 12px;"></div>
 				<script type="text/javascript">
 					$(function(){
@@ -35,8 +43,7 @@
 				<div id="events">
 					<jsp:include page="events.jsp" />
 				</div>
-		        <div id="add_div"></div>
-	        </div>
+	        	</div>
 	        <div id="footer">
       			Net Napló, 2011
     		</div>
