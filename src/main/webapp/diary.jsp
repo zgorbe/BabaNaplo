@@ -48,5 +48,8 @@
       			Net Napló, 2011
     		</div>
         </div>
+		<script type="text/javascript">
+			getEventsOfTheDay(selectedDay);
+		</script>
 	</body>
 </html>
