@@ -8,7 +8,7 @@
 	<table class="box-table-a">
 		<tr style="background-color: maroon;">
 	        <td><label for="keyword">A keyword:</label></td>
-	        <td><input id="keywordInput" type="text" name="keyword" /></td>
+	        <td><input id="keywordInput" type="password" name="keyword" /></td>
 	    </tr>	 
 	    <tr>
 	        <td><label for="theDay">A nap dátuma:</label></td>
@@ -18,7 +18,6 @@
 	        <td><label for="name">Leírása:</label></td>
 	        <td><textarea name="descriptionOfTheDay" cols="56" rows="2" ></textarea></td>
 	    </tr>
-	    
 	    <tr>
 	        <td><label for="startDate">Az esemény kezdete:</label></td>
 	        <td><input id="startDateInput" type="text" name="startDate" /></td>

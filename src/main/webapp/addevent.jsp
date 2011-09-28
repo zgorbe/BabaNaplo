@@ -8,7 +8,7 @@
 	<table class="box-table-a">
 		<tr style="background-color: maroon;">
 	        <td><label for="keyword">A keyword:</label></td>
-	        <td><input id="keywordInput" type="text" name="keyword" /></td>
+	        <td><input id="keywordInput" type="password" name="keyword" /></td>
 	    </tr>	        
 	    <tr>
 	        <td><label for="theDay">A nap dátuma:</label></td>
