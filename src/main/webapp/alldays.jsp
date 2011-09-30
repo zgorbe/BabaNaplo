@@ -10,7 +10,7 @@
 	<c:when test="${fn:length(alldays) > 0}">
 		<b> A naplóban szereplő napok:</b><br /><br />
 		<c:forEach items="${alldays}" var="day">
-			<b></b><c:out value="${day.theDay}" /> - <c:out value="${day.descriptionOfTheDay}" /></b> <br />
+			<b><c:out value="${day.theDay}" /> - <c:out value="${day.descriptionOfTheDay}" /></b> <br />
 				<c:forEach items="${day.eventsOfTheDay}" var="event">
 					<li>
 						<c:out value="${event.description}" />
