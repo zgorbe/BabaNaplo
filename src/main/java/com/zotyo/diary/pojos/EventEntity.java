@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -36,7 +37,7 @@ public class EventEntity {
 	@Column(name = "duration")
 	private long duration;
 	
-    @ManyToOne
+    @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="day_id", updatable=false)
     private DayEntity theDay;
     

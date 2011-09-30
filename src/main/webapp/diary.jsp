@@ -23,10 +23,10 @@
 			<div id="navigation">
 				<ul>
 					<li><a id="a_home" href="/diaryweb">Home</a></li>
+					<li><a id="a_allday" href="#">Összes nap</a></li>
+					<li><a id="a_allevent" href="#">Összes esemény</a></li>					
 					<li><a id="a_addday" href="#" onclick="addday();">Új nap</a></li>
 					<li><a id="a_addevent" href="#" onclick="addevent();">Új esemény</a></li>
-					<li><a id="a_allday" href="#">Összes nap</a></li>
-					<li><a id="a_allevent" href="#">Összes esemény</a></li>
 				</ul>
 			</div>
 

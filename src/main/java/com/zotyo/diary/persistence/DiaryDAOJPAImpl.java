@@ -62,7 +62,7 @@ public class DiaryDAOJPAImpl implements DiaryDAO {
 	}
 
 	public List<Day> getAllDaysInDiary() {
-		List<DayEntity> result = (List<DayEntity>)em.createQuery("select object(o) from DayEntity as o").getResultList();
+		List<DayEntity> result = (List<DayEntity>)em.createQuery("select object(o) from DayEntity as o order by o.theDay desc").getResultList();
 		List<Day> rv = new ArrayList<Day>();
 		for (DayEntity de : result) {
 			rv.add(PersistenceUtil.getDay(de));
@@ -71,7 +71,7 @@ public class DiaryDAOJPAImpl implements DiaryDAO {
 	}
 
 	public List<Event> getAllEvents() {
-		List<EventEntity> result = (List<EventEntity>)em.createQuery("select object(o) from EventEntity as o").getResultList();
+		List<EventEntity> result = (List<EventEntity>)em.createQuery("select object(o) from EventEntity as o order by o.startTime desc").getResultList();
 		List<Event> rv = new ArrayList<Event>();
 		for (EventEntity ee : result) {
 			rv.add(PersistenceUtil.getEvent(ee));
