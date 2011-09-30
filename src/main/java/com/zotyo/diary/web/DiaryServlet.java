@@ -72,6 +72,14 @@ public class DiaryServlet extends HttpServlet {
 			
 			return;
 		}
+		if ("allday".equals(command)) {
+			request.setAttribute("alldays", diary.getAllDaysInDiary());
+			RequestDispatcher rd = getServletContext().getRequestDispatcher("/alldays.jsp");
+			rd.forward(request, response);
+			
+			return;
+		}
+		
 		SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
 		if (theDayString != null && theDayString.length() > 0) {
 			Date theDay = null;

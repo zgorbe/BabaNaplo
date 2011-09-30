@@ -34,6 +34,18 @@ function addevent() {
 	});	
 }
 
+function allday() {
+	$.ajax({
+		type: "GET",
+		data: "cmd=allday",
+		url: '/diaryweb',
+		success: function(data, type, xmlhttp){
+			$("#content").html(data);
+		}
+	});
+}
+
+
 function getFormattedNow() {
 	var now = new Date();
 	var months = now.getMonth() + 1;
