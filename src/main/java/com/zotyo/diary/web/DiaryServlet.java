@@ -31,6 +31,7 @@ public class DiaryServlet extends HttpServlet {
 	private static Logger logger = Logger.getLogger(DiaryServlet.class); 
 	
 	private Diary diary;
+	private DiaryHelper diaryHelper;
 	private DatatypeFactory df;
 	private String keyword;
 	
@@ -45,8 +46,8 @@ public class DiaryServlet extends HttpServlet {
 			URL wsdlURL = new URL(props.getProperty("wsdlURL"));
 			DiaryImplService diaryService = new DiaryImplService(wsdlURL, new QName("http://ws.diary.zotyo.com/", "DiaryImplService")); 
 			diary = diaryService.getDiaryImplPort();
+			diaryHelper = new DiaryHelper();
             df = DatatypeFactory.newInstance();
-			
 		} catch(IOException ioex) {
 			ioex.printStackTrace();
 		} catch (DatatypeConfigurationException dce) {
@@ -129,7 +130,7 @@ public class DiaryServlet extends HttpServlet {
 											throws ServletException, IOException {
 		
 		String key = request.getParameter("keyword");
-		if (!DiaryHelper.md5(key).equals(keyword)) {
+		if (!diaryHelper.md5(key).equals(keyword)) {
 			response.sendRedirect("/diaryweb");
 			return;
 		}
@@ -145,24 +146,24 @@ public class DiaryServlet extends HttpServlet {
 		if ("add_day".equals(action)) {
 			if (theDay != null && theDay.length() > 0) {
 				Day day = new Day();
-				GregorianCalendar theDayCal = DiaryHelper.getDayCal(theDay);
+				GregorianCalendar theDayCal = diaryHelper.getDayCal(theDay);
 				day.setTheDay(df.newXMLGregorianCalendar(theDayCal));
 				day.setDescriptionOfTheDay(descriptionOfTheDay);
 				
 				Event event = new Event();
 				event.setDescription(initialEvent);
-				event.setDuration(DiaryHelper.getDuration(duration));
-				GregorianCalendar startDateCal = DiaryHelper.getStartDateCal(startDate);
+				event.setDuration(diaryHelper.getDuration(duration));
+				GregorianCalendar startDateCal = diaryHelper.getStartDateCal(startDate);
 				event.setStartTime(df.newXMLGregorianCalendar(startDateCal));
 				day.getEventsOfTheDay().add(event);
 				diary.addDay(day);
 			}
 		} else if ("add_event".equals(action)) {
-			GregorianCalendar theDayCal = DiaryHelper.getDayCal(theDay);
+			GregorianCalendar theDayCal = diaryHelper.getDayCal(theDay);
 			Event event = new Event();
 			event.setDescription(initialEvent);
-			event.setDuration(DiaryHelper.getDuration(duration));
-			GregorianCalendar startDateCal = DiaryHelper.getStartDateCal(startDate);
+			event.setDuration(diaryHelper.getDuration(duration));
+			GregorianCalendar startDateCal = diaryHelper.getStartDateCal(startDate);
 			event.setStartTime(df.newXMLGregorianCalendar(startDateCal));
 			diary.addEvent(df.newXMLGregorianCalendar(theDayCal), event);
 		}

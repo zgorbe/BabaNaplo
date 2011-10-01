@@ -6,6 +6,9 @@
 <%@page import="com.zotyo.diary.web.DiaryHelper"%>
 <%@page import="com.zotyo.diary.client.Event"%>
 
+
+<% DiaryHelper diaryHelper = new DiaryHelper(); %>
+
 <c:choose>
 	<c:when test="${fn:length(eventsOfTheDay) > 0}">
 		<b><c:out value="${theDay}" /> eseményei a naplóban:</b><br />
@@ -16,7 +19,7 @@
 					<c:out value="${event.description}" />
 					<c:if test="${event.duration > 0}">
 						<br />Időtartam (óra:perc):
-						<%= DiaryHelper.getDurationInHHMM((Event)pageContext.getAttribute("event")) %>	
+						<%= diaryHelper.getDurationInHHMM((Event)pageContext.getAttribute("event")) %>	
 					</c:if>
 				</li>
 			</c:forEach>
