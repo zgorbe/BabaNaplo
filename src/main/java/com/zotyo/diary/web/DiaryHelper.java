@@ -7,6 +7,7 @@ import java.util.GregorianCalendar;
 
 import org.apache.log4j.Logger;
 
+import com.zotyo.diary.client.Day;
 import com.zotyo.diary.client.Event;
 
 public class DiaryHelper {
@@ -70,6 +71,11 @@ public class DiaryHelper {
 		String mm = (minute < 10) ? "0" + minute : "" + minute;
 		return hh + ":" + mm;
  	}
+ 	
+ 	public String formatDate(Day d) {
+		SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
+		return format.format(d.getTheDay().toGregorianCalendar().getTime());
+	}
  	
 	public String md5(String md5) {
 	   try {

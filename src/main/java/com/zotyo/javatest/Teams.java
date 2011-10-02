@@ -7,7 +7,6 @@ import javax.jws.WebMethod;
 import javax.jws.WebService;
 
 @WebService
-@HandlerChain(file = "handler-chain.xml")
 public class Teams {
     private TeamsUtility utils;
     

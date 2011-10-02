@@ -10,20 +10,13 @@
 <%@page import="com.zotyo.diary.client.Day"%>
 <%@page import="com.zotyo.diary.web.DiaryHelper"%>
 
-<%!
-	private String formatDate(Day d) {
-		SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
-		return format.format(d.getTheDay().toGregorianCalendar().getTime());
-	}
-
-%>
 <% DiaryHelper diaryHelper = new DiaryHelper(); %>
 
 <c:choose>
 	<c:when test="${fn:length(alldays) > 0}">
 		<b> A naplóban szereplő napok:</b><br /><br />
 		<c:forEach items="${alldays}" var="day">
-			<b><%= formatDate((Day)pageContext.getAttribute("day")) %> - <c:out value="${day.descriptionOfTheDay}" /></b> <br />
+			<b><%= diaryHelper.formatDate((Day)pageContext.getAttribute("day")) %> - <c:out value="${day.descriptionOfTheDay}" /></b> <br />
 				<c:forEach items="${day.eventsOfTheDay}" var="event">
 					<li>
 						<c:out value="${event.description}" />

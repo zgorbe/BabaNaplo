@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.jws.HandlerChain;
 import javax.jws.WebService;
 import javax.servlet.ServletContext;
 import javax.xml.ws.WebServiceContext;
@@ -20,6 +21,7 @@ import com.zotyo.diary.pojos.Event;
 
 
 @WebService(endpointInterface = "com.zotyo.diary.ws.Diary")
+@HandlerChain(file = "handler-chain.xml")
 public class DiaryImpl extends SpringBeanAutowiringSupport implements Diary {
 	
 	@Resource

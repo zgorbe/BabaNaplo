@@ -6,8 +6,12 @@ import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 import javax.servlet.RequestDispatcher;
@@ -18,6 +22,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.namespace.QName;
+import javax.xml.ws.BindingProvider;
+import javax.xml.ws.handler.MessageContext;
 
 import org.apache.log4j.Logger;
 
@@ -156,6 +162,9 @@ public class DiaryServlet extends HttpServlet {
 				GregorianCalendar startDateCal = diaryHelper.getStartDateCal(startDate);
 				event.setStartTime(df.newXMLGregorianCalendar(startDateCal));
 				day.getEventsOfTheDay().add(event);
+				//addKeyword(key, ((BindingProvider)diary).getRequestContext());
+				((BindingProvider)diary).getRequestContext().put(MessageContext.HTTP_REQUEST_HEADERS,
+					    Collections.singletonMap("keyword",Collections.singletonList(key)));
 				diary.addDay(day);
 			}
 		} else if ("add_event".equals(action)) {
@@ -165,10 +174,19 @@ public class DiaryServlet extends HttpServlet {
 			event.setDuration(diaryHelper.getDuration(duration));
 			GregorianCalendar startDateCal = diaryHelper.getStartDateCal(startDate);
 			event.setStartTime(df.newXMLGregorianCalendar(startDateCal));
+			//addKeyword(key, ((BindingProvider)diary).getRequestContext());
+			((BindingProvider)diary).getRequestContext().put(MessageContext.HTTP_REQUEST_HEADERS,
+				    Collections.singletonMap("keyword",Collections.singletonList(key)));
 			diary.addEvent(df.newXMLGregorianCalendar(theDayCal), event);
 		}
 		
 		response.sendRedirect("/diaryweb");
+	}
+
+	private void addKeyword(String key, Map<String, Object> requestContext) {
+		Map<String, List<String>> header = new HashMap<String, List<String>>();
+		header.put("keyword", Collections.singletonList(key));
+		requestContext.put(MessageContext.HTTP_REQUEST_HEADERS, header);
 	}
 	
 }
