@@ -84,15 +84,19 @@ public class DiaryServlet extends HttpServlet {
 			List<Day> days = new ArrayList<Day>();
 			String yearString = request.getParameter("year");
 			String monthString = request.getParameter("months");
-        	        if (yearString != null && yearString.length() > 0 && monthString != null && monthString.length() > 0) {
+			if (yearString != null && yearString.length() > 0 && monthString != null && monthString.length() > 0) {
 				int year = Integer.parseInt(yearString);
 				int months = Integer.parseInt(monthString);
 				days = diary.getDaysForAMonth(year, months);
+				request.setAttribute("year", year);
+				request.setAttribute("months", months);
 			}
 			else {
-	                        GregorianCalendar theDayCal = new GregorianCalendar();
-	                        theDayCal.setTime(new Date());
+				GregorianCalendar theDayCal = new GregorianCalendar();
+				theDayCal.setTime(new Date());
 				days = diary.getDaysForAMonth(theDayCal.get(Calendar.YEAR), theDayCal.get(Calendar.MONTH));
+				request.setAttribute("year", theDayCal.get(Calendar.YEAR));
+				request.setAttribute("months", theDayCal.get(Calendar.MONTH));
 			}
 			request.setAttribute("alldays", days);
 			RequestDispatcher rd = getServletContext().getRequestDispatcher("/alldays.jsp");
