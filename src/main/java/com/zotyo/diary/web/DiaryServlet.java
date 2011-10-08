@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
@@ -80,7 +81,22 @@ public class DiaryServlet extends HttpServlet {
 			return;
 		}
 		if ("allday".equals(command)) {
-			request.setAttribute("alldays", diary.getAllDaysInDiary());
+			List<Day> days = new ArrayList<Day>();
+			String yearString = request.getParameter("year");
+			String monthString = request.getParameter("months");
+        	        if (yearString != null && yearString.length() > 0 && monthString != null && monthString.length() > 0) {
+				int year = Integer.parseInt(yearString);
+				int months = Integer.parseInt(monthString);
+				days = diary.getDaysForAMonth(year, months);
+				logger.info("1");	
+			}
+			else {
+	                        GregorianCalendar theDayCal = new GregorianCalendar();
+	                        theDayCal.setTime(new Date());
+				days = diary.getDaysForAMonth(theDayCal.get(Calendar.YEAR), theDayCal.get(Calendar.MONTH));
+				logger.info("2");		
+			}
+			request.setAttribute("alldays", days);
 			RequestDispatcher rd = getServletContext().getRequestDispatcher("/alldays.jsp");
 			rd.forward(request, response);
 			
