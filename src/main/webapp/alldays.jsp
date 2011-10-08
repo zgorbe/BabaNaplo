@@ -14,7 +14,17 @@
 
 <c:choose>
 	<c:when test="${fn:length(alldays) > 0}">
-		<b> A naplóban szereplő napok:</b><br /><br />
+		<table border="0" cellspacing="0" cellpadding="3" style="width:100%;">
+			<tr>
+				<td align="left">
+					<b> A naplóban szereplő napok:</b>
+				</td>
+				<td align="right">
+					dropdowns
+				</td>
+			</tr>
+		</table>
+		<br />
 		<c:forEach items="${alldays}" var="day">
 			<b><%= diaryHelper.formatDate((Day)pageContext.getAttribute("day")) %> - <c:out value="${day.descriptionOfTheDay}" /></b> <br />
 				<c:forEach items="${day.eventsOfTheDay}" var="event">

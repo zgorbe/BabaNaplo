@@ -88,13 +88,11 @@ public class DiaryServlet extends HttpServlet {
 				int year = Integer.parseInt(yearString);
 				int months = Integer.parseInt(monthString);
 				days = diary.getDaysForAMonth(year, months);
-				logger.info("1");	
 			}
 			else {
 	                        GregorianCalendar theDayCal = new GregorianCalendar();
 	                        theDayCal.setTime(new Date());
 				days = diary.getDaysForAMonth(theDayCal.get(Calendar.YEAR), theDayCal.get(Calendar.MONTH));
-				logger.info("2");		
 			}
 			request.setAttribute("alldays", days);
 			RequestDispatcher rd = getServletContext().getRequestDispatcher("/alldays.jsp");
