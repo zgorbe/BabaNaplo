@@ -12,38 +12,39 @@
 
 <% DiaryHelper diaryHelper = new DiaryHelper(); %>
 
-<c:choose>
+
+<table border="0" cellspacing="0" cellpadding="3" style="width:100%;">
+	<tr>
+		<td>
+			<b> A naplóban szereplő napok:</b>
+		</td>
+		<td align="right">
+			Év,hónap:
+			<select id="yearFilter" name="yearFilter" onchange="datefilter();">
+				<option value="2011">2011</option>
+				<option value="2012">2012</option>
+				<option value="2013">2013</option>
+			</select>
+			<select id="monthsFilter" name="monthsFilter" onchange="datefilter();">
+				<option value="0">Január</option>
+				<option value="1">Február</option>
+				<option value="2">Március</option>
+				<option value="3">Április</option>
+				<option value="4">Május</option>
+				<option value="5">Június</option>
+				<option value="6">Július</option>
+				<option value="7">Augusztus</option>
+				<option value="8">Szeptember</option>
+				<option value="9">Október</option>
+				<option value="10">November</option>
+				<option value="11">December</option>
+			</select>					
+		</td>
+	</tr>
+</table>
+<br />
+<c:choose>	
 	<c:when test="${fn:length(alldays) > 0}">
-		<table border="0" cellspacing="0" cellpadding="3" style="width:100%;">
-			<tr>
-				<td>
-					<b> A naplóban szereplő napok:</b>
-				</td>
-				<td align="right">
-					Év,hónap:
-					<select id="yearFilter" name="yearFilter" onchange="yearfilter(this);">
-						<option value="2011">2011</option>
-						<option value="2012">2012</option>
-						<option value="2013">2013</option>
-					</select>
-					<select id="monthsFilter" name="monthsFilter" onchange="monthsfilter(this);">
-						<option value="0">Január</option>
-						<option value="1">Február</option>
-						<option value="2">Március</option>
-						<option value="3">Április</option>
-						<option value="4">Május</option>
-						<option value="5">Június</option>
-						<option value="6">Július</option>
-						<option value="7">Augusztus</option>
-						<option value="8">Szeptember</option>
-						<option value="9">Október</option>
-						<option value="10">November</option>
-						<option value="11">December</option>
-					</select>					
-				</td>
-			</tr>
-		</table>
-		<br />
 		<c:forEach items="${alldays}" var="day">
 			<b><%= diaryHelper.formatDate((Day)pageContext.getAttribute("day")) %> - <c:out value="${day.descriptionOfTheDay}" /></b> <br />
 				<c:forEach items="${day.eventsOfTheDay}" var="event">
@@ -58,7 +59,7 @@
 		</c:forEach>
 	</c:when>
 	<c:otherwise>
-		Nincs nap a naplóban. 
+		Az adott hónapra nincs nap a naplóban. 
 	</c:otherwise>
 </c:choose>
 <script type="text/javascript">

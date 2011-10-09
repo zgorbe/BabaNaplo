@@ -35,9 +35,22 @@ function addevent() {
 }
 
 function allday() {
-        var now = new Date();
+	var now = new Date();
 	var months = now.getMonth();
 	var year = now.getFullYear();
+	$.ajax({
+		type: "GET",
+		data: "cmd=allday&year=" + year + "&months=" + months,
+		url: '/diaryweb',
+		success: function(data, type, xmlhttp){
+			$("#content").html(data);
+		}
+	});
+}
+
+function datefilter() {
+	var year = $("#yearFilter").val();
+	var months = $("#monthsFilter").val();
 	$.ajax({
 		type: "GET",
 		data: "cmd=allday&year=" + year + "&months=" + months,
