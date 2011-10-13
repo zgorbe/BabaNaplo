@@ -6,7 +6,7 @@
 <b>Új nap hozzáadása</b>
 <form action="/diaryweb" method="POST" accept-charset="UTF-8">
 	<table class="box-table-a">
-		<tr style="background-color: maroon;">
+		<tr style="background-color: #FE2383; color: #fff">
 	        <td><label for="keyword">A keyword:</label></td>
 	        <td><input id="keywordInput" type="password" name="keyword" /></td>
 	    </tr>	 

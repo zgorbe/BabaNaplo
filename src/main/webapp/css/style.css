@@ -1,23 +1,24 @@
 body {
-    font-family: helvetica, arial;
+    font-family: Cursive, Verdana, Arial;
     font-size: 16px;
-    background: #F5F7FA;
+    background: #FBC2E3;
     padding-top: 20px; 
     padding-bottom: 20px;
+    color: #FD3790;
 }
 
 #container
 {
     margin: 0 auto;
     width: 800px;
-    border: 1px solid #2E5186;
+    border: 1px solid #FE2987;
 }
 
 #header_container
 {
-    background: #E0EFFD;
+    background: #F792C9;
     padding: 5px 0px 0px 15px;
-    border-bottom: 1px solid #2E5186;
+    border-bottom: 1px solid #FE2987;
     height: 52px;
 }
 
@@ -26,13 +27,12 @@ body {
     float: left;
 }
 
-
 #navigation
 {
     float: left;
     width: 800px;
-    background: #3760A8;
-    border-bottom: 1px solid #2E5186;
+    background: #F792C9;
+    border-bottom: 1px solid #FE2987;
 }
 
 #navigation ul
@@ -83,17 +83,22 @@ body {
 }
 
 #footer {
-    background: #3760A8;
+    background: #F792C9;
     color: white;
     text-align: right;
     padding: 15px;
 }
 
 #datepicker1, #events {
-  padding-top: 10px;
+	padding-top: 10px;
 	padding-bottom: 15px;
 }
 
+input[type="text"], select, textarea {
+	font-family: Cursive, Verdana, Arial;
+	font-size: 16px;
+	color: #FD3790;
+}
 
 
 /* css for timepicker */

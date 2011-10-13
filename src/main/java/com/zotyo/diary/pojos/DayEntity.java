@@ -35,6 +35,8 @@ public class DayEntity {
     @Column(name = "id")
     private Integer id;
 	
+	
+	// It should have been just a date, TemporalType.DATE :-(
 	@Column(name = "the_day")
 	@Temporal(TemporalType.TIMESTAMP) 
 	private Date theDay;
