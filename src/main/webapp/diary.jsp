@@ -44,7 +44,7 @@
 				</div>
 	        	</div>
 	        <div id="footer">
-      			Net Napló, 2011
+      			Baba Napló, 2011
     		</div>
         </div>
 		<script type="text/javascript">

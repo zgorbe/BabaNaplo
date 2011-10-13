@@ -14,8 +14,8 @@
 }
 
 .box-table-a tr {
-  background: #e8edff;
-  border-bottom: 1px solid #fff;
+  background: #FBE2F3;
+  border-bottom: 1px solid #F792C9;
   border-top: 1px solid transparent;
 }
 
@@ -25,8 +25,8 @@
 }
 .box-table-a tr:hover
 {
-  background: #d0dafd;
-  color: #3B5998;
+  background: #F792C9;
+  color: #fff;
 }
 .box-table-a a:link, .box-table-a a:visited {
   text-decoration: none;

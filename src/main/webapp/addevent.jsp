@@ -27,8 +27,8 @@
 	        <td><textarea name="initialEvent" cols="56" rows="6" ></textarea></td>
 	    </tr>
 	    <tr>
-	    	<td><input type="submit" value="Küldés" /></td>
-	    	<td><input type="button" value="Mégse" onclick="document.location='/diaryweb';" /></td>
+	    	<td><button type="submit">Küldés</button></td>
+	    	<td><button onclick="document.location='/diaryweb';">Mégse</button></td>
 	    </tr>
     </table>
     <input type="hidden" name="action" value="add_event" />
