@@ -87,8 +87,6 @@ public class DiaryDAOJPAImpl implements DiaryDAO {
 		Calendar endDay = GregorianCalendar.getInstance();
 		endDay.set(year, month, 1, 23, 59, 59);
 		endDay.set(GregorianCalendar.DAY_OF_MONTH, endDay.getActualMaximum(GregorianCalendar.DAY_OF_MONTH));
-		logger.info("StartDay: " + startDay.getTime());
-		logger.info("EndDay: " + endDay.getTime());
 		Query query = em.createNamedQuery("DayEntity.findByMonth");
         query.setParameter("startDay", startDay.getTime());
         query.setParameter("endDay", endDay.getTime());
@@ -97,7 +95,6 @@ public class DiaryDAOJPAImpl implements DiaryDAO {
         for (DayEntity de : result) {
         	rv.add(PersistenceUtil.getDay(de));
         }
-        logger.info("1st Day: " + rv.get(0).getTheDay());
 		return rv;
 	}
 
