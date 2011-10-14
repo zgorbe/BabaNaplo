@@ -7,16 +7,16 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <link href="<c:url value="/css/style.css" />" rel="stylesheet" type="text/css" media="screen" />
-        <link href="<c:url value="/css/table.css" />" rel="stylesheet" type="text/css" media="screen" />
-        <link href="<c:url value="/css/jquery-ui-1.8.9.custom.css" />" rel="stylesheet" type="text/css" media="screen" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="<c:url value="/css/style.css" />" rel="stylesheet" type="text/css" media="screen" />
+    <link href="<c:url value="/css/table.css" />" rel="stylesheet" type="text/css" media="screen" />
+    <link href="<c:url value="/css/jquery-ui-1.8.9.custom.css" />" rel="stylesheet" type="text/css" media="screen" />
           
 		<script type="text/javascript" src="<c:url value="/js/jquery-1.4.2.js" />"></script>
 		<script type="text/javascript" src="<c:url value="/js/jquery-ui-1.8.9.custom.min.js" />"></script>
 		<script type="text/javascript" src="<c:url value="/js/jquery-ui-timepicker-addon.js" />"></script>
 		<script type="text/javascript" src="<c:url value="/js/main.js" />"></script>
-        <title>Net napló</title>		
+    <title>Baba napló</title>		
 	</head>
 	<body>
 		<div id="container">
