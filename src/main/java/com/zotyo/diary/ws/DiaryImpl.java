@@ -64,7 +64,7 @@ public class DiaryImpl extends SpringBeanAutowiringSupport implements Diary {
 		//resetting hours:minutes:seconds to zero		
 		Calendar cal=Calendar.getInstance();
 		cal.setTime(d);
-		cal.set(Calendar.HOUR_OF_DAY, 0);
+		cal.set(Calendar.HOUR_OF_DAY, 12);
 		cal.set(Calendar.MINUTE, 0);
 		cal.set(Calendar.SECOND, 0);
 		return cal.getTime();
