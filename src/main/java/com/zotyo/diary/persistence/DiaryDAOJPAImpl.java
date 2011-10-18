@@ -11,6 +11,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import org.apache.log4j.Logger;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,6 +22,7 @@ import com.zotyo.diary.pojos.EventEntity;
 
 @Transactional
 @Repository
+@Primary
 public class DiaryDAOJPAImpl implements DiaryDAO {
 
 	private static Logger logger = Logger.getLogger(DiaryDAOJPAImpl.class);

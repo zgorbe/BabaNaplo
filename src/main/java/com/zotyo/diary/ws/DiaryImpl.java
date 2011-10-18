@@ -71,12 +71,12 @@ public class DiaryImpl extends SpringBeanAutowiringSupport implements Diary {
 	}
 	
 	// This method could be used if not extending from SpringBeanAutowiringSupport
-	// problem: getMessageContext() can only be called while servicing a request
+	// problem: getMessageContext() can only be called while serving a request
 	// @PostConstruct
 	private void getDAOBean() {
 		ServletContext servletContext = (ServletContext) context.getMessageContext().get("javax.xml.ws.servlet.context");
 		WebApplicationContext webApplicationContext = WebApplicationContextUtils.getRequiredWebApplicationContext(servletContext);
-		diaryDAO = (DiaryDAO) webApplicationContext.getAutowireCapableBeanFactory().getBean("diaryDAOJPAImpl");		
+		diaryDAO = webApplicationContext.getAutowireCapableBeanFactory().getBean("diaryDAOJPAImpl", DiaryDAO.class);		
 	}
 
 }

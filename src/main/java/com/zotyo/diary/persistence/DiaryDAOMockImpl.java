@@ -11,8 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.zotyo.diary.pojos.Day;
 import com.zotyo.diary.pojos.Event;
 
-/*@Transactional
-@Repository*/ 
+@Transactional
+@Repository
 public class DiaryDAOMockImpl implements DiaryDAO {
 
 	private List<Day> diary;
