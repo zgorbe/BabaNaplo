@@ -20,7 +20,7 @@ import com.zotyo.diary.pojos.Day;
 import com.zotyo.diary.pojos.Event;
 
 
-@WebService(endpointInterface = "com.zotyo.diary.ws.Diary")
+@WebService(endpointInterface = "com.zotyo.diary.ws.Diary", wsdlLocation="WEB-INF/wsdl/DiaryImplService.wsdl")
 @HandlerChain(file = "handler-chain.xml")
 public class DiaryImpl extends SpringBeanAutowiringSupport implements Diary {
 	
