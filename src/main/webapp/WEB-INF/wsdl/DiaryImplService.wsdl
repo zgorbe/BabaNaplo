@@ -30,7 +30,7 @@
 
       <xs:complexType name="getDay">
         <xs:sequence>
-          <xs:element name="arg0" type="xs:dateTime" minOccurs="0"/>
+          <xs:element name="arg0" type="xs:dateTime" />
         </xs:sequence>
       </xs:complexType>
 
@@ -42,17 +42,17 @@
 
       <xs:complexType name="day">
         <xs:sequence>
-          <xs:element name="descriptionOfTheDay" type="xs:string" minOccurs="0"/>
+          <xs:element name="descriptionOfTheDay" type="xs:string" />
           <xs:element name="eventsOfTheDay" type="tns:event" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
-          <xs:element name="theDay" type="xs:dateTime" minOccurs="0"/>
+          <xs:element name="theDay" type="xs:dateTime" />
         </xs:sequence>
       </xs:complexType>
 
       <xs:complexType name="event">
         <xs:sequence>
-          <xs:element name="description" type="xs:string" minOccurs="0"/>
-          <xs:element name="duration" type="xs:long"/>
-          <xs:element name="startTime" type="xs:dateTime" minOccurs="0"/>
+          <xs:element name="description" type="xs:string" />
+          <xs:element name="duration" type="xs:long" minOccurs="0"/>
+          <xs:element name="startTime" type="xs:dateTime" />
         </xs:sequence>
       </xs:complexType>
 
@@ -68,7 +68,7 @@
 
       <xs:complexType name="getEventsForADay">
         <xs:sequence>
-          <xs:element name="arg0" type="xs:dateTime" minOccurs="0"/>
+          <xs:element name="arg0" type="xs:dateTime" />
         </xs:sequence>
       </xs:complexType>
 
@@ -80,8 +80,8 @@
 
       <xs:complexType name="getDaysForAMonth">
         <xs:sequence>
-          <xs:element name="arg0" type="xs:int"/>
-          <xs:element name="arg1" type="xs:int"/>
+          <xs:element name="arg0" type="xs:int" />
+          <xs:element name="arg1" type="xs:int" />
         </xs:sequence>
       </xs:complexType>
 
@@ -93,7 +93,7 @@
 
       <xs:complexType name="addDay">
         <xs:sequence>
-          <xs:element name="arg0" type="tns:day" minOccurs="0"/>
+          <xs:element name="arg0" type="tns:day" />
         </xs:sequence>
       </xs:complexType>
 
@@ -109,11 +109,11 @@
 
       <xs:complexType name="addEvent">
         <xs:sequence>
-          <xs:element name="arg0" type="xs:dateTime" minOccurs="0"/>
-          <xs:element name="arg1" type="tns:event" minOccurs="0"/>
+          <xs:element name="arg0" type="xs:dateTime" />
+          <xs:element name="arg1" type="tns:event" />
         </xs:sequence>
       </xs:complexType>
-</xs:schema>
+    </xs:schema>
   </types>
   <message name="getEventsForADay">
     <part name="parameters" element="tns:getEventsForADay"/>
