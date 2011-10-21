@@ -184,7 +184,24 @@
                     <target>${java.version}</target>
                 </configuration>
             </plugin>
-            
+            <!-- The jaxws maven plugin generates the stub for the web service client with wsimport -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jaxws-maven-plugin</artifactId>
+				<executions>
+					<execution>
+					   <id>DiaryImplServiceWSDL</id>
+					   <goals>
+					      <goal>wsimport</goal>
+					   </goals>
+					   <configuration>
+					      <keep>true</keep>
+					      <wsdlDirectory>src/main/webapp/WEB-INF/wsdl</wsdlDirectory>
+					      <packageName>com.zotyo.diary.client</packageName>
+					   </configuration>
+					</execution>
+				</executions>      
+			</plugin>            
             <!-- The maven app assembler plugin will generate a script that sets up the classpath and runs your project -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
@@ -233,7 +250,24 @@
                     <target>${java.version}</target>
                 </configuration>
             </plugin>
-
+            <!-- The jaxws maven plugin generates the stub for the web service client with wsimport -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jaxws-maven-plugin</artifactId>
+				<executions>
+					<execution>
+					   <id>DiaryImplServiceWSDL</id>
+					   <goals>
+					      <goal>wsimport</goal>
+					   </goals>
+					   <configuration>
+					      <keep>true</keep>
+					      <wsdlDirectory>src/main/webapp/WEB-INF/wsdl</wsdlDirectory>
+					      <packageName>com.zotyo.diary.client</packageName>
+					   </configuration>
+					</execution>
+				</executions>      
+			</plugin>            
             <!-- The maven app assembler plugin will generate a script that sets up the classpath and runs your project -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>

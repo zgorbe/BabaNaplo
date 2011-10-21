@@ -12,8 +12,6 @@
     <context:component-scan base-package="com.zotyo.diary" />
 
   
-  
-  
 	<!-- ====================== DataSource ==================== -->
   
   <bean class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" id="dataSource">

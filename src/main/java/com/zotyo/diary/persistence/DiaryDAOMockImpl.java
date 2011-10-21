@@ -27,7 +27,6 @@ public class DiaryDAOMockImpl implements DiaryDAO {
 	}
 
 	public void addEvent(Date theDay, Event event) {
-		
 
 	}
 
