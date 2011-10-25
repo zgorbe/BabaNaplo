@@ -2,9 +2,9 @@ package com.zotyo.diary.persistence;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,8 +18,11 @@ public class DiaryDAOMockImpl implements DiaryDAO {
 	private List<Day> diary;
 	
 	public DiaryDAOMockImpl() {
-		diary = Collections.synchronizedList(new ArrayList<Day>());
-		initMockDiary();
+		diary = new ArrayList<Day>();
+		//initMockDiary();
+	}
+	public DiaryDAOMockImpl(List<Day> daylist) {
+		this.diary = daylist;
 	}
 	
 	public void addDay(Day day) {
