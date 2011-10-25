@@ -188,6 +188,7 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>jaxws-maven-plugin</artifactId>
+				<version>1.12</version>
 				<executions>
 					<execution>
 					   <id>DiaryImplServiceWSDL</id>
@@ -254,6 +255,7 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>jaxws-maven-plugin</artifactId>
+				<version>1.12</version>
 				<executions>
 					<execution>
 					   <id>DiaryImplServiceWSDL</id>
