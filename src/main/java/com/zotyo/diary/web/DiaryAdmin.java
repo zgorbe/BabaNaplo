@@ -35,7 +35,7 @@ public class DiaryAdmin extends HttpServlet {
 			keyword = props.getProperty("keyword");
 
 			WebApplicationContext webApplicationContext = WebApplicationContextUtils.getRequiredWebApplicationContext(this.getServletContext());
-			diaryDAO = webApplicationContext.getAutowireCapableBeanFactory().getBean("diaryDAOJPAImpl", DiaryDAO.class);		
+			diaryDAO = webApplicationContext.getAutowireCapableBeanFactory().getBean("diaryDAOMockImpl", DiaryDAO.class);		
 			
 		} catch(IOException ioex) {
 			ioex.printStackTrace();

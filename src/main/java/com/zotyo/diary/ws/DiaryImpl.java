@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.annotation.PostConstruct;
 import javax.jws.HandlerChain;
 import javax.jws.WebService;
 import javax.servlet.ServletContext;
@@ -12,6 +13,7 @@ import javax.xml.ws.WebServiceContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.WebApplicationContext;
+//import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
@@ -22,7 +24,7 @@ import com.zotyo.diary.pojos.Event;
 
 @WebService(endpointInterface = "com.zotyo.diary.ws.Diary", wsdlLocation="WEB-INF/wsdl/DiaryImplService.wsdl")
 @HandlerChain(file = "handler-chain.xml")
-public class DiaryImpl extends SpringBeanAutowiringSupport implements Diary {
+public class DiaryImpl /* extends SpringBeanAutowiringSupport */ implements Diary {
 	
 	@Resource
 	private WebServiceContext context; 
@@ -70,10 +72,14 @@ public class DiaryImpl extends SpringBeanAutowiringSupport implements Diary {
 		return cal.getTime();
 	}
 	
+	@PostConstruct
+	private void getDAOBean() {
+		SpringBeanAutowiringSupport.processInjectionBasedOnCurrentContext(this);	
+	}	
 	// This method could be used if not extending from SpringBeanAutowiringSupport
 	// problem: getMessageContext() can only be called while serving a request
 	// @PostConstruct
-	private void getDAOBean() {
+	private void getDAOBean2() {
 		ServletContext servletContext = (ServletContext) context.getMessageContext().get("javax.xml.ws.servlet.context");
 		WebApplicationContext webApplicationContext = WebApplicationContextUtils.getRequiredWebApplicationContext(servletContext);
 		diaryDAO = webApplicationContext.getAutowireCapableBeanFactory().getBean("diaryDAOJPAImpl", DiaryDAO.class);		
