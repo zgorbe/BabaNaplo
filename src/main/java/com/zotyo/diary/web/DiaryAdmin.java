@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import com.zotyo.diary.persistence.DiaryDAO;
@@ -20,7 +22,9 @@ public class DiaryAdmin extends HttpServlet {
 	
 	private static Logger logger = Logger.getLogger(DiaryAdmin.class); 
 	
+	@Autowired
 	private DiaryDAO diaryDAO;
+	
 	private DiaryHelper diaryHelper;
 	private String keyword;
 	
@@ -31,12 +35,9 @@ public class DiaryAdmin extends HttpServlet {
 			InputStream inputStream = ClassLoader.getSystemResourceAsStream("diary.properties");
 			Properties props = new Properties();
 			props.load(inputStream);
-			
 			keyword = props.getProperty("keyword");
 
-			WebApplicationContext webApplicationContext = WebApplicationContextUtils.getRequiredWebApplicationContext(this.getServletContext());
-			diaryDAO = webApplicationContext.getAutowireCapableBeanFactory().getBean("diaryDAOMockImpl", DiaryDAO.class);		
-			
+			SpringBeanAutowiringSupport.processInjectionBasedOnCurrentContext(this);
 		} catch(IOException ioex) {
 			ioex.printStackTrace();
 		}
