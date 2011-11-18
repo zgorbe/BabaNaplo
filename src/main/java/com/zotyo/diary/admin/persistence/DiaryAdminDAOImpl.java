@@ -2,6 +2,10 @@ package com.zotyo.diary.admin.persistence;
 
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.simple.SimpleJdbcDaoSupport;
 import org.springframework.stereotype.Repository;
 
@@ -10,7 +14,10 @@ import com.zotyo.diary.pojos.Event;
 
 @Repository
 public class DiaryAdminDAOImpl extends SimpleJdbcDaoSupport implements DiaryAdminDAO {
-
+	
+	@Autowired
+	private DataSource dataSource; 
+	
 	@Override
 	public List<Day> getAllDays() {
 		return null;
@@ -51,5 +58,9 @@ public class DiaryAdminDAOImpl extends SimpleJdbcDaoSupport implements DiaryAdmi
 		// TODO Auto-generated method stub
 		
 	}
-
+	
+	@PostConstruct
+	private void initDataSource() {
+		super.setDataSource(dataSource);
+	}
 }
