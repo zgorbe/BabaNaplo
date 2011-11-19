@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 public class Day {
+        private Integer id;
 	private Date theDay;
 	private List<Event> eventsOfTheDay;
 	private String descriptionOfTheDay;
@@ -17,6 +18,12 @@ public class Day {
 		setDescriptionOfTheDay(descriptionOfTheDay);
 	}
 	
+        public Integer getId() {
+                return id;
+        }
+        public void setId(Integer id) {
+                this.id = id;
+        }
 	public void addEvent(Event event) {
 		eventsOfTheDay.add(event);
 	}

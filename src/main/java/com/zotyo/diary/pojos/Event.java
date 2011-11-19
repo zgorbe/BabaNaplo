@@ -3,6 +3,7 @@ package com.zotyo.diary.pojos;
 import java.util.Date;
 
 public class Event {
+        private Integer id;
 	private String description;
 	private Date startTime;
 	private long duration;
@@ -13,6 +14,12 @@ public class Event {
 		setStartTime(startTime);
 		setDuration(duration);
 	}
+        public Integer getId() {
+                return id;
+        }
+        public void setId(Integer id) {
+                this.id = id;
+        }
 	public String getDescription() {
 		return description;
 	}

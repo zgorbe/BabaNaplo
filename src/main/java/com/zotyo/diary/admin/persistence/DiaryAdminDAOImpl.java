@@ -7,6 +7,7 @@ import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.simple.SimpleJdbcDaoSupport;
+import org.springframework.jdbc.core.simple.ParameterizedBeanPropertyRowMapper;
 import org.springframework.stereotype.Repository;
 
 import com.zotyo.diary.pojos.Day;
@@ -20,7 +21,9 @@ public class DiaryAdminDAOImpl extends SimpleJdbcDaoSupport implements DiaryAdmi
 	
 	@Override
 	public List<Day> getAllDays() {
-		return null;
+		String sql = "select * from days";
+		List<Day> days = getSimpleJdbcTemplate().query(sql, ParameterizedBeanPropertyRowMapper.newInstance(Day.class));
+		return days;
 	}
 
 	@Override

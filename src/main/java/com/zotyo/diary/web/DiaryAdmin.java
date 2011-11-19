@@ -16,38 +16,25 @@ import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
-import com.zotyo.diary.persistence.DiaryDAO;
+import com.zotyo.diary.admin.persistence.DiaryAdminDAO;
 
 public class DiaryAdmin extends HttpServlet {
 	
 	private static Logger logger = Logger.getLogger(DiaryAdmin.class); 
 	
 	@Autowired
-	private DiaryDAO diaryDAO;
+	private DiaryAdminDAO diaryAdminDAO;
 	
-	private DiaryHelper diaryHelper;
-	private String keyword;
-	
-	
-	
+		
 	public void init() throws ServletException {
-		try {
-			InputStream inputStream = ClassLoader.getSystemResourceAsStream("diary.properties");
-			Properties props = new Properties();
-			props.load(inputStream);
-			keyword = props.getProperty("keyword");
-
-			SpringBeanAutowiringSupport.processInjectionBasedOnCurrentContext(this);
-		} catch(IOException ioex) {
-			ioex.printStackTrace();
-		}
+		SpringBeanAutowiringSupport.processInjectionBasedOnCurrentContext(this);
 	}
 	
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) 
 											throws ServletException, IOException {
 		PrintWriter out = new PrintWriter(response.getOutputStream());
-		out.println("Napok száma: " + diaryDAO.getAllDaysInDiary().size());
+		out.println("Napok száma: " + diaryAdminDAO.getAllDays().size());
 		out.close();
 	}
 

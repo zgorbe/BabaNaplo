@@ -42,6 +42,7 @@
 
       <xs:complexType name="day">
         <xs:sequence>
+          <xs:element name="id" type="xs:integer" minOccurs="0" />
           <xs:element name="descriptionOfTheDay" type="xs:string" />
           <xs:element name="eventsOfTheDay" type="tns:event" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
           <xs:element name="theDay" type="xs:dateTime" />
@@ -50,6 +51,7 @@
 
       <xs:complexType name="event">
         <xs:sequence>
+          <xs:element name="id" type="xs:integer" minOccurs="0" />
           <xs:element name="description" type="xs:string" />
           <xs:element name="duration" type="xs:long" minOccurs="0"/>
           <xs:element name="startTime" type="xs:dateTime" />
