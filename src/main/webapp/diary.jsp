@@ -19,16 +19,19 @@
     <title>Baba napló</title>		
 	</head>
 	<body>
-		<div id="container">
-			<div id="navigation">
+		<div id="header">
+			<div id="menu">
 				<ul>
-					<li><a id="a_home" href="/diaryweb">Home</a></li>
+					<li class="current_page_item"><a id="a_home" href="/diaryweb">Home</a></li>
 					<li><a id="a_allday" href="#" onclick="allday();">Összes nap</a></li>
 					<li><a id="a_addday" href="#" onclick="addday();">Új nap</a></li>
 					<li><a id="a_addevent" href="#" onclick="addevent();">Új esemény</a></li>
 				</ul>
 			</div>
-
+		</div>
+		<div id="logo">
+		</div>
+		<div id="page">
 			<div id="content">
 				<div id="datepicker1" style="font-size: 12px;"></div>
 				<script type="text/javascript">
@@ -42,11 +45,12 @@
 				<div id="events">
 					<jsp:include page="events.jsp" />
 				</div>
-	        	</div>
-	        <div id="footer">
+	       	</div>
+	       	<div style="clear: both;">&nbsp;</div>
+	    </div>
+        <!-- div id="footer">
       			Baba Napló, 2011
-    		</div>
-        </div>
+    	</div -->
 		<script type="text/javascript">
 			getEventsOfTheDay(selectedDay);
 		</script>
