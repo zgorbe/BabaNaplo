@@ -12,8 +12,17 @@ function getEventsOfTheDay(dateText) {
 		}
 	});
 }
-
-function addday() {
+function inactivate_all() {
+	$('#menu_list').children().removeClass('active');	
+}
+function home(e) {
+	inactivate_all();
+	$('#li_home').addClass('active');
+	document.location.href = '/diaryweb';
+}
+function addday(e) {
+	inactivate_all();
+	$('#li_addday').addClass('active');
 	$.ajax({
 		type: "GET",
 		data: "cmd=addday",
@@ -23,7 +32,9 @@ function addday() {
 		}
 	});
 }
-function addevent() {
+function addevent(e) {
+	inactivate_all();
+	$('#li_addevent').addClass('active');
 	$.ajax({
 		type: "GET",
 		data: "cmd=addevent",
@@ -34,7 +45,9 @@ function addevent() {
 	});	
 }
 
-function allday() {
+function allday(e) {
+	inactivate_all();
+	$('#li_allday').addClass('active');
 	var now = new Date();
 	var months = now.getMonth();
 	var year = now.getFullYear();
