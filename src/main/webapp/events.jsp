@@ -9,23 +9,32 @@
 
 <% DiaryHelper diaryHelper = new DiaryHelper(); %>
 
-<c:choose>
-	<c:when test="${fn:length(eventsOfTheDay) > 0}">
-		<b><c:out value="${theDay}" /> eseményei a naplóban:</b><br />
-		A nap leírása: <c:out value="${descriptionOfTheDay}" /> <br />
-		<ul>
-			<c:forEach items="${eventsOfTheDay}" var="event">
-				<li>
-					<c:out value="${event.description}" />
-					<c:if test="${event.duration > 0}">
-						<br />Időtartam (óra:perc):
-						<%= diaryHelper.getDurationInHHMM((Event)pageContext.getAttribute("event")) %>	
-					</c:if>
-				</li>
-			</c:forEach>
-		</ul>
-	</c:when>
-	<c:otherwise>
-		Nincs esemény a választott napra (<c:out value="${theDay}" />). 
-	</c:otherwise>
-</c:choose>
+<div class="post">
+	<h2 class="title"><c:out value="${theDay}" /> eseményei</h2>
+	<p class="byline"><small>Posted by FreeCssTemplates</small></p>
+	<div class="entry">
+		<c:choose>
+			<c:when test="${fn:length(eventsOfTheDay) > 0}">
+				<br />
+				A nap leírása: <c:out value="${descriptionOfTheDay}" /> <br />
+				<ul>
+					<c:forEach items="${eventsOfTheDay}" var="event">
+						<li>
+							<c:out value="${event.description}" />
+							<c:if test="${event.duration > 0}">
+								<br />Időtartam (óra:perc):
+								<%= diaryHelper.getDurationInHHMM((Event)pageContext.getAttribute("event")) %>	
+							</c:if>
+						</li>
+					</c:forEach>
+				</ul>
+			</c:when>
+			<c:otherwise>
+				Nincs esemény a választott napra (<c:out value="${theDay}" />). 
+			</c:otherwise>
+		</c:choose>
+	</div>
+	<div class="meta">
+		<p class="links"><a href="#" class="comments">Comments (32)</a> &nbsp;&bull;&nbsp;&nbsp; <a href="#" class="more">Read full post &raquo;</a></p>
+	</div>
+</div>

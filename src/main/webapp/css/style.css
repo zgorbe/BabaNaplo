@@ -1,10 +1,10 @@
 body {
 	margin: 0px;
 	padding: 0px;
-	background: #242323;
+	background: #FBE2F3;
 	text-align: justify;
 	font: 13px Arial, Helvetica, sans-serif;
-	color: #444444;
+	color: #FD3790;
 }
 
 h1, h2, h3 {
@@ -30,15 +30,6 @@ p, ol, ul {
 	line-height: 160%;
 }
 
-a {
-	color: #000000;
-}
-
-a:hover {
-	text-decoration: none;
-	color: #FF0000;
-}
-
 a img {
 	border: none;
 }
@@ -55,6 +46,7 @@ a img {
 	width: 900px;
 	height: 100px;
 	margin: 0px auto;
+	background-color: #F792C9;
 }
 
 #header a {
@@ -84,6 +76,8 @@ a img {
 
 #menu {
 	float: right;
+	text-transform: uppercase;
+	font-weight: bold;
 }
 
 #menu ul {
@@ -106,10 +100,11 @@ a img {
 
 #menu a:hover {
 	text-decoration: underline;
+	background-color: #FD3790;
 }
 
 #menu .active {
-	background: #404040;
+	background-color: #FD3790;
 }
 
 /* Page */
@@ -141,7 +136,7 @@ a img {
 
 .post .title {
 	margin: 0px;
-	background: #444444;
+	background: #FD3790;
 	padding: 7px 25px;
 	font-size: 1.4em;
 }
@@ -151,6 +146,8 @@ a img {
 
 .post .entry {
 	padding: 0 20px;
+	font-family: Cursive, Verdana, Arial;
+	font-size: 16px;
 }
 
 .post .meta {
@@ -201,7 +198,7 @@ a img {
 }
 
 #sidebar h2 {
-	background: #444444;
+	background-color: #FD3790; 
 	padding: 7px 25px;
 	font-size: 1.4em;
 }
@@ -241,7 +238,7 @@ a img {
 	width: 900px;
 	height: 50px;
 	margin: 0px auto 30px auto;
-	color: #FFFFFF;
+	color: #FD3790;
 }
 
 #footer p {
@@ -252,17 +249,10 @@ a img {
 	font-size: smaller;
 }
 
-#footer a {
-	color: #FFFFFF;
-}
-
 #datepicker1 {
 	padding: 0px 10px 10px 10px;
 }
-#events {
-	padding-top: 10px;
-	padding-bottom: 15px;
-}
+
 /* , input[type="text"], input[type="password"] */ 
 input, select, textarea, button {
 	font-family: Cursive, Verdana, Arial;

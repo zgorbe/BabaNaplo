@@ -22,8 +22,8 @@
 		<div id="wrapper">
 			<div id="header">
 				<div id="logo">
-					<h1><a href="#">Title</a></h1>
-					<p>Design by <a href="http://www.freecsstemplates.org/">Free CSS Templates</a></p>
+					<h1><a href="/diaryweb">Timcsi naplója</a></h1>
+					<p>Design by <a href="http://www.freecsstemplates.org/" target="_blank">Free CSS Templates</a></p>
 				</div>
 				<div id="menu">
 					<ul id="menu_list">
@@ -38,23 +38,14 @@
 			<div id="page">
 				<div id="header-pic"></div>
 				<div id="content">
+					<div id="events">
+						<jsp:include page="events.jsp" />
+					</div>
 					<div class="post">
-						<h1 class="title">Welcome to our website </h1>
+						<h1 class="title">Legfrissebb események </h1>
 						<p class="byline"><small>Posted by FreeCssTemplates</small></p>
 						<div class="entry">
 							<p><strong>Professional 1.0</strong> is a free template from <a href="http://www.freecsstemplates.org/">Free CSS Templates</a> released under a <a href="http://creativecommons.org/licenses/by/2.5/">Creative Commons Attribution 2.5 License</a>. You're free to use this template for both commercial or personal use. I only ask that you link back to <a href="http://www.freecsstemplates.org/">my site</a> in some way. Enjoy :)</p>
-						</div>
-						<div class="meta">
-							<p class="links"><a href="#" class="comments">Comments (32)</a> &nbsp;&bull;&nbsp;&nbsp; <a href="#" class="more">Read full post &raquo;</a></p>
-						</div>
-					</div>
-					<div class="post">
-						<h2 class="title">Lorem Ipsum Dolor Volutpat</h2>
-						<p class="byline"><small>Posted by FreeCssTemplates</small></p>
-						<div class="entry">
-							<div id="events">
-								<jsp:include page="events.jsp" />
-							</div>
 						</div>
 						<div class="meta">
 							<p class="links"><a href="#" class="comments">Comments (32)</a> &nbsp;&bull;&nbsp;&nbsp; <a href="#" class="more">Read full post &raquo;</a></p>
@@ -101,7 +92,7 @@
 			</script>
 		</div>
 		<div id="footer">
-			<p>&copy; 2008. All Rights Reserved. Design by <a href="http://www.freecsstemplates.org/">Free CSS Templates</a>.</p>
+			<p>&copy; 2011. Baba napló. Stílus: <a href="http://www.freecsstemplates.org/" target="_blank">Free CSS Templates</a>.</p>
 		</div>
 	</body>
 </html>
