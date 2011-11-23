@@ -14,13 +14,12 @@
 		<p class="byline"><small>Posted by FreeCssTemplates</small></p>
 		<div class="entry">
 		<c:choose>
-			<c:when test="${fn:length(eventsOfTheDay) > 0}">
-				<br />
-				A nap leírása: <c:out value="${descriptionOfTheDay}" /> <br />
+			<c:when test="${fn:length(latests) > 0}">
 				<ul>
-					<c:forEach items="${eventsOfTheDay}" var="event">
+					<c:forEach items="${latests}" var="event">
 						<li>
-							<c:out value="${event.description}" />
+							<c:out value="${event.description}" /><br />
+							<c:out value="${event.startTime}" />
 							<c:if test="${event.duration > 0}">
 								<br />Időtartam (óra:perc):
 								<%= diaryHelper.getDurationInHHMM((Event)pageContext.getAttribute("event")) %>	
@@ -29,9 +28,6 @@
 					</c:forEach>
 				</ul>
 			</c:when>
-			<c:otherwise>
-				Nincs esemény a választott napra (<c:out value="${theDay}" />). 
-			</c:otherwise>
 		</c:choose>
 	</div>
 	<div class="meta">

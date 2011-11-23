@@ -44,16 +44,6 @@
 					<div id="latests">
 						<jsp:include page="latests.jsp" />
 					</div>
-					<div class="post">
-						<h1 class="title">Legfrissebb események </h1>
-						<p class="byline"><small>Posted by FreeCssTemplates</small></p>
-						<div class="entry">
-							<p><strong>Professional 1.0</strong> is a free template from <a href="http://www.freecsstemplates.org/">Free CSS Templates</a> released under a <a href="http://creativecommons.org/licenses/by/2.5/">Creative Commons Attribution 2.5 License</a>. You're free to use this template for both commercial or personal use. I only ask that you link back to <a href="http://www.freecsstemplates.org/">my site</a> in some way. Enjoy :)</p>
-						</div>
-						<div class="meta">
-							<p class="links"><a href="#" class="comments">Comments (32)</a> &nbsp;&bull;&nbsp;&nbsp; <a href="#" class="more">Read full post &raquo;</a></p>
-						</div>
-					</div>
 				</div>
 				<div id="sidebar">
 					<div id="sidebar-bgtop"></div>
