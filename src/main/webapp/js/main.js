@@ -12,6 +12,16 @@ function getEventsOfTheDay(dateText) {
 		}
 	});
 }
+function getLatestEvents() {
+	$.ajax({
+		type: "GET",
+		data: "cmd=latests",
+		url: '/diaryweb',
+		success: function(data, type, xmlhttp){
+			$("#latests").html(data);
+		}
+	});
+}
 function inactivate_all() {
 	$('#menu_list').children().removeClass('active');	
 }

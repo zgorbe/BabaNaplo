@@ -41,6 +41,9 @@
 					<div id="events">
 						<jsp:include page="events.jsp" />
 					</div>
+					<div id="latests">
+						<jsp:include page="latests.jsp" />
+					</div>
 					<div class="post">
 						<h1 class="title">Legfrissebb események </h1>
 						<p class="byline"><small>Posted by FreeCssTemplates</small></p>
@@ -84,11 +87,9 @@
 					});
 				</script>
 		    </div>
-	        <!-- div id="footer">
-	      			Baba Napló, 2011
-	    	</div -->
 			<script type="text/javascript">
 				getEventsOfTheDay(selectedDay);
+				getLatestEvents();
 			</script>
 		</div>
 		<div id="footer">

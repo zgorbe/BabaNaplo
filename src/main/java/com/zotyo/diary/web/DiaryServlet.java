@@ -104,6 +104,19 @@ public class DiaryServlet extends HttpServlet {
 			
 			return;
 		}
+		if ("latests".equals(command)) {
+			List<Event> events = diary.getAllEvents();
+			List<Event> latests = new ArrayList<Event>();
+			for (int i=0; i<5; i++) {
+				latests.add(events.get(i));
+			}
+			request.setAttribute("latests", latests);
+			RequestDispatcher rd = getServletContext().getRequestDispatcher("/latests.jsp");
+			rd.forward(request, response);
+			
+			return;
+		}
+		
 		
 		SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
 		if (theDayString != null && theDayString.length() > 0) {
