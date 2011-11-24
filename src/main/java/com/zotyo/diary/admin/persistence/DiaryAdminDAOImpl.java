@@ -1,13 +1,15 @@
 package com.zotyo.diary.admin.persistence;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.simple.SimpleJdbcDaoSupport;
-import org.springframework.jdbc.core.simple.ParameterizedBeanPropertyRowMapper;
 import org.springframework.stereotype.Repository;
 
 import com.zotyo.diary.pojos.Day;
@@ -22,7 +24,16 @@ public class DiaryAdminDAOImpl extends SimpleJdbcDaoSupport implements DiaryAdmi
 	@Override
 	public List<Day> getAllDays() {
 		String sql = "select * from days";
-		List<Day> days = getSimpleJdbcTemplate().query(sql, ParameterizedBeanPropertyRowMapper.newInstance(Day.class));
+		
+		List<Day> days = getSimpleJdbcTemplate().query(sql, new RowMapper<Day>() {
+	        public Day mapRow(ResultSet rs, int rowNum) throws SQLException {
+	            Day day = new Day();
+	            day.setId(rs.getInt("id"));
+	            day.setDescriptionOfTheDay(rs.getString("text"));
+	            day.setTheDay(rs.getTimestamp("the_day"));
+	            return day;
+	        }
+	    });
 		return days;
 	}
 

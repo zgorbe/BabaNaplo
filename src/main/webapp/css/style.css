@@ -150,6 +150,10 @@ a img {
 	font-size: 16px;
 }
 
+.post .entry ul {
+	list-style: none;
+}
+
 .post .meta {
 	font-weight: bold;
 	padding-left: 20px;

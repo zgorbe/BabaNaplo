@@ -3,6 +3,7 @@ package com.zotyo.diary.web;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
+import java.util.List;
 import java.util.Properties;
 
 import javax.servlet.ServletException;
@@ -17,6 +18,7 @@ import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import com.zotyo.diary.admin.persistence.DiaryAdminDAO;
+import com.zotyo.diary.pojos.Day;
 
 public class DiaryAdmin extends HttpServlet {
 	
@@ -34,7 +36,10 @@ public class DiaryAdmin extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) 
 											throws ServletException, IOException {
 		PrintWriter out = new PrintWriter(response.getOutputStream());
-		out.println("Napok száma: " + diaryAdminDAO.getAllDays().size());
+		List<Day> days = diaryAdminDAO.getAllDays();
+		for(Day d : days) {
+			out.println(d.getId() + ", " + d.getTheDay() + ", " + d.getDescriptionOfTheDay());
+		}
 		out.close();
 	}
 

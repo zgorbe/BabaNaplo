@@ -10,7 +10,7 @@
 <% DiaryHelper diaryHelper = new DiaryHelper(); %>
 
 <div class="post">
-		<h1 class="title">Legfrissebb események </h1>
+		<h1 class="title">Legfrissebb események</h1>
 		<p class="byline"><small>Posted by FreeCssTemplates</small></p>
 		<div class="entry">
 		<c:choose>
@@ -19,11 +19,12 @@
 					<c:forEach items="${latests}" var="event">
 						<li>
 							<c:out value="${event.description}" /><br />
-							<c:out value="${event.startTime}" />
+							<small><c:out value="${event.startTime}" /></small>
 							<c:if test="${event.duration > 0}">
 								<br />Időtartam (óra:perc):
 								<%= diaryHelper.getDurationInHHMM((Event)pageContext.getAttribute("event")) %>	
 							</c:if>
+							<hr />
 						</li>
 					</c:forEach>
 				</ul>
