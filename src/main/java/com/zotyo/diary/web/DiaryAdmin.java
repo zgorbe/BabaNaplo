@@ -40,6 +40,8 @@ public class DiaryAdmin extends HttpServlet {
 		for(Day d : days) {
 			out.println(d.getId() + ", " + d.getTheDay() + ", " + d.getDescriptionOfTheDay());
 		}
+		Day first = diaryAdminDAO.getDayById(1);
+		out.println(first.getId() + ", " + first.getTheDay() + ", " + first.getDescriptionOfTheDay());
 		out.close();
 	}
 
