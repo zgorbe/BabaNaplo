@@ -150,8 +150,13 @@ a img {
 	font-size: 16px;
 }
 
-.post .entry ul {
-	list-style: none;
+.post .entry .entry_item {
+	border-bottom: 1px solid #FD3790;
+	padding: 10px 0px;
+}
+
+.post .meta .links a {
+	color: #FD3790;
 }
 
 .post .meta {

@@ -34,7 +34,4 @@
 			</c:otherwise>
 		</c:choose>
 	</div>
-	<div class="meta">
-		<p class="links"><a href="#" class="comments">Comments (32)</a> &nbsp;&bull;&nbsp;&nbsp; <a href="#" class="more">Read full post &raquo;</a></p>
-	</div>
 </div>

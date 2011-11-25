@@ -23,7 +23,7 @@
 			<div id="header">
 				<div id="logo">
 					<h1><a href="/diaryweb">Timcsi naplója</a></h1>
-					<p>Design by <a href="http://www.freecsstemplates.org/" target="_blank">Free CSS Templates</a></p>
+					<p>Stílus: <a href="http://www.freecsstemplates.org/" target="_blank">Free CSS Templates</a>.</p>
 				</div>
 				<div id="menu">
 					<ul id="menu_list">
@@ -83,7 +83,7 @@
 			</script>
 		</div>
 		<div id="footer">
-			<p>&copy; 2011. Baba napló. Stílus: <a href="http://www.freecsstemplates.org/" target="_blank">Free CSS Templates</a>.</p>
+			<p>&copy; 2011. Baba napló.</p>
 		</div>
 	</body>
 </html>

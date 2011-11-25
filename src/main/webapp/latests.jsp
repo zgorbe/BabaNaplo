@@ -15,23 +15,20 @@
 		<div class="entry">
 		<c:choose>
 			<c:when test="${fn:length(latests) > 0}">
-				<ul>
-					<c:forEach items="${latests}" var="event">
-						<li>
-							<c:out value="${event.description}" /><br />
-							<small><c:out value="${event.startTime}" /></small>
-							<c:if test="${event.duration > 0}">
-								<br />Időtartam (óra:perc):
-								<%= diaryHelper.getDurationInHHMM((Event)pageContext.getAttribute("event")) %>	
-							</c:if>
-							<hr />
-						</li>
-					</c:forEach>
-				</ul>
+				<c:forEach items="${latests}" var="event">
+					<div class="entry_item">
+						<c:out value="${event.description}" /><br />
+						<small><c:out value="${event.startTime}" /></small>
+						<c:if test="${event.duration > 0}">
+							<br />Időtartam (óra:perc):
+							<%= diaryHelper.getDurationInHHMM((Event)pageContext.getAttribute("event")) %>	
+						</c:if>
+					</div>
+				</c:forEach>
 			</c:when>
 		</c:choose>
 	</div>
 	<div class="meta">
-		<p class="links"><a href="#" class="comments">Comments (32)</a> &nbsp;&bull;&nbsp;&nbsp; <a href="#" class="more">Read full post &raquo;</a></p>
+		<p class="links"><a href="#" class="comments">További események</a></p>
 	</div>
 </div>
