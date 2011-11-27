@@ -210,7 +210,8 @@
                 <version>1.1.1</version>
                 <configuration>
                     <assembleDirectory>target</assembleDirectory> 
-                    <generateRepository>false</generateRepository>
+                    <!-- update pom for latest Heroku slug compilation --> 
+                    <!--generateRepository>false</generateRepository -->
                     <programs>
                         <program>
                             <mainClass>com.zotyo.Main</mainClass>
