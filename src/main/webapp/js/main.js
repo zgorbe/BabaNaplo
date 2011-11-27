@@ -2,6 +2,7 @@ var selectedDay = getFormattedNow();
 
 function getEventsOfTheDay(dateText) {
 	selectedDay = dateText;
+	$('#div_events').html('');	
 	$('#loader_events').show();
 	$.ajax({
 		type: "GET",
@@ -15,6 +16,7 @@ function getEventsOfTheDay(dateText) {
 	});
 }
 function getLatestEvents() {
+	$('#div_latests').html('');
 	$('#loader_latests').show();
 	$.ajax({
 		type: "GET",
@@ -78,6 +80,7 @@ function allday(e) {
 function datefilter() {
 	var year = $('#yearFilter').val();
 	var months = $('#monthsFilter').val();
+	$('#div_all').html('');	
 	$('#loader_all').show();
 	$.ajax({
 		type: "GET",

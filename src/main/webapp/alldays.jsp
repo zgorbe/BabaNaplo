@@ -43,25 +43,27 @@
 	</table>
 	<br />
 	<div class="entry">
-		<c:choose>	
-			<c:when test="${fn:length(alldays) > 0}">
-				<c:forEach items="${alldays}" var="day">
-					<b><%= diaryHelper.formatDate((Day)pageContext.getAttribute("day")) %> - <c:out value="${day.descriptionOfTheDay}" /></b> <br />
-						<c:forEach items="${day.eventsOfTheDay}" var="event">
-							<div class="entry_item">
-								<c:out value="${event.description}" />
-								<c:if test="${event.duration > 0}">
-									<br />Időtartam (óra:perc):
-									<%= diaryHelper.getDurationInHHMM((Event)pageContext.getAttribute("event")) %>	
-								</c:if>
-							</div>
-						</c:forEach>
-				</c:forEach>
-			</c:when>
-			<c:otherwise>
-				A kiválasztott hónapra nincs nap a naplóban. 
-			</c:otherwise>
-		</c:choose>
+		<div id="div_all">
+			<c:choose>	
+				<c:when test="${fn:length(alldays) > 0}">
+					<c:forEach items="${alldays}" var="day">
+						<b><%= diaryHelper.formatDate((Day)pageContext.getAttribute("day")) %> - <c:out value="${day.descriptionOfTheDay}" /></b> <br />
+							<c:forEach items="${day.eventsOfTheDay}" var="event">
+								<div class="entry_item">
+									<c:out value="${event.description}" />
+									<c:if test="${event.duration > 0}">
+										<br />Időtartam (óra:perc):
+										<%= diaryHelper.getDurationInHHMM((Event)pageContext.getAttribute("event")) %>	
+									</c:if>
+								</div>
+							</c:forEach>
+					</c:forEach>
+				</c:when>
+				<c:otherwise>
+					A kiválasztott hónapra nincs nap a naplóban. 
+				</c:otherwise>
+			</c:choose>
+		</div>
 	</div>
 	<script type="text/javascript">
 		$(function(){

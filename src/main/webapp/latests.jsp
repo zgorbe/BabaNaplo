@@ -14,20 +14,22 @@
 		<p class="byline"><small>Posted by FreeCssTemplates</small></p>
 		<div class="entry">
 		<div id="loader_latests" style="display: none;"><img src="images/loading_pink.gif"></div>
-		<c:choose>
-			<c:when test="${fn:length(latests) > 0}">
-				<c:forEach items="${latests}" var="event">
-					<div class="entry_item">
-						<c:out value="${event.description}" /><br />
-						<small><c:out value="${event.startTime}" /></small>
-						<c:if test="${event.duration > 0}">
-							<br />Időtartam (óra:perc):
-							<%= diaryHelper.getDurationInHHMM((Event)pageContext.getAttribute("event")) %>	
-						</c:if>
-					</div>
-				</c:forEach>
-			</c:when>
-		</c:choose>
+		<div id="div_latests">
+			<c:choose>
+				<c:when test="${fn:length(latests) > 0}">
+					<c:forEach items="${latests}" var="event">
+						<div class="entry_item">
+							<c:out value="${event.description}" /><br />
+							<small><c:out value="${event.startTime}" /></small>
+							<c:if test="${event.duration > 0}">
+								<br />Időtartam (óra:perc):
+								<%= diaryHelper.getDurationInHHMM((Event)pageContext.getAttribute("event")) %>	
+							</c:if>
+						</div>
+					</c:forEach>
+				</c:when>
+			</c:choose>
+		</div>
 	</div>
 	<div class="meta">
 		<p class="links"><a href="#" class="comments">További események</a></p>
