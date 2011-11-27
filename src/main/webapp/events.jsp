@@ -13,6 +13,7 @@
 	<h2 class="title"><c:out value="${theDay}" /> eseményei</h2>
 	<p class="byline"><small>Posted by FreeCssTemplates</small></p>
 	<div class="entry">
+		<div id="loader_events" style="display: none;"><img src="images/loading_pink.gif"></div>
 		<c:choose>
 			<c:when test="${fn:length(eventsOfTheDay) > 0}">
 				<br />

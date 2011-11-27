@@ -2,23 +2,27 @@ var selectedDay = getFormattedNow();
 
 function getEventsOfTheDay(dateText) {
 	selectedDay = dateText;
+	$('#loader_events').show();
 	$.ajax({
 		type: "GET",
 		data: "theDay=" + dateText,
 		url: '/diaryweb',
 		success: function(data, type, xmlhttp){
-			$("#events").html(data);
-			$("#theDayInput").val(selectedDay);
+			$('#events').html(data);
+			$('#theDayInput').val(selectedDay);
+			$('#loader_events').hide();
 		}
 	});
 }
 function getLatestEvents() {
+	$('#loader_latests').show();
 	$.ajax({
 		type: "GET",
 		data: "cmd=latests",
 		url: '/diaryweb',
 		success: function(data, type, xmlhttp){
-			$("#latests").html(data);
+			$('#latests').html(data);
+			$('#loader_latests').hide();
 		}
 	});
 }
@@ -38,7 +42,7 @@ function addday(e) {
 		data: "cmd=addday",
 		url: '/diaryweb',
 		success: function(data, type, xmlhttp){
-			$("#content").html(data);
+			$('#content').html(data);
 		}
 	});
 }
@@ -50,7 +54,7 @@ function addevent(e) {
 		data: "cmd=addevent",
 		url: '/diaryweb',
 		success: function(data, type, xmlhttp){
-			$("#content").html(data);
+			$('#content').html(data);
 		}
 	});	
 }
@@ -66,20 +70,22 @@ function allday(e) {
 		data: "cmd=allday&year=" + year + "&months=" + months,
 		url: '/diaryweb',
 		success: function(data, type, xmlhttp){
-			$("#content").html(data);
+			$('#content').html(data);
 		}
 	});
 }
 
 function datefilter() {
-	var year = $("#yearFilter").val();
-	var months = $("#monthsFilter").val();
+	var year = $('#yearFilter').val();
+	var months = $('#monthsFilter').val();
+	$('#loader_all').show();
 	$.ajax({
 		type: "GET",
 		data: "cmd=allday&year=" + year + "&months=" + months,
 		url: '/diaryweb',
 		success: function(data, type, xmlhttp){
-			$("#content").html(data);
+			$('#content').html(data);
+			$('#loader_all').hide();
 		}
 	});
 }

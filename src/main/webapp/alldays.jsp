@@ -16,6 +16,7 @@
 	<h1 class="title">A naplóban szereplő napok</h1>
 	<table border="0" cellspacing="0" cellpadding="3" style="width:100%;">
 		<tr>
+			<td align="center" id="loader_all" style="display: none;"><img src="images/loading_pink.gif"></td>
 			<td align="right">
 				Év,hónap:
 				<select id="yearFilter" name="yearFilter" onchange="datefilter();">

@@ -13,6 +13,7 @@
 		<h1 class="title">Legfrissebb események</h1>
 		<p class="byline"><small>Posted by FreeCssTemplates</small></p>
 		<div class="entry">
+		<div id="loader_latests" style="display: none;"><img src="images/loading_pink.gif"></div>
 		<c:choose>
 			<c:when test="${fn:length(latests) > 0}">
 				<c:forEach items="${latests}" var="event">
