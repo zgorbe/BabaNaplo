@@ -27,10 +27,10 @@
 				</div>
 				<div id="menu">
 					<ul id="menu_list">
-						<li id="li_home" class="active"><a onclick="home();">Home</a></li>
-						<li id="li_allday" class=""><a href="#" onclick="allday();">Összes nap</a></li>
-						<li id="li_addday" class=""><a href="#" onclick="addday();">Új nap</a></li>
-						<li id="li_addevent" class=""><a href="#" onclick="addevent();">Új esemény</a></li>
+						<li id="li_home" class="active"><a href="#" onclick="home();">Home</a></li>
+						<li id="li_allday"><a href="#" onclick="allday();">Összes nap</a></li>
+						<li id="li_addday"><a href="#" onclick="addday();">Új nap</a></li>
+						<li id="li_addevent"><a href="#" onclick="addevent();">Új esemény</a></li>
 					</ul>
 				</div>
 			</div>
