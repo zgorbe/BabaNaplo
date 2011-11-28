@@ -145,7 +145,7 @@ a img {
 }
 
 .post .entry {
-	padding: 0 20px;
+  padding: 10px 20px 0;
 	font-family: Cursive, Verdana, Arial;
 	font-size: 16px;
 }

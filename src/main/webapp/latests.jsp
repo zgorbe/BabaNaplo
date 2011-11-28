@@ -10,9 +10,8 @@
 <% DiaryHelper diaryHelper = new DiaryHelper(); %>
 
 <div class="post">
-		<h1 class="title">Legfrissebb események</h1>
-		<p class="byline"><small>Posted by FreeCssTemplates</small></p>
-		<div class="entry">
+	<h1 class="title">Legfrissebb események</h1>
+	<div class="entry">
 		<div id="loader_latests" style="display: none;"><img src="images/loading_pink.gif"></div>
 		<div id="div_latests">
 			<c:choose>
@@ -32,6 +31,6 @@
 		</div>
 	</div>
 	<div class="meta">
-		<p class="links"><a href="#" class="comments">További események</a></p>
+		<p class="links"><a href="#" class="comments" onclick="allday();">További események</a></p>
 	</div>
 </div>
