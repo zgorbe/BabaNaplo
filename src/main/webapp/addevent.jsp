@@ -27,7 +27,7 @@
 	    </tr>
 	    <tr>
 	    	<td><button type="submit">Küldés</button></td>
-	    	<td><button onclick="document.location='/diaryweb';">Mégse</button></td>
+	    	<td><button type="button" onclick="document.location.href='/diaryweb';">Mégse</button></td>
 	    </tr>
     </table>
     <input type="hidden" name="action" value="add_event" />
