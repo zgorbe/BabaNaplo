@@ -36,6 +36,7 @@ function home(e) {
 	$('#li_home').addClass('active');
 	document.location.href = '/diaryweb';
 }
+
 function addday(e) {
 	inactivate_all();
 	$('#li_addday').addClass('active');
@@ -61,7 +62,7 @@ function addevent(e) {
 	});	
 }
 
-function allday(e) {
+function allday() {
 	inactivate_all();
 	$('#li_allday').addClass('active');
 	var now = new Date();
@@ -77,6 +78,18 @@ function allday(e) {
 	});
 }
 
+function videos() {
+	inactivate_all();
+	$('#li_videos').addClass('active');
+	$.ajax({
+		type: "GET",
+		data: "cmd=videos",
+		url: '/diaryweb',
+		success: function(data, type, xmlhttp){
+			$('#content').html(data);
+		}
+	});
+}
 function datefilter() {
 	var year = $('#yearFilter').val();
 	var months = $('#monthsFilter').val();

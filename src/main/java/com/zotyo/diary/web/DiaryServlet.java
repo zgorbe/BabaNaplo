@@ -116,7 +116,13 @@ public class DiaryServlet extends HttpServlet {
 			
 			return;
 		}
-		
+    if ("videos".equals(command)) {
+			RequestDispatcher rd = getServletContext().getRequestDispatcher("/videos.jsp");
+			rd.forward(request, response);
+			
+			return;
+		}
+	
 		
 		SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
 		if (theDayString != null && theDayString.length() > 0) {
