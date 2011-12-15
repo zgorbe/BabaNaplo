@@ -1,0 +1,283 @@
+body {
+	margin: 0px;
+	padding: 0px;
+	background: #FBE2F3;
+	text-align: justify;
+	font: 13px Arial, Helvetica, sans-serif;
+	color: #FD3790;
+}
+
+h1, h2, h3 {
+	margin-top: 0px;
+	font-weight: normal;
+	color: #FFFFFF;
+}
+
+h1 {
+	font-size: 2.4em;
+}
+
+h2 {
+	font-size: 1.8em;
+}
+
+h3 {
+	font-size: 1.4em;
+}
+
+p, ol, ul {
+	margin-bottom: 1.8em;
+	line-height: 160%;
+}
+
+a img {
+	border: none;
+}
+
+#wrapper {
+	width: 900px;
+	margin: 0 auto;
+	border: 10px solid #FFFFFF;
+}
+
+/* Header */
+
+#header {
+	width: 900px;
+	height: 100px;
+	margin: 0px auto;
+	background-color: #F792C9;
+}
+
+#header a {
+	text-decoration: none;
+	color: #FFFFFF;
+}
+
+/* Logo */
+
+#logo {
+	float: left;
+	padding-left: 20px;
+}
+
+#logo h1, #logo p {
+	margin: 0px;
+	line-height: normal;
+	font-weight: normal;
+	color: #FFFFFF;
+}
+
+#logo h1 {
+	padding: 25px 0px 0px 0px;
+}
+
+/* Menu */
+
+#menu {
+	float: right;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+#menu ul {
+	margin: 0px;
+	padding: 49px 0px 0px 0px;
+	list-style: none;
+	line-height: normal;
+}
+
+#menu li {
+	float: left;
+	margin: 0px;
+}
+
+#menu a {
+	display: block;
+	width: auto;
+	padding: 6px 20px;
+}
+
+#menu a:hover {
+	text-decoration: underline;
+	background-color: #FD3790;
+}
+
+#menu .active {
+	background-color: #FD3790;
+}
+
+/* Page */
+
+#page {
+	width: 900px;
+	margin: 0px auto;
+	padding: 10px 0px 0px 0px;
+	background: #FFFFFF;
+}
+
+#header-pic {
+	background: url("/images/img02.jpg") no-repeat left top;
+	padding-bottom: 10px;
+	width: 900px;
+	height: 261px;
+}
+
+/* Content */
+
+#content {
+	float: right;
+	width: 570px;
+}
+
+.post {
+	margin: 0px 0px 30px 0px;
+}
+
+.post .title {
+	margin: 0px;
+	background: #FD3790;
+	padding: 7px 25px;
+	font-size: 1.4em;
+}
+
+.post .title h1 {
+}
+
+.post .entry {
+  padding: 10px 20px 0;
+	font-family: Cursive, Verdana, Arial;
+	font-size: 16px;
+}
+
+.post .entry .entry_item {
+	border-bottom: 1px solid #FD3790;
+	padding: 10px 0px;
+}
+
+.post .meta .links a {
+	color: #FD3790;
+}
+
+.post .meta {
+	font-weight: bold;
+	padding-left: 20px;
+}
+
+.post .byline {
+	margin: 0px;
+	padding-left: 20px;
+}
+
+/* Sidebar */
+
+#sidebar {
+	float: left;
+	width: 300px;
+}
+
+#sidebar-bgtop {
+}
+
+#sidebar-bgbtm {
+	background: url("/images/img03.jpg") no-repeat left bottom;
+}
+
+#sidebar-content {
+	background: url("/images/img01.jpg") repeat-y left top;
+}
+
+#sidebar ul {
+	padding: 0px 0 5px 0;
+	margin: 0px;
+	list-style: none;
+}
+
+#sidebar li li {
+	margin-left: 20px;
+	margin-right: 20px;
+	line-height: 30px;
+	padding-left: 15px;
+	border-bottom: 1px dashed #BDBDBD;
+}
+
+#sidebar li ul {
+	margin-bottom: 1.8em;
+	list-style: none;
+}
+
+#sidebar h2 {
+	background-color: #FD3790; 
+	padding: 7px 25px;
+	font-size: 1.4em;
+}
+
+#sidebar a {
+	text-decoration: none;
+}
+
+#sidebar a:hover {
+	text-decoration: underline;
+}
+
+/* Search */
+
+#search fieldset {
+	margin-left: 20px;
+	margin-bottom: 10px;
+	border: none;
+}
+
+#search #searchTerm {
+	width: 160px;
+}
+
+/* Footer */
+
+#footer {
+	clear: both;
+	width: 900px;
+	height: 50px;
+	margin: 0px auto 30px auto;
+	color: #FD3790;
+}
+
+#footer p {
+	margin: 0px;
+	padding: 19px 0px 0px 0px;
+	text-align: center;
+	line-height: normal;
+	font-size: smaller;
+}
+
+#datepicker1 {
+	padding: 0px 10px 10px 10px;
+}
+
+/* , input[type="text"], input[type="password"] */ 
+input, select, textarea, button {
+	font-family: Cursive, Verdana, Arial;
+	font-size: 16px;
+	color: #FD3790;
+}
+
+button {
+	background: #fff;
+	border:1px solid #FE2987;
+	cursor: pointer;
+}
+button:hover {
+	color: #fff;
+	background: #FD3790; 
+	cursor: pointer;
+}
+
+
+/* css for timepicker */
+.ui-timepicker-div { font-size: 12px; }
+.ui-timepicker-div .ui-widget-header{ margin-bottom: 5px; }
+.ui-timepicker-div dl{ text-align: left; }
+.ui-timepicker-div dl dt{ height: 25px; }
+.ui-timepicker-div dl dd{ margin: -25px 0 10px 65px; }
+.ui-timepicker-div td { font-size: 90%; }
+

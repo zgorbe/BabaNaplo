@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+    version="2.5">
+
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+        	classpath*:META-INF/spring/applicationContext.xml
+        	classpath*:META-INF/spring/diary-dao-mock.xml
+        </param-value>
+    </context-param>
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    <listener>
+        <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+    </listener>
+    
+    <listener>
+      <listener-class>
+        com.sun.xml.ws.transport.http.servlet.WSServletContextListener
+      </listener-class>
+    </listener>
+
+    <servlet>
+      <servlet-name>DiaryWS</servlet-name>
+      <servlet-class>
+        com.sun.xml.ws.transport.http.servlet.WSServlet
+      </servlet-class>
+      <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+      <servlet-name>DiaryWS</servlet-name>
+      <url-pattern>/diary</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+      <servlet-name>TeamsWS</servlet-name>
+      <servlet-class>
+        com.sun.xml.ws.transport.http.servlet.WSServlet
+      </servlet-class>
+      <load-on-startup>2</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+      <servlet-name>TeamsWS</servlet-name>
+      <url-pattern>/teams</url-pattern>
+    </servlet-mapping>
+	
+	<servlet>
+		<servlet-name>DiaryServlet</servlet-name>
+		<servlet-class>com.zotyo.diary.web.DiaryServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DiaryServlet</servlet-name>
+		<url-pattern>/diaryweb</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>DiaryAdmin</servlet-name>
+		<servlet-class>com.zotyo.diary.web.DiaryAdmin</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DiaryAdmin</servlet-name>
+		<url-pattern>/diaryweb/admin</url-pattern>
+	</servlet-mapping>
+
+
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+</web-app>
