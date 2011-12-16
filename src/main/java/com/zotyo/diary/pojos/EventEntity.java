@@ -12,12 +12,17 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "events")
+@NamedQueries({
+    @NamedQuery(name = "EventEntity.searchByTerm", query = "SELECT e FROM EventEntity e WHERE e.description LIKE :searchTerm order by e.startTime desc")
+    })
 public class EventEntity {
 	
 	@Id

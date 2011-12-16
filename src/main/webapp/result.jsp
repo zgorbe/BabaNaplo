@@ -10,7 +10,7 @@
 <% DiaryHelper diaryHelper = new DiaryHelper(); %>
 
 <div class="post">
-	<h1 class="title">Talált események: <c:out value="${searchTerm}" /></h1>
+	<h1 class="title">Keresett szó: <c:out value="${searchTerm}" />, <c:out value="${fn:length(result)}" /> találat </h1>
 	<div class="entry">
 		<div id="div_result">
 			<c:choose>

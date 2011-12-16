@@ -118,11 +118,21 @@ public class DiaryDAOJPAImpl implements DiaryDAO {
 	}
 
 	public List<Event> searchEvents(String searchTerm) {
-		List<EventEntity> result = (List<EventEntity>)em.createQuery("select object(o) from EventEntity as o order by o.startTime desc").getResultList();
+		/*List<EventEntity> result = (List<EventEntity>)em.createQuery("select object(o) from EventEntity as o order by o.startTime desc").getResultList();
 		List<Event> rv = new ArrayList<Event>();
 		for (EventEntity ee : result) {
 			rv.add(PersistenceUtil.getEvent(ee));
 		}
-		return rv;
+		return rv;*/
+		
+		List<Event> events = new ArrayList<Event>();
+        Query query = em.createNamedQuery("EventEntity.searchByTerm");
+        query.setParameter("searchTerm", '%' + searchTerm + '%');
+        List<EventEntity> result = query.getResultList();
+        
+        for (EventEntity ee : result) {
+        	events.add(PersistenceUtil.getEvent(ee));
+        }
+		return events;
 	}
 }
