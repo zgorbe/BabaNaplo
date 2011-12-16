@@ -12,6 +12,7 @@ function getEventsOfTheDay(dateText) {
 			$('#events').html(data);
 			$('#theDayInput').val(selectedDay);
 			$('#loader_events').hide();
+			smiley();
 		}
 	});
 }
@@ -25,6 +26,7 @@ function getLatestEvents() {
 		success: function(data, type, xmlhttp){
 			$('#latests').html(data);
 			$('#loader_latests').hide();
+			smiley();
 		}
 	});
 }
@@ -44,6 +46,7 @@ function search() {
 			$('#events').html(data);
 			$('#loader_result').hide();
 			$('#searchTerm').val('');
+			smiley();
 		}
 	});
 }
@@ -94,6 +97,7 @@ function allday() {
 		success: function(data, type, xmlhttp){
 			$('#events').html(data);
 			$('#latests').html('');
+			smiley();
 		}
 	});
 }
@@ -122,10 +126,10 @@ function datefilter() {
 		success: function(data, type, xmlhttp){
 			$('#content').html(data);
 			$('#loader_all').hide();
+			smiley();
 		}
 	});
 }
-
 
 function getFormattedNow() {
 	var now = new Date();
@@ -139,4 +143,11 @@ function getFormattedNow() {
 		days = '0' + days;
 	}
 	return months + '/' + days + '/' + year; 
+}
+
+function smiley() {
+	$('.entry').each(function(index, element) {
+	  var tmp = $(element).html().replace(/:\)/g, '<img src="images/smiley.png" alt=":-)" />');
+	  $(element).html(tmp);
+	});
 }
