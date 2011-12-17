@@ -6,11 +6,18 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import org.apache.log4j.Logger;
+import org.apache.lucene.search.Sort;
+import org.apache.lucene.search.SortField;
+import org.hibernate.search.jpa.FullTextEntityManager;
+import org.hibernate.search.jpa.FullTextQuery;
+import org.hibernate.search.jpa.Search;
+import org.hibernate.search.query.dsl.QueryBuilder;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -118,21 +125,42 @@ public class DiaryDAOJPAImpl implements DiaryDAO {
 	}
 
 	public List<Event> searchEvents(String searchTerm) {
-		/*List<EventEntity> result = (List<EventEntity>)em.createQuery("select object(o) from EventEntity as o order by o.startTime desc").getResultList();
-		List<Event> rv = new ArrayList<Event>();
-		for (EventEntity ee : result) {
-			rv.add(PersistenceUtil.getEvent(ee));
-		}
-		return rv;*/
+        /*Query query = em.createNamedQuery("EventEntity.searchByTerm");
+        query.setParameter("searchTerm", '%' + searchTerm + '%');
+        List<EventEntity> result = query.getResultList();*/
 		
 		List<Event> events = new ArrayList<Event>();
-        Query query = em.createNamedQuery("EventEntity.searchByTerm");
-        query.setParameter("searchTerm", '%' + searchTerm + '%');
-        List<EventEntity> result = query.getResultList();
-        
+		FullTextEntityManager fullTextEntityManager = Search.getFullTextEntityManager(em);
+
+		QueryBuilder qb = fullTextEntityManager.getSearchFactory().buildQueryBuilder().forEntity(EventEntity.class).get();
+		org.apache.lucene.search.Query query = qb
+		  .keyword()
+		  .onFields("description")
+		  .matching(searchTerm)
+		  .createQuery();
+
+		// wrap Lucene query in a org.hibernate.search.jpa.FullTextQuery
+		FullTextQuery fullTextQuery = fullTextEntityManager.createFullTextQuery(query, EventEntity.class);
+		Sort sort = new Sort(new SortField("id", SortField.INT, true));
+		fullTextQuery.setSort(sort);
+		
+		// execute search
+		List<EventEntity> result = fullTextQuery.getResultList();
+
         for (EventEntity ee : result) {
         	events.add(PersistenceUtil.getEvent(ee));
         }
 		return events;
+	}
+	
+	@PostConstruct
+	protected void searchIndexing() {
+		FullTextEntityManager fullTextEntityManager = Search.getFullTextEntityManager(em);
+		try {
+			fullTextEntityManager.createIndexer().startAndWait();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

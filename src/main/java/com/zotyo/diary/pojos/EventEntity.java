@@ -18,21 +18,49 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.apache.solr.analysis.LowerCaseFilterFactory;
+import org.apache.solr.analysis.SnowballPorterFilterFactory;
+import org.apache.solr.analysis.StandardTokenizerFactory;
+import org.apache.solr.analysis.ASCIIFoldingFilterFactory;
+import org.hibernate.search.annotations.Analyzer;
+import org.hibernate.search.annotations.DocumentId;
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Index;
+import org.hibernate.search.annotations.Indexed;
+import org.hibernate.search.annotations.Store;
+import org.hibernate.search.annotations.AnalyzerDef;
+import org.hibernate.search.annotations.TokenizerDef;
+import org.hibernate.search.annotations.TokenFilterDef;
+import org.hibernate.search.annotations.Parameter;
+
 @Entity
 @Table(name = "events")
 @NamedQueries({
     @NamedQuery(name = "EventEntity.searchByTerm", query = "SELECT e FROM EventEntity e WHERE e.description LIKE :searchTerm order by e.startTime desc")
     })
+@Indexed
+@AnalyzerDef(name = "customanalyzer",
+	tokenizer = @TokenizerDef(factory = StandardTokenizerFactory.class),
+	filters = {
+		@TokenFilterDef(factory = LowerCaseFilterFactory.class),
+		@TokenFilterDef(factory = ASCIIFoldingFilterFactory.class),
+		@TokenFilterDef(factory = SnowballPorterFilterFactory.class, params = {
+			@Parameter(name = "language", value = "Hungarian")
+		})
+	})
 public class EventEntity {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
+    @DocumentId
     private Integer id;
 
 	@Lob
     @Column(name = "text")
+    @Field(index=Index.TOKENIZED, store=Store.NO)
+    @Analyzer(definition = "customanalyzer")
 	private String description;
 	
 	@Column(name = "startTime")

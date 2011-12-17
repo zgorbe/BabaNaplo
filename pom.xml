@@ -141,11 +141,11 @@
           <version>3.3</version>
       </dependency>
 
-      <!--dependency>
+      <dependency>
           <groupId>org.hibernate</groupId>
           <artifactId>hibernate-search</artifactId>
-          <version>3.2.1.Final</version>
-      </dependency -->
+          <version>3.4.1.Final</version>
+      </dependency>
       
       
       <!-- Hibernate -->
@@ -212,7 +212,7 @@
                 <configuration>
                     <assembleDirectory>target</assembleDirectory> 
                     <!-- update pom for latest Heroku slug compilation --> 
-                    <!--generateRepository>false</generateRepository -->
+                    <generateRepository>false</generateRepository>
                     <programs>
                         <program>
                             <mainClass>com.zotyo.Main</mainClass>
