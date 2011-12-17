@@ -20,6 +20,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import org.hibernate.annotations.Type;
 
 @Entity
 @Table(name = "days", uniqueConstraints={@UniqueConstraint(columnNames={"the_day"})})
@@ -45,7 +46,8 @@ public class DayEntity {
 	private List<EventEntity> eventsOfTheDay = new ArrayList<EventEntity>();
 	
 	@Lob
-    @Column(name = "text")
+  @Column(name = "text")
+  @Type(type="org.hibernate.type.StringClobType")
 	private String descriptionOfTheDay;
 	
 	public DayEntity() { }
