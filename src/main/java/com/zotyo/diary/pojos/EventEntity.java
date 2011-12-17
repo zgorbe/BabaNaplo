@@ -22,6 +22,7 @@ import org.apache.solr.analysis.LowerCaseFilterFactory;
 import org.apache.solr.analysis.SnowballPorterFilterFactory;
 import org.apache.solr.analysis.StandardTokenizerFactory;
 import org.apache.solr.analysis.ASCIIFoldingFilterFactory;
+import org.hibernate.annotations.Type;
 import org.hibernate.search.annotations.Analyzer;
 import org.hibernate.search.annotations.DocumentId;
 import org.hibernate.search.annotations.Field;
@@ -61,6 +62,7 @@ public class EventEntity {
     @Column(name = "text")
     @Field(index=Index.TOKENIZED, store=Store.NO)
     @Analyzer(definition = "customanalyzer")
+    @Type(type="org.hibernate.type.StringClobType")
 	private String description;
 	
 	@Column(name = "startTime")
