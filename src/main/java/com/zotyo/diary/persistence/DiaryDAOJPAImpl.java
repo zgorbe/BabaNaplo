@@ -12,12 +12,16 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import org.apache.log4j.Logger;
+import org.apache.lucene.analysis.Analyzer;
+import org.apache.lucene.analysis.standard.StandardAnalyzer;
+import org.apache.lucene.queryParser.ParseException;
+import org.apache.lucene.queryParser.QueryParser;
 import org.apache.lucene.search.Sort;
 import org.apache.lucene.search.SortField;
+import org.apache.lucene.util.Version;
 import org.hibernate.search.jpa.FullTextEntityManager;
 import org.hibernate.search.jpa.FullTextQuery;
 import org.hibernate.search.jpa.Search;
-import org.hibernate.search.query.dsl.QueryBuilder;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -131,16 +135,28 @@ public class DiaryDAOJPAImpl implements DiaryDAO {
 		
 		List<Event> events = new ArrayList<Event>();
 		FullTextEntityManager fullTextEntityManager = Search.getFullTextEntityManager(em);
-
+/*
 		QueryBuilder qb = fullTextEntityManager.getSearchFactory().buildQueryBuilder().forEntity(EventEntity.class).get();
 		org.apache.lucene.search.Query query = qb
 		  .keyword()
 		  .onFields("description")
 		  .matching(searchTerm)
-		  .createQuery();
+		  .createQuery();*/
 
+		
+		Analyzer analyzer = fullTextEntityManager.getSearchFactory().getAnalyzer("customanalyzer");		
+		QueryParser parser = new QueryParser(Version.LUCENE_29, "description", analyzer);
+
+		org.apache.lucene.search.Query luceneQuery = null;
+		try {
+			luceneQuery = parser.parse( "description:"+searchTerm );
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		// wrap Lucene query in a org.hibernate.search.jpa.FullTextQuery
-		FullTextQuery fullTextQuery = fullTextEntityManager.createFullTextQuery(query, EventEntity.class);
+		FullTextQuery fullTextQuery = fullTextEntityManager.createFullTextQuery(luceneQuery, EventEntity.class);
 		Sort sort = new Sort(new SortField("id", SortField.INT, true));
 		fullTextQuery.setSort(sort);
 		
