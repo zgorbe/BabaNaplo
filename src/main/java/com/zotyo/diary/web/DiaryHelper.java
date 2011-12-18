@@ -14,8 +14,12 @@ public class DiaryHelper {
 	
 	private static Logger logger = Logger.getLogger(DiaryHelper.class); 
 	
+	private SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
+	private SimpleDateFormat formatHU = new SimpleDateFormat("yyyy.MM.dd");
+	private SimpleDateFormat formatHM = new SimpleDateFormat("yyyy.MM.dd HH:mm");
+	private SimpleDateFormat formatStartTime = new SimpleDateFormat("MM/dd/yyyy hh:mm");
+	
 	public GregorianCalendar getDayCal(String theDay) {
-		SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
 		Date theDayDate = null;
 		try {
 			theDayDate = format.parse(theDay);
@@ -34,10 +38,9 @@ public class DiaryHelper {
 	}
 	
 	public GregorianCalendar getStartDateCal(String startDate) {
-		SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy hh:mm");
 		Date startDateDate = null;
 		try {
-			startDateDate = format.parse(startDate);
+			startDateDate = formatStartTime.parse(startDate);
 		} catch (ParseException e) {
 			logger.error(e);
 			return new GregorianCalendar();
@@ -73,8 +76,11 @@ public class DiaryHelper {
  	}
  	
  	public String formatDate(Day d) {
-		SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
-		return format.format(d.getTheDay().toGregorianCalendar().getTime());
+		return formatHU.format(d.getTheDay().toGregorianCalendar().getTime());
+	}
+ 	
+ 	public String formatStartTime(Event event) {
+		return formatHM.format(event.getStartTime().toGregorianCalendar().getTime());
 	}
  	
 	public String md5(String md5) {

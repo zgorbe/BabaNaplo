@@ -19,7 +19,7 @@
 					<c:forEach items="${latests}" var="event">
 						<div class="entry_item">
 							<c:out value="${event.description}" /><br />
-							<small><c:out value="${event.startTime}" /></small>
+							<small><%= diaryHelper.formatStartTime((Event)pageContext.getAttribute("event")) %></small>
 							<c:if test="${event.duration > 0}">
 								<br />Időtartam (óra:perc):
 								<%= diaryHelper.getDurationInHHMM((Event)pageContext.getAttribute("event")) %>	
