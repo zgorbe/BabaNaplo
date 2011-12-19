@@ -151,3 +151,20 @@ function smiley() {
 	  $(element).html(tmp);
 	});
 }
+
+function updateCalendar() {
+  var days = ["1","3","7","11","13","17"];
+  $('#datepicker1 tr').each(function() {
+    $.each(this.cells, function() {
+      var cellAnchor = $(this).find('a');
+      var cellData = cellAnchor.html();
+      if (cellData) {
+        $.each(days, function(index, value) {
+          if (value == cellData) {
+            cellAnchor.html('');
+          }        
+        });
+      }
+    });
+  });
+}
