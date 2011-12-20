@@ -157,13 +157,15 @@ function updateCalendar() {
   $('#datepicker1 tr').each(function() {
     $.each(this.cells, function() {
       var cellAnchor = $(this).find('a');
-      var cellData = cellAnchor.html();
-      if (cellData) {
-        $.each(days, function(index, value) {
-          if (value == cellData) {
-            cellAnchor.html('');
-          }        
-        });
+      if (cellAnchor) {
+        var cellData = cellAnchor.html();
+        if (cellData) {
+          $.each(days, function(index, value) {
+            if (value == cellData) {
+              cellAnchor.addClass('ui-state-has-event');
+            }        
+          });
+        }
       }
     });
   });
