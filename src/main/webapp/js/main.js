@@ -162,7 +162,7 @@ function updateCalendar() {
         if (cellData) {
           $.each(days, function(index, value) {
             if (value == cellData) {
-              cellAnchor.addClass('ui-state-has-event');
+              cellAnchor.css('color', 'red');
             }        
           });
         }
