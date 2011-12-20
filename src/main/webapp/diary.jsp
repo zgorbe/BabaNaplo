@@ -72,7 +72,8 @@
 				<script type="text/javascript">
 					$(function(){
 						$('#datepicker1').datepicker({
-							onSelect: function(dateText, inst) { getEventsOfTheDay(dateText); }
+							onSelect: function(dateText, inst) { getEventsOfTheDay(dateText); },
+							onChangeMonthYear: function(year, month, inst) { getDaysForAMonth(year, month -1); }
 						});		
 					});
 				</script>

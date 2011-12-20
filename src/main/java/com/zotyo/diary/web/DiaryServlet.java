@@ -41,6 +41,7 @@ public class DiaryServlet extends HttpServlet {
 	private DiaryHelper diaryHelper;
 	private DatatypeFactory df;
 	private String keyword;
+	private DiaryCache diaryCache;
 	
 	public void init() throws ServletException {
 		try {
@@ -55,6 +56,7 @@ public class DiaryServlet extends HttpServlet {
 			diary = diaryService.getDiaryImplPort();
 			diaryHelper = new DiaryHelper();
             df = DatatypeFactory.newInstance();
+            diaryCache = DiaryCache.getInstance();
 		} catch(IOException ioex) {
 			ioex.printStackTrace();
 		} catch (DatatypeConfigurationException dce) {
@@ -133,6 +135,15 @@ public class DiaryServlet extends HttpServlet {
 			return;
 		}
 	
+		if ("getDays".equals(command)) {
+			String key = request.getParameter("key");
+			List<Integer> days = diaryCache.getEventDays(key, diary);
+			request.setAttribute("days", days);
+			RequestDispatcher rd = getServletContext().getRequestDispatcher("/calendardays.jsp");
+			rd.forward(request, response);
+			
+			return;
+		}
 		
 		SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
 		if (theDayString != null && theDayString.length() > 0) {

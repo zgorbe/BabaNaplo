@@ -152,6 +152,16 @@ function smiley() {
 	});
 }
 
+function getDaysForAMonth(year, month) {
+	$.ajax({
+		type: "GET",
+		data: "cmd=getDays&key=" + year + "-" + month,
+		url: '/diaryweb',
+		success: function(data, type, xmlhttp){
+		}
+	});	
+}
+
 function updateCalendar() {
   var days = ["1","3","7","11","13","17"];
   $('#datepicker1 tr').each(function() {
