@@ -1,4 +1,5 @@
 var selectedDay = getFormattedNow();
+var month_days = [];
 
 function getEventsOfTheDay(dateText) {
 	selectedDay = dateText;
@@ -163,16 +164,16 @@ function getDaysForAMonth(year, month) {
 }
 
 function updateCalendar() {
-  var days = ["1","3","7","11","13","17"];
   $('#datepicker1 tr').each(function() {
     $.each(this.cells, function() {
+      var cell = $(this);
       var cellAnchor = $(this).find('a');
       if (cellAnchor) {
         var cellData = cellAnchor.html();
         if (cellData) {
-          $.each(days, function(index, value) {
+          $.each(month_days, function(index, value) {
             if (value == cellData) {
-              cellAnchor.css('color', 'red');
+              cell.css('background-color', 'red');
             }        
           });
         }
