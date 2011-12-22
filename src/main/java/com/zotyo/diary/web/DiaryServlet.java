@@ -141,9 +141,7 @@ public class DiaryServlet extends HttpServlet {
 			StringBuilder sb = new StringBuilder();
 			sb.append("[");
 			for (int i = 0; i < days.size(); i++) {
-				sb.append("\"");
 				sb.append(days.get(i));
-				sb.append("\"");
 				if (i != days.size() - 1) {
 					sb.append(",");	
 				}

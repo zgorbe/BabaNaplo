@@ -2,5 +2,5 @@
 
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 
-month_days = '<c:out value="${days}" />'.replace(/\&\#034;/g, '"');
+month_days = <c:out value="${days}" />;
 updateCalendar();
