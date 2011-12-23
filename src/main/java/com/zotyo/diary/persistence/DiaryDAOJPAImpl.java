@@ -136,22 +136,26 @@ public class DiaryDAOJPAImpl implements DiaryDAO {
 		
 		List<Event> events = new ArrayList<Event>();
 		FullTextEntityManager fullTextEntityManager = Search.getFullTextEntityManager(em);
-
-		QueryBuilder qb = fullTextEntityManager.getSearchFactory().buildQueryBuilder().forEntity(EventEntity.class).get();
-		org.apache.lucene.search.Query query = qb
-		  .keyword()
-		  .onFields("description")
-		  .matching(searchTerm)
-		  .createQuery();
-
-		// wrap Lucene query in a org.hibernate.search.jpa.FullTextQuery
-		FullTextQuery fullTextQuery = fullTextEntityManager.createFullTextQuery(query, EventEntity.class);
-		Sort sort = new Sort(new SortField("id", SortField.INT, true));
-		fullTextQuery.setSort(sort);
+		List<EventEntity> result = new ArrayList<EventEntity>();
 		
-		// execute search
-		List<EventEntity> result = fullTextQuery.getResultList();
-
+		try {
+			QueryBuilder qb = fullTextEntityManager.getSearchFactory().buildQueryBuilder().forEntity(EventEntity.class).get();
+			org.apache.lucene.search.Query query = qb
+			  .keyword()
+			  .onFields("description")
+			  .matching(searchTerm)
+			  .createQuery();
+	
+			// wrap Lucene query in a org.hibernate.search.jpa.FullTextQuery
+			FullTextQuery fullTextQuery = fullTextEntityManager.createFullTextQuery(query, EventEntity.class);
+			Sort sort = new Sort(new SortField("id", SortField.INT, true));
+			fullTextQuery.setSort(sort);
+			
+			// execute search
+			result = fullTextQuery.getResultList();
+		} catch(Exception ex) {
+			logger.error("Search failed: " + ex);
+		}
         for (EventEntity ee : result) {
         	events.add(PersistenceUtil.getEvent(ee));
         }

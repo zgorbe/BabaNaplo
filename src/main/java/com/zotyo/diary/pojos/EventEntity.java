@@ -22,6 +22,7 @@ import org.apache.solr.analysis.LowerCaseFilterFactory;
 import org.apache.solr.analysis.SnowballPorterFilterFactory;
 import org.apache.solr.analysis.StandardTokenizerFactory;
 import org.apache.solr.analysis.ASCIIFoldingFilterFactory;
+import org.apache.solr.analysis.EdgeNGramFilterFactory;
 import org.hibernate.annotations.Type;
 import org.hibernate.search.annotations.Analyzer;
 import org.hibernate.search.annotations.DocumentId;
@@ -47,6 +48,11 @@ import org.hibernate.search.annotations.Parameter;
 		@TokenFilterDef(factory = ASCIIFoldingFilterFactory.class),
 		@TokenFilterDef(factory = SnowballPorterFilterFactory.class, params = {
 			@Parameter(name = "language", value = "Hungarian")
+		}),
+		@TokenFilterDef(factory = EdgeNGramFilterFactory.class, params = {
+			@Parameter(name = "minGramSize", value = "3"),
+			@Parameter(name = "maxGramSize", value = "15"),
+			@Parameter(name = "side", value = "front")
 		})
 	})
 public class EventEntity {

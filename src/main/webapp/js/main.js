@@ -154,9 +154,9 @@ function smiley() {
 }
 
 function initCalendar() {
-        var now = new Date();
-        var month = now.getMonth();
-        var year = now.getFullYear();
+	var now = new Date();
+	var month = now.getMonth();
+	var year = now.getFullYear();
 	getDaysForAMonth(year, month);
 }
 

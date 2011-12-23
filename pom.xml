@@ -145,8 +145,13 @@
           <groupId>org.hibernate</groupId>
           <artifactId>hibernate-search</artifactId>
           <version>3.4.1.Final</version>
+          <exclusions>
+              <exclusion>
+                  <groupId>org.hibernate</groupId>
+                  <artifactId>hibernate-core</artifactId>
+              </exclusion>
+          </exclusions>
       </dependency>
-      
       
       <!-- Hibernate -->
       <dependency>

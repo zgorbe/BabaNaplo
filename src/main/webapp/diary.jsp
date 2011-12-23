@@ -72,10 +72,15 @@
 				<script type="text/javascript">
 					$(function(){
 						$('#datepicker1').datepicker({
-							onSelect: function(dateText, inst) { getEventsOfTheDay(dateText); setTimeout(updateCalendar(), 200); },
+							onSelect: function(dateText, inst) { getEventsOfTheDay(dateText); setTimeout("updateCalendar()", 100); },
 							onChangeMonthYear: function(year, month, inst) { getDaysForAMonth(year, month -1); }
 						});		
 					});
+					$("#searchTerm").keypress(function(event) {
+						if ( event.which == 13 ) {
+							search();
+						}
+					});					
 				</script>
 		    </div>
 			<script type="text/javascript">
