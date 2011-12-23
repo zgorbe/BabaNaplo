@@ -153,6 +153,13 @@ function smiley() {
 	});
 }
 
+function initCalendar() {
+        var now = new Date();
+        var month = now.getMonth();
+        var year = now.getFullYear();
+	getDaysForAMonth(year, month);
+}
+
 function getDaysForAMonth(year, month) {
 	$.ajax({
 		type: "GET",
@@ -173,7 +180,8 @@ function updateCalendar() {
         if (cellData) {
           $.each(month_days, function(index, value) {
             if (value == cellData) {
-              cell.css('background-color', 'red');
+              cellAnchor.addClass('ui-state-has-event');
+              // cell.css('background-color', 'red');
             }        
           });
         }
