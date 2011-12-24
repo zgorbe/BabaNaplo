@@ -233,6 +233,7 @@ public class DiaryServlet extends HttpServlet {
 				((BindingProvider)diary).getRequestContext().put(MessageContext.HTTP_REQUEST_HEADERS,
 					    Collections.singletonMap("keyword",Collections.singletonList(key)));
 				diary.addDay(day);
+				diaryCache.purgeKey(theDayCal.get(Calendar.YEAR) + "-" + theDayCal.get(Calendar.MONTH));
 			}
 		} else if ("add_event".equals(action)) {
 			GregorianCalendar theDayCal = diaryHelper.getDayCal(theDay);

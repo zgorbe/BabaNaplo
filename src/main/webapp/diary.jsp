@@ -73,7 +73,7 @@
 					$(function(){
 						$('#datepicker1').datepicker({
 							onSelect: function(dateText, inst) { getEventsOfTheDay(dateText); setTimeout("updateCalendar()", 100); },
-							onChangeMonthYear: function(year, month, inst) { getDaysForAMonth(year, month -1); }
+							onChangeMonthYear: function(year, month, inst) { setTimeout("getDaysForAMonth("+year+", "+(month-1)+")", 100); }
 						});		
 					});
 					$("#searchTerm").keypress(function(event) {
@@ -86,7 +86,7 @@
 			<script type="text/javascript">
 				getEventsOfTheDay(selectedDay);
 				getLatestEvents();
-				initCalendar();
+				setTimeout("initCalendar()", 100);
 			</script>
 		</div>
 		<div id="footer">

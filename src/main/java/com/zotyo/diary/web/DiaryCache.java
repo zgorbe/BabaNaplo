@@ -49,4 +49,9 @@ public class DiaryCache {
 		eventDays.put(key, dayNumbers);
 		return dayNumbers;
 	}
+	
+	public void purgeKey(String key) {
+		eventDays.remove(key);
+		logger.info("Value for " + key + " is removed from cache");
+	}
 }
