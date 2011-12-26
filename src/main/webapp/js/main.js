@@ -143,7 +143,7 @@ function getFormattedNow() {
 	if (days < 10) {
 		days = '0' + days;
 	}
-	return months + '/' + days + '/' + year; 
+	return year + '.' + months + '.' + days; 
 }
 
 function smiley() {

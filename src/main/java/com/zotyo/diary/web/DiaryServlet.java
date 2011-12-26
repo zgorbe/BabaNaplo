@@ -154,7 +154,7 @@ public class DiaryServlet extends HttpServlet {
 			return;
 		}
 		
-		SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
+		SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd");
 		if (theDayString != null && theDayString.length() > 0) {
 			Date theDay = null;
 			try {

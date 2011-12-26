@@ -16,6 +16,7 @@
 		<script type="text/javascript" src="<c:url value="/js/jquery-ui-1.8.9.custom.min.js" />"></script>
 		<script type="text/javascript" src="<c:url value="/js/jquery-ui-timepicker-addon.js" />"></script>
 		<script type="text/javascript" src="<c:url value="/js/main.js" />"></script>
+		<script type="text/javascript" src="<c:url value="/js/jquery.ui.datepicker-hu.js" />"></script>
     <title>Baba napló</title>		
 	</head>
 	<body>
@@ -71,16 +72,17 @@
 				<div style="clear: both;">&nbsp;</div>	
 				<script type="text/javascript">
 					$(function(){
+						$.datepicker.setDefaults($.extend({showMonthAfterYear: true}, $.datepicker.regional['hu']));
 						$('#datepicker1').datepicker({
 							onSelect: function(dateText, inst) { getEventsOfTheDay(dateText); setTimeout("updateCalendar()", 100); },
 							onChangeMonthYear: function(year, month, inst) { setTimeout("getDaysForAMonth("+year+", "+(month-1)+")", 100); }
-						});		
+						});
 					});
 					$("#searchTerm").keypress(function(event) {
 						if ( event.which == 13 ) {
 							search();
 						}
-					});					
+					});
 				</script>
 		    </div>
 			<script type="text/javascript">

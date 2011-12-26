@@ -14,15 +14,13 @@ public class DiaryHelper {
 	
 	private static Logger logger = Logger.getLogger(DiaryHelper.class); 
 	
-	private SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
 	private SimpleDateFormat formatHU = new SimpleDateFormat("yyyy.MM.dd");
 	private SimpleDateFormat formatHM = new SimpleDateFormat("yyyy.MM.dd HH:mm");
-	private SimpleDateFormat formatStartTime = new SimpleDateFormat("MM/dd/yyyy hh:mm");
 	
 	public GregorianCalendar getDayCal(String theDay) {
 		Date theDayDate = null;
 		try {
-			theDayDate = format.parse(theDay);
+			theDayDate = formatHU.parse(theDay);
 		} catch (ParseException e) {
 			logger.error(e);
 			return new GregorianCalendar();
@@ -40,7 +38,7 @@ public class DiaryHelper {
 	public GregorianCalendar getStartDateCal(String startDate) {
 		Date startDateDate = null;
 		try {
-			startDateDate = formatStartTime.parse(startDate);
+			startDateDate = formatHM.parse(startDate);
 		} catch (ParseException e) {
 			logger.error(e);
 			return new GregorianCalendar();
