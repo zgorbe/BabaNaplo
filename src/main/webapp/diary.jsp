@@ -7,17 +7,17 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link href="<c:url value="/css/style.css" />" rel="stylesheet" type="text/css" media="screen" />
-    <link href="<c:url value="/css/table.css" />" rel="stylesheet" type="text/css" media="screen" />
-    <link href="<c:url value="/css/jquery-ui-1.8.9.custom.css" />" rel="stylesheet" type="text/css" media="screen" />
-          
+	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	    <link href="<c:url value="/css/style.css" />" rel="stylesheet" type="text/css" media="screen" />
+	    <link href="<c:url value="/css/table.css" />" rel="stylesheet" type="text/css" media="screen" />
+	    <link href="<c:url value="/css/jquery-ui-1.8.9.custom.css" />" rel="stylesheet" type="text/css" media="screen" />
+	          
 		<script type="text/javascript" src="<c:url value="/js/jquery-1.4.2.js" />"></script>
 		<script type="text/javascript" src="<c:url value="/js/jquery-ui-1.8.9.custom.min.js" />"></script>
 		<script type="text/javascript" src="<c:url value="/js/jquery-ui-timepicker-addon.js" />"></script>
 		<script type="text/javascript" src="<c:url value="/js/main.js" />"></script>
 		<script type="text/javascript" src="<c:url value="/js/jquery.ui.datepicker-hu.js" />"></script>
-    <title>Baba napló</title>		
+	    <title>Baba napló</title>		
 	</head>
 	<body>
 		<div id="wrapper">
@@ -64,6 +64,14 @@
 								<h2>Válassz napot</h2>
 								<div id="datepicker1" style="font-size: 14px;"></div>
 							</li>
+							<!-- 
+							<li>
+								<h2>Timcsi ma ...</h2>
+								<div id="age">
+									<jsp:include page="age.jsp" />
+								</div>
+							</li>
+							 -->
 						</ul>
 					</div>
 					</div>

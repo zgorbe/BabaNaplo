@@ -96,8 +96,8 @@ function allday() {
 		data: "cmd=allday&year=" + year + "&months=" + months,
 		url: '/diaryweb',
 		success: function(data, type, xmlhttp){
-			$('#events').html(data);
-			$('#latests').html('');
+			$('#content').html(data);
+			//$('#latests').html('');
 			smiley();
 		}
 	});

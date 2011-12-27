@@ -272,7 +272,10 @@ button:hover {
 	cursor: pointer;
 }
 
-
+#age {
+	font-family: Cursive,Verdana,Arial;
+    font-size: 16px;
+}
 /* css for timepicker */
 .ui-timepicker-div { font-size: 12px; }
 .ui-timepicker-div .ui-widget-header{ margin-bottom: 5px; }

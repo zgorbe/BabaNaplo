@@ -6,6 +6,7 @@ import java.io.PrintWriter;
 import java.util.List;
 import java.util.Properties;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -35,6 +36,15 @@ public class DiaryAdmin extends HttpServlet {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) 
 											throws ServletException, IOException {
+		response.sendRedirect("/admin/login.jsp");
+		return;
+	}
+
+	@Override
+	public void doPost(HttpServletRequest request, HttpServletResponse response) 
+											throws ServletException, IOException {
+
+		/*
 		PrintWriter out = new PrintWriter(response.getOutputStream());
 		List<Day> days = diaryAdminDAO.getAllDays();
 		for(Day d : days) {
@@ -42,13 +52,8 @@ public class DiaryAdmin extends HttpServlet {
 		}
 		Day first = diaryAdminDAO.getDayById(1);
 		out.println(first.getId() + ", " + first.getTheDay() + ", " + first.getDescriptionOfTheDay());
-		out.close();
-	}
+		out.close(); */
 
-	@Override
-	public void doPost(HttpServletRequest request, HttpServletResponse response) 
-											throws ServletException, IOException {
-		
 	}
 }
 

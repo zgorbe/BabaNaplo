@@ -193,6 +193,20 @@ public class DiaryServlet extends HttpServlet {
 				request.setAttribute("eventsOfTheDay", new ArrayList<Event>());
 			}
 			
+			GregorianCalendar birthDate = new GregorianCalendar();
+			birthDate.set(2011, 8, 17, 13, 55, 0);
+			long delta = theDayCal.getTimeInMillis() - birthDate.getTimeInMillis();
+			
+			GregorianCalendar deltaDate = new GregorianCalendar();
+			deltaDate.setTimeInMillis(delta);
+			 
+			StringBuilder sb = new StringBuilder();
+			sb.append(deltaDate.get(Calendar.WEEK_OF_YEAR));
+			sb.append(" hónapos és ");
+			sb.append(deltaDate.get(Calendar.DATE));
+			sb.append(" napos ");
+			request.setAttribute("age", sb.toString());
+			
 	        RequestDispatcher rd = getServletContext().getRequestDispatcher("/diary.jsp");
 	        rd.forward(request, response);
 		}
