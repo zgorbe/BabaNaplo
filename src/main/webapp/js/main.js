@@ -32,7 +32,7 @@ function getLatestEvents() {
 	});
 }
 function search() {
-	var searchTerm = $('#searchTerm').val().trim();
+	var searchTerm = $.trim($('#searchTerm').val());
 	if (searchTerm.length == 0) {
 		$('#searchTerm').focus();
 		return;
