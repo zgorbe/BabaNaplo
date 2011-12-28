@@ -124,16 +124,6 @@ public class DiaryServlet extends HttpServlet {
 			
 			return;
 		}
-		if ("search".equals(command)) {
-			String searchTerm = request.getParameter("searchTerm");	
-			List<Event> result = diary.searchEvents(searchTerm);
-			request.setAttribute("result", result);
-			request.setAttribute("searchTerm", searchTerm);
-			RequestDispatcher rd = getServletContext().getRequestDispatcher("/result.jsp");
-			rd.forward(request, response);
-			
-			return;
-		}
 	
 		if ("getDays".equals(command)) {
 			String key = request.getParameter("key");
@@ -216,13 +206,23 @@ public class DiaryServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response) 
 											throws ServletException, IOException {
 		
+		String command = request.getParameter("cmd");
+		if ("search".equals(command)) {
+			String searchTerm = request.getParameter("searchTerm");	
+			List<Event> result = diary.searchEvents(searchTerm);
+			request.setAttribute("result", result);
+			request.setAttribute("searchTerm", searchTerm);
+			RequestDispatcher rd = getServletContext().getRequestDispatcher("/result.jsp");
+			rd.forward(request, response);
+			
+			return;
+		}
+		
 		String key = request.getParameter("keyword");
 		if (!diaryHelper.md5(key).equals(keyword)) {
 			response.sendRedirect("/diaryweb");
 			return;
 		}
-		
-		String action = request.getParameter("action");
 		
 		String theDay = request.getParameter("theDay");
 		String descriptionOfTheDay = request.getParameter("descriptionOfTheDay");
@@ -230,7 +230,7 @@ public class DiaryServlet extends HttpServlet {
 		String initialEvent = request.getParameter("initialEvent");
 		String startDate = request.getParameter("startDate");
 		
-		if ("add_day".equals(action)) {
+		if ("add_day".equals(command)) {
 			if (theDay != null && theDay.length() > 0) {
 				Day day = new Day();
 				GregorianCalendar theDayCal = diaryHelper.getDayCal(theDay);
@@ -249,7 +249,7 @@ public class DiaryServlet extends HttpServlet {
 				diary.addDay(day);
 				diaryCache.purgeKey(theDayCal.get(Calendar.YEAR) + "-" + theDayCal.get(Calendar.MONTH));
 			}
-		} else if ("add_event".equals(action)) {
+		} else if ("add_event".equals(command)) {
 			GregorianCalendar theDayCal = diaryHelper.getDayCal(theDay);
 			Event event = new Event();
 			event.setDescription(initialEvent);

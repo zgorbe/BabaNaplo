@@ -40,7 +40,7 @@ function search() {
 	$('#div_result').html('');
 	$('#loader_result').show();
 	$.ajax({
-		type: "GET",
+		type: "POST",
 		data: "cmd=search&searchTerm=" + searchTerm,
 		url: '/diaryweb',
 		success: function(data, type, xmlhttp){
