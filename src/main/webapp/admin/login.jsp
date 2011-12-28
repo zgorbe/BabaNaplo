@@ -2,7 +2,7 @@
 
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-  
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -19,7 +19,7 @@
 				<c:out value="${msg}" />	
 			</h3>
 			<form action="/diaryweb/admin" method="post" accept-charset="UTF-8">
-				<table border="0" cellpadding="3" cellspacing="3">
+				<table border="0" cellpadding="5" cellspacing="5">
 					<tr>
 						<td>Felhasználónév:</td>
 						<td align="left">
@@ -37,6 +37,7 @@
 						</td>
 					</tr>
 				</table>
+				<input type="hidden" name="cmd" value="login" />
 			</form>
 			<font color="red">
 			</font>

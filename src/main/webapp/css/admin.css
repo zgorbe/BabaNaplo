@@ -1,4 +1,19 @@
 #admin_login {
-	width: 300px;
-	margin: auto;
+    border: 1px solid;
+    margin: 50px auto;
+    padding: 10px;
+    width: 300px;
 }
+#admin_days {
+	float: left;
+	margin-right: 20px;
+}
+
+.box-table-a tr:hover
+{
+	cursor: pointer;
+}
+form {
+	margin: 0;
+	padding: 0;
+} 

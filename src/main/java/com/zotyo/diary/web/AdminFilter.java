@@ -5,7 +5,6 @@ import java.io.IOException;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -33,15 +32,9 @@ public class AdminFilter implements Filter {
             HttpServletResponse httpResp = (HttpServletResponse) resp;
 
             HttpSession session = httpReq.getSession();
-            logger.info("Filtering");
-            if (session.getAttribute("admin") == null
-                    && !httpReq.getRequestURI().endsWith("login.jsp")) {
-                RequestDispatcher disp = config.getServletContext()
-                        .getRequestDispatcher("/admin/login.jsp");
-                logger.info("Dispatching");
-                if (disp != null) {
-                    disp.forward(httpReq, httpResp);
-                }
+            if (session.getAttribute("admin") == null && !httpReq.getRequestURI().endsWith("login.jsp")) {
+                logger.info("Redirecting...");
+            	httpResp.sendRedirect("/admin/login.jsp");
                 return;
             }
             chain.doFilter(httpReq, httpResp);

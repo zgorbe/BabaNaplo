@@ -189,3 +189,14 @@ function updateCalendar() {
     });
   });
 }
+
+function adminGetDay(id) {
+	$.ajax({
+		type: "POST",
+		data: "cmd=show&id=" + id,
+		url: '/diaryweb/admin',
+		success: function(data, type, xmlhttp){
+			$('#admin_day_details').html(data);
+		}
+	});	
+}

@@ -20,7 +20,7 @@ public class DiaryAdminDAOImpl extends SimpleJdbcDaoSupport implements DiaryAdmi
 	
 	@Override
 	public List<Day> getAllDays() {
-		String sql = "select * from days";
+		String sql = "select * from days order by id desc";
 		
 		List<Day> days = getSimpleJdbcTemplate().query(sql, new DayMapper());
 
