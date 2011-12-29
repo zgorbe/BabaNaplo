@@ -30,7 +30,7 @@
 	    	<td><button type="button" onclick="document.location.href='/diaryweb';">Mégse</button></td>
 	    </tr>
     </table>
-    <input type="hidden" name="command" value="add_event" />
+    <input type="hidden" name="cmd" value="add_event" />
 </form>
 <script type="text/javascript">
 	$(function(){

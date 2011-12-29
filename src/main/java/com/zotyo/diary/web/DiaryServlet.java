@@ -205,7 +205,6 @@ public class DiaryServlet extends HttpServlet {
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) 
 											throws ServletException, IOException {
-		
 		String command = request.getParameter("cmd");
 		if ("search".equals(command)) {
 			String searchTerm = request.getParameter("searchTerm");	
@@ -217,13 +216,11 @@ public class DiaryServlet extends HttpServlet {
 			
 			return;
 		}
-		
 		String key = request.getParameter("keyword");
 		if (!diaryHelper.md5(key).equals(keyword)) {
 			response.sendRedirect("/diaryweb");
 			return;
 		}
-		
 		String theDay = request.getParameter("theDay");
 		String descriptionOfTheDay = request.getParameter("descriptionOfTheDay");
 		String duration = request.getParameter("duration");
