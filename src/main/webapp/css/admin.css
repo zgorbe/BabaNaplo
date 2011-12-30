@@ -4,9 +4,16 @@
     padding: 10px;
     width: 300px;
 }
+
 #admin_days {
 	float: left;
-	margin-right: 20px;
+	width: 268px;
+}
+
+#admin_day_details {
+	border: 1px solid;
+	float: right;
+    width: 400px;
 }
 
 .box-table-a tr:hover

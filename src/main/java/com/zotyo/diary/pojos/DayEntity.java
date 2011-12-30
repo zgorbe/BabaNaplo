@@ -20,6 +20,9 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.Type;
 
 @Entity
@@ -46,8 +49,8 @@ public class DayEntity {
 	private List<EventEntity> eventsOfTheDay = new ArrayList<EventEntity>();
 	
 	@Lob
-  @Column(name = "text")
-  @Type(type="org.hibernate.type.StringClobType")
+	@Column(name = "text")
+	@Type(type="org.hibernate.type.StringClobType")
 	private String descriptionOfTheDay;
 	
 	public DayEntity() { }

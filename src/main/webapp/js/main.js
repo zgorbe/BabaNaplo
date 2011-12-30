@@ -190,13 +190,14 @@ function updateCalendar() {
   });
 }
 
-function adminGetDay(id) {
+function adminGetDay(dateText) {
+	selectedDay = dateText;
 	$.ajax({
 		type: "POST",
-		data: "cmd=show&id=" + id,
+		data: "cmd=show&day=" + dateText,
 		url: '/diaryweb/admin',
 		success: function(data, type, xmlhttp){
-			$('#admin_day_details').html(data);
+			$('#content').html(data);
 		}
 	});	
 }

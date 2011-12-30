@@ -40,7 +40,7 @@
 			<div id="page">
 				<div id="header-pic"></div>
 				<div id="content">
-					<div id="loader_result" style="display: none;"><img src="images/loading_pink.gif"></div>
+					<div id="loader_result" style="display: none;"><img src="images/loading_pink.gif" /></div>
 					<div id="events">
 						<jsp:include page="events.jsp" />
 					</div>
