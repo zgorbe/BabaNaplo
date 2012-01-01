@@ -48,12 +48,12 @@ import org.hibernate.search.annotations.Parameter;
 		@TokenFilterDef(factory = ASCIIFoldingFilterFactory.class),
 		@TokenFilterDef(factory = SnowballPorterFilterFactory.class, params = {
 			@Parameter(name = "language", value = "Hungarian")
-		}) /*,
+		}),
 		@TokenFilterDef(factory = EdgeNGramFilterFactory.class, params = {
 			@Parameter(name = "minGramSize", value = "3"),
 			@Parameter(name = "maxGramSize", value = "15"),
 			@Parameter(name = "side", value = "front")
-		}) */
+		})
 	})
 public class EventEntity {
 	
