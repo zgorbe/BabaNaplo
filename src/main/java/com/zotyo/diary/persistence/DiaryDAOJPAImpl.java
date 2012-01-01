@@ -1,5 +1,6 @@
 package com.zotyo.diary.persistence;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -12,17 +13,16 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import org.apache.log4j.Logger;
-import org.apache.lucene.analysis.Analyzer;
-import org.apache.lucene.analysis.standard.StandardAnalyzer;
-import org.apache.lucene.queryParser.ParseException;
-import org.apache.lucene.queryParser.QueryParser;
+import org.apache.lucene.index.IndexReader;
+import org.apache.lucene.index.Term;
+import org.apache.lucene.index.TermEnum;
 import org.apache.lucene.search.Sort;
 import org.apache.lucene.search.SortField;
-import org.apache.lucene.util.Version;
 import org.hibernate.search.jpa.FullTextEntityManager;
 import org.hibernate.search.jpa.FullTextQuery;
 import org.hibernate.search.jpa.Search;
 import org.hibernate.search.query.dsl.QueryBuilder;
+import org.hibernate.search.reader.ReaderProvider;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -160,6 +160,28 @@ public class DiaryDAOJPAImpl implements DiaryDAO {
         	events.add(PersistenceUtil.getEvent(ee));
         }
 		return events;
+	}
+	
+	public List<String> searchTerms(String term) {
+		List<String> terms = new ArrayList<String>();
+		
+		FullTextEntityManager fullTextEntityManager = Search.getFullTextEntityManager(em);
+		ReaderProvider rp = fullTextEntityManager.getSearchFactory().getReaderProvider();
+		IndexReader ir = rp.openReader(fullTextEntityManager.getSearchFactory().getDirectoryProviders(EventEntity.class));
+		try {
+			TermEnum te = ir.terms(new Term("description", term));
+			
+			for (int i = 0; i < 10; i++)  {
+				if (!te.next()) break;
+				if (te.term().text().startsWith(term)) {
+					terms.add(te.term().text());
+				}
+			}
+		} catch (IOException e) {
+			logger.error(e);
+		}
+		
+		return terms;
 	}
 	
 	@PostConstruct

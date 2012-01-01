@@ -2,6 +2,7 @@ package com.zotyo.diary.web;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintWriter;
 import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -27,6 +28,7 @@ import javax.xml.ws.BindingProvider;
 import javax.xml.ws.handler.MessageContext;
 
 import org.apache.log4j.Logger;
+import org.codehaus.jackson.map.ObjectMapper;
 
 import com.zotyo.diary.client.Day;
 import com.zotyo.diary.client.Event;
@@ -143,6 +145,17 @@ public class DiaryServlet extends HttpServlet {
 			
 			return;
 		}
+
+		if ("terms".equals(command)) {
+			String term = request.getParameter("term");	
+			List<String> result = diary.searchTerms(term);
+			
+			response.setContentType("application/json; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			ObjectMapper mapper = new ObjectMapper();
+			mapper.writeValue(out, result);
+			return;
+		}
 		
 		SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd");
 		if (theDayString != null && theDayString.length() > 0) {
@@ -216,6 +229,7 @@ public class DiaryServlet extends HttpServlet {
 			
 			return;
 		}
+		
 		String key = request.getParameter("keyword");
 		if (!diaryHelper.md5(key).equals(keyword)) {
 			response.sendRedirect("/diaryweb");

@@ -88,4 +88,9 @@ public class DiaryDAOMockImpl implements DiaryDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	@Override
+	public List<String> searchTerms(String term) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

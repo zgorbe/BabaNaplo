@@ -1,5 +1,6 @@
 package com.zotyo.diary.ws;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -53,6 +54,13 @@ public class DiaryImpl /* extends SpringBeanAutowiringSupport */ implements Diar
 
 	public List<Event> searchEvents(String searchTerm) {
 		return diaryDAO.searchEvents(searchTerm);
+	}
+
+	public List<String> searchTerms(String term) {
+		if (term.length() < 2) {
+			return new ArrayList<String>();
+		}
+		return diaryDAO.searchTerms(term.toLowerCase());
 	}
 	
 	public void addDay(Day day) {

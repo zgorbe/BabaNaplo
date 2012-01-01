@@ -1,7 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
   
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -56,8 +56,10 @@
 							<li id="search">
 								<h2>Keresés</h2>
 								<fieldset>
-									<input type="text" id="searchTerm" value="" />
-									<button type="button" onclick="search();">Keresés</button>
+									<div class="ui-widget">
+										<input type="text" id="searchTerm" value="" />
+										<button type="button" onclick="search();">Keresés</button>
+									</div>
 								</fieldset>
 							</li>
 							<li>
@@ -88,6 +90,14 @@
 					});
 					$("#searchTerm").keypress(function(event) {
 						if ( event.which == 13 ) {
+							search();
+						}
+					});
+					$("#searchTerm").autocomplete({
+						source: "/diaryweb?cmd=terms",
+						minLength: 2,
+						select: function( event, ui ) {
+							this.value = ui.item.value
 							search();
 						}
 					});

@@ -38,6 +38,9 @@ public interface Diary {
 	List<Event> searchEvents(String searchTerm);
 
 	@WebMethod
+	List<String> searchTerms(String term);
+	
+	@WebMethod
 	@Oneway
 	void addDay(Day day);
 	

@@ -31,6 +31,11 @@
       <xs:element name="searchEvents" type="tns:searchEvents"/>
 
       <xs:element name="searchEventsResponse" type="tns:searchEventsResponse"/>
+
+      <xs:element name="searchTerms" type="tns:searchTerms"/>
+
+      <xs:element name="searchTermsResponse" type="tns:searchTermsResponse"/>
+
       
       <xs:complexType name="getDay">
         <xs:sequence>
@@ -131,6 +136,19 @@
           <xs:element name="Event" type="tns:event" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
       </xs:complexType>
+      
+      <xs:complexType name="searchTerms">
+        <xs:sequence>
+          <xs:element name="arg0" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="searchTermsResponse">
+        <xs:sequence>
+          <xs:element name="return" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+            
     </xs:schema>    
   </types>
   <message name="getEventsForADay">
@@ -162,6 +180,12 @@
   </message>
   <message name="searchEventsResponse">
     <part name="parameters" element="tns:searchEventsResponse"/>
+  </message>
+  <message name="searchTerms">
+    <part name="parameters" element="tns:searchTerms"/>
+  </message>
+  <message name="searchTermsResponse">
+    <part name="parameters" element="tns:searchTermsResponse"/>
   </message>
   <message name="addDay">
     <part name="parameters" element="tns:addDay"/>
@@ -196,6 +220,10 @@
       <input wsam:Action="http://ws.diary.zotyo.com/Diary/searchEventsRequest" message="tns:searchEvents"/>
       <output wsam:Action="http://ws.diary.zotyo.com/Diary/searchEventsResponse" message="tns:searchEventsResponse"/>
     </operation>
+    <operation name="searchTerms">
+      <input wsam:Action="http://ws.diary.zotyo.com/Diary/searchTermsRequest" message="tns:searchTerms"/>
+      <output wsam:Action="http://ws.diary.zotyo.com/Diary/searchTermsResponse" message="tns:searchTermsResponse"/>
+    </operation>    
     <operation name="addDay">
       <input wsam:Action="http://ws.diary.zotyo.com/Diary/addDay" message="tns:addDay"/>
     </operation>
@@ -254,6 +282,15 @@
         <soap:body use="literal"/>
       </output>
     </operation>
+    <operation name="searchTerms">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>    
     <operation name="addDay">
       <soap:operation soapAction=""/>
       <input>

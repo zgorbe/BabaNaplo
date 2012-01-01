@@ -13,6 +13,7 @@ public interface DiaryDAO {
 	List<Event> getAllEvents();
 	Day getDay(Date theDay);
 	List<Event> searchEvents(String searchTerm);
+	List<String> searchTerms(String term);
 	
 	void addDay(Day day);
 	void addEvent(Date theDay, Event event);
