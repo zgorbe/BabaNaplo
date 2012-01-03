@@ -170,6 +170,17 @@ public class DiaryDAOJPAImpl implements DiaryDAO {
 		IndexReader ir = rp.openReader(fullTextEntityManager.getSearchFactory().getDirectoryProviders(EventEntity.class));
 		try {
 			TermEnum te = ir.terms(new Term("description", term));
+			
+			while (te.next()) {
+				String termString = te.term().text();
+				if (term.charAt(0) == termString.charAt(0)) {
+					terms.add(termString);
+				}
+				if (terms.size() == 10) {
+					break;
+				}
+			}
+			/*
 			boolean b = te.next();
 			String prev = te.term().text();
 			while (b) {
@@ -186,7 +197,7 @@ public class DiaryDAOJPAImpl implements DiaryDAO {
 				if (terms.size() == 10) {
 					break;
 				}
-			}
+			} */
 			/*for (int i = 0; i < 10; i++)  {
 				if (!te.next()) break;
 				if (te.term().text().startsWith(term)) {

@@ -56,10 +56,10 @@
 							<li id="search">
 								<h2>Keresés</h2>
 								<fieldset>
-									<div class="ui-widget">
-										<input type="text" id="searchTerm" value="" />
-										<button type="button" onclick="search();">Keresés</button>
-									</div>
+									<span class="ui-widget">
+										<input type="text" id="searchTerm" value="" style="font-family: Cursive, Verdana, Arial;" />
+									</span>
+									<button type="button" onclick="search();">Keresés</button>
 								</fieldset>
 							</li>
 							<li>
