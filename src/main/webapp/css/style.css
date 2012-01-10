@@ -280,10 +280,10 @@ button:hover {
 .imgcell {
 	padding: 20px 10px 10px;
 	text-align: center;
+  background-color: #FBE2F3;  
 }
 
 .imgcell img {
-  background-color: #FBE2F3;
 	border: 1px solid #FD3790;
 }
 
