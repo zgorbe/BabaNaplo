@@ -115,6 +115,21 @@ function videos() {
 		}
 	});
 }
+
+function photos() {
+	inactivate_all();
+	$('#li_photos').addClass('active');
+	$.ajax({
+		type: "GET",
+		data: "cmd=photos",
+		url: '/diaryweb',
+		success: function(data, type, xmlhttp){
+			$('#content').html(data);
+		}
+	});
+}
+
+
 function datefilter() {
 	var year = $('#yearFilter').val();
 	var months = $('#monthsFilter').val();

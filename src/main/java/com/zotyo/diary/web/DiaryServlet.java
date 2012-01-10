@@ -28,13 +28,21 @@ import javax.xml.namespace.QName;
 import javax.xml.ws.BindingProvider;
 import javax.xml.ws.handler.MessageContext;
 
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.EntityUtils;
 import org.apache.log4j.Logger;
 import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jackson.type.TypeReference;
 
 import com.zotyo.diary.client.Day;
 import com.zotyo.diary.client.Event;
 import com.zotyo.diary.client.Diary;
 import com.zotyo.diary.client.DiaryImplService;
+import com.zotyo.photos.pojo.Photo;
 
 public class DiaryServlet extends HttpServlet {
 	
@@ -128,6 +136,15 @@ public class DiaryServlet extends HttpServlet {
 			return;
 		}
 	
+		if ("photos".equals(command)) {
+			List<Photo> photos = getPhotos();
+			request.setAttribute("photos", photos);
+			RequestDispatcher rd = getServletContext().getRequestDispatcher("/photos.jsp");
+			rd.forward(request, response);
+			
+			return;
+		}
+		
 		if ("getDays".equals(command)) {
 			String key = request.getParameter("key");
 			List<Integer> days = diaryCache.getEventDays(key, diary);
@@ -284,4 +301,19 @@ public class DiaryServlet extends HttpServlet {
 		requestContext.put(MessageContext.HTTP_REQUEST_HEADERS, header);
 	}
 	
+	private List<Photo> getPhotos() throws IOException {
+		HttpClient httpclient = new DefaultHttpClient();
+		HttpGet getMethod = new HttpGet("http://sparktest.herokuapp.com/spark/photos");
+		HttpResponse resp = httpclient.execute(getMethod);
+		HttpEntity entity = resp.getEntity();
+		List<Photo> photos = new ArrayList<Photo>();
+		if (entity != null) {
+			byte[] src = EntityUtils.toByteArray(entity);
+			ObjectMapper mapper = new ObjectMapper();
+			photos = mapper.readValue(src, new TypeReference<List<Photo>>() {});
+		}
+		httpclient.getConnectionManager().shutdown();
+		
+		return photos;		
+	}
 }

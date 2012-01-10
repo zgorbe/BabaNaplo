@@ -276,6 +276,16 @@ button:hover {
 	font-family: Cursive,Verdana,Arial;
     font-size: 16px;
 }
+
+.imgcell {
+	padding: 20px 10px 10px;
+	text-align: center;
+}
+
+.imgcell img {
+	border: 1px solid #FD3790;
+}
+
 /* css for timepicker */
 .ui-timepicker-div { font-size: 12px; }
 .ui-timepicker-div .ui-widget-header{ margin-bottom: 5px; }

@@ -30,7 +30,8 @@
 					<ul id="menu_list">
 						<li id="li_home" class="active"><a href="#" onclick="home();">Home</a></li>
 						<li id="li_allday"><a href="#" onclick="allday();">Összes nap</a></li>
-            <li id="li_videos"><a href="#" onclick="videos();">Videók</a></li>
+            			<li id="li_videos"><a href="#" onclick="videos();">Videók</a></li>
+            			<li id="li_photos"><a href="#" onclick="photos();">Képek</a></li>
 						<li id="li_addday"><a href="#" onclick="addday();">Új nap</a></li>
 						<li id="li_addevent"><a href="#" onclick="addevent();">Új esemény</a></li>
 					</ul>
