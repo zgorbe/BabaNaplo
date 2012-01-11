@@ -19,7 +19,7 @@
 					</tr><tr>
 				<% } %>
 				<td id="photo<%= i %>" class="imgcell" onmouseout='$("#photo<%= i %>").css("background-color","#FBE2F3");' onmouseover='$("#photo<%= i %>").css("background-color","#F792C9");'>
-					<a href="<%= photo.getUrl() %>" target="_blank">
+					<a href="javascript:void(0);" onclick="showimage('<%= photo.getUrl() %>', '<%= photo.getCreatedate() %>', '<%= photo.getFilename() %>')">
 						<img src="http://sparktest.herokuapp.com/dropbox?cmd=thumbnail&filename=<%= photo.getFilename() %>" title="<%= photo.getDescription() %>" />
 					</a><br />
 					<small><%= photo.getCreatedate() %></small>
@@ -28,4 +28,5 @@
 			</tr>
 		</table>
 	</c:if>	
+	<div id="dialog" style="display: none;"></div>
 </div>

@@ -129,6 +129,16 @@ function photos() {
 	});
 }
 
+function showimage(imageurl, date, filename) {
+	$("#dialog").html('<img src="' + imageurl + '" height="684" width="912" />');
+	$("#dialog").attr('title', date + ' - ' + filename );
+	$("#dialog").dialog({
+		modal: true,
+		width: 945,
+		height: 740,
+		resizable: false
+	});
+}
 
 function datefilter() {
 	var year = $('#yearFilter').val();
