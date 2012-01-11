@@ -5,7 +5,9 @@
 
 <%@page import="com.zotyo.photos.pojo.Photo"%>
 <%@page import="java.util.List"%>
+<%@page import="com.zotyo.diary.web.DiaryHelper"%>
 
+<% DiaryHelper diaryHelper = new DiaryHelper(); %>
 
 <div class="post">
 	<h1 class="title">Képek</h1>
@@ -19,10 +21,10 @@
 					</tr><tr>
 				<% } %>
 				<td id="photo<%= i %>" class="imgcell" onmouseout='$("#photo<%= i %>").css("background-color","#FBE2F3");' onmouseover='$("#photo<%= i %>").css("background-color","#F792C9");'>
-					<a href="javascript:void(0);" onclick="showimage('<%= photo.getUrl() %>', '<%= photo.getCreatedate() %>', '<%= photo.getFilename() %>')">
+					<a href="javascript:void(0);" onclick="showimage('<%= photo.getUrl() %>', '<%= diaryHelper.formatDateTime(photo.getCreatedate()) %>', '<%= photo.getFilename() %>')">
 						<img src="http://sparktest.herokuapp.com/dropbox?cmd=thumbnail&filename=<%= photo.getFilename() %>" title="<%= photo.getDescription() %>" />
 					</a><br />
-					<small><%= photo.getCreatedate() %></small>
+					<small><%= diaryHelper.formatDateTime(photo.getCreatedate()) %></small>
 				</td>
 			<% } %>
 			</tr>

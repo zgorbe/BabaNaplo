@@ -81,6 +81,10 @@ public class DiaryHelper {
 		return formatHM.format(event.getStartTime().toGregorianCalendar().getTime());
 	}
  	
+ 	public String formatDateTime(Date date) {
+		return formatHM.format(date);
+	}
+ 	
 	public String md5(String md5) {
 	   try {
 	        java.security.MessageDigest md = java.security.MessageDigest.getInstance("MD5");
