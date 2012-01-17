@@ -13,7 +13,7 @@
 	<h1 class="title">Képek</h1>
 	<c:if test="${not empty photos}" >
 		<% List<Photo> photos = ((List<Photo>)request.getAttribute("photos"));  %>
-		<table cellspacing="15">
+		<table cellspacing="13">
 			<tr>
 			<% for (int i=0; i < photos.size(); i++) { %>
 				<% Photo photo = photos.get(i); %>
