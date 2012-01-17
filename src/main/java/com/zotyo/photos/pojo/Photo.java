@@ -3,52 +3,25 @@ package com.zotyo.photos.pojo;
 import java.util.Date;
 
 public class Photo {
-	private int id;
+	private String id;
 	private String description;
 	private String filename;
 	private String category;
-	private String url;
 	private Date createdate;
-	private byte[] thumbdata;
+	private String data_id;
 	
 	public Photo() {}
 	
-	public Photo(int id, String description, String filename, String category,
-			String url, Date createdate, byte[] thumbdata) {
-		this.id = id;
+	public Photo(String description, String filename, String category, Date createdate, String data_id) {
 		this.description = description;
 		this.filename = filename;
 		this.category = category;
-		this.url = url;
 		this.createdate = createdate;
-		this.thumbdata = thumbdata;
+		this.data_id = data_id;
 	}
 	
-	public Photo(String description, String filename, String category,
-			String url, Date createdate, byte[] thumbdata) {
-		this.description = description;
-		this.filename = filename;
-		this.category = category;
-		this.url = url;
-		this.createdate = createdate;
-		this.thumbdata = thumbdata;
-	}
-	
-	public Photo(int id, String description, String filename, String category,
-			String url, Date createdate) {
-		this.id = id;
-		this.description = description;
-		this.filename = filename;
-		this.category = category;
-		this.url = url;
-		this.createdate = createdate;
-	}
-	
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
+	public Photo(String description, String filename, String category, Date createdate) {
+		this(description, filename, category, createdate, null);
 	}
 	public String getDescription() {
 		return description;
@@ -68,24 +41,24 @@ public class Photo {
 	public void setCategory(String category) {
 		this.category = category;
 	}
-	public String getUrl() {
-		return url;
-	}
-	public void setUrl(String url) {
-		this.url = url;
-	}
 	public Date getCreatedate() {
 		return createdate;
 	}
 	public void setCreatedate(Date createdate) {
 		this.createdate = createdate;
 	}
-	public byte[] getThumbdata() {
-		return thumbdata;
+	public String getDataId() {
+		return data_id;
 	}
-	public void setThumbdata(byte[] thumbdata) {
-		this.thumbdata = thumbdata;
+	public void setDataId(String data_id) {
+		this.data_id = data_id;
 	}
-	
-	
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
 }

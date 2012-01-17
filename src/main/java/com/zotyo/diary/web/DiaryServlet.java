@@ -303,7 +303,7 @@ public class DiaryServlet extends HttpServlet {
 	
 	private List<Photo> getPhotos() throws IOException {
 		HttpClient httpclient = new DefaultHttpClient();
-		HttpGet getMethod = new HttpGet("http://sparktest.herokuapp.com/spark/photos");
+		HttpGet getMethod = new HttpGet("http://mongie.herokuapp.com/home?cmd=photos");
 		HttpResponse resp = httpclient.execute(getMethod);
 		HttpEntity entity = resp.getEntity();
 		List<Photo> photos = new ArrayList<Photo>();
