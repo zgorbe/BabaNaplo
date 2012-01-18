@@ -31,7 +31,7 @@
 					<div id="menu">
 						<table cellspacing="6">
 							<tr>
-								<td><a href="/home" title="Frissítés"><img src="/images/refresh.png" /></a></td>
+								<td><a href="/photos" title="Frissítés"><img src="/images/refresh.png" /></a></td>
 								<td><a href="javascript:void(0);" onclick="$('#new_form').toggle();" title="Hozzáadás"><img src="/images/plus.png" /></a></td>
 							</tr>
 						</table>
@@ -73,7 +73,7 @@
 						</fieldset>
 					</div> 
 					<c:if test="${not empty photos}">
-						<form name="photos" action="/home" method="post">
+						<form name="photos" action="/photos" method="post">
 							<table class="box-table-a">
 								<tr>
 									<th>Fájlnév</th>
@@ -84,11 +84,11 @@
 								</tr>
 								<c:forEach items="${photos}" var="photo">
 									<tr>
-										<td><a target="_blank" href="/home?cmd=data&filename=<%= ((Photo)pageContext.getAttribute("photo")).getFilename() %>"><%= ((Photo)pageContext.getAttribute("photo")).getFilename() %></a></td>
+										<td><a target="_blank" href="/photos?cmd=data&filename=<%= ((Photo)pageContext.getAttribute("photo")).getFilename() %>"><%= ((Photo)pageContext.getAttribute("photo")).getFilename() %></a></td>
 										<td><%= ((Photo)pageContext.getAttribute("photo")).getDescription() %></td>
 										<td><%= ((Photo)pageContext.getAttribute("photo")).getCreatedate() %></td>
 										<td>
-											<img src="/home?cmd=thumbdata&filename=<%= ((Photo)pageContext.getAttribute("photo")).getFilename() %>" />
+											<img src="/photos?cmd=thumbdata&filename=<%= ((Photo)pageContext.getAttribute("photo")).getFilename() %>" />
 										</td>
 										<td><input type="radio" name="file2delete" value="<%= ((Photo)pageContext.getAttribute("photo")).getFilename() %>" /></td>
 									</tr>
