@@ -251,6 +251,7 @@
                 <artifactId>appassembler-maven-plugin</artifactId>
                 <version>1.1.1</version>
                 <configuration>
+                	<extraJvmArguments>-agentlib:jdwp=transport=dt_socket,server=y,address=8000,suspend=n</extraJvmArguments>
                     <assembleDirectory>target</assembleDirectory> 
                     <!-- update pom for latest Heroku slug compilation --> 
                     <generateRepository>false</generateRepository>

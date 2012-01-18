@@ -78,7 +78,7 @@
 								<tr>
 									<th>Fájlnév</th>
 									<th>Leírás</th>
-									<th>Legutóbbi módosítás</th>
+									<th>Dátum</th>
 									<th>Előnézet</th>
 									<th><a href="#" title="Törlés" onclick="if (confirm('Biztosan törlöd a képet?')) document.forms['photos'].submit();"><img src="/images/trash.png" /></a></th>
 								</tr>
