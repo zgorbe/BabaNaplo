@@ -10,6 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Properties;
 
 import javax.imageio.ImageIO;
 import javax.servlet.RequestDispatcher;
@@ -30,6 +31,7 @@ import org.codehaus.jackson.map.SerializationConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
+import com.zotyo.diary.web.DiaryHelper;
 import com.zotyo.photos.pojo.Photo;
 import com.zotyo.photos.pojo.PhotoData;
 
@@ -42,25 +44,30 @@ public class PhotoServlet extends HttpServlet {
 	@Autowired
 	private PhotoService photoService;
 	
+	@Autowired
+	private DiaryHelper diaryHelper;
+	
+	private String keyword;
+	
 	public void init() throws ServletException {
 		SpringBeanAutowiringSupport.processInjectionBasedOnCurrentContext(this);
+		try {
+			InputStream inputStream = ClassLoader.getSystemResourceAsStream("diary.properties");
+			Properties props = new Properties();
+			props.load(inputStream);
+			
+			keyword = props.getProperty("keyword");
+		} catch(IOException ioex) {
+			ioex.printStackTrace();
+		}
 	}
 
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 												throws ServletException, IOException {
 		String cmd = request.getParameter("cmd");
-		if (cmd == null || cmd.isEmpty()) {
-			
-			List<Photo> photos = photoService.findAll();
-			
-			request.setAttribute("photos", photos);
-	        
-			RequestDispatcher rd = getServletContext().getRequestDispatcher("/photoshome.jsp");
-	        rd.forward(request, response);
  
-		} 
-		else if ("thumbdata".equals(cmd)) {
+		if ("thumbdata".equals(cmd)) {
 			String fileName = request.getParameter("filename");
 			if (fileName != null && !fileName.isEmpty()) {
             	response.setContentType("image/jpeg");
@@ -100,6 +107,21 @@ public class PhotoServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
+		else {
+			String isAdmin = (String) request.getSession().getAttribute("admin");
+			
+			if (Boolean.valueOf(isAdmin)) {
+				List<Photo> photos = photoService.findAll();
+				request.setAttribute("photos", photos);
+				
+				RequestDispatcher rd = getServletContext().getRequestDispatcher("/admin/adminphotos.jsp");
+				rd.forward(request, response);
+				return;
+			} else {
+				request.getSession().setAttribute("redirect_to", "photos");
+				response.sendRedirect("/admin/adminphotos.jsp");	
+			}
+		}
 	}
 
 	@Override
@@ -119,6 +141,24 @@ public class PhotoServlet extends HttpServlet {
 					photoService.deleteByFilename(fileName);
 				}
 			}
+			else if ("login".equals(cmd)) {
+				String password = request.getParameter("password");
+				if (!diaryHelper.md5(password).equals(keyword)) {
+					RequestDispatcher rd = getServletContext().getRequestDispatcher("/admin/login.jsp");
+					rd.forward(request, response);
+					return;
+				}
+				
+				List<Photo> photos = photoService.findAll();
+				request.setAttribute("photos", photos);
+		        
+				request.getSession().setAttribute("admin", "true");
+				
+				RequestDispatcher rd = getServletContext().getRequestDispatcher("/admin/adminphotos.jsp");
+		        rd.forward(request, response);
+		        return;
+			}
+			
 		}
 		response.sendRedirect("/photos");
 	}

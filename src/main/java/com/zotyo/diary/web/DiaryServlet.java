@@ -46,10 +46,12 @@ public class DiaryServlet extends HttpServlet {
 	private static Logger logger = Logger.getLogger(DiaryServlet.class); 
 	
 	private Diary diary;
-	private DiaryHelper diaryHelper;
 	private DatatypeFactory df;
 	private String keyword;
 	private DiaryCache diaryCache;
+	
+	@Autowired
+	private DiaryHelper diaryHelper;
 	
 	@Autowired
 	private PhotoService photoService;
@@ -67,7 +69,6 @@ public class DiaryServlet extends HttpServlet {
 			URL wsdlURL = new URL(props.getProperty("wsdlURL"));
 			DiaryImplService diaryService = new DiaryImplService(wsdlURL, new QName("http://ws.diary.zotyo.com/", "DiaryImplService")); 
 			diary = diaryService.getDiaryImplPort();
-			diaryHelper = new DiaryHelper();
             df = DatatypeFactory.newInstance();
             diaryCache = DiaryCache.getInstance();
             

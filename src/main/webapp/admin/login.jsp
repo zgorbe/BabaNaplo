@@ -18,7 +18,14 @@
 			<h3>
 				<c:out value="${msg}" />	
 			</h3>
-			<form action="/diaryweb/admin" method="post" accept-charset="UTF-8">
+			<c:choose>
+			<c:when test="${redirect_to == 'photos'}">
+				<form action="/photos" method="post" accept-charset="UTF-8">
+			</c:when>
+			<c:otherwise>
+				<form action="/diaryweb/admin" method="post" accept-charset="UTF-8">
+			</c:otherwise>
+			</c:choose>
 				<table border="0" cellpadding="5" cellspacing="5">
 					<tr>
 						<td>Felhasználónév:</td>

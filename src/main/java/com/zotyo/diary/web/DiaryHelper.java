@@ -6,10 +6,12 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 import org.apache.log4j.Logger;
+import org.springframework.stereotype.Component;
 
 import com.zotyo.diary.client.Day;
 import com.zotyo.diary.client.Event;
 
+@Component
 public class DiaryHelper {
 	
 	private static Logger logger = Logger.getLogger(DiaryHelper.class); 

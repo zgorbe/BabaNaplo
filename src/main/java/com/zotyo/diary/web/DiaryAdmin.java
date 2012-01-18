@@ -30,7 +30,9 @@ public class DiaryAdmin extends HttpServlet {
 	@Autowired
 	private DiaryAdminDAO diaryAdminDAO;
 	
+	@Autowired
 	private DiaryHelper diaryHelper;
+	
 	private String keyword;
 		
 	public void init() throws ServletException {
@@ -41,7 +43,6 @@ public class DiaryAdmin extends HttpServlet {
 			props.load(inputStream);
 			
 			keyword = props.getProperty("keyword");
-			diaryHelper = new DiaryHelper();
 		} catch(IOException ioex) {
 			ioex.printStackTrace();
 		}
@@ -50,6 +51,7 @@ public class DiaryAdmin extends HttpServlet {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) 
 											throws ServletException, IOException {
+		request.getSession().setAttribute("redirect_to", "admin");
 		response.sendRedirect("/admin/admin.jsp");
 	}
 
@@ -69,7 +71,7 @@ public class DiaryAdmin extends HttpServlet {
 			List<Day> days = diaryAdminDAO.getAllDays();
 			request.setAttribute("days", days);
 			
-			request.getSession().setAttribute("admin", true);
+			request.getSession().setAttribute("admin", "true");
 
 			RequestDispatcher rd = getServletContext().getRequestDispatcher("/admin/admin.jsp");
 			rd.forward(request, response);
