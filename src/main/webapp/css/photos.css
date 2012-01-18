@@ -1,0 +1,88 @@
+body {
+    font-family: helvetica, arial;
+    font-size: 14px;
+    background: #F5F7FA;
+    padding-top: 20px; 
+}
+
+#container {
+    margin: 0 auto;
+    width: 800px;
+    border: 1px solid #2E5186;
+}
+
+#header {
+	padding: 5px 0px;
+}
+
+#header h3 { margin: 0; }
+
+#title {
+	float: left;
+	padding-left: 20px;
+}
+
+#menu {
+	float: right;
+}
+
+#new_form {
+	margin: 10px;
+	text-align: left;	
+}
+
+#new_form form {
+	padding: 0px;
+	margin: 0px;	
+}
+
+a img {
+	border: none;
+}
+
+#content {
+    clear: left;
+    padding: 10px 30px;
+    line-height: 1.5;
+    text-align: justify;
+    background: #EDF5F7;
+}
+
+#content a {
+    color: #3B5998;
+    font-weight: bold;
+}
+
+#content li {
+    padding: 10px;
+}
+
+#footer
+{
+    background: #3760A8;
+    color: white;
+    text-align: right;
+    padding: 15px;
+}
+
+
+#content span{
+    font-size: xx-large;
+}
+
+.image_anchor a:link { text-decoration: none; }
+.image_anchor a:visited { text-decoration: none; }
+.image_anchor a:active { text-decoration: none; }
+.image_anchor a:hover { text-decoration: nonr; }
+
+.ui-datepicker {
+  font-size: 14px;
+}
+
+.imgcell {
+	padding: 30px 10px 10px;
+	text-align: center;
+}
+.imgcell td:hover {
+	background-color: #d0dafd;
+}

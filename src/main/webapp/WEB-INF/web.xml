@@ -76,6 +76,16 @@
 		<url-pattern>/diaryweb/admin</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>PhotoServlet</servlet-name>
+		<servlet-class>com.zotyo.photos.servlet.PhotoServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>PhotoServlet</servlet-name>
+		<url-pattern>/photos</url-pattern>
+	</servlet-mapping>
+
+
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>

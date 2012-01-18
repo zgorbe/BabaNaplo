@@ -28,21 +28,18 @@ import javax.xml.namespace.QName;
 import javax.xml.ws.BindingProvider;
 import javax.xml.ws.handler.MessageContext;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.util.EntityUtils;
 import org.apache.log4j.Logger;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.type.TypeReference;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 import com.zotyo.diary.client.Day;
 import com.zotyo.diary.client.Event;
 import com.zotyo.diary.client.Diary;
 import com.zotyo.diary.client.DiaryImplService;
 import com.zotyo.photos.pojo.Photo;
+import com.zotyo.photos.service.PhotoService;
 
 public class DiaryServlet extends HttpServlet {
 	
@@ -54,8 +51,13 @@ public class DiaryServlet extends HttpServlet {
 	private String keyword;
 	private DiaryCache diaryCache;
 	
+	@Autowired
+	private PhotoService photoService;
+	
 	public void init() throws ServletException {
 		try {
+            SpringBeanAutowiringSupport.processInjectionBasedOnCurrentContext(this);
+			
 			InputStream inputStream = ClassLoader.getSystemResourceAsStream("diary.properties");
 			Properties props = new Properties();
 			props.load(inputStream);
@@ -68,6 +70,7 @@ public class DiaryServlet extends HttpServlet {
 			diaryHelper = new DiaryHelper();
             df = DatatypeFactory.newInstance();
             diaryCache = DiaryCache.getInstance();
+            
 		} catch(IOException ioex) {
 			ioex.printStackTrace();
 		} catch (DatatypeConfigurationException dce) {
@@ -137,8 +140,9 @@ public class DiaryServlet extends HttpServlet {
 		}
 	
 		if ("photos".equals(command)) {
-			List<Photo> photos = getPhotos();
+			List<Photo> photos = photoService.findByCategory("baba");
 			request.setAttribute("photos", photos);
+			
 			RequestDispatcher rd = getServletContext().getRequestDispatcher("/photos.jsp");
 			rd.forward(request, response);
 			
@@ -302,18 +306,18 @@ public class DiaryServlet extends HttpServlet {
 	}
 	
 	private List<Photo> getPhotos() throws IOException {
-		HttpClient httpclient = new DefaultHttpClient();
+/*		HttpClient httpclient = new DefaultHttpClient();
 		HttpGet getMethod = new HttpGet("http://mongie.herokuapp.com/home?cmd=photos");
 		HttpResponse resp = httpclient.execute(getMethod);
-		HttpEntity entity = resp.getEntity();
+		HttpEntity entity = resp.getEntity();*/
 		List<Photo> photos = new ArrayList<Photo>();
-		if (entity != null) {
+/*		if (entity != null) {
 			byte[] src = EntityUtils.toByteArray(entity);
 			ObjectMapper mapper = new ObjectMapper();
 			photos = mapper.readValue(src, new TypeReference<List<Photo>>() {});
 		}
 		httpclient.getConnectionManager().shutdown();
-		
+		*/
 		return photos;		
 	}
 }

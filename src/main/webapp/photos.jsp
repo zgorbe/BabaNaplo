@@ -21,8 +21,8 @@
 					</tr><tr>
 				<% } %>
 				<td id="photo<%= i %>" class="imgcell" onmouseout='$("#photo<%= i %>").css("background-color","#FBE2F3");' onmouseover='$("#photo<%= i %>").css("background-color","#F792C9");'>
-					<a href="javascript:void(0);" onclick="showimage('http://mongie.herokuapp.com/home?cmd=data&filename=<%= photo.getFilename() %>', '<%= diaryHelper.formatDateTime(photo.getCreatedate()) %>', '<%= photo.getFilename() %>')">
-						<img src="http://mongie.herokuapp.com/home?cmd=thumbdata&filename=<%= photo.getFilename() %>" title="<%= photo.getDescription() %>" />
+					<a href="javascript:void(0);" onclick="showimage('/photos?cmd=data&filename=<%= photo.getFilename() %>', '<%= diaryHelper.formatDateTime(photo.getCreatedate()) %>', '<%= photo.getFilename() %>')">
+						<img src="/photos?cmd=thumbdata&filename=<%= photo.getFilename() %>" title="<%= photo.getDescription() %>" />
 					</a><br />
 					<small><%= diaryHelper.formatDateTime(photo.getCreatedate()) %></small>
 				</td>

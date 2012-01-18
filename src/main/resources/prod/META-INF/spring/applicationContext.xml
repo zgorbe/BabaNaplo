@@ -3,11 +3,14 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mongo="http://www.springframework.org/schema/data/mongo"	
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		http://www.springframework.org/schema/data/mongo http://www.springframework.org/schema/data/mongo/spring-mongo-1.0.xsd">
 
     <context:annotation-config />
     <context:component-scan base-package="com.zotyo.diary" />
+    <context:component-scan base-package="com.zotyo.photos" />
 
 	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" />
 
@@ -45,6 +48,23 @@
 			<property name="databasePlatform" value="org.hibernate.dialect.PostgreSQLDialect" />
 		</bean>
 		</property>	
+	</bean>
+
+	<!-- ====================== Mongo ========================= -->
+
+	<bean class="java.net.URI" id="mongoUrl">
+    	<constructor-arg value="${MONGOLAB_URI}"/>
+	</bean>
+ 	
+ 	<mongo:db-factory id="mongoDbFactory" 
+ 		host="#{ @mongoUrl.getHost() }" 
+ 		port="#{ @mongoUrl.getPort() }" 
+ 		dbname="#{ @mongoUrl.getUserInfo().split(':')[0] }"
+ 		username="#{ @mongoUrl.getUserInfo().split(':')[0] }" 
+ 		password="#{ @mongoUrl.getUserInfo().split(':')[1] }" />
+	
+	<bean id="photoMongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+  		<constructor-arg name="mongoDbFactory" ref="mongoDbFactory"/>
 	</bean>
 
 </beans>
