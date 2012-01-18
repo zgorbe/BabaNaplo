@@ -9,6 +9,7 @@
 
     <properties>
         <java.version>1.6</java.version>
+        <spring.version>3.1.0.RELEASE</spring.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -39,7 +40,7 @@
           <groupId>org.slf4j</groupId>
           <artifactId>slf4j-log4j12</artifactId>
           <version>1.6.1</version>
-      </dependency>      
+      </dependency>       
       <!-- JAX-WS -->
       <dependency>
           <groupId>com.sun.xml.ws</groupId>
@@ -118,23 +119,28 @@
       <dependency>
           <groupId>org.springframework</groupId>
           <artifactId>spring-core</artifactId>
-          <version>3.0.5.RELEASE</version>
+          <version>${spring.version}</version>
       </dependency>
       <dependency>
           <groupId>org.springframework</groupId>
           <artifactId>spring-webmvc</artifactId>
-          <version>3.0.5.RELEASE</version>
+          <version>${spring.version}</version>
       </dependency>
-      <dependency>
+      <!--  dependency>
           <groupId>org.springframework</groupId>
           <artifactId>spring-tx</artifactId>
-          <version>3.0.5.RELEASE</version>
-      </dependency>
+          <version>3.1.0.RELEASE</version>
+      </dependency -->
       <dependency>
           <groupId>org.springframework</groupId>
           <artifactId>spring-orm</artifactId>
-          <version>3.0.5.RELEASE</version>
+          <version>${spring.version}</version>
       </dependency>
+  	  <dependency>
+		  <groupId>org.springframework.data</groupId>
+		  <artifactId>spring-data-mongodb</artifactId>
+		  <version>1.0.0.RELEASE</version>
+      </dependency>      
       <dependency>
           <groupId>asm</groupId>
           <artifactId>asm</artifactId>
@@ -170,6 +176,18 @@
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
 			<version>4.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.mongodb</groupId>
+			<artifactId>mongo-java-driver</artifactId>
+			<version>2.7.2</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.imgscalr</groupId>
+			<artifactId>imgscalr-lib</artifactId>
+			<version>4.2</version>
 		</dependency>
       
     </dependencies>

@@ -6,12 +6,10 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.zotyo.diary.pojos.Day;
 import com.zotyo.diary.pojos.Event;
 
-@Transactional
 @Repository
 public class DiaryDAOMockImpl implements DiaryDAO {
 
