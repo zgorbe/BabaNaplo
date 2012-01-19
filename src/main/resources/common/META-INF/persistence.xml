@@ -5,8 +5,8 @@
              version="2.0">
 	<persistence-unit name="DiaryPU" transaction-type="RESOURCE_LOCAL">
 		<properties>
-      <property name="hibernate.hbm2ddl.auto" value="update"/>
-      <property name="hibernate.show_sql" value="true"/>
+      		<property name="hibernate.hbm2ddl.auto" value="update"/>
+      		<property name="hibernate.show_sql" value="true"/>
 			<property name="hibernate.connection.useUnicode" value="true"/>
 			<property name="hibernate.connection.characterEncoding" value="UTF-8"/>
 			<property name="hibernate.search.default.directory_provider" value="ram"/> 

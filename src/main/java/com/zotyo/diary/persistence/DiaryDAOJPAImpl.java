@@ -25,6 +25,7 @@ import org.hibernate.search.query.dsl.QueryBuilder;
 import org.hibernate.search.reader.ReaderProvider;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.zotyo.diary.pojos.Day;
 import com.zotyo.diary.pojos.DayEntity;
@@ -33,6 +34,7 @@ import com.zotyo.diary.pojos.EventEntity;
 
 @Repository
 @Primary
+@Transactional
 public class DiaryDAOJPAImpl implements DiaryDAO {
 
 	private static Logger logger = Logger.getLogger(DiaryDAOJPAImpl.class);

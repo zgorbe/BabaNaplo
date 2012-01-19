@@ -126,11 +126,11 @@
           <artifactId>spring-webmvc</artifactId>
           <version>${spring.version}</version>
       </dependency>
-      <!--  dependency>
+      <dependency>
           <groupId>org.springframework</groupId>
           <artifactId>spring-tx</artifactId>
-          <version>3.1.0.RELEASE</version>
-      </dependency -->
+          <version>${spring.version}</version>
+      </dependency>
       <dependency>
           <groupId>org.springframework</groupId>
           <artifactId>spring-orm</artifactId>
@@ -163,7 +163,7 @@
       <dependency>
         <groupId>org.hibernate</groupId>
         <artifactId>hibernate-entitymanager</artifactId>
-        <version>3.5.1-Final</version>
+        <version>3.6.9.Final</version>
       </dependency>
       
       <dependency>
