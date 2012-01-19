@@ -30,13 +30,11 @@ public class PhotoDAOImpl implements PhotoDAO {
 
 	@Override
 	public void deleteByFilename(String filename) {
-		// TODO Auto-generated method stub
-		Photo photo = photoMongoTemplate.findOne(new Query(where("filename").is(filename)), Photo.class);
-		String data_id = photo.getDataId();
-		PhotoData photoData = photoMongoTemplate.findById(data_id, PhotoData.class);
-		
-		photoMongoTemplate.remove(photoData);
-		photoMongoTemplate.remove(photo);
+		Photo photo = photoMongoTemplate.findAndRemove(new Query(where("filename").is(filename)), Photo.class);
+		if (photo != null) {
+			String data_id = photo.getDataId();
+			photoMongoTemplate.findAndRemove(new Query(where("id").is(data_id)), PhotoData.class);
+		}
 	}
 
 	@Override
