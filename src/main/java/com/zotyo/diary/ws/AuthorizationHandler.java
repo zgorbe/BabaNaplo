@@ -46,6 +46,7 @@ public class AuthorizationHandler implements SOAPHandler<SOAPMessageContext> {
 					}
 					else {
 						generateSOAPFault(msg, "Keyword is null");
+						logger.warn("Keyword is null");
 					}
 				}
 			} catch(SOAPException se) {
