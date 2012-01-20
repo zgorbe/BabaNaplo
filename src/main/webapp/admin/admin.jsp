@@ -24,6 +24,9 @@
 		<div id="wrapper">
 			<div id="page">
 				<div id="content">
+					<c:if test="${not empty msg}">
+						<div><c:out value="${msg}"></c:out></div>
+					</c:if>
 					<jsp:include page="edit.jsp" />
 				</div>
 				<div id="sidebar">

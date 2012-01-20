@@ -82,9 +82,14 @@ public class DiaryAdminDAOImpl extends SimpleJdbcDaoSupport implements DiaryAdmi
 	}
 
 	@Override
-	public void updateEvent(Event e) {
-		// TODO Auto-generated method stub
-		
+	public boolean updateEvent(Event e) {
+		SqlParameterSource sqlParams = new BeanPropertySqlParameterSource(e);
+		String sql = "update events set text = :description, duration = :duration, starttime = :startTime where id = :id";
+		int rows = getSimpleJdbcTemplate().update(sql, sqlParams);
+		if (rows == 1) {
+			return true;
+		}
+		return false;
 	}
 
 	@Override

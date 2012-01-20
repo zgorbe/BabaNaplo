@@ -67,10 +67,10 @@ public class DiaryAdmin extends HttpServlet {
 				rd.forward(request, response);
 				return;
 			}
-			
+			/*
 			List<Day> days = diaryAdminDAO.getAllDays();
 			request.setAttribute("days", days);
-			
+			*/
 			request.getSession().setAttribute("admin", "true");
 
 			RequestDispatcher rd = getServletContext().getRequestDispatcher("/admin/admin.jsp");
@@ -118,9 +118,34 @@ public class DiaryAdmin extends HttpServlet {
 			d.setDescriptionOfTheDay(descriptionOfTheDay);
 			boolean b = diaryAdminDAO.updateDay(d);
 			if (b) {
-				response.sendRedirect("/admin/admin.jsp");
-				return;
+				request.setAttribute("msg", "Sikeresen mentve!");
 			}
+			
+			RequestDispatcher rd = getServletContext().getRequestDispatcher("/admin/admin.jsp");
+			rd.forward(request, response);
+			return;
+		}
+		
+		if ("update_event".equals(command)) {
+			String id = request.getParameter("id");
+			String startDate = request.getParameter("startDate");
+			String duration = request.getParameter("duration");
+			String description = request.getParameter("description");
+			
+			Event e = new Event();
+			e.setId(Integer.parseInt(id));
+			e.setStartTime(diaryHelper.getStartDateCal(startDate).getTime());
+			e.setDuration(Long.parseLong(duration));
+			e.setDescription(description);
+			
+			boolean b = diaryAdminDAO.updateEvent(e);
+			if (b) {
+				request.setAttribute("msg", "Sikeresen mentve!");
+			}
+
+			RequestDispatcher rd = getServletContext().getRequestDispatcher("/admin/admin.jsp");
+			rd.forward(request, response);
+			return;
 		}
 	}
 }

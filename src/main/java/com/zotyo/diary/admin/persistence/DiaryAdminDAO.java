@@ -12,7 +12,7 @@ public interface DiaryAdminDAO {
 	Day getDayByDate(Date day);
 	boolean updateDay(Day d);
 	List<Event> getEventsByDay(Integer dayId);
-	void updateEvent(Event e);
+	boolean updateEvent(Event e);
 	void deleteEvent(Integer eventId);
 	void deleteDay(Integer dayId);
 }
