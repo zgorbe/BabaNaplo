@@ -171,7 +171,6 @@ public class DiaryServlet extends HttpServlet {
 
 		if ("terms".equals(command)) {
 			String term = URLDecoder.decode(request.getParameter("term"), "UTF-8");	
-			logger.info("term is: " + term);
 			List<String> result = diary.searchTerms(term);
 			
 			response.setContentType("application/json; charset=UTF-8");
