@@ -31,6 +31,7 @@ public class PhotoServiceImpl implements PhotoService {
 	@Override
 	public void update(Photo photo) {
 		// TODO Auto-generated method stub
+		photoDAO.update(photo);
 		
 	}
 

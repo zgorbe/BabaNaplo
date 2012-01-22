@@ -1,6 +1,8 @@
 package com.zotyo.photos.pojo;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Photo {
 	private String id;
@@ -9,6 +11,7 @@ public class Photo {
 	private String category;
 	private Date createdate;
 	private String data_id;
+	private List<String> keywords;
 	
 	public Photo() {}
 	
@@ -18,6 +21,7 @@ public class Photo {
 		this.category = category;
 		this.createdate = createdate;
 		this.data_id = data_id;
+		initKeywords();
 	}
 	
 	public Photo(String description, String filename, String category, Date createdate) {
@@ -28,6 +32,7 @@ public class Photo {
 	}
 	public void setDescription(String description) {
 		this.description = description;
+		initKeywords();
 	}
 	public String getFilename() {
 		return filename;
@@ -60,5 +65,17 @@ public class Photo {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+	
+	public List<String> getKeywords() {
+		return keywords;
+	}
+	
+	private void initKeywords() {
+		keywords = new ArrayList<String>();
+		String tmp[] = description.split(" ");
+		for (String s : tmp) {
+			keywords.add(s.replaceAll("\\.", "").replaceAll(",","").replaceAll("!","").trim());
+		}
 	}
 }
