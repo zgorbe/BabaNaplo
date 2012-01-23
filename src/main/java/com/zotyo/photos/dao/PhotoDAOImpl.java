@@ -1,5 +1,6 @@
 package com.zotyo.photos.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,5 +72,22 @@ public class PhotoDAOImpl implements PhotoDAO {
 		String data_id = photo.getDataId();
 		PhotoData photoData = photoMongoTemplate.findById(data_id, PhotoData.class);
 		return photoData;
+	}
+
+
+	@Override
+	public List<Photo> searchPhotos(String searchTerm) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public List<String> searchKeywords(String term) {
+		List<String> keywords = new ArrayList<String>();
+		Query query = new Query(where("keywords").regex("^"+term));
+		query.fields().include("keywords");
+		List<Photo> photos = photoMongoTemplate.find(query, Photo.class);
+		return null;
 	}
 }

@@ -60,4 +60,17 @@ public class PhotoServiceImpl implements PhotoService {
 		return photoDAO.getDataByFilename(filename);
 	}
 
+
+	@Override
+	public List<Photo> searchPhotos(String searchTerm) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public List<String> searchKeywords(String term) {
+		return photoDAO.searchKeywords(term);
+	}
+
 }

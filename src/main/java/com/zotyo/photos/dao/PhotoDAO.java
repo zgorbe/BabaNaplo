@@ -12,5 +12,7 @@ public interface PhotoDAO {
 	List<Photo> findByCategory(String category);
 	List<Photo> findAll();
 	Photo findByFilename(String filename);
-	PhotoData getDataByFilename(String filename);	
+	PhotoData getDataByFilename(String filename);
+	List<Photo> searchPhotos(String searchTerm);
+	List<String> searchKeywords(String term);
 }
