@@ -75,7 +75,10 @@ public class Photo {
 		keywords = new ArrayList<String>();
 		String tmp[] = description.split(" ");
 		for (String s : tmp) {
-			keywords.add(s.replaceAll("\\.", "").replaceAll(",","").replaceAll("!","").trim());
+			String keyword = s.replaceAll("\\.", "").replaceAll(",","").replaceAll("!","").trim().toLowerCase();
+			if (keyword.length() > 2) {
+				keywords.add(keyword);
+			}
 		}
 	}
 }
