@@ -100,6 +100,15 @@ public class PhotoServlet extends HttpServlet {
 			return;
                         
 		}
+		else if ("search".equals(cmd)) {
+			String term = URLDecoder.decode(request.getParameter("term"), "UTF-8");
+			List<Photo> photos = photoService.searchPhotos(term);
+			request.setAttribute("photos", photos);
+			
+			RequestDispatcher rd = getServletContext().getRequestDispatcher("/photos.jsp");
+			rd.forward(request, response);
+			return;
+		}
 		else if ("photos".equals(cmd)) {
 			response.setContentType("application/json; charset=UTF-8");
 			List<Photo> photos = photoService.findByCategory("baba");

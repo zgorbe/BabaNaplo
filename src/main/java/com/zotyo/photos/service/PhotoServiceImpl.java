@@ -32,7 +32,6 @@ public class PhotoServiceImpl implements PhotoService {
 	public void update(Photo photo) {
 		// TODO Auto-generated method stub
 		photoDAO.update(photo);
-		
 	}
 
 	@Override
@@ -53,20 +52,16 @@ public class PhotoServiceImpl implements PhotoService {
 		return photoDAO.findByFilename(filename);
 	}
 
-
 	@Override
 	public PhotoData getDataByFilename(String filename) {
 		// TODO Auto-generated method stub
 		return photoDAO.getDataByFilename(filename);
 	}
 
-
 	@Override
 	public List<Photo> searchPhotos(String searchTerm) {
-		// TODO Auto-generated method stub
-		return null;
+		return photoDAO.searchPhotos(searchTerm);
 	}
-
 
 	@Override
 	public List<String> searchKeywords(String term) {

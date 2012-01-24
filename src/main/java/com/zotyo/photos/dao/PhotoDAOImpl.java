@@ -42,7 +42,7 @@ public class PhotoDAOImpl implements PhotoDAO {
 	@Override
 	public void update(Photo photo) {
 		// TODO Auto-generated method stub
-		photoMongoTemplate.updateFirst(new Query(where("filename").is(photo.getFilename())), Update.update("keywords", photo.getKeywords()), Photo.class);
+		//photoMongoTemplate.updateFirst(new Query(where("filename").is(photo.getFilename())), Update.update("keywords", photo.getKeywords()), Photo.class);
 		
 	}
 
@@ -77,8 +77,8 @@ public class PhotoDAOImpl implements PhotoDAO {
 
 	@Override
 	public List<Photo> searchPhotos(String searchTerm) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Photo> photos = photoMongoTemplate.find(new Query(where("keywords").is(searchTerm)), Photo.class);
+		return photos;
 	}
 
 
@@ -88,6 +88,14 @@ public class PhotoDAOImpl implements PhotoDAO {
 		Query query = new Query(where("keywords").regex("^"+term));
 		query.fields().include("keywords");
 		List<Photo> photos = photoMongoTemplate.find(query, Photo.class);
-		return null;
+		for (Photo p : photos) {
+			List<String> k = p.getKeywords();
+			for (String s : k) {
+				if (s.startsWith(term)) {
+					keywords.add(s);
+				}
+			}
+		}
+		return keywords;
 	}
 }

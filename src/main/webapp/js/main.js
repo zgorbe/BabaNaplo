@@ -1,5 +1,6 @@
 var selectedDay = getFormattedNow();
 var month_days = [];
+var active_menu = 'li_home';
 
 function getEventsOfTheDay(dateText) {
 	selectedDay = dateText;
@@ -32,24 +33,47 @@ function getLatestEvents() {
 	});
 }
 function search() {
-	var searchTerm = $.trim($('#searchTerm').val());
-	if (searchTerm.length == 0) {
-		$('#searchTerm').focus();
-		return;
-	}
-	$('#div_result').html('');
-	$('#loader_result').show();
-	$.ajax({
-		type: "POST",
-		data: "cmd=search&searchTerm=" + searchTerm,
-		url: '/diaryweb',
-		success: function(data, type, xmlhttp){
-			$('#events').html(data);
-			$('#loader_result').hide();
-			$('#searchTerm').val('');
-			smiley();
+	if (active_menu == 'li_home') {
+		var searchTerm = $.trim($('#searchTerm').val());
+		if (searchTerm.length == 0) {
+			$('#searchTerm').focus();
+			return;
 		}
-	});
+		$('#div_result').html('');
+		$('#loader_result').show();
+		$.ajax({
+			type: "POST",
+			data: "cmd=search&searchTerm=" + searchTerm,
+			url: '/diaryweb',
+			success: function(data, type, xmlhttp){
+				$('#events').html(data);
+				$('#loader_result').hide();
+				$('#searchTerm').val('');
+				smiley();
+			}
+		});
+	}
+	if (active_menu == 'li_photos') {
+		//TODO fix me:
+		var searchTerm = $.trim($('#searchTerm').val());
+		if (searchTerm.length == 0) {
+			$('#searchTerm').focus();
+			return;
+		}
+		$('#div_result').html('');
+		$('#loader_result').show();
+		$.ajax({
+			type: "POST",
+			data: "cmd=search&searchTerm=" + searchTerm,
+			url: '/diaryweb',
+			success: function(data, type, xmlhttp){
+				$('#events').html(data);
+				$('#loader_result').hide();
+				$('#searchTerm').val('');
+				smiley();
+			}
+		});
+	}
 }
 function inactivate_all() {
 	$('#menu_list').children().removeClass('active');	
@@ -57,12 +81,14 @@ function inactivate_all() {
 function home(e) {
 	inactivate_all();
 	$('#li_home').addClass('active');
+	active_menu = 'li_home';
 	document.location.href = '/diaryweb';
 }
 
 function addday(e) {
 	inactivate_all();
 	$('#li_addday').addClass('active');
+	active_menu = 'li_addday';
 	$.ajax({
 		type: "GET",
 		data: "cmd=addday",
@@ -75,6 +101,7 @@ function addday(e) {
 function addevent(e) {
 	inactivate_all();
 	$('#li_addevent').addClass('active');
+	active_menu = 'li_addevent';
 	$.ajax({
 		type: "GET",
 		data: "cmd=addevent",
@@ -88,6 +115,7 @@ function addevent(e) {
 function allday() {
 	inactivate_all();
 	$('#li_allday').addClass('active');
+	active_menu = 'li_allday';
 	var now = new Date();
 	var months = now.getMonth();
 	var year = now.getFullYear();
@@ -106,6 +134,7 @@ function allday() {
 function videos() {
 	inactivate_all();
 	$('#li_videos').addClass('active');
+	active_menu = 'li_videos';
 	$.ajax({
 		type: "GET",
 		data: "cmd=videos",
@@ -119,12 +148,21 @@ function videos() {
 function photos() {
 	inactivate_all();
 	$('#li_photos').addClass('active');
+	active_menu = 'li_photos';
 	$.ajax({
 		type: "GET",
 		data: "cmd=photos",
 		url: '/diaryweb',
 		success: function(data, type, xmlhttp){
 			$('#content').html(data);
+		}
+	});
+	$("#searchTerm").autocomplete({
+		source: "/photos?cmd=keywords",
+		minLength: 2,
+		select: function( event, ui ) {
+			this.value = ui.item.value
+			search();
 		}
 	});
 }
