@@ -5,12 +5,14 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
+import java.net.URLDecoder;
 
 import javax.imageio.ImageIO;
 import javax.servlet.RequestDispatcher;
@@ -86,6 +88,17 @@ public class PhotoServlet extends HttpServlet {
             		response.getOutputStream().write(photoData.getData());
             	}
 			}
+		}
+		else if ("keywords".equals(cmd)) {
+			String term = URLDecoder.decode(request.getParameter("term"), "UTF-8");
+			List<String> keywords = photoService.searchKeywords(term);
+                        
+			response.setContentType("application/json; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			ObjectMapper mapper = new ObjectMapper();
+			mapper.writeValue(out, keywords);
+			return;
+                        
 		}
 		else if ("photos".equals(cmd)) {
 			response.setContentType("application/json; charset=UTF-8");
