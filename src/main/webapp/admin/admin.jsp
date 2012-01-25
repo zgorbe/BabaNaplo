@@ -13,7 +13,7 @@
 	    <link href="<c:url value="/css/admin.css" />" rel="stylesheet" type="text/css" media="screen" />
 	    <link href="<c:url value="/css/jquery-ui-1.8.9.custom.css" />" rel="stylesheet" type="text/css" media="screen" />
 	          
-		<script type="text/javascript" src="<c:url value="/js/jquery-1.4.2.js" />"></script>
+		<script type="text/javascript" src="<c:url value="/js/jquery-1.7.min.js" />"></script>
 		<script type="text/javascript" src="<c:url value="/js/jquery-ui-1.8.9.custom.min.js" />"></script>
 		<script type="text/javascript" src="<c:url value="/js/jquery-ui-timepicker-addon.js" />"></script>
 		<script type="text/javascript" src="<c:url value="/js/main.js" />"></script>

@@ -141,7 +141,10 @@ public class DiaryServlet extends HttpServlet {
 		}
 	
 		if ("photos".equals(command)) {
+			boolean slideshow = Boolean.valueOf(request.getParameter("slideshow"));
 			List<Photo> photos = photoService.findByCategory("baba");
+			
+			request.setAttribute("slideshow", slideshow);
 			request.setAttribute("photos", photos);
 			
 			RequestDispatcher rd = getServletContext().getRequestDispatcher("/photos.jsp");

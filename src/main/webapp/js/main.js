@@ -145,7 +145,7 @@ function photos() {
 	active_menu = 'li_photos';
 	$.ajax({
 		type: "GET",
-		data: "cmd=photos",
+		data: "cmd=photos&slideshow=true",
 		url: '/diaryweb',
 		success: function(data, type, xmlhttp){
 			$('#content').html(data);
@@ -157,6 +157,18 @@ function photos() {
 		select: function( event, ui ) {
 			this.value = ui.item.value
 			search();
+		}
+	});
+}
+
+function icon_photos(icon) {
+	var dataStr = 'cmd=photos&slideshow=' + icon;
+	$.ajax({
+		type: "GET",
+		data: dataStr,
+		url: '/diaryweb',
+		success: function(data, type, xmlhttp){
+			$('#content').html(data);
 		}
 	});
 }

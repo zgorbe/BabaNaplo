@@ -11,12 +11,13 @@
 	    <link href="<c:url value="/css/style.css" />" rel="stylesheet" type="text/css" media="screen" />
 	    <link href="<c:url value="/css/table.css" />" rel="stylesheet" type="text/css" media="screen" />
 	    <link href="<c:url value="/css/jquery-ui-1.8.9.custom.css" />" rel="stylesheet" type="text/css" media="screen" />
-	          
-		<script type="text/javascript" src="<c:url value="/js/jquery-1.4.2.js" />"></script>
+	    <link href="<c:url value="/css/fotorama.css" />" rel="stylesheet" type="text/css" media="screen" />	          
+		<script type="text/javascript" src="<c:url value="/js/jquery-1.7.min.js" />"></script>
 		<script type="text/javascript" src="<c:url value="/js/jquery-ui-1.8.9.custom.min.js" />"></script>
 		<script type="text/javascript" src="<c:url value="/js/jquery-ui-timepicker-addon.js" />"></script>
 		<script type="text/javascript" src="<c:url value="/js/main.js" />"></script>
 		<script type="text/javascript" src="<c:url value="/js/jquery.ui.datepicker-hu.js" />"></script>
+		<script type="text/javascript" src="<c:url value="/js/fotorama.js" />"></script>
 	    <title>Baba napló</title>		
 	</head>
 	<body>
