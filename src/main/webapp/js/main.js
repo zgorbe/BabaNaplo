@@ -54,23 +54,17 @@ function search() {
 		});
 	}
 	if (active_menu == 'li_photos') {
-		//TODO fix me:
 		var searchTerm = $.trim($('#searchTerm').val());
 		if (searchTerm.length == 0) {
 			$('#searchTerm').focus();
 			return;
 		}
-		$('#div_result').html('');
-		$('#loader_result').show();
 		$.ajax({
 			type: "POST",
-			data: "cmd=search&searchTerm=" + searchTerm,
-			url: '/diaryweb',
+			data: "cmd=search&term=" + searchTerm,
+			url: '/photos',
 			success: function(data, type, xmlhttp){
-				$('#events').html(data);
-				$('#loader_result').hide();
-				$('#searchTerm').val('');
-				smiley();
+				$('#content').html(data);
 			}
 		});
 	}
