@@ -15,4 +15,5 @@ public interface PhotoDAO {
 	PhotoData getDataByFilename(String filename);
 	List<Photo> searchPhotos(String searchTerm);
 	List<String> searchKeywords(String term);
+	List<PhotoData> getAllThumbsByCategory(String category);
 }

@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Order;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
@@ -54,6 +55,22 @@ public class PhotoDAOImpl implements PhotoDAO {
 		return photos;
 	}
 
+	@Override
+	public List<PhotoData> getAllThumbsByCategory(String category) {
+		Query query = new Query(where("category").is(category));
+		query.sort().on("createdate", Order.DESCENDING);
+		List<Photo> photos = photoMongoTemplate.find(query, Photo.class);
+		List<String> data_ids = new ArrayList<String>();
+		for (Photo p : photos) {
+			data_ids.add(p.getDataId());
+		}
+		Query dataQuery = new Query();
+		dataQuery.fields().include("thumbdata");
+		dataQuery.addCriteria(where("id").in(data_ids));
+		List<PhotoData> thumbs = photoMongoTemplate.find(dataQuery, PhotoData.class);
+		return thumbs;
+	}
+	
 	@Override
 	public List<Photo> findAll() {
 		List<Photo> photos = photoMongoTemplate.findAll(Photo.class);
