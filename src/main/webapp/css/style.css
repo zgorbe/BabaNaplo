@@ -140,7 +140,8 @@ a img {
 	font-size: 1.4em;
 }
 
-.post .title h1 {
+.post .title a {
+	color: white;
 }
 
 .post .entry {

@@ -10,11 +10,19 @@
 <% DiaryHelper diaryHelper = new DiaryHelper(); %>
 
 <div class="post">
-	<h1 class="title">Képek</h1>
+	<h1 class="title">Képek&nbsp;&nbsp;-&nbsp;
+	<c:choose>
+			<c:when test="${slideshow}">
+				<a href="javascript:void(0);" onclick="icon_photos('false');" >Váltás ikon nézetre</a>
+			</c:when>
+			<c:otherwise>
+				<a href="javascript:void(0);" onclick="icon_photos('true');" >Vissza a diavetítőhöz</a>
+			</c:otherwise>
+	</c:choose>
+	</h1>
 	<c:if test="${not empty photos}" >
 		<c:choose>
 			<c:when test="${slideshow}">
-				<p><button type="button" onclick="icon_photos('false');">Ikon nézet</button></p>
 				<div id="fotorama">
 					<c:forEach items="${photos}" var="photo">
 						<a href="/photos?cmd=data&filename=<%= ((Photo)pageContext.getAttribute("photo")).getFilename() %>">
@@ -24,7 +32,6 @@
 				</div>
 			</c:when>
 			<c:otherwise>
-				<p><button type="button" onclick="icon_photos('true');">Diavetítő</button></p>
 				<% List<Photo> photos = ((List<Photo>)request.getAttribute("photos"));  %>
 				<table cellspacing="13">
 					<tr>
