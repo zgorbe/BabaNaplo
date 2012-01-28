@@ -9,7 +9,7 @@
 <c:choose>
 	<c:when test="${not empty day}">
 		<div id="editday">
-			<form action="/diaryweb/admin" method="POST" accept-charset="UTF-8">
+			<form action="/naplo/admin" method="POST" accept-charset="UTF-8">
 				<table class="box-table-a">
 				    <tr>
 				        <td><label for="theDay">A nap dátuma:</label></td>
@@ -30,7 +30,7 @@
 		<br />
 		<div id="editevent">
 			<c:forEach items="${events}" var="event">
-				<form action="/diaryweb/admin" method="POST" accept-charset="UTF-8">
+				<form action="/naplo/admin" method="POST" accept-charset="UTF-8">
 					<table class="box-table-a">
 					    <tr>
 					        <td><label for="startDate">Az esemény kezdete:</label></td>

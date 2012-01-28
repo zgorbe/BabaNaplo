@@ -24,7 +24,7 @@
 		<div id="wrapper">
 			<div id="header">
 				<div id="logo">
-					<h1><a href="/diaryweb">Timcsi naplója</a></h1>
+					<h1><a href="/naplo">Timcsi naplója</a></h1>
 					<p>Stílus: <a href="http://www.freecsstemplates.org/" target="_blank">Free CSS Templates</a>.</p>
 				</div>
 				<div id="menu">
@@ -96,7 +96,7 @@
 						}
 					});
 					$("#searchTerm").autocomplete({
-						source: "/diaryweb?cmd=terms",
+						source: "/naplo?cmd=terms",
 						minLength: 2,
 						select: function( event, ui ) {
 							this.value = ui.item.value

@@ -3,7 +3,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
-<form action="/diaryweb" method="POST" accept-charset="UTF-8">
+<form action="/naplo" method="POST" accept-charset="UTF-8">
 	<table class="box-table-a">
 		<tr style="background-color: #FE2383; color: #fff">
 	        <td><label for="keyword">A keyword:</label></td>
@@ -31,7 +31,7 @@
 	    </tr>
 	    <tr>
 	    	<td><button type="submit">Küldés</button></td>
-        	<td><button type="button" onclick="document.location.href='/diaryweb';">Mégse</button></td>
+        	<td><button type="button" onclick="document.location.href='/naplo';">Mégse</button></td>
 	    </tr>
     </table>
     <input type="hidden" name="cmd" value="add_day" />

@@ -23,7 +23,7 @@
 				<form action="/photos" method="post" accept-charset="UTF-8">
 			</c:when>
 			<c:otherwise>
-				<form action="/diaryweb/admin" method="post" accept-charset="UTF-8">
+				<form action="/naplo/admin" method="post" accept-charset="UTF-8">
 			</c:otherwise>
 			</c:choose>
 				<table border="0" cellpadding="5" cellspacing="5">

@@ -9,7 +9,7 @@ function getEventsOfTheDay(dateText) {
 	$.ajax({
 		type: "GET",
 		data: "theDay=" + dateText,
-		url: '/diaryweb',
+		url: '/naplo',
 		success: function(data, type, xmlhttp){
 			$('#events').html(data);
 			$('#theDayInput').val(selectedDay);
@@ -24,7 +24,7 @@ function getLatestEvents() {
 	$.ajax({
 		type: "GET",
 		data: "cmd=latests",
-		url: '/diaryweb',
+		url: '/naplo',
 		success: function(data, type, xmlhttp){
 			$('#latests').html(data);
 			$('#loader_latests').hide();
@@ -44,7 +44,7 @@ function search() {
 		$.ajax({
 			type: "POST",
 			data: "cmd=search&searchTerm=" + searchTerm,
-			url: '/diaryweb',
+			url: '/naplo',
 			success: function(data, type, xmlhttp){
 				$('#events').html(data);
 				$('#loader_result').hide();
@@ -76,7 +76,7 @@ function home(e) {
 	inactivate_all();
 	$('#li_home').addClass('active');
 	active_menu = 'li_home';
-	document.location.href = '/diaryweb';
+	document.location.href = '/naplo';
 }
 
 function addday(e) {
@@ -86,7 +86,7 @@ function addday(e) {
 	$.ajax({
 		type: "GET",
 		data: "cmd=addday",
-		url: '/diaryweb',
+		url: '/naplo',
 		success: function(data, type, xmlhttp){
 			$('#content').html(data);
 		}
@@ -99,7 +99,7 @@ function addevent(e) {
 	$.ajax({
 		type: "GET",
 		data: "cmd=addevent",
-		url: '/diaryweb',
+		url: '/naplo',
 		success: function(data, type, xmlhttp){
 			$('#content').html(data);
 		}
@@ -116,7 +116,7 @@ function allday() {
 	$.ajax({
 		type: "GET",
 		data: "cmd=allday&year=" + year + "&months=" + months,
-		url: '/diaryweb',
+		url: '/naplo',
 		success: function(data, type, xmlhttp){
 			$('#content').html(data);
 			//$('#latests').html('');
@@ -132,7 +132,7 @@ function videos() {
 	$.ajax({
 		type: "GET",
 		data: "cmd=videos",
-		url: '/diaryweb',
+		url: '/naplo',
 		success: function(data, type, xmlhttp){
 			$('#content').html(data);
 		}
@@ -146,7 +146,7 @@ function photos() {
 	$.ajax({
 		type: "GET",
 		data: "cmd=photos&slideshow=true",
-		url: '/diaryweb',
+		url: '/naplo',
 		success: function(data, type, xmlhttp){
 			$('#content').html(data);
 		}
@@ -166,7 +166,7 @@ function icon_photos(icon) {
 	$.ajax({
 		type: "GET",
 		data: dataStr,
-		url: '/diaryweb',
+		url: '/naplo',
 		success: function(data, type, xmlhttp){
 			$('#content').html(data);
 		}
@@ -192,7 +192,7 @@ function datefilter() {
 	$.ajax({
 		type: "GET",
 		data: "cmd=allday&year=" + year + "&months=" + months,
-		url: '/diaryweb',
+		url: '/naplo',
 		success: function(data, type, xmlhttp){
 			$('#content').html(data);
 			$('#loader_all').hide();
@@ -233,7 +233,7 @@ function getDaysForAMonth(year, month) {
 	$.ajax({
 		type: "GET",
 		data: "cmd=getDays&key=" + year + "-" + month,
-		url: '/diaryweb',
+		url: '/naplo',
 		success: function(data, type, xmlhttp){
 		}
 	});	
@@ -264,7 +264,7 @@ function adminGetDay(dateText) {
 	$.ajax({
 		type: "POST",
 		data: "cmd=show&day=" + dateText,
-		url: '/diaryweb/admin',
+		url: '/naplo/admin',
 		success: function(data, type, xmlhttp){
 			$('#content').html(data);
 		}

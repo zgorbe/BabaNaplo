@@ -258,7 +258,7 @@ public class DiaryServlet extends HttpServlet {
 		
 		String key = request.getParameter("keyword");
 		if (!diaryHelper.md5(key).equals(keyword)) {
-			response.sendRedirect("/diaryweb");
+			response.sendRedirect("/naplo");
 			return;
 		}
 		String theDay = request.getParameter("theDay");
@@ -299,7 +299,7 @@ public class DiaryServlet extends HttpServlet {
 			diary.addEvent(df.newXMLGregorianCalendar(theDayCal), event);
 		}
 		
-		response.sendRedirect("/diaryweb");
+		response.sendRedirect("/naplo");
 	}
 
 	private void addKeyword(String key, Map<String, Object> requestContext) {

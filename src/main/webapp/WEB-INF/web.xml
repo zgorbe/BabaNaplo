@@ -64,7 +64,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>DiaryServlet</servlet-name>
-		<url-pattern>/diaryweb</url-pattern>
+		<url-pattern>/naplo</url-pattern>
 	</servlet-mapping>
 
 	<servlet>
@@ -73,7 +73,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>DiaryAdmin</servlet-name>
-		<url-pattern>/diaryweb/admin</url-pattern>
+		<url-pattern>/naplo/admin</url-pattern>
 	</servlet-mapping>
 
 	<servlet>
