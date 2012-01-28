@@ -236,6 +236,9 @@ public class DiaryServlet extends HttpServlet {
 			sb.append(" napos ");
 			request.setAttribute("age", sb.toString());
 			
+			List<Photo> photos = photoService.findByCategory("baba");
+			request.setAttribute("photos", photos);
+			
 	        RequestDispatcher rd = getServletContext().getRequestDispatcher("/diary.jsp");
 	        rd.forward(request, response);
 		}

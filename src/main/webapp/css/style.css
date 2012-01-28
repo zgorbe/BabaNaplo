@@ -117,10 +117,9 @@ a img {
 }
 
 #header-pic {
-	background: url("/images/img02.jpg") no-repeat left top;
-	padding-bottom: 10px;
+	padding-bottom: 15px;
 	width: 900px;
-	height: 261px;
+	height: 140px;
 }
 
 /* Content */

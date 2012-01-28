@@ -3,6 +3,11 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
   
+<%@page import="com.zotyo.photos.pojo.Photo"%>  
+<%@page import="com.zotyo.diary.web.DiaryHelper"%>
+
+<% DiaryHelper diaryHelper = new DiaryHelper(); %>
+  
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -11,13 +16,16 @@
 	    <link href="<c:url value="/css/style.css" />" rel="stylesheet" type="text/css" media="screen" />
 	    <link href="<c:url value="/css/table.css" />" rel="stylesheet" type="text/css" media="screen" />
 	    <link href="<c:url value="/css/jquery-ui-1.8.9.custom.css" />" rel="stylesheet" type="text/css" media="screen" />
-	    <link href="<c:url value="/css/fotorama.css" />" rel="stylesheet" type="text/css" media="screen" />	          
+	    <link href="<c:url value="/css/fotorama.css" />" rel="stylesheet" type="text/css" media="screen" />
+	    <link href="<c:url value="/css/jquery.thumbnailScroller.css" />" rel="stylesheet" type="text/css" media="screen" />
 		<script type="text/javascript" src="<c:url value="/js/jquery-1.7.min.js" />"></script>
 		<script type="text/javascript" src="<c:url value="/js/jquery-ui-1.8.9.custom.min.js" />"></script>
 		<script type="text/javascript" src="<c:url value="/js/jquery-ui-timepicker-addon.js" />"></script>
 		<script type="text/javascript" src="<c:url value="/js/main.js" />"></script>
 		<script type="text/javascript" src="<c:url value="/js/jquery.ui.datepicker-hu.js" />"></script>
 		<script type="text/javascript" src="<c:url value="/js/fotorama.js" />"></script>
+		<script type="text/javascript" src="<c:url value="/js/jquery.thumbnailScroller.js" />"></script>
+		
 	    <title>Baba napló</title>		
 	</head>
 	<body>
@@ -40,7 +48,21 @@
 			</div>
 			
 			<div id="page">
-				<div id="header-pic"></div>
+				<div id="header-pic">
+				<c:if test="${not empty photos}" >
+					<div id="tS1" class="jThumbnailScroller">
+						<div class="jTscrollerContainer">
+							<div class="jTscroller">
+								<c:forEach items="${photos}" var="photo">
+									<a href="javascript:void(0);" onclick="showimage('/photos?cmd=data&filename=<%= ((Photo)pageContext.getAttribute("photo")).getFilename() %>', '<%= diaryHelper.formatDateTime(((Photo)pageContext.getAttribute("photo")).getCreatedate()) %>', '<%= ((Photo)pageContext.getAttribute("photo")).getFilename() %>')">
+										<img src="/photos?cmd=thumbdata&filename=<%= ((Photo)pageContext.getAttribute("photo")).getFilename() %>" />
+									</a>
+								</c:forEach>
+							</div>
+						</div>
+					</div>
+				</c:if>
+				</div>
 				<div id="content">
 					<div id="loader_result" style="display: none;"><img src="images/loading_pink.gif" /></div>
 					<div id="events">
@@ -103,7 +125,20 @@
 							search();
 						}
 					});
+					$(function(){
+						window.onload=function(){ 
+							$("#tS1").thumbnailScroller({ 
+								scrollerType:"hoverAccelerate", 
+								scrollerOrientation:"horizontal", 
+								scrollEasing:"easeOutCirc", 
+								scrollEasingAmount:600, 
+								acceleration:1, 
+								noScrollCenterSpace:0 
+							});
+						}
+					});
 				</script>
+				<div id="dialog" style="display: none;"></div>
 		    </div>
 			<script type="text/javascript">
 				getEventsOfTheDay(selectedDay);
