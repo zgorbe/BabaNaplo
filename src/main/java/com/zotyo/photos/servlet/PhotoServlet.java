@@ -38,6 +38,7 @@ import com.zotyo.photos.pojo.Photo;
 import com.zotyo.photos.pojo.PhotoData;
 
 import com.zotyo.photos.service.PhotoService;
+import com.zotyo.photos.util.PhotoDataEnum;
 
 import static org.imgscalr.Scalr.*;
 
@@ -73,7 +74,7 @@ public class PhotoServlet extends HttpServlet {
 			String fileName = request.getParameter("filename");
 			if (fileName != null && !fileName.isEmpty()) {
             	response.setContentType("image/jpeg");
-            	PhotoData photoData = photoService.getDataByFilename(fileName);
+            	PhotoData photoData = photoService.getDataByFilename(fileName, PhotoDataEnum.THUMB_ONLY);
             	if (photoData != null && photoData.getThumbdata() != null) {
             		response.getOutputStream().write(photoData.getThumbdata());
             	}
@@ -83,7 +84,7 @@ public class PhotoServlet extends HttpServlet {
 			String fileName = request.getParameter("filename");
 			if (fileName != null && !fileName.isEmpty()) {
             	response.setContentType("image/jpeg");
-            	PhotoData photoData = photoService.getDataByFilename(fileName);
+            	PhotoData photoData = photoService.getDataByFilename(fileName, PhotoDataEnum.PICTURE_ONLY);
             	if (photoData != null && photoData.getData() != null) {
             		response.getOutputStream().write(photoData.getData());
             	}

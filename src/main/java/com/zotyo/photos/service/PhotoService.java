@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.zotyo.photos.pojo.Photo;
 import com.zotyo.photos.pojo.PhotoData;
+import com.zotyo.photos.util.PhotoDataEnum;
 
 public interface PhotoService {
 	void save(Photo photo, PhotoData photoData);
@@ -12,7 +13,7 @@ public interface PhotoService {
 	List<Photo> findByCategory(String category);
 	List<Photo> findAll();
 	Photo findByFilename(String filename);
-	PhotoData getDataByFilename(String filename);
+	PhotoData getDataByFilename(String filename, PhotoDataEnum dataFlag);
 	List<Photo> searchPhotos(String searchTerm);
 	List<String> searchKeywords(String term);
 }

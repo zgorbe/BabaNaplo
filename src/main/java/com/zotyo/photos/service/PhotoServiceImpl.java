@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.zotyo.photos.dao.PhotoDAO;
 import com.zotyo.photos.pojo.Photo;
 import com.zotyo.photos.pojo.PhotoData;
+import com.zotyo.photos.util.PhotoDataEnum;
 
 @Service
 public class PhotoServiceImpl implements PhotoService {
@@ -53,9 +54,9 @@ public class PhotoServiceImpl implements PhotoService {
 	}
 
 	@Override
-	public PhotoData getDataByFilename(String filename) {
+	public PhotoData getDataByFilename(String filename, PhotoDataEnum dataFlag) {
 		// TODO Auto-generated method stub
-		return photoDAO.getDataByFilename(filename);
+		return photoDAO.getDataByFilename(filename, dataFlag);
 	}
 
 	@Override

@@ -15,6 +15,7 @@ import static org.springframework.data.mongodb.core.query.Criteria.*;
 
 import com.zotyo.photos.pojo.Photo;
 import com.zotyo.photos.pojo.PhotoData;
+import com.zotyo.photos.util.PhotoDataEnum;
 
 @Repository
 public class PhotoDAOImpl implements PhotoDAO {
@@ -84,10 +85,24 @@ public class PhotoDAOImpl implements PhotoDAO {
 	}
 
 	@Override
-	public PhotoData getDataByFilename(String filename) {
+	public PhotoData getDataByFilename(String filename, PhotoDataEnum dataFlag) {
 		Photo photo = photoMongoTemplate.findOne(new Query(where("filename").is(filename)), Photo.class);
 		String data_id = photo.getDataId();
-		PhotoData photoData = photoMongoTemplate.findById(data_id, PhotoData.class);
+		
+		Query dataQuery = new Query();
+		switch (dataFlag) {
+			case THUMB_ONLY:
+				dataQuery.fields().include("thumbdata");
+				break;
+			case PICTURE_ONLY:
+				dataQuery.fields().include("data");
+				break;
+			default: 
+				break;
+		}
+		dataQuery.addCriteria(where("id").is(data_id));
+		PhotoData photoData = photoMongoTemplate.findOne(dataQuery, PhotoData.class);
+		
 		return photoData;
 	}
 

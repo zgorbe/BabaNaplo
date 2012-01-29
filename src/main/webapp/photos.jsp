@@ -62,10 +62,12 @@
 			    width: 511,
 			    height: 384,
 			    resize: true,
+			    arrowsColor: '#FD3790',
 			    backgroundColor: '#FBE2F3',
 			    thumbsBackgroundColor: '#F792C9',
 			    thumbBorderColor: '#FD3790',
 			    thumbSize: 50,
+			    preload: 0,
 			    transitionDuration: 1500,
 			    onShowImg: function(data){
 			    	//alert('Index of active photo: ' + data.index);
