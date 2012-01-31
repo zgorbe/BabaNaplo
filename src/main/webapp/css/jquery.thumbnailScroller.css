@@ -28,6 +28,7 @@ scrollers styling
 	left: 0;
 	top: 0;
 	display: inline-block; 
+  *display: inline; 
 }
 
 .jThumbnailScroller .jTscrollerNextButton,.jThumbnailScroller .jTscrollerPrevButton
