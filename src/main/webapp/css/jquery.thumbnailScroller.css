@@ -27,8 +27,7 @@ scrollers styling
 	margin: 0;
 	left: 0;
 	top: 0;
-	display: inline-block; *
-	display: inline;
+	display: inline-block; 
 }
 
 .jThumbnailScroller .jTscrollerNextButton,.jThumbnailScroller .jTscrollerPrevButton
@@ -72,8 +71,8 @@ scrollers styling
 	border-color: #FD3790;
 }
 
-.jThumbnailScroller .jTscroller a:first-child {
-	margin-left: 10px;
+.jThumbnailScroller .jTscroller {
+	padding-left: 10px;
 }
 
 .jThumbnailScroller .jTscroller a img {

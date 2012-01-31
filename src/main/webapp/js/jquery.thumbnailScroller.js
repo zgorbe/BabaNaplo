@@ -95,7 +95,7 @@ Homepage: manos.malihu.gr/jquery-thumbnail-scroller
 					$scroller.stop(true,true);
 				}
 			}
-			if((mouseCoordsY<$this.height()/2) && ($scroller.position().top>=0)){
+			/*if((mouseCoordsY<$this.height()/2) && ($scroller.position().top>=0)){
 				$scroller.stop(true,true).css("top",0); 
 			}else if((mouseCoordsY>$this.height()/2) && ($scroller.position().top<=-(totalHeight-$this.height()))){
 				$scroller.stop(true,true).css("top",-(totalHeight-$this.height())); 
@@ -106,7 +106,7 @@ Homepage: manos.malihu.gr/jquery-thumbnail-scroller
 				}else{
 					$scroller.stop(true,true);
 				}
-			}
+			}*/
 		}
 		//auto scrolling fn
 		var autoScrollingCount=0;
