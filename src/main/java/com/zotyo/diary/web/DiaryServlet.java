@@ -283,7 +283,6 @@ public class DiaryServlet extends HttpServlet {
 				GregorianCalendar startDateCal = diaryHelper.getStartDateCal(startDate);
 				event.setStartTime(df.newXMLGregorianCalendar(startDateCal));
 				day.getEventsOfTheDay().add(event);
-				//addKeyword(key, ((BindingProvider)diary).getRequestContext());
 				((BindingProvider)diary).getRequestContext().put(MessageContext.HTTP_REQUEST_HEADERS,
 					    Collections.singletonMap("keyword",Collections.singletonList(key)));
 				diary.addDay(day);
@@ -296,7 +295,6 @@ public class DiaryServlet extends HttpServlet {
 			event.setDuration(diaryHelper.getDuration(duration));
 			GregorianCalendar startDateCal = diaryHelper.getStartDateCal(startDate);
 			event.setStartTime(df.newXMLGregorianCalendar(startDateCal));
-			//addKeyword(key, ((BindingProvider)diary).getRequestContext());
 			((BindingProvider)diary).getRequestContext().put(MessageContext.HTTP_REQUEST_HEADERS,
 				    Collections.singletonMap("keyword",Collections.singletonList(key)));
 			diary.addEvent(df.newXMLGregorianCalendar(theDayCal), event);
@@ -305,25 +303,4 @@ public class DiaryServlet extends HttpServlet {
 		response.sendRedirect("/naplo");
 	}
 
-	private void addKeyword(String key, Map<String, Object> requestContext) {
-		Map<String, List<String>> header = new HashMap<String, List<String>>();
-		header.put("keyword", Collections.singletonList(key));
-		requestContext.put(MessageContext.HTTP_REQUEST_HEADERS, header);
-	}
-	
-	private List<Photo> getPhotos() throws IOException {
-/*		HttpClient httpclient = new DefaultHttpClient();
-		HttpGet getMethod = new HttpGet("http://mongie.herokuapp.com/home?cmd=photos");
-		HttpResponse resp = httpclient.execute(getMethod);
-		HttpEntity entity = resp.getEntity();*/
-		List<Photo> photos = new ArrayList<Photo>();
-/*		if (entity != null) {
-			byte[] src = EntityUtils.toByteArray(entity);
-			ObjectMapper mapper = new ObjectMapper();
-			photos = mapper.readValue(src, new TypeReference<List<Photo>>() {});
-		}
-		httpclient.getConnectionManager().shutdown();
-		*/
-		return photos;		
-	}
 }
