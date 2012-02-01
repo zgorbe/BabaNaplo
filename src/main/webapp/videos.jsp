@@ -28,16 +28,3 @@
     </div>
   </div>
 </div>
-
-<script type="text/javascript">
-  $(function(){
-    $("#tS2").thumbnailScroller({ 
-      scrollerType:"hoverAccelerate", 
-      scrollerOrientation:"horizontal", 
-      scrollEasing:"easeOutCirc", 
-      scrollEasingAmount:600, 
-      acceleration:1, 
-      noScrollCenterSpace:0 
-    });
-  });
-</script>
