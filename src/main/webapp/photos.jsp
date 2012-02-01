@@ -67,7 +67,6 @@
 			    thumbsBackgroundColor: '#F792C9',
 			    thumbBorderColor: '#FD3790',
 			    thumbSize: 50,
-			    preload: 0,
 			    transitionDuration: 1500,
 			    onShowImg: function(data){
 			    	//alert('Index of active photo: ' + data.index);
