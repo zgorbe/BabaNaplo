@@ -7,7 +7,7 @@
   <h1 class="title">Videók</h1>
   <p id="video_text">Nehéz az ébredés hétvégén, még reggel 9-kor is:</p>
 
-  <iframe id="videoframe" src="http://www.youtube.com/embed/nyRAONvirAM" allowfullscreen="1" width="560" frameborder="1" height="420"></iframe>
+  <iframe id="videoframe" onload="initVideos();" src="http://www.youtube.com/embed/nyRAONvirAM" allowfullscreen="1" width="560" frameborder="1" height="420"></iframe>
   
   <div id="tS2" class="jThumbnailScroller" style="height: 112px;">
     <div class="jTscrollerContainer">

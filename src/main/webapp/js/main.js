@@ -129,27 +129,26 @@ function videos() {
 	inactivate_all();
 	$('#li_videos').addClass('active');
 	active_menu = 'li_videos';
-	$.ajax({
-		type: "GET",
-		data: "cmd=videos",
-		url: '/naplo',
-		success: function(data, type, xmlhttp){
-			$('#content').html(data);
-			setTimeout("initVideos()", 800);
-		}
-	});
+  $.ajax({
+    type: "GET",
+    data: "cmd=videos",
+    url: '/naplo',
+    success: function(data, type, xmlhttp){
+      $('#content').html(data);
+      //setTimeout("initVideos()", 800);
+    }
+  });
 }
 
 function initVideos() {
 	$("#tS2").thumbnailScroller({ 
-        	scrollerType:"hoverAccelerate", 
-        	scrollerOrientation:"horizontal", 
-        	scrollEasing:"easeOutCirc", 
-        	scrollEasingAmount:600, 
-        	acceleration:1, 
-        	noScrollCenterSpace:0 
-        });
-
+    scrollerType:"hoverAccelerate", 
+    scrollerOrientation:"horizontal", 
+    scrollEasing:"easeOutCirc", 
+    scrollEasingAmount:600, 
+    acceleration:1, 
+    noScrollCenterSpace:0 
+  });
 }
 
 function photos() {
