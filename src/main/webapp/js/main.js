@@ -135,16 +135,21 @@ function videos() {
 		url: '/naplo',
 		success: function(data, type, xmlhttp){
 			$('#content').html(data);
-      $("#tS2").thumbnailScroller({ 
-        scrollerType:"hoverAccelerate", 
-        scrollerOrientation:"horizontal", 
-        scrollEasing:"easeOutCirc", 
-        scrollEasingAmount:600, 
-        acceleration:1, 
-        noScrollCenterSpace:0 
-      });
+			setTimeout("initVideos()", 100);
 		}
 	});
+}
+
+function initVideos() {
+	$("#tS2").thumbnailScroller({ 
+        	scrollerType:"hoverAccelerate", 
+        	scrollerOrientation:"horizontal", 
+        	scrollEasing:"easeOutCirc", 
+        	scrollEasingAmount:600, 
+        	acceleration:1, 
+        	noScrollCenterSpace:0 
+        });
+
 }
 
 function photos() {
