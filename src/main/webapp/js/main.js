@@ -135,7 +135,7 @@ function videos() {
 		url: '/naplo',
 		success: function(data, type, xmlhttp){
 			$('#content').html(data);
-			setTimeout("initVideos()", 100);
+			setTimeout("initVideos()", 800);
 		}
 	});
 }
