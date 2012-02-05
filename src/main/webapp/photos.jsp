@@ -73,10 +73,10 @@
 			    }
 			});
 			clearTimeout(timeout);
-        		timeout = setInterval(function(){
-				if (photoSize == i) { i = 0; }
-            			fotorama.trigger('showimg', i++);
-        		}, time);
+       		timeout = setInterval(function(){
+					if (photoSize == i) { i = 0; }
+           			fotorama.trigger('showimg', i++);
+       			}, time);
 		});
 	</script>	
 </div>

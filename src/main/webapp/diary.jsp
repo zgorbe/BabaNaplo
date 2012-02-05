@@ -111,21 +111,19 @@
 							onSelect: function(dateText, inst) { getEventsOfTheDay(dateText); setTimeout("updateCalendar()", 100); },
 							onChangeMonthYear: function(year, month, inst) { setTimeout("getDaysForAMonth("+year+", "+(month-1)+")", 100); }
 						});
-					});
-					$("#searchTerm").keypress(function(event) {
-						if ( event.which == 13 ) {
-							search();
-						}
-					});
-					$("#searchTerm").autocomplete({
-						source: "/naplo?cmd=terms",
-						minLength: 2,
-						select: function( event, ui ) {
-							this.value = ui.item.value
-							search();
-						}
-					});
-					$(function(){
+						$("#searchTerm").keypress(function(event) {
+							if ( event.which == 13 ) {
+								search();
+							}
+						});
+						$("#searchTerm").autocomplete({
+							source: "/naplo?cmd=terms",
+							minLength: 2,
+							select: function( event, ui ) {
+								this.value = ui.item.value
+								search();
+							}
+						});
 						window.onload=function(){ 
 							$("#tS1").thumbnailScroller({ 
 								scrollerType:"hoverAccelerate", 
@@ -136,15 +134,13 @@
 								noScrollCenterSpace:0 
 							});
 						}
+						getEventsOfTheDay(selectedDay);
+						getLatestEvents();
+						setTimeout("initCalendar()", 100);
 					});
 				</script>
 				<div id="dialog" style="display: none;"></div>
 		    </div>
-			<script type="text/javascript">
-				getEventsOfTheDay(selectedDay);
-				getLatestEvents();
-				setTimeout("initCalendar()", 100);
-			</script>
 		</div>
 		<div id="footer">
 			<p>&copy; 2011. Baba napló.</p>
