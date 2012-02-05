@@ -56,7 +56,7 @@
 	<script type="text/javascript">
 		$(function() {
 			var fotorama = $('#fotorama');
-			var timeout, i = 0, time=3500;
+			var timeout, i = 0, time=4000;
 			var photoSize = <c:out value="${fn:length(photos)}" />
 			fotorama.fotorama({
 			    width: 511,
@@ -67,7 +67,7 @@
 			    thumbsBackgroundColor: '#F792C9',
 			    thumbBorderColor: '#FD3790',
 			    thumbSize: 50,
-			    transitionDuration: 1500,
+			    transitionDuration: 2000,
 			    onShowImg: function(data){
 			    	//alert('Index of active photo: ' + data.index);
 			    }
