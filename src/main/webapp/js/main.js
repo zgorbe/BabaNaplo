@@ -198,7 +198,7 @@ function showimage(imageurl, date, filename) {
 
 function showvideo(videoid, text) {
 	$("#videoframe").attr('src', 'http://www.youtube.com/embed/'+videoid);
-  $("#video_text").html(text);
+	$("#video_text").html(text);
 }
 
 function datefilter() {

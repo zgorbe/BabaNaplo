@@ -5,7 +5,7 @@
 
 <div class="post">
   <h1 class="title">Videók</h1>
-  <p id="video_text">Nehéz az ébredés hétvégén, még reggel 9-kor is:</p>
+  <p id="video_text">Tudtok szájról olvasni?:</p>
 
   <iframe id="videoframe" onload="initVideos();" src="http://www.youtube.com/embed/zfEOzUcIGAg" allowfullscreen="1" width="560" frameborder="1" height="420"></iframe>
   
@@ -34,5 +34,3 @@
     </div>
   </div>
 </div>
-
-<iframe width="420" height="315" src="http://www.youtube.com/embed/" frameborder="0" allowfullscreen></iframe>
