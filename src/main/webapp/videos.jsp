@@ -5,13 +5,16 @@
 
 <div class="post">
   <h1 class="title">Videók</h1>
-  <p id="video_text">Tudtok szájról olvasni?:</p>
+  <p id="video_text">Enyém lesz a kocka!:</p>
 
-  <iframe id="videoframe" onload="initVideos();" src="http://www.youtube.com/embed/aUPrPxj3-r4" allowfullscreen="1" width="560" frameborder="1" height="420"></iframe>
+  <iframe id="videoframe" onload="initVideos();" src="http://www.youtube.com/embed/xbayBVMviQU" allowfullscreen="1" width="560" frameborder="1" height="420"></iframe>
   
   <div id="tS2" class="jThumbnailScroller" style="height: 112px;">
     <div class="jTscrollerContainer">
       <div class="jTscroller">
+        <a href="javascript:void(0);" onclick="showvideo('xbayBVMviQU','Enyém lesz a kocka!:');">
+          <img src="http://img.youtube.com/vi/xbayBVMviQU/2.jpg">
+        </a>
       	<a href="javascript:void(0);" onclick="showvideo('aUPrPxj3-r4','Tudtok szájról olvasni?:');">
           <img src="http://img.youtube.com/vi/aUPrPxj3-r4/2.jpg">
         </a>
