@@ -3,6 +3,7 @@ var month_days = [];
 var active_menu = 'li_home';
 var timeout;
 var photoSize;
+var photo_index = 0;
 
 function getEventsOfTheDay(dateText) {
 	selectedDay = dateText;
@@ -190,14 +191,13 @@ function icon_photos(icon) {
 
 function slideshow_start() {
 	clearTimeout(timeout);
-	var i = 0; 
 	var time = 4000;
 	var $fotorama = $('#fotorama'); 
 	photoSize = $('#photos_size').val();
 	
 	timeout = setInterval(function(){
-		if (photoSize == i) { i = 0; }
-		$fotorama.trigger('showimg', i++);
+		if (photoSize == photo_index) { photo_index = 0; }
+		$fotorama.trigger('showimg', photo_index++);
 	}, time);
 }
 
