@@ -1,6 +1,8 @@
 var selectedDay = getFormattedNow();
 var month_days = [];
 var active_menu = 'li_home';
+var timeout;
+var photoSize;
 
 function getEventsOfTheDay(dateText) {
 	selectedDay = dateText;
@@ -70,7 +72,8 @@ function search() {
 	}
 }
 function inactivate_all() {
-	$('#menu_list').children().removeClass('active');	
+	$('#menu_list').children().removeClass('active');
+	clearTimeout(timeout);
 }
 function home(e) {
 	inactivate_all();
@@ -183,6 +186,23 @@ function icon_photos(icon) {
 			$('#content').html(data);
 		}
 	});
+}
+
+function slideshow_start() {
+	clearTimeout(timeout);
+	var i = 0; 
+	var time = 4000;
+	var $fotorama = $('#fotorama'); 
+	photoSize = $('#photos_size').val();
+	
+	timeout = setInterval(function(){
+		if (photoSize == i) { i = 0; }
+		$fotorama.trigger('showimg', i++);
+	}, time);
+}
+
+function slideshow_stop() {
+	clearTimeout(timeout);
 }
 
 function showimage(imageurl, date, filename) {

@@ -14,6 +14,10 @@
 	<c:choose>
 			<c:when test="${slideshow}">
 				<a href="javascript:void(0);" onclick="icon_photos('false');" >Váltás ikon nézetre</a>
+				<span style="float: right;">
+				<a href="javascript:void(0);" onclick="slideshow_start();" ><img src="<c:url value="images/slideshow_start.png" />"></a>
+				<a href="javascript:void(0);" onclick="slideshow_stop();" ><img src="<c:url value="images/slideshow_pause.png" />"></a>
+				</span>
 			</c:when>
 			<c:otherwise>
 				<a href="javascript:void(0);" onclick="icon_photos('true');" >Vissza a diavetítőhöz</a>
@@ -53,11 +57,10 @@
 			</c:otherwise>
 		</c:choose>
 	</c:if>
+	<input id="photos_size" type="hidden" value="<c:out value='${fn:length(photos)}' />" />
 	<script type="text/javascript">
 		$(function() {
 			var fotorama = $('#fotorama');
-			var timeout, i = 0, time=4000;
-			var photoSize = <c:out value="${fn:length(photos)}" />
 			fotorama.fotorama({
 			    width: 511,
 			    height: 384,
@@ -72,11 +75,6 @@
 			    	//alert('Index of active photo: ' + data.index);
 			    }
 			});
-			clearTimeout(timeout);
-       		timeout = setInterval(function(){
-					if (photoSize == i) { i = 0; }
-           			fotorama.trigger('showimg', i++);
-       			}, time);
 		});
 	</script>	
 </div>
