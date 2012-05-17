@@ -7,11 +7,14 @@
   <h1 class="title">Videók</h1>
   <p id="video_text">Enyém lesz a kocka!:</p>
 
-  <iframe id="videoframe" onload="initVideos();" src="http://www.youtube.com/embed/xbayBVMviQU" allowfullscreen="1" width="560" frameborder="1" height="420"></iframe>
+  <iframe id="videoframe" onload="initVideos();" src="http://www.youtube.com/embed/XO2K6dlyvv4" allowfullscreen="1" width="560" frameborder="1" height="420"></iframe>
   
   <div id="tS2" class="jThumbnailScroller" style="height: 112px;">
     <div class="jTscrollerContainer">
       <div class="jTscroller">
+        <a href="javascript:void(0);" onclick="showvideo('XO2K6dlyvv4','Kiságyban állós, kacagós :)');">
+          <img src="http://img.youtube.com/vi/XO2K6dlyvv4/2.jpg">
+        </a>
         <a href="javascript:void(0);" onclick="showvideo('xbayBVMviQU','Enyém lesz a kocka!:');">
           <img src="http://img.youtube.com/vi/xbayBVMviQU/2.jpg">
         </a>
