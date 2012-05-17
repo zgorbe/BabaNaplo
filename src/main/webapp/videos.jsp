@@ -5,7 +5,7 @@
 
 <div class="post">
   <h1 class="title">Videók</h1>
-  <p id="video_text">Enyém lesz a kocka!:</p>
+  <p id="video_text">Kiságyban állós, kacagós :)</p>
 
   <iframe id="videoframe" onload="initVideos();" src="http://www.youtube.com/embed/XO2K6dlyvv4" allowfullscreen="1" width="560" frameborder="1" height="420"></iframe>
   
