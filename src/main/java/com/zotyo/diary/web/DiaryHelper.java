@@ -18,7 +18,8 @@ public class DiaryHelper {
 	
 	private SimpleDateFormat formatHU = new SimpleDateFormat("yyyy.MM.dd");
 	private SimpleDateFormat formatHM = new SimpleDateFormat("yyyy.MM.dd HH:mm");
-	
+	private SimpleDateFormat formatMonth = new SimpleDateFormat("yyyy-MM");
+
 	public GregorianCalendar getDayCal(String theDay) {
 		Date theDayDate = null;
 		try {
@@ -85,6 +86,10 @@ public class DiaryHelper {
  	
  	public String formatDateTime(Date date) {
 		return formatHM.format(date);
+	}
+
+	public String formatMonth(Day d) {
+		return "m" + formatMonth.format(d.getTheDay().toGregorianCalendar().getTime()); 
 	}
  	
 	public String md5(String md5) {

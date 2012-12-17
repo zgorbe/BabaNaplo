@@ -121,6 +121,15 @@ public class DiaryServlet extends HttpServlet {
 			
 			return;
 		}
+		if ("isotopedays".equals(command)) {
+			List<Day> days = new ArrayList<Day>();
+			days = diary.getAllDaysInDiary();
+			request.setAttribute("alldays", days);
+			RequestDispatcher rd = getServletContext().getRequestDispatcher("/isotopedays.jsp");
+			rd.forward(request, response);
+			
+			return;
+		}
 		if ("latests".equals(command)) {
 			List<Event> events = diary.getAllEvents();
 			List<Event> latests = new ArrayList<Event>();

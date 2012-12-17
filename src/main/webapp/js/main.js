@@ -74,6 +74,8 @@ function search() {
 }
 function inactivate_all() {
 	$('#menu_list').children().removeClass('active');
+	$('#content').css('float','right').css('width','570px');
+	$('#sidebar').show();
 	clearTimeout(timeout);
 }
 function home(e) {
@@ -124,6 +126,21 @@ function allday() {
 		success: function(data, type, xmlhttp){
 			$('#content').html(data);
 			//$('#latests').html('');
+			smiley();
+		}
+	});
+}
+
+function isotope() {
+	inactivate_all();
+	$('#li_isotope').addClass('active');
+	active_menu = 'li_isotope';
+	$.ajax({
+		type: "GET",
+		data: "cmd=isotopedays",
+		url: '/naplo',
+		success: function(data, type, xmlhttp){
+			$('#content').html(data);
 			smiley();
 		}
 	});

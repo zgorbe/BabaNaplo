@@ -25,6 +25,7 @@
 		<script type="text/javascript" src="<c:url value="/js/jquery.ui.datepicker-hu.js" />"></script>
 		<script type="text/javascript" src="<c:url value="/js/fotorama.js" />"></script>
 		<script type="text/javascript" src="<c:url value="/js/jquery.thumbnailScroller.js" />"></script>
+		<script type="text/javascript" src="<c:url value="/js/jquery.isotope.min.js" />"></script>
 		
 	    <title>Baba napló</title>		
 	</head>
@@ -43,6 +44,7 @@
             			<li id="li_photos"><a href="javascript:void(0);" onclick="photos();">Képek</a></li>
 						<li id="li_addday"><a href="javascript:void(0);" onclick="addday();">Új nap</a></li>
 						<li id="li_addevent"><a href="javascript:void(0);" onclick="addevent();">Új esemény</a></li>
+						<li id="li_isotope"><a href="javascript:void(0);" onclick="isotope();">Izotóp</a></li>
 					</ul>
 				</div>
 			</div>
