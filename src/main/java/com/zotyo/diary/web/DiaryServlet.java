@@ -124,6 +124,9 @@ public class DiaryServlet extends HttpServlet {
 		if ("isotopedays".equals(command)) {
 			List<Day> days = new ArrayList<Day>();
 			days = diary.getAllDaysInDiary();
+			if (days.size() > 0) {
+				days.remove(days.size() - 1); // removing the test day...
+			}
 			request.setAttribute("alldays", days);
 			RequestDispatcher rd = getServletContext().getRequestDispatcher("/isotopedays.jsp");
 			rd.forward(request, response);

@@ -303,6 +303,7 @@ button:hover {
 	width: 245px;
 	background: #ffffff;
 	border: 2px solid #FD3790;
+	border-radius: 5px 5px 5px 5px;
 	margin-bottom: 20px;
 }
 

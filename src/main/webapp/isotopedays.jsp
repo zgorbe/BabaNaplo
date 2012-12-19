@@ -70,12 +70,7 @@
 		var $container = $('#isotope_container'); 
 		$container.isotope({
 			itemSelector: '.isotope_item',
-			filter: '*',
-			animationOptions: {
-				duration: 750,
-				easing: 'linear',
-				queue: false
-			}
+			filter: '*'
 		});
 		$('div.post select').on('change', function() {
 			var year = $('#yearFilter').val();
@@ -83,13 +78,9 @@
 			var filterStr = '.m' + year + '-' + months;
 			$container.isotope({
 				itemSelector: '.isotope_item',
-				filter: filterStr,
-				animationOptions: {
-					duration: 750,
-					easing: 'linear',
-					queue: false
-				}
+				filter: filterStr
 			});
+			$container.isotope({sortBy : 'original-order', sortAscending : false});
 		});	
 	});
 	</script>

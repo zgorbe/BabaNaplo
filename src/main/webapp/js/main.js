@@ -79,9 +79,9 @@ function inactivate_all() {
 	clearTimeout(timeout);
 }
 function home(e) {
-	inactivate_all();
-	$('#li_home').addClass('active');
-	active_menu = 'li_home';
+	//inactivate_all();
+	//$('#li_home').addClass('active');
+	//active_menu = 'li_home';
 	document.location.href = '/naplo';
 }
 
