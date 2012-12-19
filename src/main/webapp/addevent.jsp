@@ -23,7 +23,7 @@
 	    </tr>
 		<tr>
 	        <td><label for="initialEvent">Az esemény:</label></td>
-	        <td><textarea name="initialEvent" cols="56" rows="6" ></textarea></td>
+	        <td><textarea name="initialEvent" cols="46" rows="6" ></textarea></td>
 	    </tr>
 	    <tr>
 	    	<td><button type="submit">Küldés</button></td>

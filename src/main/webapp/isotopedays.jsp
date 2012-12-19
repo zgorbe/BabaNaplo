@@ -67,10 +67,12 @@
 	$(function() {
 		$('#sidebar').hide();
 		$('#content').css('float','none').css('width','900px');
+		$("#monthsFilter").val('09');
+    
 		var $container = $('#isotope_container'); 
 		$container.isotope({
 			itemSelector: '.isotope_item',
-			filter: '*'
+			filter: '.m2011-09'
 		});
 		$('div.post select').on('change', function() {
 			var year = $('#yearFilter').val();

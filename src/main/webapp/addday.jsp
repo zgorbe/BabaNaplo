@@ -15,7 +15,7 @@
 	    </tr>
 	    <tr>
 	        <td><label for="name">Leírása:</label></td>
-	        <td><textarea name="descriptionOfTheDay" cols="56" rows="2" ></textarea></td>
+	        <td><textarea name="descriptionOfTheDay" cols="46" rows="2" ></textarea></td>
 	    </tr>
 	    <tr>
 	        <td><label for="startDate">Az esemény kezdete:</label></td>
@@ -27,7 +27,7 @@
 	    </tr>
 		<tr>
 	        <td><label for="initialEvent">Az esemény:</label></td>
-	        <td><textarea name="initialEvent" cols="56" rows="6" ></textarea></td>
+	        <td><textarea name="initialEvent" cols="46" rows="6" ></textarea></td>
 	    </tr>
 	    <tr>
 	    	<td><button type="submit">Küldés</button></td>
