@@ -68,7 +68,7 @@
 		$('#sidebar').hide();
 		$('#content').css('float','none').css('width','900px');
 		$("#monthsFilter").val('09');
-    
+    smiley();
 		var $container = $('#isotope_container'); 
 		$container.isotope({
 			itemSelector: '.isotope_item',
