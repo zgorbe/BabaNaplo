@@ -74,6 +74,11 @@
 			itemSelector: '.isotope_item',
 			filter: '.m2011-09'
 		});
+    $container.isotope({
+      sortBy : 'original-order', 
+      sortAscending : false
+    });
+    
 		$('div.post select').on('change', function() {
 			var year = $('#yearFilter').val();
 			var months = $('#monthsFilter').val();
@@ -82,7 +87,10 @@
 				itemSelector: '.isotope_item',
 				filter: filterStr
 			});
-			$container.isotope({sortBy : 'original-order', sortAscending : false});
+      $container.isotope({
+        sortBy : 'original-order', 
+        sortAscending : false
+      });
 		});	
 	});
 	</script>
