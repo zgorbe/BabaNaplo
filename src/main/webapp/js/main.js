@@ -111,7 +111,7 @@ function addevent(e) {
 		}
 	});	
 }
-
+/* Unused function, replaced by isotope_all_days() */
 function allday() {
 	inactivate_all();
 	$('#li_allday').addClass('active');
@@ -135,6 +135,21 @@ function isotope() {
 	inactivate_all();
 	$('#li_isotope').addClass('active');
 	active_menu = 'li_isotope';
+	$.ajax({
+		type: "GET",
+		data: "cmd=isotopedays",
+		url: '/naplo',
+		success: function(data, type, xmlhttp){
+			$('#content').html(data);
+			smiley();
+		}
+	});
+}
+
+function isotope_all_days() {
+	inactivate_all();
+	$('#li_allday').addClass('active');
+	active_menu = 'li_allday';
 	$.ajax({
 		type: "GET",
 		data: "cmd=isotopedays",
