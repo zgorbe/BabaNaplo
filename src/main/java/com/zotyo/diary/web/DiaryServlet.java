@@ -151,7 +151,6 @@ public class DiaryServlet extends HttpServlet {
 			
 			return;
 		}
-	
 		if ("photos".equals(command)) {
 			boolean slideshow = Boolean.valueOf(request.getParameter("slideshow"));
 			List<Photo> photos = photoService.findByCategory("baba");
@@ -164,7 +163,15 @@ public class DiaryServlet extends HttpServlet {
 			
 			return;
 		}
-		
+		if ("isotopephotos".equals(command)) {
+			List<Photo> photos = photoService.findByCategory("baba");
+			request.setAttribute("photos", photos);
+			
+			RequestDispatcher rd = getServletContext().getRequestDispatcher("/isotopephotos.jsp");
+			rd.forward(request, response);
+			
+			return;
+		}
 		if ("getDays".equals(command)) {
 			String key = request.getParameter("key");
 			List<Integer> days = diaryCache.getEventDays(key, diary);

@@ -68,16 +68,16 @@
 		$('#sidebar').hide();
 		$('#content').css('float','none').css('width','900px');
 		$("#monthsFilter").val('09');
-    smiley();
+    	smiley();
 		var $container = $('#isotope_container'); 
 		$container.isotope({
 			itemSelector: '.isotope_item',
 			filter: '.m2011-09'
 		});
-    $container.isotope({
-      sortBy : 'original-order', 
-      sortAscending : false
-    });
+		$container.isotope({
+			sortBy : 'original-order', 
+			sortAscending : false
+		});
     
 		$('div.post select').on('change', function() {
 			var year = $('#yearFilter').val();
@@ -87,10 +87,10 @@
 				itemSelector: '.isotope_item',
 				filter: filterStr
 			});
-      $container.isotope({
-        sortBy : 'original-order', 
-        sortAscending : false
-      });
+			$container.isotope({
+				sortBy : 'original-order', 
+				sortAscending : false
+			});
 		});	
 	});
 	</script>

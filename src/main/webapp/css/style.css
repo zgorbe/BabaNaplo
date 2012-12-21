@@ -356,3 +356,11 @@ button:hover {
        -o-transition-duration: 0s;
           transition-duration: 0s;
 }
+
+#isotope_container img {
+	border: 5px solid #FBE2F3;
+    border-radius: 3px 3px 3px 3px;
+}
+
+.photo_item {
+	padding: 10px;
