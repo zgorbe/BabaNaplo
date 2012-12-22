@@ -16,9 +16,10 @@
 				for (int i = 0; i < photos.size(); i++) {
 					Photo photo = photos.get(i); %>
 					<div class="photo_item">
-						<img src="/photos?cmd=thumbdata&filename=<%= photo.getFilename() %>" title="<%= photo.getDescription() %>" />
+						<img data-filename="<%= photo.getFilename() %>" data-createdate="<%= diaryHelper.formatDateTime(photo.getCreatedate()) %>" src="/photos?cmd=thumbdata&filename=<%= photo.getFilename() %>" title="<%= photo.getDescription() %>" />
 					</div>
 				<% } %>
+			<div id="dialog" style="display: none;"></div>				
 		</c:if>
 		<script type="text/javascript">
 			$(function() {
@@ -31,30 +32,23 @@
 					filter: '*'
 				});
 
-				$container.on('mouseenter', 'img', function() {
+				$container.on('click', 'img', function() {
 					var $this = $(this);
 					var width = parseInt($this.css('width'), 10);
 					var height = parseInt($this.css('height'), 10);
-					$this.attr('width', width * 2);
-					$this.attr('height', height * 2);
-					$container.isotope('reLayout');
-				});
-				$container.on('mouseleave', 'img', function() {
-					var $this = $(this);
-					var width = parseInt($this.css('width'), 10);
-					var height = parseInt($this.css('height'), 10);
-					$this.attr('width', width / 2);
-					$this.attr('height', height / 2);
+					if ($this.hasClass('selected')) {
+						$this.attr('width', width / 2);
+						$this.attr('height', height / 2);
+						showimage('/photos?cmd=data&filename='+$this.data('filename'), $this.data('createdate'), $this.data('filename'));
+					} else {
+						$this.attr('width', width * 2);
+						$this.attr('height', height * 2);
+						$this.attr('src', '/photos?cmd=data&filename='+$this.data('filename'));
+					}
+					$this.toggleClass('selected');
 					$container.isotope('reLayout');
 				});
 			});
-
-			/*
-			$container.delegate( '.element', 'click', function(){
-				$(this).toggleClass('large');
-				$container.isotope('reLayout');
-			});
-			*/
 		</script>	
 	</div>
 </div>

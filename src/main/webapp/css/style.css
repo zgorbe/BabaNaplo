@@ -360,7 +360,11 @@ button:hover {
 #isotope_container img {
 	border: 5px solid #FBE2F3;
     border-radius: 3px 3px 3px 3px;
+    cursor: pointer;
 }
-
+#isotope_container img:hover {
+	border-color: #FD3790;
+}
 .photo_item {
 	padding: 10px;
+}
