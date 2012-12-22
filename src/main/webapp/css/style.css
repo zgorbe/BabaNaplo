@@ -357,7 +357,7 @@ button:hover {
           transition-duration: 0s;
 }
 
-#isotope_container img {
+.photo_item img {
 	border: 5px solid #FBE2F3;
     border-radius: 3px 3px 3px 3px;
     cursor: pointer;

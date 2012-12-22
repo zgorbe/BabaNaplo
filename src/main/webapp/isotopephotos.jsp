@@ -48,6 +48,9 @@
 					$this.toggleClass('selected');
 					$container.isotope('reLayout');
 				});
+				$('#isotope_container img').last().on('load', function() {
+					$container.isotope('reLayout');
+				});
 			});
 		</script>	
 	</div>
