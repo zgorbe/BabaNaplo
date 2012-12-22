@@ -30,9 +30,22 @@
 					itemSelector: '.photo_item',
 					filter: '*'
 				});
-				$container.isotope({
-					sortBy : 'original-order', 
-					sortAscending : false
+
+				$container.on('mouseenter', 'img', function() {
+					var $this = $(this);
+					var width = parseInt($this.css('width'), 10);
+					var height = parseInt($this.css('height'), 10);
+					$this.attr('width', width * 2);
+					$this.attr('height', height * 2);
+					$container.isotope('reLayout');
+				});
+				$container.on('mouseleave', 'img', function() {
+					var $this = $(this);
+					var width = parseInt($this.css('width'), 10);
+					var height = parseInt($this.css('height'), 10);
+					$this.attr('width', width / 2);
+					$this.attr('height', height / 2);
+					$container.isotope('reLayout');
 				});
 			});
 

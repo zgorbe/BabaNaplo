@@ -72,9 +72,7 @@
 		var $container = $('#isotope_container'); 
 		$container.isotope({
 			itemSelector: '.isotope_item',
-			filter: '.m2011-09'
-		});
-		$container.isotope({
+			filter: '.m2011-09',
 			sortBy : 'original-order', 
 			sortAscending : false
 		});
@@ -85,9 +83,7 @@
 			var filterStr = '.m' + year + '-' + months;
 			$container.isotope({
 				itemSelector: '.isotope_item',
-				filter: filterStr
-			});
-			$container.isotope({
+				filter: filterStr,
 				sortBy : 'original-order', 
 				sortAscending : false
 			});
