@@ -39,7 +39,7 @@
 				<div id="menu">
 					<ul id="menu_list">
 						<li id="li_home" class="active"><a href="javascript:void(0);" onclick="home();">Home</a></li>
-						<li id="li_allday"><a href="javascript:void(0);" onclick="isotope_all_days();">Összes nap</a></li>
+						<li id="li_allday"><a href="javascript:void(0);" onclick="isotope_all_days();">Összes esemény</a></li>
             			<li id="li_videos"><a href="javascript:void(0);" onclick="videos();">Videók</a></li>
             			<li id="li_photos"><a href="javascript:void(0);" onclick="photos();">Képek</a></li>
 						<li id="li_addday"><a href="javascript:void(0);" onclick="addday();">Új nap</a></li>

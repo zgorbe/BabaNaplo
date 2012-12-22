@@ -13,7 +13,7 @@
 <% DiaryHelper diaryHelper = new DiaryHelper(); %>
 
 <div class="post">
-	<h1 class="title">A naplóban szereplő napok</h1>
+	<h1 class="title">A naplóban szereplő események</h1>
 	<table border="0" cellspacing="0" cellpadding="3" style="width:100%;">
 		<tr>
 			<td align="center" id="loader_all" style="display: none;"><img src="images/loading_pink.gif"></td>
