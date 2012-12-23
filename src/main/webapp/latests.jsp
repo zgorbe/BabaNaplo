@@ -31,6 +31,6 @@
 		</div>
 	</div>
 	<div class="meta">
-		<p class="links"><a href="#" class="comments" onclick="allday();">További események</a></p>
+		<p class="links"><a href="#" class="comments" onclick="isotope_all_days();">További események</a></p>
 	</div>
 </div>

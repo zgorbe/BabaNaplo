@@ -135,14 +135,14 @@ function isotope_all_days() {
 	if ($('#li_allday').hasClass('active')) {
 		return;
 	}
-	$('#li_allday').addClass('active');
-	active_menu = 'li_allday';
 	$.ajax({
 		type: "GET",
 		data: "cmd=isotopedays",
 		url: '/naplo',
 		success: function(data, type, xmlhttp) {
 			inactivate_all();
+			$('#li_allday').addClass('active');
+			active_menu = 'li_allday';
 			$('#content').html(data);
 			smiley();
 		}
@@ -175,20 +175,24 @@ function initVideos() {
   });
 }
 
-function isotope() {
-	inactivate_all();
-	$('#li_isotope').addClass('active');
-	active_menu = 'li_isotope';
+function isotope_photos() {
+	if ($('#li_photos').hasClass('active')) {
+		return;
+	}
 	$.ajax({
 		type: "GET",
 		data: "cmd=isotopephotos",
 		url: '/naplo',
 		success: function(data, type, xmlhttp){
+			inactivate_all();
+			$('#li_photos').addClass('active');
+			active_menu = 'li_photos';
 			$('#content').html(data);
 		}
 	});
 }
 
+/* Unused function, replaced by isotope_photos() */
 function photos() {
 	inactivate_all();
 	$('#li_photos').addClass('active');

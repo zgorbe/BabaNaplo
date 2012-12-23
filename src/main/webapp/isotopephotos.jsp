@@ -39,6 +39,7 @@
 					if ($this.hasClass('selected')) {
 						$this.attr('width', width / 2);
 						$this.attr('height', height / 2);
+						$this.attr('src', '/photos?cmd=thumbdata&filename='+$this.data('filename'));
 						showimage('/photos?cmd=data&filename='+$this.data('filename'), $this.data('createdate'), $this.data('filename'));
 					} else {
 						$this.attr('width', width * 2);

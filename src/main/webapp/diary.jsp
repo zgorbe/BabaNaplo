@@ -16,14 +16,14 @@
 	    <link href="<c:url value="/css/style.css" />" rel="stylesheet" type="text/css" media="screen" />
 	    <link href="<c:url value="/css/table.css" />" rel="stylesheet" type="text/css" media="screen" />
 	    <link href="<c:url value="/css/jquery-ui-1.8.9.custom.css" />" rel="stylesheet" type="text/css" media="screen" />
-	    <link href="<c:url value="/css/fotorama.css" />" rel="stylesheet" type="text/css" media="screen" />
+	    <!--link href="<c:url value="/css/fotorama.css" />" rel="stylesheet" type="text/css" media="screen" /-->
 	    <link href="<c:url value="/css/jquery.thumbnailScroller.css" />" rel="stylesheet" type="text/css" media="screen" />
 		<script type="text/javascript" src="<c:url value="/js/jquery-1.7.min.js" />"></script>
 		<script type="text/javascript" src="<c:url value="/js/jquery-ui-1.8.9.custom.min.js" />"></script>
 		<script type="text/javascript" src="<c:url value="/js/jquery-ui-timepicker-addon.js" />"></script>
 		<script type="text/javascript" src="<c:url value="/js/main.js" />"></script>
 		<script type="text/javascript" src="<c:url value="/js/jquery.ui.datepicker-hu.js" />"></script>
-		<script type="text/javascript" src="<c:url value="/js/fotorama.js" />"></script>
+		<!--script type="text/javascript" src="<c:url value="/js/fotorama.js" />"></script-->
 		<script type="text/javascript" src="<c:url value="/js/jquery.thumbnailScroller.js" />"></script>
 		<script type="text/javascript" src="<c:url value="/js/jquery.isotope.min.js" />"></script>
 		
@@ -41,10 +41,9 @@
 						<li id="li_home" class="active"><a href="javascript:void(0);" onclick="home();">Home</a></li>
 						<li id="li_allday"><a href="javascript:void(0);" onclick="isotope_all_days();">Összes esemény</a></li>
             			<li id="li_videos"><a href="javascript:void(0);" onclick="videos();">Videók</a></li>
-            			<li id="li_photos"><a href="javascript:void(0);" onclick="photos();">Képek</a></li>
+            			<li id="li_photos"><a href="javascript:void(0);" onclick="isotope_photos();">Képek</a></li>
 						<li id="li_addday"><a href="javascript:void(0);" onclick="addday();">Új nap</a></li>
 						<li id="li_addevent"><a href="javascript:void(0);" onclick="addevent();">Új esemény</a></li>
-						<li id="li_isotope"><a href="javascript:void(0);" onclick="isotope();">Izotóp</a></li>
 					</ul>
 				</div>
 			</div>
