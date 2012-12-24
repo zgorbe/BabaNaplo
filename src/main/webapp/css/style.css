@@ -357,11 +357,22 @@ button:hover {
           transition-duration: 0s;
 }
 
-.photo_item img {
+img.cancel, img.zoom {
+	cursor: pointer;
+	border: 2px solid #FBE2F3;
+	border-radius: 3px 3px 3px 3px;
+}
+img.baba {
 	border: 5px solid #FBE2F3;
     border-radius: 3px 3px 3px 3px;
     cursor: pointer;
 }
+
+img.selected {
+	border: 5px solid #FBE2F3;
+    cursor: default;
+}
+
 #isotope_container img:hover {
 	border-color: #FD3790;
 }
