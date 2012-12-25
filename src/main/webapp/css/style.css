@@ -357,6 +357,11 @@ button:hover {
           transition-duration: 0s;
 }
 
+div.buttons {
+	padding: 3px;
+}
+
+
 img.cancel, img.zoom {
 	cursor: pointer;
 	border: 2px solid #FBE2F3;
