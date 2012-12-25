@@ -16,6 +16,10 @@
 				for (int i = 0; i < photos.size(); i++) {
 					Photo photo = photos.get(i); %>
 					<div class="photo_item">
+						<div class="buttons" align="right" style="display:none;">
+							<img alt="P" class="zoom" src="images/zoom.png" />
+							<img alt="X" class="cancel" src="images/cancel.png" />
+						</div>
 						<img class="baba" data-filename="<%= photo.getFilename() %>" data-createdate="<%= diaryHelper.formatDateTime(photo.getCreatedate()) %>" src="/photos?cmd=thumbdata&filename=<%= photo.getFilename() %>" title="<%= photo.getDescription() %>" />
 					</div>
 				<% } %>
@@ -42,41 +46,24 @@
 						$this.attr('width', width * 2);
 						$this.attr('height', height * 2);
 						$this.attr('src', '/photos?cmd=data&filename='+$this.data('filename'));
-						var $tempContainer = $this.parent();
-						$('<img></img>', {
-							style: 'float: right',
-							alt: 'P',
-							class: 'cancel',
-							src: 'images/cancel.png'
-						}).appendTo($tempContainer);
-						$('<img></img>', {
-							style: 'float: right',
-							alt: 'P',
-							class: 'zoom',
-							src: 'images/zoom.png'
-						}).appendTo($tempContainer);
+						$this.siblings('div.buttons').show();
 					}
 					$this.toggleClass('selected');
 					$container.isotope('reLayout');
 				});
 				$container.on('click', 'img.zoom', function() {
-					var $that = $(this).siblings().first();
-					showimage('/photos?cmd=data&filename='+$that.data('filename'), $that.data('createdate'), $that.data('filename'));					
+					var $img = $(this).parent().siblings('img.baba');
+					showimage('/photos?cmd=data&filename='+$img.data('filename'), $img.data('createdate'), $img.data('filename'));					
 				});
 				$container.on('click', 'img.cancel', function() {
 					var $this = $(this);
-					var $that = $this.siblings().first();
-					var width = parseInt($that.css('width'), 10);
-					var height = parseInt($that.css('height'), 10);
-					$that.attr('width', width / 2);
-					$that.attr('height', height / 2);
-					$that.toggleClass('selected');
-					$this.siblings().each(function() {
-						if (!$(this).hasClass('baba')) {
-							$(this).remove();	
-						}
-					});
-					$this.remove();
+					var $img = $this.parent().siblings('img.baba');
+					var width = parseInt($img.css('width'), 10);
+					var height = parseInt($img.css('height'), 10);
+					$img.attr('width', width / 2);
+					$img.attr('height', height / 2);
+					$img.toggleClass('selected');
+					$img.siblings('div.buttons').hide();
 					$container.isotope('reLayout');
 				});
 				$('#isotope_container img').last().on('load', function() {
