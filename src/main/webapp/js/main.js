@@ -21,6 +21,7 @@ function getEventsOfTheDay(dateText) {
 		}
 	});
 }
+
 function getLatestEvents() {
 	$('#div_latests').html('');
 	$('#loader_latests').show();
@@ -35,6 +36,7 @@ function getLatestEvents() {
 		}
 	});
 }
+
 function search() {
 	if (active_menu == 'li_home') {
 		var searchTerm = $.trim($('#searchTerm').val());
@@ -72,16 +74,15 @@ function search() {
 		});
 	}
 }
+
 function inactivate_all() {
 	$('#menu_list').children().removeClass('active');
 	$('#content').css('float','right').css('width','570px');
 	$('#sidebar').show();
 	clearTimeout(timeout);
 }
+
 function home(e) {
-	//inactivate_all();
-	//$('#li_home').addClass('active');
-	//active_menu = 'li_home';
 	document.location.href = '/naplo';
 }
 
@@ -98,6 +99,7 @@ function addday(e) {
 		}
 	});
 }
+
 function addevent(e) {
 	inactivate_all();
 	$('#li_addevent').addClass('active');
@@ -130,7 +132,6 @@ function allday() {
 		}
 	});
 }
-
 function isotope_all_days() {
 	if ($('#li_allday').hasClass('active')) {
 		return;
@@ -292,12 +293,12 @@ function getFormattedNow() {
 
 function smiley() {
 	$('.entry').each(function(index, element) {
-	  var tmp = $(element).html().replace(/:\)/g, '<img src="images/smiley.png" alt=":-)" />');
-	  $(element).html(tmp);
+		var tmp = $(element).html().replace(/:\)/g, '<img src="images/smiley.png" alt=":-)" />');
+		$(element).html(tmp);
 	});
-  $('.isotope_item').each(function(index, element) {
-	  var tmp = $(element).html().replace(/:\)/g, '<img src="images/smiley.png" alt=":-)" />');
-	  $(element).html(tmp);
+    $('.isotope_item').each(function(index, element) {
+    	var tmp = $(element).html().replace(/:\)/g, '<img src="images/smiley.png" alt=":-)" />');
+    	$(element).html(tmp);
 	});
 }
 
@@ -349,3 +350,48 @@ function adminGetDay(dateText) {
 		}
 	});	
 }
+
+var ImagePreview = {
+	$container: null,
+	
+	init: function($container) {
+		this.$container = $container;
+		$container.on('click', 'img.baba', function() {
+			ImagePreview.click($(this));
+		});
+		$container.on('click', 'img.zoom', function() {
+			ImagePreview.zoom($(this));
+		});
+		$container.on('click', 'img.cancel', function() {
+			ImagePreview.cancel($(this));
+		});
+	},
+	click: function($image) {
+		var width = parseInt($image.css('width'), 10);
+		var height = parseInt($image.css('height'), 10);
+		if ($image.hasClass('selected')) {
+			return;
+		} else {
+			$image.attr('width', width * 2);
+			$image.attr('height', height * 2);
+			$image.attr('src', '/photos?cmd=data&filename='+$image.data('filename'));
+			$image.siblings('div.buttons').show();
+		}
+		$image.toggleClass('selected');
+		this.$container.isotope('reLayout');
+	},
+	zoom: function($zoomImage) {
+		var $img = $zoomImage.parent().siblings('img.baba');
+		showimage('/photos?cmd=data&filename='+$img.data('filename'), $img.data('createdate'), $img.data('filename'));					
+	},
+	cancel: function($cancelImage) {
+		var $img = $cancelImage.parent().siblings('img.baba');
+		var width = parseInt($img.css('width'), 10);
+		var height = parseInt($img.css('height'), 10);
+		$img.attr('width', width / 2);
+		$img.attr('height', height / 2);
+		$img.toggleClass('selected');
+		$img.siblings('div.buttons').hide();
+		this.$container.isotope('reLayout');
+	}
+};

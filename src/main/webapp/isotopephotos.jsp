@@ -35,40 +35,11 @@
 					itemSelector: '.photo_item',
 					filter: '*'
 				});
-
-				$container.on('click', 'img.baba', function() {
-					var $this = $(this);
-					var width = parseInt($this.css('width'), 10);
-					var height = parseInt($this.css('height'), 10);
-					if ($this.hasClass('selected')) {
-						return;
-					} else {
-						$this.attr('width', width * 2);
-						$this.attr('height', height * 2);
-						$this.attr('src', '/photos?cmd=data&filename='+$this.data('filename'));
-						$this.siblings('div.buttons').show();
-					}
-					$this.toggleClass('selected');
-					$container.isotope('reLayout');
-				});
-				$container.on('click', 'img.zoom', function() {
-					var $img = $(this).parent().siblings('img.baba');
-					showimage('/photos?cmd=data&filename='+$img.data('filename'), $img.data('createdate'), $img.data('filename'));					
-				});
-				$container.on('click', 'img.cancel', function() {
-					var $this = $(this);
-					var $img = $this.parent().siblings('img.baba');
-					var width = parseInt($img.css('width'), 10);
-					var height = parseInt($img.css('height'), 10);
-					$img.attr('width', width / 2);
-					$img.attr('height', height / 2);
-					$img.toggleClass('selected');
-					$img.siblings('div.buttons').hide();
-					$container.isotope('reLayout');
-				});
 				$('#isotope_container img').last().on('load', function() {
 					$container.isotope('reLayout');
 				});
+				
+				ImagePreview.init($container);
 			});
 		</script>	
 	</div>
