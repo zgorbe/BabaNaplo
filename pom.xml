@@ -11,6 +11,7 @@
 	<properties>
 		<java.version>1.6</java.version>
 		<spring.version>3.1.1.RELEASE</spring.version>
+		<spring.mobile.version>1.0.1.RELEASE</spring.mobile.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
@@ -122,11 +123,11 @@
 			<artifactId>spring-core</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
-		<dependency>
+		<!-- dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
 			<version>${spring.version}</version>
-		</dependency>
+		</dependency -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-tx</artifactId>
@@ -141,6 +142,11 @@
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-mongodb</artifactId>
 			<version>1.0.0.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.mobile</groupId>
+			<artifactId>spring-mobile-device</artifactId>
+			<version>${spring.mobile.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>asm</groupId>

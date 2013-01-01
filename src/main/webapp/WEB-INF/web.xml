@@ -31,6 +31,15 @@
 		<url-pattern>/admin/*</url-pattern>
 	</filter-mapping>
 
+	<filter>
+	    <filter-name>DeviceResolverRequestFilter</filter-name>
+	    <filter-class>org.springframework.mobile.device.DeviceResolverRequestFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>DeviceResolverRequestFilter</filter-name>
+		<url-pattern>/</url-pattern>
+	</filter-mapping>
+	
     <servlet>
       <servlet-name>DiaryWS</servlet-name>
       <servlet-class>
@@ -62,6 +71,15 @@
 	<servlet-mapping>
 		<servlet-name>DiaryServlet</servlet-name>
 		<url-pattern>/naplo</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>DiaryMobileServlet</servlet-name>
+		<servlet-class>com.zotyo.diary.web.DiaryMobileServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DiaryMobileServlet</servlet-name>
+		<url-pattern>/m/naplo</url-pattern>
 	</servlet-mapping>
 
 	<servlet>
