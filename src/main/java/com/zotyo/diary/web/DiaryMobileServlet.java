@@ -121,18 +121,7 @@ public class DiaryMobileServlet extends HttpServlet {
 			
 			return;
 		}
-		if ("latests".equals(command)) {
-			List<Event> events = diary.getAllEvents();
-			List<Event> latests = new ArrayList<Event>();
-			for (int i=0; i<5; i++) {
-				latests.add(events.get(i));
-			}
-			request.setAttribute("latests", latests);
-			RequestDispatcher rd = getServletContext().getRequestDispatcher("/mobile/latests.jsp");
-			rd.forward(request, response);
-			
-			return;
-		}
+		
 		if ("getDays".equals(command)) {
 			String key = request.getParameter("key");
 			List<Integer> days = diaryCache.getEventDays(key, diary);
@@ -201,6 +190,13 @@ public class DiaryMobileServlet extends HttpServlet {
 			} else {
 				request.setAttribute("eventsOfTheDay", new ArrayList<Event>());
 			}
+			
+			List<Event> events = diary.getAllEvents();
+			List<Event> latests = new ArrayList<Event>();
+			for (int i=0; i<5; i++) {
+				latests.add(events.get(i));
+			}
+			request.setAttribute("latests", latests);
 			
 	        RequestDispatcher rd = getServletContext().getRequestDispatcher("/mobile/diary.jsp");
 	        rd.forward(request, response);
