@@ -1,0 +1,8 @@
+.entry {
+	padding-top: 5px;
+	border-bottom: 1px solid #FD3790;
+}
+.entry .time {
+	font-size: 12px;
+	padding-bottom: 10px;
+}
