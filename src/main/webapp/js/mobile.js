@@ -2,14 +2,16 @@ $(function() {
 	$('.entry').last().css('border-bottom', 'none');
 
 	$(document).on('pagebeforechange', function(e, data) {
-		var u = $.mobile.path.parseUrl(data.toPage),
-			re = /cmd=(a+zA+Z)$/;
-		console.log(u.hash)
-		if (u.hash.search(re) !== -1) {
+		var url = data.toPage;
 
-			console.log(u);
+		if (typeof url === 'string') {
+			if (url.indexOf('cmd') !== -1) {
 
-			e.preventDefault();
+				$('#container').load(url);
+				console.log(url);
+
+				e.preventDefault();
+			}
 		}
 	});
 });

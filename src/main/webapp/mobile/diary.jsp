@@ -38,7 +38,7 @@
 
 			</div>
 		
-			<div data-role="content">
+			<div id="container" data-role="content">
 				<b>Legfrissebb események</b>
 				<c:forEach items="${latests}" var="event">
 					<div class="entry">
