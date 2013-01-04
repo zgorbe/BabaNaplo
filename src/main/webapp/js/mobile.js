@@ -1,17 +1,24 @@
-$(function() {
-	$('.entry').last().css('border-bottom', 'none');
-	/*$(document).on('pagebeforechange', function(e, data) {
-		var url = data.toPage;
-
-		if (typeof url === 'string') {
-			if (url.indexOf('cmd') !== -1) {
-
-				$('#container').load(url);
-				console.log(url);
-
-				e.preventDefault();
-			}
+var mobileJS = (function() {
+	return {
+		init: function() {
+			$('.entry').last().css('border-bottom', 'none');
+			$('.alldays-filter').on('change', function() {
+				mobileJS.getDaysForAMonth($('#select-year').val(), $('#select-month').val());
+			});
+		},
+		getDaysForAMonth: function(year, month) {
+			$.ajax({
+				type: "GET",
+				data: "cmd=alldays&year=" + year + "&month=" + month,
+				url: '/m/naplo',
+				async: false
+			});
 		}
-	});*/
+	};
+	
+})();
+
+$(document).on('pageinit', function() {
+	mobileJS.init();
 });
 		

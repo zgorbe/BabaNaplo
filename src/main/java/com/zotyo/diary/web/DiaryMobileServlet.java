@@ -92,20 +92,20 @@ public class DiaryMobileServlet extends HttpServlet {
 		if ("alldays".equals(command)) {
 			List<Day> days = new ArrayList<Day>();
 			String yearString = request.getParameter("year");
-			String monthString = request.getParameter("months");
+			String monthString = request.getParameter("month");
 			if (yearString != null && yearString.length() > 0 && monthString != null && monthString.length() > 0) {
 				int year = Integer.parseInt(yearString);
-				int months = Integer.parseInt(monthString);
-				days = diary.getDaysForAMonth(year, months);
+				int month = Integer.parseInt(monthString);
+				days = diary.getDaysForAMonth(year, month);
 				request.setAttribute("year", year);
-				request.setAttribute("months", months);
+				request.setAttribute("month", month);
 			}
 			else {
 				GregorianCalendar theDayCal = new GregorianCalendar();
 				theDayCal.setTime(new Date());
 				days = diary.getDaysForAMonth(theDayCal.get(Calendar.YEAR), theDayCal.get(Calendar.MONTH));
 				request.setAttribute("year", theDayCal.get(Calendar.YEAR));
-				request.setAttribute("months", theDayCal.get(Calendar.MONTH));
+				request.setAttribute("month", theDayCal.get(Calendar.MONTH));
 			}
 			request.setAttribute("alldays", days);
 			request.setAttribute("jspPage", "/mobile/alldays.jsp");
