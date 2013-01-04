@@ -83,21 +83,13 @@ public class DiaryMobileServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) 
 											throws ServletException, IOException {
 		
-		String theDayString = request.getParameter("theDay");
 		String command = request.getParameter("cmd");
 		if ("addday".equals(command)) {
-			RequestDispatcher rd = getServletContext().getRequestDispatcher("/mobile/addday.jsp");
-			rd.forward(request, response);
-			
-			return;
-		}
+			request.setAttribute("jspPage", "/mobile/addday.jsp");		}
 		if ("addevent".equals(command)) {
-			RequestDispatcher rd = getServletContext().getRequestDispatcher("/mobile/addevent.jsp");
-			rd.forward(request, response);
-			
-			return;
+			request.setAttribute("jspPage", "/mobile/addevent.jsp");
 		}
-		if ("allday".equals(command)) {
+		if ("alldays".equals(command)) {
 			List<Day> days = new ArrayList<Day>();
 			String yearString = request.getParameter("year");
 			String monthString = request.getParameter("months");
@@ -116,10 +108,7 @@ public class DiaryMobileServlet extends HttpServlet {
 				request.setAttribute("months", theDayCal.get(Calendar.MONTH));
 			}
 			request.setAttribute("alldays", days);
-			RequestDispatcher rd = getServletContext().getRequestDispatcher("/mobile/alldays.jsp");
-			rd.forward(request, response);
-			
-			return;
+			request.setAttribute("jspPage", "/mobile/alldays.jsp");
 		}
 		
 		if ("getDays".equals(command)) {
@@ -135,10 +124,7 @@ public class DiaryMobileServlet extends HttpServlet {
 			}
 			sb.append("]");
 			request.setAttribute("days", sb.toString());
-			RequestDispatcher rd = getServletContext().getRequestDispatcher("/mobile/calendardays.jsp");
-			rd.forward(request, response);
-			
-			return;
+			request.setAttribute("jspPage", "/mobile/calendardays.jsp");
 		}
 
 		if ("terms".equals(command)) {
@@ -151,56 +137,19 @@ public class DiaryMobileServlet extends HttpServlet {
 			mapper.writeValue(out, result);
 			return;
 		}
-		
-		SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd");
-		if (theDayString != null && theDayString.length() > 0) {
-			Date theDay = null;
-			try {
-				theDay = format.parse(request.getParameter("theDay"));
-			} catch (ParseException e) {
-				logger.error(e);
-			}
-			if (theDay == null) theDay = new Date();
-			
-			GregorianCalendar theDayCal = new GregorianCalendar();
-			theDayCal.setTime(theDay);
-			Day d = diary.getDay(df.newXMLGregorianCalendar(theDayCal));
-			if (d != null) {
-				request.setAttribute("eventsOfTheDay", d.getEventsOfTheDay());
-				request.setAttribute("descriptionOfTheDay", d.getDescriptionOfTheDay());
-			} else {
-				request.setAttribute("eventsOfTheDay", new ArrayList<Event>());
-			}
-			request.setAttribute("theDay", theDayString);
-			
 
-			RequestDispatcher rd = getServletContext().getRequestDispatcher("/mobile/events.jsp");
-			rd.forward(request, response);
-		}
-		else {
-			Date theDay = new Date();
-			GregorianCalendar theDayCal = new GregorianCalendar();
-			theDayCal.setTime(theDay);
-			Day d = diary.getDay(df.newXMLGregorianCalendar(theDayCal));
-			if (d != null) {
-				theDayString = format.format(new Date());
-				request.setAttribute("theDay", theDayString);
-				request.setAttribute("eventsOfTheDay", d.getEventsOfTheDay());
-				request.setAttribute("descriptionOfTheDay", d.getDescriptionOfTheDay());
-			} else {
-				request.setAttribute("eventsOfTheDay", new ArrayList<Event>());
-			}
-			
+		if (command == null || command.length() == 0) {
 			List<Event> events = diary.getAllEvents();
 			List<Event> latests = new ArrayList<Event>();
 			for (int i=0; i<5; i++) {
 				latests.add(events.get(i));
 			}
 			request.setAttribute("latests", latests);
-			
-	        RequestDispatcher rd = getServletContext().getRequestDispatcher("/mobile/diary.jsp");
-	        rd.forward(request, response);
+			request.setAttribute("jspPage", "/mobile/latests.jsp");	
 		}
+
+		RequestDispatcher rd = getServletContext().getRequestDispatcher("/mobile/diary.jsp");
+	    rd.forward(request, response);
 	}
 
 	@Override

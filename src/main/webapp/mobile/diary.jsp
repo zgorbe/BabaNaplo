@@ -3,12 +3,6 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
-<%@page import="com.zotyo.diary.web.DiaryHelper"%>
-<%@page import="com.zotyo.diary.client.Event"%>
-
-<% DiaryHelper diaryHelper = new DiaryHelper(); %>
-  
-
 <!DOCTYPE html> 
 <html> 
 	<head> 
@@ -29,7 +23,7 @@
 				<a href="<c:url value="naplo" />" class="ui-btn-left" data-icon="home" data-iconpos="notext" data-direction="reverse" title="Home">Home</a> 
 				<div data-role="navbar">
 					<ul>
-						<li><a href="<c:url value="naplo?cmd=allday" />">Összes esemény</a></li>
+						<li><a href="<c:url value="naplo?cmd=alldays" />">Összes esemény</a></li>
 						<li><a href="b.html">Képek</a></li>
 						<li><a href="a.html">Új nap</a></li>
 						<li><a href="b.html">Új esemény</a></li>
@@ -39,17 +33,9 @@
 			</div>
 		
 			<div id="container" data-role="content">
-				<b>Legfrissebb események</b>
-				<c:forEach items="${latests}" var="event">
-					<div class="entry">
-						<c:out value="${event.description}" />
-						<div class="time"><%= diaryHelper.formatStartTime((Event)pageContext.getAttribute("event")) %></div>
-						<c:if test="${event.duration > 0}">
-							Időtartam (óra:perc):
-								<%= diaryHelper.getDurationInHHMM((Event)pageContext.getAttribute("event")) %>
-						</c:if>
-					</div>
-				</c:forEach>
+				<c:if test="${not empty jspPage}">
+					<jsp:include page="${jspPage}" flush="true" />
+				</c:if>
 			</div>
 			<div data-role="footer" data-theme="e"> 
 				<h6>&copy; 2011-2013. Baba napló.</h6> 
