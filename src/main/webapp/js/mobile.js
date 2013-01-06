@@ -3,22 +3,18 @@ var mobileJS = (function() {
 		init: function() {
 			$('.entry').last().css('border-bottom', 'none');
 			$('.alldays-filter').on('change', function() {
-				mobileJS.getDaysForAMonth($('#select-year').val(), $('#select-month').val());
+				mobileJS.getDaysForAMonth();
 			});
 		},
-		getDaysForAMonth: function(year, month) {
-			$.ajax({
-				type: "GET",
-				data: "cmd=alldays&year=" + year + "&month=" + month,
-				url: '/m/naplo',
-				async: false
-			});
+		getDaysForAMonth: function() {
+			var year = $('#select-year').val();
+            var month = $('#select-month').val();
+			var url = '/m/naplo?cmd=alldays&year=' + year + '&month=' + month;
+			$('#alldays').load(url);
 		}
 	};
-	
 })();
 
 $(document).on('pageinit', function() {
 	mobileJS.init();
 });
-		

@@ -99,6 +99,11 @@ public class DiaryMobileServlet extends HttpServlet {
 				days = diary.getDaysForAMonth(year, month);
 				request.setAttribute("year", year);
 				request.setAttribute("month", month);
+				request.setAttribute("alldays", days);
+					
+				RequestDispatcher rd = getServletContext().getRequestDispatcher("/mobile/alldays.jsp");
+	    		rd.forward(request, response);
+				return;
 			}
 			else {
 				GregorianCalendar theDayCal = new GregorianCalendar();
@@ -106,6 +111,7 @@ public class DiaryMobileServlet extends HttpServlet {
 				days = diary.getDaysForAMonth(theDayCal.get(Calendar.YEAR), theDayCal.get(Calendar.MONTH));
 				request.setAttribute("year", theDayCal.get(Calendar.YEAR));
 				request.setAttribute("month", theDayCal.get(Calendar.MONTH));
+				request.setAttribute("filtersNeeded", true);
 			}
 			request.setAttribute("alldays", days);
 			request.setAttribute("jspPage", "/mobile/alldays.jsp");

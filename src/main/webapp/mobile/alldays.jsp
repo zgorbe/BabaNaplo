@@ -11,37 +11,40 @@
 <%@page import="com.zotyo.diary.web.DiaryHelper"%>
 
 <% DiaryHelper diaryHelper = new DiaryHelper(); %>
-
-<div data-role="fieldcontain">
-    <fieldset data-role="controlgroup" data-type="horizontal">
-        <label for="select-year">Year</label>
-        <select class="alldays-filter" name="select-year" id="select-year" data-native-menu="false" data-mini="true">
-            <option value="2011">2011</option>
-            <option value="2012">2012</option>
-            <option value="2013">2013</option>                        
-        </select>
-        <label for="select-month">Month</label>
-        <select class="alldays-filter" name="select-month" id="select-month" data-native-menu="false" data-mini="true">
-            <option value="0">Január</option>
-            <option value="1">Február</option>
-            <option value="2">Március</option>
-            <option value="3">Április</option>
-            <option value="4">Május</option>
-            <option value="5">Június</option>
-            <option value="6">Július</option>
-            <option value="7">Augusztus</option>
-            <option value="8">Szeptember</option>
-            <option value="9">Október</option>
-            <option value="10">November</option>
-            <option value="11">December</option>
-        </select>
-    </fieldset>
+<c:if test="${filtersNeeded}">
+    <div>
+        <fieldset data-role="controlgroup" data-type="horizontal">
+            <label for="select-year">Year</label>
+            <select class="alldays-filter" name="select-year" id="select-year" data-native-menu="false" data-mini="true">
+                <option value="2011">2011</option>
+                <option value="2012">2012</option>
+                <option value="2013">2013</option>                        
+            </select>
+            <label for="select-month">Month</label>
+            <select class="alldays-filter" name="select-month" id="select-month" data-native-menu="false" data-mini="true">
+                <option value="0">Január</option>
+                <option value="1">Február</option>
+                <option value="2">Március</option>
+                <option value="3">Április</option>
+                <option value="4">Május</option>
+                <option value="5">Június</option>
+                <option value="6">Július</option>
+                <option value="7">Augusztus</option>
+                <option value="8">Szeptember</option>
+                <option value="9">Október</option>
+                <option value="10">November</option>
+                <option value="11">December</option>
+            </select>
+        </fieldset>
+    </div>
+</c:if>
+<div id="alldays">
     <c:choose>  
         <c:when test="${fn:length(alldays) > 0}">
             <c:forEach items="${alldays}" var="day">
-                <b><%= diaryHelper.formatDate((Day)pageContext.getAttribute("day")) %> - <c:out value="${day.descriptionOfTheDay}" /></b> <br />
+                <div class="day-header"><%= diaryHelper.formatDate((Day)pageContext.getAttribute("day")) %> - <c:out value="${day.descriptionOfTheDay}" /></div>
                     <c:forEach items="${day.eventsOfTheDay}" var="event">
-                        <div class="entry_item">
+                        <div class="entry">
                             <c:out value="${event.description}" />
                             <c:if test="${event.duration > 0}">
                                 <br />Időtartam (óra:perc):
@@ -55,10 +58,12 @@
             A kiválasztott hónapra nincs nap a naplóban. 
         </c:otherwise>
     </c:choose>
+</alldays>
+<c:if test="${filtersNeeded}">
     <script type="text/javascript">
-        $(function(){
-            $("#select-year").val(<c:out value="${year}" />);
-            $("#select-month").val(<c:out value="${month}" />);
+        $(function() {
+            $('#select-year').val(${year});
+            $('#select-month').val(${month});
         });
     </script>
-</div>
+</c:if>
