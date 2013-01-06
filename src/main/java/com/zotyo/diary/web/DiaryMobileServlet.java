@@ -214,7 +214,7 @@ public class DiaryMobileServlet extends HttpServlet {
 			diary.addEvent(df.newXMLGregorianCalendar(theDayCal), event);
 		}
 		
-		response.sendRedirect("/mobile/naplo");
+		response.sendRedirect("/m/naplo");
 	}
 
 }

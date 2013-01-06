@@ -10,7 +10,9 @@ var mobileJS = (function() {
 			var year = $('#select-year').val();
             var month = $('#select-month').val();
 			var url = '/m/naplo?cmd=alldays&year=' + year + '&month=' + month;
-			$('#alldays').load(url);
+			$('#alldays').load(url, function() {
+				$('.entry').last().css('border-bottom', 'none');
+			});
 		}
 	};
 })();

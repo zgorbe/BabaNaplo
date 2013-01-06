@@ -58,7 +58,7 @@
             A kiválasztott hónapra nincs nap a naplóban. 
         </c:otherwise>
     </c:choose>
-</alldays>
+</div>
 <c:if test="${filtersNeeded}">
     <script type="text/javascript">
         $(function() {
