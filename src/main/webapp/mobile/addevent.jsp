@@ -10,9 +10,6 @@
     <label for="theDay">A nap dátuma:</label>
     <input id="theDayInput" name="theDay" type="text" data-mini="true" />
 
-    <label for="descriptionOfTheDay">Leírása:</label>
-    <textarea name="descriptionOfTheDay" data-mini="true" ></textarea>
-
     <label for="startDate">Az esemény kezdete:</label>
     <input id="startDateInput" type="text" name="startDate" data-mini="true" />
 
@@ -25,7 +22,7 @@
 		<div class="ui-block-a"><button type="submit" data-mini="true">Küldés</button></div>
 		<div class="ui-block-b"><button type="button" onclick="document.location.href='/m/naplo';" data-mini="true">Mégse</button></div>
 	</fieldset>
-    <input type="hidden" name="cmd" value="add_day" />
+    <input type="hidden" name="cmd" value="add_event" />
 </form>
 <script type="text/javascript">
 	$(function(){

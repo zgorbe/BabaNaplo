@@ -28,7 +28,7 @@
 						<li><a href="<c:url value="naplo?cmd=alldays" />">Összes esemény</a></li>
 						<li><a href="b.html">Képek</a></li>
 						<li><a href="<c:url value="naplo?cmd=addday" />">Új nap</a></li>
-						<li><a href="b.html">Új esemény</a></li>
+						<li><a href="<c:url value="naplo?cmd=addevent" />">Új esemény</a></li>
 					</ul>
 				</div>
 

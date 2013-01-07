@@ -57,7 +57,7 @@ public class DiaryHelper {
 	}
 
 	public long getDuration(String duration) {
-		if (duration == null || duration.length() < 1) {
+		if (duration == null || duration.length() < 1 || duration.equals("00:00")) {
 			return 0;
 		}
 		String hh = duration.split(":")[0];
