@@ -175,7 +175,7 @@ public class DiaryMobileServlet extends HttpServlet {
 		
 		String key = request.getParameter("keyword");
 		if (!diaryHelper.md5(key).equals(keyword)) {
-			response.sendRedirect("/mobile/naplo");
+			response.sendRedirect("/m/naplo");
 			return;
 		}
 		String theDay = request.getParameter("theDay");

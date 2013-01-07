@@ -12,9 +12,11 @@
 		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
 		<link rel="stylesheet" href="/css/baba-naplo.min.css" />
 		<link rel="stylesheet" href="/css/mstyle.css" />
+		<link rel="stylesheet" href="/css/mobiscroll-2.3.1.custom.min.css" />
 		<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 		<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
 		<script src="/js/mobile.js"></script>
+		<script src="/js/mobiscroll-2.3.1.custom.min.js"></script>
 	</head> 
 	<body> 
 		<div data-role="page" data-theme="e">

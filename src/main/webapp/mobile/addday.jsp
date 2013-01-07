@@ -11,7 +11,7 @@
 	    </tr>	 
 	    <tr>
 	        <td><label for="theDay">A nap dátuma:</label></td>
-	        <td><input id="theDayInput" type="text" name="theDay" data-mini="true" /></td>
+	        <td><input id="theDayInput" name="theDay" type="text" data-mini="true" /></td>
 	    </tr>
 	    <tr>
 	        <td><label for="name">Leírása:</label></td>
@@ -38,8 +38,24 @@
 </form>
 <script type="text/javascript">
 	$(function(){
-		/*$("#theDayInput").datepicker();
-		$('#startDateInput').datetimepicker();
-		$('#durationInput').timepicker({});*/
+		$('#theDayInput').mobiscroll().date({
+			theme: 'jqm',
+			lang: 'hu',
+        	display: 'modal',
+        	mode: 'scroller',
+        	dateOrder: 'yymmdd D'
+		});
+		$('#startDateInput').mobiscroll().datetime({
+			theme: 'jqm',
+			lang: 'hu',
+        	display: 'modal',
+        	mode: 'scroller'
+		});
+		$('#durationInput').mobiscroll().time({
+			theme: 'jqm',
+			lang: 'hu',
+        	display: 'modal',
+        	mode: 'scroller'
+		});
 	});
 </script>
