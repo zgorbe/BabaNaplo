@@ -3,12 +3,23 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
+<%@page import="com.zotyo.diary.client.Day"%>
+<%@page import="com.zotyo.diary.web.DiaryHelper"%>
+
+<% DiaryHelper diaryHelper = new DiaryHelper(); %>
+
 <form action="/m/naplo" method="POST" accept-charset="UTF-8">
     <label for="keyword">A keyword:</label>
     <input id="keywordInput" type="password" name="keyword" data-mini="true" style="background-color: #FE2383; color: #fff" />
 
-    <label for="theDay">A nap dátuma:</label>
-    <input id="theDayInput" name="theDay" type="text" data-mini="true" />
+    <label for="theDay">A nap:</label>
+    <select name="theDay" data-native-menu="false" data-mini="true">
+        <c:forEach items="${recentDays}" var="day">
+            <option value="<%= diaryHelper.formatDate((Day)pageContext.getAttribute("day")) %>">
+                <%= diaryHelper.formatDate((Day)pageContext.getAttribute("day")) %> - <c:out value="${day.descriptionOfTheDay}" />
+            </option>
+        </c:forEach>
+    </select>
 
     <label for="startDate">Az esemény kezdete:</label>
     <input id="startDateInput" type="text" name="startDate" data-mini="true" />
@@ -26,13 +37,6 @@
 </form>
 <script type="text/javascript">
 	$(function(){
-		$('#theDayInput').mobiscroll().date({
-			theme: 'jqm',
-			lang: 'hu',
-        	display: 'modal',
-        	mode: 'scroller',
-        	dateOrder: 'yymmdd D'
-		});
 		$('#startDateInput').mobiscroll().datetime({
 			theme: 'jqm',
 			lang: 'hu',

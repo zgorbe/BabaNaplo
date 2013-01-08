@@ -87,6 +87,13 @@ public class DiaryMobileServlet extends HttpServlet {
 		if ("addday".equals(command)) {
 			request.setAttribute("jspPage", "/mobile/addday.jsp");		}
 		if ("addevent".equals(command)) {
+			List<Day> days = diary.getAllDaysInDiary();
+			List<Day> recentDays = new ArrayList<Day>();
+			
+			for (int i = 0; i < 5; i++) {
+				recentDays.add(days.get(i));
+			}
+			request.setAttribute("recentDays", recentDays);
 			request.setAttribute("jspPage", "/mobile/addevent.jsp");
 		}
 		if ("alldays".equals(command)) {

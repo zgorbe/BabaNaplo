@@ -122,8 +122,7 @@ public class DiaryServlet extends HttpServlet {
 			return;
 		}
 		if ("isotopedays".equals(command)) {
-			List<Day> days = new ArrayList<Day>();
-			days = diary.getAllDaysInDiary();
+			List<Day> days = diary.getAllDaysInDiary();
 			if (days.size() > 0) {
 				days.remove(days.size() - 1); // removing the test day...
 			}

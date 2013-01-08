@@ -11,10 +11,13 @@
 <c:forEach items="${latests}" var="event">
 	<div class="entry">
 		<c:out value="${event.description}" />
-		<div class="time"><%= diaryHelper.formatStartTime((Event)pageContext.getAttribute("event")) %></div>
-		<c:if test="${event.duration > 0}">
-			Időtartam (óra:perc):
-				<%= diaryHelper.getDurationInHHMM((Event)pageContext.getAttribute("event")) %>
-		</c:if>
+		<div class="time">
+			<%= diaryHelper.formatStartTime((Event)pageContext.getAttribute("event")) %>
+			<c:if test="${event.duration > 0}">
+				<br />
+				Időtartam (óra:perc):
+					<%= diaryHelper.getDurationInHHMM((Event)pageContext.getAttribute("event")) %>
+			</c:if>
+		</div>
 	</div>
 </c:forEach>
