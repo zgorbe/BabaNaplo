@@ -151,6 +151,12 @@ public class DiaryMobileServlet extends HttpServlet {
 			return;
 		}
 
+		if ("photos".equals(command)) {
+			List<Photo> photos = photoService.findByCategory("baba");
+			
+			request.setAttribute("photos", photos);
+			request.setAttribute("jspPage", "/mobile/photos.jsp");
+		}
 		if (command == null || command.length() == 0) {
 			List<Event> events = diary.getAllEvents();
 			List<Event> latests = new ArrayList<Event>();

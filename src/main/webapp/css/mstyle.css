@@ -11,3 +11,12 @@
 	padding-top: 5px;
 	font-weight: bold;
 }
+
+.photo_item {
+	float: left;
+	padding: 5px;
+}
+
+#search-result {
+	padding-top: 10px;
+}

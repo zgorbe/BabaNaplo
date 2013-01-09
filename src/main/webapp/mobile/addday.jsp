@@ -11,7 +11,7 @@
     <input id="theDayInput" name="theDay" type="text" data-mini="true" />
 
     <label for="descriptionOfTheDay">Leírása:</label>
-    <textarea name="descriptionOfTheDay" data-mini="true" ></textarea>
+    <textarea name="descriptionOfTheDay"></textarea>
 
     <label for="startDate">Az esemény kezdete:</label>
     <input id="startDateInput" type="text" name="startDate" data-mini="true" />
@@ -20,7 +20,7 @@
     <input id="durationInput" type="text" name="duration" data-mini="true" value="00:00" />
 
     <label for="initialEvent">Az esemény:</label>
-    <textarea name="initialEvent" data-mini="true" ></textarea>
+    <textarea name="initialEvent"></textarea>
 	<fieldset class="ui-grid-a">
 		<div class="ui-block-a"><button type="submit" data-mini="true">Küldés</button></div>
 		<div class="ui-block-b"><button type="button" onclick="document.location.href='/m/naplo';" data-mini="true">Mégse</button></div>

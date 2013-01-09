@@ -22,11 +22,11 @@
 		<div data-role="page" data-theme="e">
 			<div data-role="header" data-theme="e">
 				<h1>Baba napló</h1>
-				<a href="<c:url value="naplo" />" class="ui-btn-left" data-icon="home" data-iconpos="notext" data-direction="reverse" title="Home">Home</a> 
+				<a href="<c:url value="naplo" />" id="home-icon" class="ui-btn-left" data-icon="home" data-iconpos="notext" data-direction="reverse" title="Home">Home</a> 
 				<div data-role="navbar">
 					<ul>
 						<li><a href="<c:url value="naplo?cmd=alldays" />">Összes esemény</a></li>
-						<li><a href="b.html">Képek</a></li>
+						<li><a href="<c:url value="naplo?cmd=photos" />">Képek</a></li>
 						<li><a href="<c:url value="naplo?cmd=addday" />">Új nap</a></li>
 						<li><a href="<c:url value="naplo?cmd=addevent" />">Új esemény</a></li>
 					</ul>
