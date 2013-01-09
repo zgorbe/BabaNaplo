@@ -2,13 +2,7 @@
 
 Build the project with
 
-    $ mvn install
-
-# Configure
-
-You will need to set the `REPO` environment variable, so the execution wrapper script knows where to find the maven dependencies. For example:
-
-    $ export REPO=$HOME/.m2/repository
+    $ mvn clean install
 
 # Run
 
@@ -18,3 +12,8 @@ Now you can run your webapp with:
 
 (the wrapper script is not executable by default).
 
+# Export/Import mongo data
+
+./mongodump -h xxxxxxx.mongolab.com:xxxxx -d heroku_appxxxxxxx -u heroku_appxxxxxxx -p xxxxxxxx -o timcsi/data/db
+
+./mongorestore -h localhost:27017 -d local timcsi/data/db/heroku_appxxxxxxx
