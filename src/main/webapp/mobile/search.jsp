@@ -15,6 +15,10 @@
 		<div class="ui-block-a"><input type="search" id="search-term" name="search" value="" data-mini="true" /></div>
 		<div class="ui-block-b"><button type="button" id="search-button" data-mini="true">Keresés</button></div>
 	</div>
+	<div data-role="popup" id="search-popup">
+		<p>A keresett szó legyen minimum 3 karakter!<p>
+	</div>
+
 </c:if>
 <div id="search-result">
 	<c:if test="${empty controlsNeeded}">

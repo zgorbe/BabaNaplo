@@ -8,6 +8,7 @@ var mobileJS = (function() {
 			$('#search-button').on('click', function() {
 				var searchTerm = $.trim($('#search-term').val());
 				if (searchTerm.length < 3) {
+					$('#search-popup').popup('open');
 					return;
 				}
 				$.ajax({
