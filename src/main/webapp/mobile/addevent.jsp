@@ -30,10 +30,10 @@
     <label for="initialEvent2">Az esemény:</label>
     <textarea id="initialEvent2" name="initialEvent"></textarea>
     
-	<fieldset class="ui-grid-a">
-		<div class="ui-block-a"><button type="submit" data-mini="true">Küldés</button></div>
-		<div class="ui-block-b"><button type="button" onclick="document.location.href='/m/naplo';" data-mini="true">Mégse</button></div>
-	</fieldset>
+    <div data-role="controlgroup" data-type="horizontal">
+        <button type="submit" data-role="button" data-inline="true" data-mini="true">Küldés</button>
+    	<button type="button" data-role="button" data-inline="true" data-mini="true" onclick="document.location.href='/m/naplo';">Mégse</button>
+	</div>
     <input type="hidden" name="cmd" value="add_event" />
 </form>
 <script type="text/javascript">
