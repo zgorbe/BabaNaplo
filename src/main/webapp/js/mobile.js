@@ -17,6 +17,7 @@ var mobileJS = (function() {
 					success: function(data, type, xmlhttp){
 						$('#search-result').html(data);
 						$('.entry').last().css('border-bottom', 'none');
+						mobileJS.smiley();
 					}
 				});
 			});
@@ -27,6 +28,7 @@ var mobileJS = (function() {
 			var url = '/m/naplo?cmd=alldays&year=' + year + '&month=' + month;
 			$('#alldays').load(url, function() {
 				$('.entry').last().css('border-bottom', 'none');
+				mobileJS.smiley();
 			});
 		},
 		initPhotosPage: function() {
@@ -83,10 +85,17 @@ var mobileJS = (function() {
 	        	mode: 'scroller'
 			});
 
+		},
+		smiley: function() {
+			$('.entry').each(function(index, element) {
+				var tmp = $(element).html().replace(/:\)/g, '<img src="/images/smiley.png" alt=":-)" />');
+				$(element).html(tmp);
+			});
 		}
 	};
 })();
 
 $(document).on('pageinit', function() {
 	mobileJS.init();
+	mobileJS.smiley();
 });
