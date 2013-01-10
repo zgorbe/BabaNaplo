@@ -5,6 +5,9 @@
 
 <%@page import="com.zotyo.diary.pojos.Day"%>
 <%@page import="com.zotyo.diary.pojos.Event"%>
+<%@page import="com.zotyo.diary.web.DiaryHelper"%>
+
+<% DiaryHelper diaryHelper = new DiaryHelper(); %>
 
 <c:choose>
 	<c:when test="${not empty day}">
@@ -13,7 +16,7 @@
 				<table class="box-table-a">
 				    <tr>
 				        <td><label for="theDay">A nap dátuma:</label></td>
-				        <td><input id="theDayInput" type="text" name="theDay" value="<c:out value="${day.theDay}" />" disabled="disabled" /></td>
+				        <td><input id="theDayInput" type="text" name="theDay" value="<%= diaryHelper.formatDateTime(((Day)request.getAttribute("day")).getTheDay()) %>" disabled="disabled" /></td>
 				    </tr>
 				    <tr>
 				        <td><label for="name">Leírása:</label></td>
@@ -34,7 +37,7 @@
 					<table class="box-table-a">
 					    <tr>
 					        <td><label for="startDate">Az esemény kezdete:</label></td>
-					        <td><input type="text" name="startDate" value="<c:out value="${event.startTime}" />" /></td>
+					        <td><input type="text" name="startDate" value="<%= diaryHelper.formatDateTime(((Event)pageContext.getAttribute("event")).getStartTime()) %>" /></td>
 					    </tr>
 					    <tr>
 					        <td><label for="duration">Az esemény időtartama:</label></td>
