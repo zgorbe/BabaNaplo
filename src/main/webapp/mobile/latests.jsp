@@ -22,9 +22,3 @@
 		</div>
 	</c:forEach>
 </div>
-<div class="ui-grid-b">
-	<div class="ui-block-a"><input type="search" id="search-term" name="search" value="" data-mini="true" /></div>
-	<div class="ui-block-b"><button type="button" id="search-button" data-mini="true">Keresés</button></div>
-	<div class="ui-block-c"></div>
-</div>
-<div id="search-result"></div>

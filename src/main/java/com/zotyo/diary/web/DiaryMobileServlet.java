@@ -96,6 +96,10 @@ public class DiaryMobileServlet extends HttpServlet {
 			request.setAttribute("recentDays", recentDays);
 			request.setAttribute("jspPage", "/mobile/addevent.jsp");
 		}
+		if ("search".equals(command)) {
+			request.setAttribute("controlsNeeded", true);
+			request.setAttribute("jspPage", "/mobile/search.jsp");	
+		}
 		if ("alldays".equals(command)) {
 			List<Day> days = new ArrayList<Day>();
 			String yearString = request.getParameter("year");
@@ -180,7 +184,7 @@ public class DiaryMobileServlet extends HttpServlet {
 			List<Event> result = diary.searchEvents(searchTerm);
 			request.setAttribute("result", result);
 			request.setAttribute("searchTerm", searchTerm);
-			RequestDispatcher rd = getServletContext().getRequestDispatcher("/mobile/result.jsp");
+			RequestDispatcher rd = getServletContext().getRequestDispatcher("/mobile/search.jsp");
 			rd.forward(request, response);
 			
 			return;

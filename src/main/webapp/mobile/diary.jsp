@@ -21,8 +21,9 @@
 	<body> 
 		<div data-role="page" data-theme="e">
 			<div data-role="header" data-theme="e">
+				<a href="<c:url value="naplo" />" id="home-icon" data-icon="home" data-iconpos="notext" data-direction="reverse" title="Home">Home</a>
 				<h1>Baba napló</h1>
-				<a href="<c:url value="naplo" />" id="home-icon" class="ui-btn-left" data-icon="home" data-iconpos="notext" data-direction="reverse" title="Home">Home</a> 
+				<a href="<c:url value="naplo?cmd=search" />" id="search-icon" data-icon="search" data-iconpos="notext" title="Keresés">Keresés</a>
 				<div data-role="navbar">
 					<ul>
 						<li><a href="<c:url value="naplo?cmd=alldays" />">Összes esemény</a></li>

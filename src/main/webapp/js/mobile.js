@@ -5,7 +5,6 @@ var mobileJS = (function() {
 			$('.alldays-filter').on('change', function() {
 				mobileJS.getDaysForAMonth();
 			});
-			$('#search-result').hide();
 			$('#search-button').on('click', function() {
 				var searchTerm = $.trim($('#search-term').val());
 				if (searchTerm.length < 3) {
@@ -16,14 +15,10 @@ var mobileJS = (function() {
 					data: "cmd=search&searchTerm=" + searchTerm,
 					url: '/m/naplo',
 					success: function(data, type, xmlhttp){
-						$('#latest-events').fadeOut();
-						$('#search-result').html(data).fadeIn();
+						$('#search-result').html(data);
+						$('.entry').last().css('border-bottom', 'none');
 					}
 				});
-			});
-			$('#home-icon').on('click', function() {
-				$('#latest-events').fadeIn();
-				$('#search-result').fadeOut();
 			});
 		},
 		getDaysForAMonth: function() {
@@ -52,6 +47,42 @@ var mobileJS = (function() {
 			$img_popup.on('click', function() {
 				$photo_popup.popup('close');
 			});
+		},
+		initAddDayPage: function() {
+			$('#theDayInput1').mobiscroll().date({
+				theme: 'jqm',
+				lang: 'hu',
+	        	display: 'modal',
+	        	mode: 'scroller',
+	        	dateOrder: 'yymmdd D'
+			});
+			$('#startDateInput1').mobiscroll().datetime({
+				theme: 'jqm',
+				lang: 'hu',
+	        	display: 'modal',
+	        	mode: 'scroller'
+			});
+			$('#durationInput1').mobiscroll().time({
+				theme: 'jqm',
+				lang: 'hu',
+	        	display: 'modal',
+	        	mode: 'scroller'
+			});
+		},
+		initAddEventPage: function() {
+			$('#startDateInput2').mobiscroll().datetime({
+				theme: 'jqm',
+				lang: 'hu',
+	        	display: 'modal',
+	        	mode: 'scroller'
+			});
+			$('#durationInput2').mobiscroll().time({
+				theme: 'jqm',
+				lang: 'hu',
+	        	display: 'modal',
+	        	mode: 'scroller'
+			});
+
 		}
 	};
 })();

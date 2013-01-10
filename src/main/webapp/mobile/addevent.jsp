@@ -13,7 +13,7 @@
     <input id="keywordInput" type="password" name="keyword" data-mini="true" style="background-color: #FE2383; color: #fff" />
 
     <label for="theDay">A nap:</label>
-    <select name="theDay" data-native-menu="false" data-mini="true">
+    <select id="theDay" name="theDay" data-native-menu="false" data-mini="true">
         <c:forEach items="${recentDays}" var="day">
             <option value="<%= diaryHelper.formatDate((Day)pageContext.getAttribute("day")) %>">
                 <%= diaryHelper.formatDate((Day)pageContext.getAttribute("day")) %> - <c:out value="${day.descriptionOfTheDay}" />
@@ -22,13 +22,14 @@
     </select>
 
     <label for="startDate">Az esemény kezdete:</label>
-    <input id="startDateInput" type="text" name="startDate" data-mini="true" />
+    <input id="startDateInput2" type="text" name="startDate" data-mini="true" />
 
     <label for="duration">Az esemény időtartama:</label>
-    <input id="durationInput" type="text" name="duration" data-mini="true" value="00:00" />
+    <input id="durationInput2" type="text" name="duration" data-mini="true" value="00:00" />
 
-    <label for="initialEvent">Az esemény:</label>
-    <textarea name="initialEvent"></textarea>
+    <label for="initialEvent2">Az esemény:</label>
+    <textarea id="initialEvent2" name="initialEvent"></textarea>
+    
 	<fieldset class="ui-grid-a">
 		<div class="ui-block-a"><button type="submit" data-mini="true">Küldés</button></div>
 		<div class="ui-block-b"><button type="button" onclick="document.location.href='/m/naplo';" data-mini="true">Mégse</button></div>
@@ -36,18 +37,7 @@
     <input type="hidden" name="cmd" value="add_event" />
 </form>
 <script type="text/javascript">
-	$(function(){
-		$('#startDateInput').mobiscroll().datetime({
-			theme: 'jqm',
-			lang: 'hu',
-        	display: 'modal',
-        	mode: 'scroller'
-		});
-		$('#durationInput').mobiscroll().time({
-			theme: 'jqm',
-			lang: 'hu',
-        	display: 'modal',
-        	mode: 'scroller'
-		});
-	});
+	$(function() {
+        mobileJS.initAddEventPage();
+    });
 </script>
