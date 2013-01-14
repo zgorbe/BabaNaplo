@@ -22,13 +22,20 @@
     </select>
 
     <label for="startDate">Az esemény kezdete:</label>
-    <input id="startDateInput2" type="text" name="startDate" data-mini="true" />
+    <input id="startDateInput2" type="text" name="startDate" data-mini="true" value="${param.startDate}" />
 
     <label for="duration">Az esemény időtartama:</label>
-    <input id="durationInput2" type="text" name="duration" data-mini="true" value="00:00" />
+    <c:choose>
+    	<c:when test="${not empty param.duration}">
+    		<input id="durationInput2" type="text" name="duration" data-mini="true" value="${param.duration}" />
+    	</c:when>
+    	<c:otherwise>
+    		<input id="durationInput2" type="text" name="duration" data-mini="true" value="00:00" />
+    	</c:otherwise>
+	</c:choose>
 
     <label for="initialEvent2">Az esemény:</label>
-    <textarea id="initialEvent2" name="initialEvent"></textarea>
+    <textarea id="initialEvent2" name="initialEvent">${param.initialEvent}</textarea>
     
     <div data-role="controlgroup" data-type="horizontal">
         <button type="submit" data-role="button" data-inline="true" data-mini="true">Küldés</button>
@@ -36,8 +43,3 @@
 	</div>
     <input type="hidden" name="cmd" value="add_event" />
 </form>
-<script type="text/javascript">
-	$(function() {
-        mobileJS.initAddEventPage();
-    });
-</script>

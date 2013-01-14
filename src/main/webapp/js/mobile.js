@@ -98,5 +98,7 @@ var mobileJS = (function() {
 
 $(document).on('pageinit', function() {
 	mobileJS.init();
+	mobileJS.initAddDayPage();
+	mobileJS.initAddEventPage();
 	mobileJS.smiley();
 });

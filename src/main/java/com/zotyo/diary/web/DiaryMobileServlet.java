@@ -85,7 +85,8 @@ public class DiaryMobileServlet extends HttpServlet {
 		
 		String command = request.getParameter("cmd");
 		if ("addday".equals(command)) {
-			request.setAttribute("jspPage", "/mobile/addday.jsp");		}
+			request.setAttribute("jspPage", "/mobile/addday.jsp");		
+		}
 		if ("addevent".equals(command)) {
 			List<Day> days = diary.getAllDaysInDiary();
 			List<Day> recentDays = new ArrayList<Day>();
@@ -191,15 +192,29 @@ public class DiaryMobileServlet extends HttpServlet {
 		}
 		
 		String key = request.getParameter("keyword");
-		if (!diaryHelper.md5(key).equals(keyword)) {
-			response.sendRedirect("/m/naplo");
-			return;
-		}
 		String theDay = request.getParameter("theDay");
 		String descriptionOfTheDay = request.getParameter("descriptionOfTheDay");
 		String duration = request.getParameter("duration");
 		String initialEvent = request.getParameter("initialEvent");
 		String startDate = request.getParameter("startDate");
+
+		if (!diaryHelper.md5(key).equals(keyword)) {
+			if ("add_day".equals(command)) {
+				request.setAttribute("jspPage", "/mobile/addday.jsp");
+			} else if ("add_event".equals(command)) {
+				List<Day> days = diary.getAllDaysInDiary();
+				List<Day> recentDays = new ArrayList<Day>();
+				
+				for (int i = 0; i < 5; i++) {
+					recentDays.add(days.get(i));
+				}
+				request.setAttribute("recentDays", recentDays);
+				request.setAttribute("jspPage", "/mobile/addevent.jsp");
+			}
+			RequestDispatcher rd = getServletContext().getRequestDispatcher("/mobile/diary.jsp");
+			rd.forward(request, response);
+		    return;
+		}
 		
 		if ("add_day".equals(command)) {
 			if (theDay != null && theDay.length() > 0) {
