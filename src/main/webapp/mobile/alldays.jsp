@@ -12,8 +12,8 @@
 
 <% DiaryHelper diaryHelper = new DiaryHelper(); %>
 <c:if test="${filtersNeeded}">
-    <div>
-        <fieldset data-role="controlgroup" data-type="horizontal">
+    <div id="select-filters">
+        <fieldset data-role="controlgroup" data-type="horizontal" class="control-buttons">
             <label for="select-year">Year</label>
             <select class="alldays-filter" name="select-year" id="select-year" data-native-menu="false" data-mini="true">
                 <option value="2011">2011</option>
@@ -41,18 +41,22 @@
 <div id="alldays">
     <c:choose>  
         <c:when test="${fn:length(alldays) > 0}">
+        	<ul id="day-list" data-role="listview" data-theme="e" data-divider-theme="e" class="event-list">
             <c:forEach items="${alldays}" var="day">
-                <div class="day-header"><%= diaryHelper.formatDate((Day)pageContext.getAttribute("day")) %> - <c:out value="${day.descriptionOfTheDay}" /></div>
+                <li data-role="list-divider"><b><%= diaryHelper.formatDate((Day)pageContext.getAttribute("day")) %> - <c:out value="${day.descriptionOfTheDay}" /></b></li>
                     <c:forEach items="${day.eventsOfTheDay}" var="event">
-                        <div class="entry">
+                        <li>
                             <c:out value="${event.description}" />
                             <c:if test="${event.duration > 0}">
-                                <br />Időtartam (óra:perc):
-                                <%= diaryHelper.getDurationInHHMM((Event)pageContext.getAttribute("event")) %>  
+	                            <div class="time">
+	                                <br />Időtartam (óra:perc):
+	                                <%= diaryHelper.getDurationInHHMM((Event)pageContext.getAttribute("event")) %>
+								</div>                                  
                             </c:if>
-                        </div>
+                        </li>
                     </c:forEach>
             </c:forEach>
+            </ul>
         </c:when>
         <c:otherwise>
             A kiválasztott hónapra nincs nap a naplóban. 

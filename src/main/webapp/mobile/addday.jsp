@@ -28,7 +28,7 @@
     <label for="initialEvent1">Az esemény:</label>
     <textarea id="initialEvent1" name="initialEvent">${param.initialEvent}</textarea>
     
-    <div data-role="controlgroup" data-type="horizontal">
+    <div data-role="controlgroup" data-type="horizontal" class="control-buttons">
     	<button type="submit" data-role="button" data-inline="true" data-mini="true">Küldés</button>
     	<button type="button" data-role="button" data-inline="true" onclick="document.location.href='/m/naplo';" data-mini="true">Mégse</button>
 	</div>

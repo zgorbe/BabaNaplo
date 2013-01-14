@@ -10,7 +10,7 @@
 <% DiaryHelper diaryHelper = new DiaryHelper(); %>
 
 <c:if test="${controlsNeeded}">
-	<b>Keresés</b>
+	<h4>Keresés</h4>
 	<div class="ui-grid-a">
 		<div class="ui-block-a"><input type="search" id="search-term" name="search" value="" data-mini="true" /></div>
 		<div class="ui-block-b"><button type="button" id="search-button" data-role="button" data-inline="true" data-mini="true">Keresés</button></div>

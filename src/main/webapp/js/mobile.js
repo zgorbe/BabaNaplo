@@ -28,7 +28,8 @@ var mobileJS = (function() {
             var month = $('#select-month').val();
 			var url = '/m/naplo?cmd=alldays&year=' + year + '&month=' + month;
 			$('#alldays').load(url, function() {
-				$('.entry').last().css('border-bottom', 'none');
+				//$('.entry').last().css('border-bottom', 'none');
+				$('ul#day-list').listview();
 				mobileJS.smiley();
 			});
 		},
