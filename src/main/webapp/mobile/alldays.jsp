@@ -41,7 +41,7 @@
 <div id="alldays">
     <c:choose>  
         <c:when test="${fn:length(alldays) > 0}">
-        	<ul id="day-list" data-role="listview" data-theme="e" data-divider-theme="e" class="event-list">
+        	<ul data-role="listview" data-theme="e" data-divider-theme="e" class="day-list">
             <c:forEach items="${alldays}" var="day">
                 <li data-role="list-divider"><b><%= diaryHelper.formatDate((Day)pageContext.getAttribute("day")) %> - <c:out value="${day.descriptionOfTheDay}" /></b></li>
                     <c:forEach items="${day.eventsOfTheDay}" var="event">

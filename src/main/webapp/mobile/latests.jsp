@@ -7,7 +7,7 @@
 <% DiaryHelper diaryHelper = new DiaryHelper(); %>
 <h4>Legfrissebb események</h4>
 <div id="latest-events">
-	<ul id="day-list" data-role="listview" data-theme="e" class="event-list">
+	<ul data-role="listview" data-theme="e" class="day-list">
 		<c:forEach items="${latests}" var="event">
 			<li>
 				<c:out value="${event.description}" />

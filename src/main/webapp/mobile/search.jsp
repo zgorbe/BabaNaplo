@@ -22,12 +22,13 @@
 </c:if>
 <div id="search-result">
 	<c:if test="${empty controlsNeeded}">
-		<b><c:out value="${fn:length(result)}" /> keresési találat:</b>
+		<h4><c:out value="${fn:length(result)}" /> keresési találat:</h4>
 	</c:if>
 	<c:choose>
 		<c:when test="${fn:length(result) > 0}">
+			<ul data-role="listview" data-theme="e" data-divider-theme="e" class="day-list">
 			<c:forEach items="${result}" var="event">
-				<div class="entry">
+				<li>
 					<c:out value="${event.description}" />
 					<div class="time">
 						<%= diaryHelper.formatStartTime((Event)pageContext.getAttribute("event")) %>
@@ -37,7 +38,7 @@
 								<%= diaryHelper.getDurationInHHMM((Event)pageContext.getAttribute("event")) %>
 						</c:if>
 					</div>
-				</div>
+				</li>
 			</c:forEach>
 		</c:when>
 	</c:choose>
