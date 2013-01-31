@@ -50,6 +50,12 @@ var mobileJS = (function() {
 			$img_popup.on('click', function() {
 				$photo_popup.popup('close');
 			});
+			$('#createdate').mobiscroll().datetime({
+				theme: 'jqm',
+				lang: 'hu',
+	        	display: 'modal',
+	        	mode: 'scroller'
+			});
 		},
 		initAddDayPage: function() {
 			$('#theDayInput1').mobiscroll().date({

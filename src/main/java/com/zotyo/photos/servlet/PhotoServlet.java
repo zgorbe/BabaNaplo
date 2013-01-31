@@ -33,6 +33,7 @@ import org.codehaus.jackson.map.SerializationConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
+import org.apache.log4j.Logger;
 import com.zotyo.diary.web.DiaryHelper;
 import com.zotyo.photos.pojo.Photo;
 import com.zotyo.photos.pojo.PhotoData;
@@ -43,7 +44,9 @@ import com.zotyo.photos.util.PhotoDataEnum;
 import static org.imgscalr.Scalr.*;
 
 public class PhotoServlet extends HttpServlet {
-
+	
+	private static Logger logger = Logger.getLogger(PhotoServlet.class); 
+	
 	@Autowired
 	private PhotoService photoService;
 	
@@ -143,10 +146,12 @@ public class PhotoServlet extends HttpServlet {
 			throws ServletException, IOException {
 		
 		boolean isMultipart = ServletFileUpload.isMultipartContent(request);
+		boolean isMobile = false;
 		if (isMultipart) {
-			processMultipartRequest(request, response);
+			isMobile = processMultipartRequest(request, response);
 		}
 		else {
+			isMobile = Boolean.valueOf(request.getParameter("isMobile"));
 			String cmd = request.getParameter("cmd");
 			if ("delete".equals(cmd)) {
 				String fileName = request.getParameter("file2delete");
@@ -183,12 +188,15 @@ public class PhotoServlet extends HttpServlet {
 			}
 			
 		}
-		response.sendRedirect("/photos");
+		if (isMobile) {
+			response.sendRedirect("/m/naplo?cmd=photos");
+		} else {
+			response.sendRedirect("/photos");
+		}
 	}
 	
-
-	
-	private void processMultipartRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	private boolean processMultipartRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		boolean isMobile = false;
 		try {
 			SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd HH:mm");
 			
@@ -203,6 +211,7 @@ public class PhotoServlet extends HttpServlet {
             String description = "";
             String category = "";
             String createdateStr = "";
+            String kw = "";
             while (it.hasNext()) {
                 FileItem item = (FileItem) it.next();
                 if (!item.isFormField()) {
@@ -220,8 +229,22 @@ public class PhotoServlet extends HttpServlet {
                     if (item.getFieldName().equals("createdate")) {
                     	createdateStr = item.getString();
                     }
+                    if (item.getFieldName().equals("isMobile")) {
+                    	isMobile = Boolean.valueOf(item.getString());
+                    	logger.info("IsMobile: " + isMobile);
+                    }
+                    if (item.getFieldName().equals("keyword")) {
+                    	kw = item.getString();
+                    }
                 }
             }
+
+            if (isMobile) {
+            	if (!diaryHelper.md5(kw).equals(keyword)) {
+					return isMobile;
+				}
+            }
+
             Date createDate = null;
     		try {
     			createDate = format.parse(createdateStr);
@@ -238,6 +261,7 @@ public class PhotoServlet extends HttpServlet {
         } catch (FileUploadException fuex) {
         	fuex.printStackTrace();
         }
+        return isMobile;
 	}
 	
 	private byte[] createThumbnail(byte[] data) throws IOException {
