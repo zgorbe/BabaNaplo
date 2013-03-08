@@ -18,6 +18,8 @@
 		<script type="text/javascript" src="<c:url value="/js/jquery-ui-timepicker-addon.js" />"></script>
 		<script type="text/javascript" src="<c:url value="/js/main.js" />"></script>
 		<script type="text/javascript" src="<c:url value="/js/jquery.ui.datepicker-hu.js" />"></script>
+		<script type="text/javascript" src="<c:url value="/js/waypoints.min.js" />"></script>
+		<script type="text/javascript" src="<c:url value="/js/waypoints-sticky.min.js" />"></script>
 	    <title>Baba napló - Admin</title>		
 	</head>
 	<body>
@@ -43,7 +45,7 @@
 					</div>
 				</div>
 				<!-- end #sidebar -->
-				<div style="clear: both;">&nbsp;</div>	
+				<div style="clear: both;">&nbsp;</div>
 				<script type="text/javascript">
 					$(function(){
 						$.datepicker.setDefaults($.extend({showMonthAfterYear: true}, $.datepicker.regional['hu']));
@@ -55,7 +57,10 @@
 		    </div>
 			<script type="text/javascript">
 				adminGetDay(selectedDay);
+				getWordsForDBFix();
 			</script>
+			<div id="content_dbfix">
+			</div>		
 		</div>
 		<div id="footer">
 			<p>&copy; 2011. Baba napló.</p>

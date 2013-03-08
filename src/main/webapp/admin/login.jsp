@@ -29,13 +29,13 @@
 				<table border="0" cellpadding="5" cellspacing="5">
 					<tr>
 						<td>Felhasználónév:</td>
-						<td align="left">
+						<td>
 							<input type="text" name="username" maxlength="12" value="" />
 						</td>
 					</tr>
 					<tr>
 						<td>Jelszó:</td>
-						<td align="left">
+						<td>
 							<input type="password" name="password" maxlength="15" value="" /></td>
 					</tr>
 					<tr>

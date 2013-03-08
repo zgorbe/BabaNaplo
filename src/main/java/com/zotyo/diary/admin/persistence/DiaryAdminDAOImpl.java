@@ -35,7 +35,16 @@ public class DiaryAdminDAOImpl extends SimpleJdbcDaoSupport implements DiaryAdmi
 
 		return days;
 	}
+	
+	@Override
+	public List<Event> getAllEvents() {
+		String sql = "select * from events order by id desc";
+		
+		List<Event> events = getSimpleJdbcTemplate().query(sql, new EventMapper());
 
+		return events;
+	}
+	
 	@Override
 	public Day getDayById(Integer dayId) {
 		String sql = "select * from days where id = ?";

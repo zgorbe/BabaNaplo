@@ -2,7 +2,7 @@
     border: 1px solid;
     margin: 50px auto;
     padding: 10px;
-    width: 300px;
+    width: 350px;
 }
 
 #admin_days {
@@ -23,4 +23,15 @@
 form {
 	margin: 0;
 	padding: 0;
-} 
+}
+
+div.stuck {
+	position: fixed;
+	top: 10px;
+}
+
+.editwordsform {
+	position: relative;
+	top: -24px;
+	left: 100px;
+}

@@ -4,10 +4,16 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
+import java.util.StringTokenizer;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -146,6 +152,35 @@ public class DiaryAdmin extends HttpServlet {
 			RequestDispatcher rd = getServletContext().getRequestDispatcher("/admin/admin.jsp");
 			rd.forward(request, response);
 			return;
+		}
+		
+		if ("dbfix".equals(command)) {
+			List<Day> allDays = diaryAdminDAO.getAllDays();
+			List<Event> allEvents = diaryAdminDAO.getAllEvents();
+			Map<String, String> wordsToFix = new HashMap<String, String>();
+			for (Day d : allDays) {
+				collectWordsToFix(d.getDescriptionOfTheDay(), wordsToFix);
+			}
+			for (Event e : allEvents) {
+				collectWordsToFix(e.getDescription(), wordsToFix); 
+			}
+			request.setAttribute("wordsToFix", wordsToFix);
+			RequestDispatcher rd = getServletContext().getRequestDispatcher("/admin/fix_db_transfers.jsp");
+			rd.forward(request, response);
+			return;			
+		}
+	}
+	
+	private void collectWordsToFix(String description, Map<String, String> wordsToFix) {
+		StringTokenizer st = new StringTokenizer(description, " .,\"");
+		while (st.hasMoreElements()) {
+			String s = st.nextToken();
+			if (s.indexOf('?') == -1) {
+				continue;
+			}
+			if (!wordsToFix.containsKey(s)) {
+				wordsToFix.put(s, s);
+			}
 		}
 	}
 }

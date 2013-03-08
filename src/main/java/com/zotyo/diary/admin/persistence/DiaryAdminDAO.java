@@ -8,6 +8,7 @@ import com.zotyo.diary.pojos.Event;
 
 public interface DiaryAdminDAO {
 	List<Day> getAllDays();
+	List<Event> getAllEvents();
 	Day getDayById(Integer dayId);
 	Day getDayByDate(Date day);
 	boolean updateDay(Day d);

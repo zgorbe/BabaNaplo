@@ -351,6 +351,18 @@ function adminGetDay(dateText) {
 	});	
 }
 
+function getWordsForDBFix() {
+	$.ajax({
+		type: "POST",
+		data: "cmd=dbfix",
+		url: '/naplo/admin',
+		success: function(data, type, xmlhttp){
+			$('#content_dbfix').html(data);
+		}
+	});
+}
+
+
 /**** ImagePreview with Module Pattern ****/
 var ImagePreview = (function(){
 	var $container;

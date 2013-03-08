@@ -250,6 +250,10 @@ a img {
 	font-size: smaller;
 }
 
+#content_dbfix {
+	background: white;
+}
+
 #datepicker1 {
 	padding: 0px 10px 10px 10px;
 }
