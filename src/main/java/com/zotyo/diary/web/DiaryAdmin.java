@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,6 +34,8 @@ public class DiaryAdmin extends HttpServlet {
 	
 	private static Logger logger = Logger.getLogger(DiaryAdmin.class); 
 	
+	private static final String PARAM_PREFIX_CHANGED = "changed_";
+	private static final String PARAM_PREFIX_WORD = "word_";
 	@Autowired
 	private DiaryAdminDAO diaryAdminDAO;
 	
@@ -169,8 +172,57 @@ public class DiaryAdmin extends HttpServlet {
 			rd.forward(request, response);
 			return;			
 		}
+		if ("edit_words".equals(command)) {
+			Map<String, String> fixedWords = getFixedWords(request);
+			List<Day> allDays = diaryAdminDAO.getAllDays();
+			List<Day> daysToFix = new ArrayList<Day>();
+			for (Day d : allDays) {
+				for (Map.Entry<String, String> entry : fixedWords.entrySet()) {
+					if (d.getDescriptionOfTheDay().indexOf(entry.getKey()) != -1) {
+						d.setDescriptionOfTheDay(d.getDescriptionOfTheDay().replace(entry.getKey(), entry.getValue()));
+						if (!daysToFix.contains(d)) {
+							daysToFix.add(d);
+						}
+					}
+				}
+			}
+			for (Day d : daysToFix) {
+				diaryAdminDAO.updateDay(d);
+			}
+			List<Event> allEvents = diaryAdminDAO.getAllEvents();
+			List<Event> eventsToFix = new ArrayList<Event>();
+			for (Event e :  allEvents) {
+				for (Map.Entry<String, String> entry : fixedWords.entrySet()) {
+					if (e.getDescription().indexOf(entry.getKey()) != -1) {
+						e.setDescription(e.getDescription().replace(entry.getKey(), entry.getValue()));
+						if (!eventsToFix.contains(e)) {
+							eventsToFix.add(e); 
+						}
+					}
+				}
+			}
+			for (Event e : eventsToFix) {
+				diaryAdminDAO.updateEvent(e);
+			}
+			response.sendRedirect("/admin/admin.jsp");
+		}
 	}
 	
+	private Map<String, String> getFixedWords(HttpServletRequest request) {
+		Map<String, String> fixedWords = new HashMap<String, String>();
+		Enumeration en = request.getParameterNames();
+		while (en.hasMoreElements()) {
+			String param = (String)en.nextElement();
+			if (param.startsWith(PARAM_PREFIX_CHANGED)) {
+				if (Boolean.valueOf(request.getParameter(param))) {
+					String key = param.replace(PARAM_PREFIX_CHANGED, "");
+					fixedWords.put(key, request.getParameter(PARAM_PREFIX_WORD + key));
+				}
+			}
+		}
+		return fixedWords;
+	}
+
 	private void collectWordsToFix(String description, Map<String, String> wordsToFix) {
 		StringTokenizer st = new StringTokenizer(description, " .,\"");
 		while (st.hasMoreElements()) {

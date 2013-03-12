@@ -11,14 +11,14 @@
 <c:choose>
 	<c:when test="${not empty wordsToFix}">
 		<div id="editwords">
-			<div class="sticky-div"><button type="submit">Módosít</button></div>
+			<div class="sticky-div"><button id="submit_button">Módosít</button></div>
 			<form class="editwordsform" action="/naplo/admin" method="POST" accept-charset="UTF-8">
 				<table class="box-table-a">
 					<c:forEach items="${wordsToFix}" var="entry">
 					<tr>
 				        <td><label for="word_<c:out value="${entry.key}" />"><c:out value="${entry.key}" /></label></td>
-				        <td><input class="words" id="word_<c:out value="${entry.key}" />" type="text" value="<c:out value="${entry.value}" />" /></td>
-				        <td class="updated"></td>
+				        <td><input class="words" name="word_<c:out value="${entry.key}" />" type="text" value="<c:out value="${entry.value}" />" /></td>
+				        <td class="updated"><input type="hidden" name="changed_<c:out value="${entry.key}" />" value="false" /></td>
 				    </tr>
 					</c:forEach>
 			    </table>
@@ -35,7 +35,12 @@
 	$(function(){
 		$('.sticky-div').waypoint('sticky');
 		$('#editwords').on('change', '.words', function() {
-			$(this).parent().parent().find('.updated').html('<img src="/images/done.png" />');
+			$td = $(this).parent().parent().find('.updated'); 			
+			$td.prepend('<img src="/images/done.png" />');
+			$td.find('input[type=hidden]').val('true');
+		});
+		$('#submit_button').on('click', function() {
+			$('.editwordsform').submit();
 		});
 	});
 </script>
