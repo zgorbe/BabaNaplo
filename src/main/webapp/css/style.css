@@ -96,10 +96,14 @@ a img {
 	display: block;
 	width: auto;
 	padding: 6px 10px;
+
+	-webkit-transition: all 0.5s ease-in;
+	-moz-transition: all 0.5s ease-in;
+	-o-transition: all 0.5s ease-in;
 }
 
 #menu a:hover {
-	text-decoration: underline;
+	color: #FBE2F3;
 	background-color: #FD3790;
 }
 
@@ -307,8 +311,10 @@ button:hover {
 	width: 245px;
 	background-color: #FBE2F3;
 	border: 2px solid #FD3790;
-	border-radius: 5px 5px 5px 5px;
 	margin-bottom: 20px;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
 }
 
 /**** Isotope Filtering ****/
@@ -373,7 +379,9 @@ img.cancel, img.zoom {
 }
 img.baba {
 	border: 5px solid #FBE2F3;
-    border-radius: 3px 3px 3px 3px;
+    border-radius: 20%;
+	-moz-border-radius: 20%;
+	-webkit-border-radius: 20%;
     cursor: pointer;
 }
 
