@@ -227,7 +227,7 @@ public class DiaryAdmin extends HttpServlet {
 		StringTokenizer st = new StringTokenizer(description, " .,\"");
 		while (st.hasMoreElements()) {
 			String s = st.nextToken();
-			if (s.indexOf('?') == -1) {
+			if (s.indexOf('ő') == -1) {
 				continue;
 			}
 			if (!wordsToFix.containsKey(s)) {
