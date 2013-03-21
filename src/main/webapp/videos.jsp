@@ -3,8 +3,8 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
-<div class="post">
-  <h1 class="title">Videók</h1>
+<section>
+  <h3>Videók</h3>
   <p id="video_text">Kiságyban állós, kacagós :)</p>
 
   <iframe id="videoframe" onload="initVideos();" src="http://www.youtube.com/embed/XO2K6dlyvv4" allowfullscreen="1" width="560" frameborder="1" height="420"></iframe>
@@ -39,4 +39,4 @@
       </div>
     </div>
   </div>
-</div>
+</section>

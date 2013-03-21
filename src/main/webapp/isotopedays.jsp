@@ -12,8 +12,8 @@
 
 <% DiaryHelper diaryHelper = new DiaryHelper(); %>
 
-<div class="post">
-	<h1 class="title">A naplóban szereplő események</h1>
+<section>
+	<h3 class="title">A naplóban szereplő események</h3>
 	<table border="0" cellspacing="0" cellpadding="3" style="width:100%;">
 		<tr>
 			<td align="center" id="loader_all" style="display: none;"><img src="images/loading_pink.gif"></td>
@@ -77,7 +77,7 @@
 			sortAscending : false
 		});
     
-		$('div.post select').on('change', function() {
+		$('section select').on('change', function() {
 			var year = $('#yearFilter').val();
 			var months = $('#monthsFilter').val();
 			var filterStr = '.m' + year + '-' + months;
@@ -90,4 +90,4 @@
 		});	
 	});
 	</script>
-</div>
+</section>

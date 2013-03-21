@@ -1,3 +1,31 @@
+html, body, div, span, h1, h2, h3, h4, h5, h6, p, ol, ul, li, form, label, legend, caption, aside, details, figcaption, figure, footer,header, hgroup, menu, nav, section, summary {
+    margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	font-family: inherit;
+	vertical-align: baseline;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+
+a img {border:none}
+
+
+aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {display: block}
+
+html {
+	width:100%;
+	height:100%;
+}
+
 body {
 	margin: 0px;
 	padding: 0px;
@@ -22,7 +50,10 @@ h2 {
 }
 
 h3 {
+	background: #FD3790;
+	padding: 7px 25px;
 	font-size: 1.4em;
+	color: #FFFFFF;
 }
 
 p, ol, ul {
@@ -42,14 +73,14 @@ a img {
 
 /* Header */
 
-#header {
+header {
 	width: 900px;
 	height: 100px;
 	margin: 0px auto;
 	background-color: #F792C9;
 }
 
-#header a {
+header a {
 	text-decoration: none;
 	color: #FFFFFF;
 }
@@ -72,27 +103,27 @@ a img {
 	padding: 25px 0px 0px 0px;
 }
 
-/* Menu */
+/* Navigation */
 
-#menu {
+nav {
 	float: right;
 	text-transform: uppercase;
 	font-weight: bold;
 }
 
-#menu ul {
+nav ul {
 	margin: 0px;
 	padding: 49px 0px 0px 0px;
 	list-style: none;
 	line-height: normal;
 }
 
-#menu li {
+nav li {
 	float: left;
 	margin: 0px;
 }
 
-#menu a {
+nav a {
 	display: block;
 	width: auto;
 	padding: 6px 10px;
@@ -102,12 +133,12 @@ a img {
 	-o-transition: all 0.5s ease-in;
 }
 
-#menu a:hover {
+nav a:hover {
 	color: #FBE2F3;
 	background-color: #FD3790;
 }
 
-#menu .active {
+nav .active {
 	background-color: #FD3790;
 }
 
@@ -120,7 +151,7 @@ a img {
 	background: #FFFFFF;
 }
 
-#header-pic {
+#slider-pic {
 	padding-bottom: 15px;
 	width: 900px;
 	height: 140px;
@@ -133,43 +164,41 @@ a img {
 	width: 570px;
 }
 
-.post {
+article {
 	margin: 0px 0px 30px 0px;
 }
 
-.post .title {
+article > header {
+	width: auto;
+	height: auto;
 	margin: 0px;
 	background: #FD3790;
 	padding: 7px 25px;
 	font-size: 1.4em;
+	color: #FFFFFF;
 }
 
-.post .title a {
+article > div.title  a {
 	color: white;
 }
 
-.post .entry {
+article > div.entry {
     padding: 10px 20px 0;
 	font-family: Cursive, Verdana, Arial;
 	font-size: 16px;
 }
 
-.post .entry .entry_item {
+div.entry_item {
 	border-bottom: 1px solid #FD3790;
 	padding: 10px 0px;
 }
 
-.post .meta .links a {
+article .meta .links a {
 	color: #FD3790;
 }
 
-.post .meta {
+article .meta {
 	font-weight: bold;
-	padding-left: 20px;
-}
-
-.post .byline {
-	margin: 0px;
 	padding-left: 20px;
 }
 
@@ -226,9 +255,8 @@ a img {
 
 /* Search */
 
-#search fieldset {
-	margin-left: 20px;
-	margin-bottom: 10px;
+div#sidebar fieldset {
+	margin: 15px 0px 5px 20px;
 	border: none;
 }
 
@@ -238,7 +266,7 @@ a img {
 
 /* Footer */
 
-#footer {
+footer {
 	clear: both;
 	width: 900px;
 	height: 50px;
@@ -246,7 +274,7 @@ a img {
 	color: #FD3790;
 }
 
-#footer p {
+footer p {
 	margin: 0px;
 	padding: 19px 0px 0px 0px;
 	text-align: center;
@@ -259,7 +287,7 @@ a img {
 }
 
 #datepicker1 {
-	padding: 0px 10px 10px 10px;
+	padding: 10px;
 }
 
 /* , input[type="text"], input[type="password"] */ 
@@ -379,9 +407,9 @@ img.cancel, img.zoom {
 }
 img.baba {
 	border: 5px solid #FBE2F3;
-    border-radius: 20%;
-	-moz-border-radius: 20%;
-	-webkit-border-radius: 20%;
+    border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
     cursor: pointer;
 }
 

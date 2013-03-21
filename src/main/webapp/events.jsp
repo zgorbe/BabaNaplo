@@ -9,8 +9,8 @@
 
 <% DiaryHelper diaryHelper = new DiaryHelper(); %>
 
-<div class="post">
-	<h2 class="title"><c:out value="${theDay}" /> eseményei</h2>
+<article>
+	<header><c:out value="${theDay}" /> eseményei</header>
 	<div class="entry">
 		<div id="loader_events" style="display: none;"><img src="images/loading_pink.gif"></div>
 		<div id="div_events">
@@ -36,4 +36,4 @@
 			</c:choose>
 		</div>
 	</div>
-</div>
+</article>

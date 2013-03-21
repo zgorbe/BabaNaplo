@@ -8,8 +8,8 @@
 <%@page import="com.zotyo.diary.web.DiaryHelper"%>
 
 <% DiaryHelper diaryHelper = new DiaryHelper(); %>
-<div class="post">
-	<h1 class="title">Képek</h1>
+<section>
+	<h3>Képek</h3>
 	<div id="isotope_container">
 		<c:if test="${not empty photos}" >
 			<% List<Photo> photos = ((List<Photo>)request.getAttribute("photos"));
@@ -43,4 +43,4 @@
 			});
 		</script>	
 	</div>
-</div>
+</section>

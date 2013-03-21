@@ -9,8 +9,8 @@
 
 <% DiaryHelper diaryHelper = new DiaryHelper(); %>
 
-<div class="post">
-	<h1 class="title">Képek&nbsp;&nbsp;-&nbsp;
+<section>
+	<h3>Képek&nbsp;&nbsp;-&nbsp;
 	<c:choose>
 			<c:when test="${slideshow}">
 				<a href="javascript:void(0);" onclick="icon_photos('false');" >Váltás ikon nézetre</a>
@@ -23,7 +23,7 @@
 				<a href="javascript:void(0);" onclick="icon_photos('true');" >Vissza a diavetítőhöz</a>
 			</c:otherwise>
 	</c:choose>
-	</h1>
+	</h3>
 	<c:if test="${not empty photos}" >
 		<c:choose>
 			<c:when test="${slideshow}">
@@ -77,4 +77,4 @@
 			});
 		});
 	</script>	
-</div>
+</section>
