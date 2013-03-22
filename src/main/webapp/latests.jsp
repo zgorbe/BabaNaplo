@@ -11,24 +11,22 @@
 
 <article>
 	<header>Legfrissebb események</header>
-	<div class="entry">
+	<div class="paragraphs">
 		<div id="loader_latests" style="display: none;"><img src="images/loading_pink.gif"></div>
-		<div id="div_latests">
-			<c:choose>
-				<c:when test="${fn:length(latests) > 0}">
-					<c:forEach items="${latests}" var="event">
-						<div class="entry_item">
-							<c:out value="${event.description}" /><br />
-							<small><%= diaryHelper.formatStartTime((Event)pageContext.getAttribute("event")) %></small>
-							<c:if test="${event.duration > 0}">
-								<br />Időtartam (óra:perc):
-								<%= diaryHelper.getDurationInHHMM((Event)pageContext.getAttribute("event")) %>	
-							</c:if>
-						</div>
-					</c:forEach>
-				</c:when>
-			</c:choose>
-		</div>
+		<c:choose>
+			<c:when test="${fn:length(latests) > 0}">
+				<c:forEach items="${latests}" var="event">
+					<p>
+						<c:out value="${event.description}" /><br />
+						<small><%= diaryHelper.formatStartTime((Event)pageContext.getAttribute("event")) %></small>
+						<c:if test="${event.duration > 0}">
+							<br />Időtartam (óra:perc):
+							<%= diaryHelper.getDurationInHHMM((Event)pageContext.getAttribute("event")) %>	
+						</c:if>
+					</p>
+				</c:forEach>
+			</c:when>
+		</c:choose>
 	</div>
 	<div class="meta">
 		<p class="links"><a href="#" class="comments" onclick="isotope_all_days();">További események</a></p>

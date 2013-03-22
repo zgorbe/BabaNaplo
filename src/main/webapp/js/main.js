@@ -292,7 +292,7 @@ function getFormattedNow() {
 }
 
 function smiley() {
-	$('.entry').each(function(index, element) {
+	$('div.paragraphs').each(function(index, element) {
 		var tmp = $(element).html().replace(/:\)/g, '<img src="images/smiley.png" alt=":-)" />');
 		$(element).html(tmp);
 	});
