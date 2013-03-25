@@ -14,6 +14,12 @@ public class Event {
 		setStartTime(startTime);
 		setDuration(duration);
 	}
+	public Event(Integer id, String description, Date startTime, long duration) {
+		setId(id);
+		setDescription(description);
+		setStartTime(startTime);
+		setDuration(duration);
+	}
 	public Integer getId() {
 	        return id;
 	}

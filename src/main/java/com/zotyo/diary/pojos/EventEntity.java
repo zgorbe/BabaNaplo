@@ -88,7 +88,7 @@ public class EventEntity {
 		setStartTime(startTime);
 		setDuration(duration);
 	}
-	
+
 	public Integer getId() {
 		return id;
 	}

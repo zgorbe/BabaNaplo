@@ -1,7 +1,6 @@
 package com.zotyo.diary.ws;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -20,6 +19,7 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
 import com.zotyo.diary.persistence.DiaryDAO;
 import com.zotyo.diary.pojos.Day;
 import com.zotyo.diary.pojos.Event;
+import com.zotyo.diary.util.DateUtil;
 
 
 @WebService(endpointInterface = "com.zotyo.diary.ws.Diary", wsdlLocation="WEB-INF/wsdl/DiaryImplService.wsdl")
@@ -33,7 +33,7 @@ public class DiaryImpl /* extends SpringBeanAutowiringSupport */ implements Diar
 	private DiaryDAO diaryDAO;
 
 	public List<Event> getEventsForADay(Date theDay) {
-		return diaryDAO.getEventsForADay(resetHMS(theDay));
+		return diaryDAO.getEventsForADay(DateUtil.resetHMS(theDay));
 	}
 
 	public List<Day> getDaysForAMonth(int year, int month) {
@@ -45,7 +45,7 @@ public class DiaryImpl /* extends SpringBeanAutowiringSupport */ implements Diar
 	}
 	
 	public Day getDay(Date theDay) {
-		return diaryDAO.getDay(resetHMS(theDay));
+		return diaryDAO.getDay(DateUtil.resetHMS(theDay));
 	}
 
 	public List<Event> getAllEvents() {
@@ -64,24 +64,15 @@ public class DiaryImpl /* extends SpringBeanAutowiringSupport */ implements Diar
 	}
 	
 	public void addDay(Day day) {
-		day.setTheDay(resetHMS(day.getTheDay()));
+		day.setTheDay(DateUtil.resetHMS(day.getTheDay()));
 		diaryDAO.addDay(day);
 	}
 
 	public void addEvent(Date theDay, Event event) {
-		theDay = resetHMS(theDay);
+		theDay = DateUtil.resetHMS(theDay);
 		diaryDAO.addEvent(theDay, event);
 	}
 	
-	private Date resetHMS(Date d) {
-		//resetting hours:minutes:seconds to zero		
-		Calendar cal=Calendar.getInstance();
-		cal.setTime(d);
-		cal.set(Calendar.HOUR_OF_DAY, 12);
-		cal.set(Calendar.MINUTE, 0);
-		cal.set(Calendar.SECOND, 0);
-		return cal.getTime();
-	}
 	
 	@PostConstruct
 	private void getDAOBean() {

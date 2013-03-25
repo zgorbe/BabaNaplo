@@ -11,11 +11,12 @@ import com.zotyo.diary.pojos.EventEntity;
 public class PersistenceUtil {
 
 	public static Event getEvent(EventEntity ee) {
-		return new Event(ee.getDescription(), ee.getStartTime(), ee.getDuration());
+		return new Event(ee.getId(), ee.getDescription(), ee.getStartTime(), ee.getDuration());
 	}
 
 	public static Day getDay(DayEntity de) {
 		Day rv = new Day();
+		rv.setId(de.getId());
 		rv.setTheDay(de.getTheDay());
 		rv.setDescriptionOfTheDay(de.getDescriptionOfTheDay());
 		List<Event> events = new ArrayList<Event>();
