@@ -18,7 +18,7 @@ import com.zotyo.diary.util.DateUtil;
 
 @Controller
 @RequestMapping("/days")
-public class DayController {
+public class DayJSONController {
 	
 	@Autowired
 	private DiaryDAO diaryDAO;
