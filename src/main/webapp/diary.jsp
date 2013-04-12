@@ -30,7 +30,7 @@
 			<header>
 				<div id="logo">
 					<h1><a href="/naplo">Baba napló</a></h1>
-					<p>- Timcsi és ... naplója -</p>
+					<p>- Timcsi és Réka naplója -</p>
 				</div>
 				<nav>
 					<ul id="menu_list">
