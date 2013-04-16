@@ -128,6 +128,15 @@
 		<url-pattern>/json/*</url-pattern>
 	</servlet-mapping>
 	
+
+	<servlet>
+		<servlet-name>DiaryServlet2</servlet-name>
+		<servlet-class>com.zotyo.diary.web.DiaryServlet2</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DiaryServlet2</servlet-name>
+		<url-pattern>/naplo2/</url-pattern>
+	</servlet-mapping>	
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>

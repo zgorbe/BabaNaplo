@@ -32,6 +32,18 @@ public class EventJSONController {
 		return diaryDAO.getAllEvents();
 	}
 	
+	@RequestMapping(value = "/latests/{count}", method = RequestMethod.GET)
+	@ResponseBody
+	public List<Event> getLatests(@PathVariable int count) {
+		List<Event> allEvents = diaryDAO.getAllEvents();
+		count = (count < 3) ? 3 : count;
+		List<Event> events = new ArrayList<Event>(count);
+		for (int i=0; i < count; i++) {
+			events.add(allEvents.get(i));
+		}
+		return events;
+	}
+	
 	@RequestMapping(value = "/{year}/{month}/{day}", method = RequestMethod.POST)
 	public void addEvent(@RequestBody Event event, @PathVariable int year, @PathVariable int month, @PathVariable int day) {
 		Calendar c = GregorianCalendar.getInstance();
