@@ -7,12 +7,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<!-- Bootstrap -->
 		<link href="/css/bootstrap.min.css" rel="stylesheet" media="screen">
-		<style type="text/css">
-		    body {
-	    		padding-top: 60px;
-				padding-bottom: 40px;
-			}
-	    </style>
+		<link href="/css/style2.css" rel="stylesheet" media="screen">
   	</head>
 	<body>
 		<div class="navbar navbar-fixed-top">
@@ -23,7 +18,7 @@
 			            <span class="icon-bar"></span>
 			            <span class="icon-bar"></span>
 					</button>
-					<a class="brand" href="#">Baba napló</a>
+					<a class="brand" href="/naplo2/">Baba napló</a>
 					<div class="nav-collapse collapse">
 						<ul class="nav">
 							<li class="active"><a href="#/">Home</a></li>
@@ -77,10 +72,13 @@
 		</div> 
 
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script src="/js/jquery.isotope.min.js"></script>
 		<script src="/js/bootstrap.min.js"></script>
 		<script src="/js/sammy-0.7.4.min.js"></script>
 		<script src="/js/handlebars.js"></script>
 		<script src="/js/sammy.handlebars-0.7.4.min.js"></script>
+		<script src="/js/days.js"></script>
+		<script src="/js/events.js"></script>
 		<script src="/js/mysammy.js"></script>
 		<script src="/js/jquery.dateFormat-1.0.js"></script>
     </body>
