@@ -35,7 +35,7 @@
 	            		</ul>
 			            <form class="navbar-form pull-right">
 							<input class="span2" type="text" placeholder="Keresés...">
-							<button type="submit" class="btn">Keresés</button>
+							<button type="submit" class="btn btn-primary">Keresés</button>
 						</form>
 	        		</div>
 	        	</div>

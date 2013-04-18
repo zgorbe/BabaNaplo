@@ -27,7 +27,3 @@ $(function(){
         $(this).addClass('active');                
     });            
 });
-
-Handlebars.registerHelper('get_filter_class', function(startTime) {
-
-});
