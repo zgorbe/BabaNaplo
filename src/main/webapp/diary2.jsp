@@ -13,11 +13,6 @@
 		<div class="navbar navbar-fixed-top">
 			<div class="navbar-inner">
 				<div class="container">
-					<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-			            <span class="icon-bar"></span>
-			            <span class="icon-bar"></span>
-			            <span class="icon-bar"></span>
-					</button>
 					<a class="brand" href="/naplo2/">Baba napló</a>
 					<div class="nav-collapse collapse">
 						<ul class="nav">
@@ -28,7 +23,7 @@
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Új bejegyzés <b class="caret"></b></a>
 								<ul class="dropdown-menu">
-									<li><a href="#">Új nap</a></li>
+									<li><a href="#/newday">Új nap</a></li>
 									<li><a href="#">Új esemény</a></li>
 								</ul>
 							</li>
@@ -43,26 +38,10 @@
 		</div>
 
 		<div class="container">
-		
-			<!-- Main hero unit for a primary marketing message or call to action -->
 			<div class="page-header">
 				<p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
 				<p><a href="#" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
 			</div>
-			
-			<!-- Example row of columns 
-			<div class="row">
-				<div class="span4">
-					<h3>Heading</h3>
-					<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-					<p><a class="btn" href="#">View details &raquo;</a></p>
-				</div>
-				<div class="span8">
-					<h3>Heading</h3>
-					<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-					<p><a class="btn" href="#">View details &raquo;</a></p>
-				</div>
-			</div> -->
 			<div id="main">
 			</div>
 			<footer>

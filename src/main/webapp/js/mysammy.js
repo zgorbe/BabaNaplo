@@ -16,6 +16,10 @@ $(function(){
 		this.get('#/events', function(context) {
 			Events.getAll(context);
 		});
+		
+		this.get('#/newday', function(context) {
+			Days.newDay(context);
+		});
     });
 	
 	$(function() {
