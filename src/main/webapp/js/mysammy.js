@@ -6,6 +6,7 @@ $(function(){
 	
 	var app = $.sammy('#main', function() {
 		this.use('Handlebars', 'hb');
+
 		this.before({}, function(context) {
 			context.loadOptions = loadOptions;
 		});
@@ -19,6 +20,14 @@ $(function(){
 		
 		this.get('#/newday', function(context) {
 			Days.newDay(context);
+		});
+
+		this.post('#/addday', function(context) {
+			Days.addDay(context);
+		});
+		
+		this.bind('selectedDayChanged', function(e, data) {
+			
 		});
     });
 	

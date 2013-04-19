@@ -6,7 +6,7 @@
 		      Év
 		      <span class="caret"></span>
 		    </button>
-		    <ul class="dropdown-menu">
+		    <ul class="dropdown-menu filter">
 		      <li><a href="javascript:void(0);" data-filter="2011">2011</a></li>
 		      <li><a href="javascript:void(0);" data-filter="2012">2012</a></li>
 		      <li><a href="javascript:void(0);" data-filter="2013">2013</a></li>
@@ -21,7 +21,7 @@
 		      Hónap
 		      <span class="caret"></span>
 		    </button>
-		    <ul class="dropdown-menu">
+		    <ul class="dropdown-menu filter">
 				<li><a href="javascript:void(0);" data-filter="01">Január</a></li>
 				<li><a href="javascript:void(0);" data-filter="02">Február</a></li>
 				<li><a href="javascript:void(0);" data-filter="03">Március</a></li>

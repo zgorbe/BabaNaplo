@@ -42,7 +42,7 @@ var Events = (function() {
 				       			sortBy : 'original-order', 
 				       			sortAscending : false
 				       		});
-				       		$('ul.dropdown-menu').on('click', 'a', function() {
+				       		$('ul.filter').on('click', 'a', function() {
 				       			var filterValue = $(this).data('filter').toString();
 				       			var filterStr = '';
 				       			if (filterValue.length > 2) {

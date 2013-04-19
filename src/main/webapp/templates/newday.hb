@@ -1,22 +1,50 @@
-<form class="form-horizontal">
-  <div class="control-group">
-    <label class="control-label" for="inputEmail">Email</label>
-    <div class="controls">
-      <input type="text" id="inputEmail" placeholder="Email">
-    </div>
-  </div>
-  <div class="control-group">
-    <label class="control-label" for="inputPassword">Password</label>
-    <div class="controls">
-      <input type="password" id="inputPassword" placeholder="Password">
-    </div>
-  </div>
-  <div class="control-group">
-    <div class="controls">
-      <label class="checkbox">
-        <input type="checkbox"> Remember me
-      </label>
-      <button type="submit" class="btn">Sign in</button>
-    </div>
-  </div>
-</form>
+<div class="row">
+	<div class="span4">
+		<div id="datepicker1" style="font-size: 14px;">blabla1</div>
+	</div>
+	<div class="span8">	
+		<form id="formAddDay" action="#/addday" method="post" class="form-horizontal">
+			<div class="control-group">
+				<label class="control-label" for="inputKeyword">Kulcsszó</label>
+				<div class="controls">
+					<input class="span3"type="password" id="inputKeyword" name="keyword" placeholder="Keyword">
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="inputTheDay">A nap dátuma</label>
+			    <div class="controls">
+			    	<input class="span3 hasDatepicker" type="text" id="inputTheDay" name="theDay" placeholder="">
+			    </div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="descriptionOfTheDay">Leírása</label>
+				<div class="controls">
+					<textarea class="span5" rows="2" id="descriptionOfTheDay" name="descriptionOfTheDay" placeholder="Leírás"></textarea>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="inputStartDate">Esemény kezdete</label>
+			    <div class="controls">
+			    	<input class="span3 hasDatepicker" type="text" id="inputStartDate" name="startDate" placeholder="">
+			    </div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="inputDuration">Esemény időtartama</label>
+			    <div class="controls">
+			    	<input class="span3 hasDatepicker" type="text" id="inputDuration" name="duration" placeholder="">
+			    </div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="initialEvent">Az esemény</label>
+				<div class="controls">
+					<textarea class="span5" rows="6" id="initialEvent" name="initialEvent" placeholder="Leírás"></textarea>
+				</div>
+			</div>
+			<div class="control-group offset2">
+				<button type="submit" class="btn btn-primary">Küldés</button>
+				<button type="button" class="btn">Mégse</button>
+			</div>
+		</form>		
+	</div>
+</div>
+

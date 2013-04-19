@@ -23,7 +23,8 @@ public class DayJSONController {
 	@Autowired
 	private DiaryDAO diaryDAO;
 	
-	@RequestMapping(method = RequestMethod.POST)
+	
+	@RequestMapping(method = RequestMethod.POST, consumes="application/json")
 	public void addDay(@RequestBody Day day) {
 		day.setTheDay(DateUtil.resetHMS(day.getTheDay()));
 		diaryDAO.addDay(day);

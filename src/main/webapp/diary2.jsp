@@ -16,21 +16,21 @@
 					<a class="brand" href="/naplo2/">Baba napló</a>
 					<div class="nav-collapse collapse">
 						<ul class="nav">
-							<li class="active"><a href="#/">Home</a></li>
-							<li><a href="#/events">Összes esemény</a></li>
-							<li><a href="#contact">Videók</a></li>
-							<li><a href="#contact">Képek</a></li>
+							<li class="active"><a href="#/"><i class="icon-home"></i> Home</a></li>
+							<li><a href="#/events"><i class="icon-book"></i> Összes esemény</a></li>
+							<li><a href="#contact"><i class="icon-facetime-video"></i> Videók</a></li>
+							<li><a href="#contact"><i class="icon-camera"></i> Képek</a></li>
 							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Új bejegyzés <b class="caret"></b></a>
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-comment"></i> Új bejegyzés <b class="caret"></b></a>
 								<ul class="dropdown-menu">
-									<li><a href="#/newday">Új nap</a></li>
-									<li><a href="#">Új esemény</a></li>
+									<li><a href="#/newday"><i class="icon-pencil"></i> Új nap</a></li>
+									<li><a href="#"><i class="icon-edit"></i> Új esemény</a></li>
 								</ul>
 							</li>
 	            		</ul>
 			            <form class="navbar-form pull-right">
 							<input class="span2" type="text" placeholder="Keresés...">
-							<button type="submit" class="btn btn-primary">Keresés</button>
+							<button type="submit" class="btn btn-primary"><i class="icon-search icon-white"></i> Keresés</button>
 						</form>
 	        		</div>
 	        	</div>
@@ -52,6 +52,7 @@
 
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 		<script src="/js/jquery.isotope.min.js"></script>
+		<script src="/js/jquery.json-2.4.min.js"></script>
 		<script src="/js/bootstrap.min.js"></script>
 		<script src="/js/sammy-0.7.4.min.js"></script>
 		<script src="/js/handlebars.js"></script>
