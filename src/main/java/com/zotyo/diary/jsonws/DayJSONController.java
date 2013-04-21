@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.zotyo.diary.persistence.DiaryDAO;
 import com.zotyo.diary.pojos.Day;
@@ -24,10 +25,19 @@ public class DayJSONController {
 	private DiaryDAO diaryDAO;
 	
 	
-	@RequestMapping(method = RequestMethod.POST, consumes="application/json")
+	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
 	public void addDay(@RequestBody Day day) {
 		day.setTheDay(DateUtil.resetHMS(day.getTheDay()));
 		diaryDAO.addDay(day);
+	}
+
+	@RequestMapping(value = "/form", method = RequestMethod.POST, consumes = "application/x-www-form-urlencoded")
+	public void addDayForm(@RequestParam String keyword, @RequestParam String theDay,
+		@RequestParam String descriptionOfTheDay, @RequestParam String startDate, @RequestParam String duration,
+		@RequestParam String initialEvent) {
+		
+		//day.setTheDay(DateUtil.resetHMS(day.getTheDay()));
+		//diaryDAO.addDay(day);
 	}
 	
 	@RequestMapping(method = RequestMethod.GET)

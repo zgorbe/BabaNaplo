@@ -7,12 +7,22 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<!-- Bootstrap -->
 		<link href="/css/bootstrap.min.css" rel="stylesheet" media="screen">
+		<link href="/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
 		<link href="/css/style2.css" rel="stylesheet" media="screen">
+		<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    	<!--[if lt IE 9]>
+    		<script src="../assets/js/html5shiv.js"></script>
+    	<![endif]-->
   	</head>
 	<body>
 		<div class="navbar navbar-fixed-top">
 			<div class="navbar-inner">
 				<div class="container">
+					<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            			<span class="icon-bar"></span>
+            			<span class="icon-bar"></span>
+            			<span class="icon-bar"></span>
+          			</button>
 					<a class="brand" href="/naplo2/">Baba napló</a>
 					<div class="nav-collapse collapse">
 						<ul class="nav">
@@ -30,7 +40,7 @@
 	            		</ul>
 			            <form class="navbar-form pull-right">
 							<input class="span2" type="text" placeholder="Keresés...">
-							<button type="submit" class="btn btn-primary"><i class="icon-search icon-white"></i> Keresés</button>
+							<button type="submit" class="btn btn-primary"><i class="icon-search icon-white"></i></button>
 						</form>
 	        		</div>
 	        	</div>

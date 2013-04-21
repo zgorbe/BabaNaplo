@@ -10,6 +10,7 @@ $(function(){
 		this.before({}, function(context) {
 			context.loadOptions = loadOptions;
 		});
+		
 		this.get('#/', function(context) {
 			Events.getLatests(context);
 		});
@@ -38,5 +39,9 @@ $(function(){
     $('ul.nav').on('click', 'li', function () {
         $('ul.nav > li').removeClass('active');
         $(this).addClass('active');                
-    });            
+    });
+    $('ul.nav > li.dropdown').on('click', 'a', function() {
+		$('.dropdown.open').removeClass('open');
+		$('ul.dropdown-menu > li').removeClass('active');
+	});         
 });
