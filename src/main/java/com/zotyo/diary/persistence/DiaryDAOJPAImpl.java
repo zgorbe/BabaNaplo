@@ -42,9 +42,12 @@ public class DiaryDAOJPAImpl implements DiaryDAO {
     @PersistenceContext(unitName = "DiaryPU")
     private EntityManager em;
     
-	public void addDay(Day day) {
+	public int addDay(Day day) {
 		DayEntity de = PersistenceUtil.getDayEntity(day);
 		em.persist(de);
+		em.flush();
+		em.refresh(de);
+		return de.getId();
 	}
 
 	public Day getDay(Date theDay) {

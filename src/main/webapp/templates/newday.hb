@@ -42,7 +42,7 @@
 			</div>
 			<div class="control-group offset2">
 				<button type="submit" class="btn btn-primary">Küldés</button>
-				<button type="button" class="btn">Mégse</button>
+				<a class="btn" href="#/">Mégse</a>
 			</div>
 		</form>		
 	</div>

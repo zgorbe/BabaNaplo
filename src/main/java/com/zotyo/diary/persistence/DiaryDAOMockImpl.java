@@ -23,8 +23,9 @@ public class DiaryDAOMockImpl implements DiaryDAO {
 		this.diary = daylist;
 	}
 	
-	public void addDay(Day day) {
+	public int addDay(Day day) {
 		diary.add(day);
+		return 0;
 	}
 
 	public void addEvent(Date theDay, Event event) {

@@ -15,6 +15,6 @@ public interface DiaryDAO {
 	List<Event> searchEvents(String searchTerm);
 	List<String> searchTerms(String term);
 	
-	void addDay(Day day);
+	int addDay(Day day);
 	void addEvent(Date theDay, Event event);
 }
