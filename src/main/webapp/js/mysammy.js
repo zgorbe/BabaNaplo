@@ -14,6 +14,7 @@ $(function(){
 			
 			$('ul.nav > li').removeClass('active');
 			$('li > a[href="' + href + '"]').parent().addClass('active');
+			context.app.trigger('dropDownMenuChanged');
 		});
 		
 		this.get('#/', function(context) {
@@ -33,7 +34,7 @@ $(function(){
 		});
 		
 		this.bind('selectedDayChanged', function(e, data) {
-			
+			console.log(data.date);
 		});
 		
 		this.bind('newDayError', function(e, data) {
@@ -42,6 +43,19 @@ $(function(){
 					'Nem sikerült elmenteni a napot! Próbáld meg újra!</div>');
 			$('#formAddDay').before(error_div);
 		});
+		
+		this.bind('dropDownMenuChanged', function() {
+			$('.dropdown.open').removeClass('open');
+			$('ul.dropdown-menu > li').removeClass('active');
+		});
+		
+		this.bind('initCalendar', function(e, data) {
+			$.datepicker.setDefaults($.extend({showMonthAfterYear: true}, $.datepicker.regional['hu']));
+			$('#datepicker1').datepicker({
+				onSelect: function(dateText, inst) { app.trigger('selectedDayChanged', { date: dateText}); },
+				onChangeMonthYear: function(year, month, inst) {  }
+			});
+		});
     });
 	
 	$(function() {
@@ -49,15 +63,6 @@ $(function(){
     });
 	
     $('ul.nav > li.dropdown').on('click', 'a', function() {
-		$('.dropdown.open').removeClass('open');
-		$('ul.dropdown-menu > li').removeClass('active');
+		app.trigger('dropDownMenuChanged');
 	});
-    
-    
-    $.sammy.Application.prototype = $.extend({}, Sammy.Object.prototype, {
-    	clearTemplateCache: function(location) {
-    		console.log(_template_cache);
-    	    return (delete _template_cache[location]);
-    	}
-    });
 });

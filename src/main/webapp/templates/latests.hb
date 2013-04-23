@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="span4">
-		<div id="datepicker1" style="font-size: 14px;">blabla1</div>
+		<div id="datepicker1" style="font-size: 16px;"></div>
 	</div>
 	<div class="span8">	
 		{{#each items}}

@@ -9,6 +9,7 @@
 		<link href="/css/bootstrap.min.css" rel="stylesheet" media="screen">
 		<link href="/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
 		<link href="/css/style2.css" rel="stylesheet" media="screen">
+		<link href="/css/jquery-ui-1.8.9.custom.css" rel="stylesheet" media="screen">
 		<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     	<!--[if lt IE 9]>
     		<script src="../assets/js/html5shiv.js"></script>
@@ -61,8 +62,10 @@
 		</div> 
 
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+		<script src="/js/jquery-ui-timepicker-addon.js"></script>
+		<script src="/js/jquery.ui.datepicker-hu.js"></script>
 		<script src="/js/jquery.isotope.min.js"></script>
-		<script src="/js/jquery.json-2.4.min.js"></script>
 		<script src="/js/bootstrap.min.js"></script>
 		<script src="/js/sammy-0.7.4.min.js"></script>
 		<script src="/js/handlebars.js"></script>

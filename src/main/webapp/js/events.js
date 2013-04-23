@@ -15,7 +15,9 @@ var Events = (function() {
 		    	})
 		    	.then(function(items) {
 					context.render('/templates/latests.hb', {items: items})
-					.swap(context.$element());
+					.swap(context.$element()).then(function(){
+						context.app.trigger('initCalendar');
+					});
 		    	});
 		},
 		getAll: function(context) {
