@@ -9,7 +9,7 @@
 		<link href="/css/bootstrap.min.css" rel="stylesheet" media="screen">
 		<link href="/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
 		<link href="/css/style2.css" rel="stylesheet" media="screen">
-		<link href="/css/jquery-ui-1.8.9.custom.css" rel="stylesheet" media="screen">
+		<link href="/css/jquery-ui-1.10.2.css" rel="stylesheet" media="screen">
 		<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     	<!--[if lt IE 9]>
     		<script src="../assets/js/html5shiv.js"></script>

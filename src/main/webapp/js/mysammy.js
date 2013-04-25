@@ -6,7 +6,7 @@ $(function(){
 	
 	var app = $.sammy('#main', function() {
 		this.use('Handlebars', 'hb');
-
+		
 		this.before({}, function(context) {
 			context.loadOptions = loadOptions;
 			var location = context.app.getLocation();
@@ -26,6 +26,7 @@ $(function(){
 		});
 		
 		this.get('#/newday', function(context) {
+			console.log(context);
 			Days.newDay(context);
 		});
 
@@ -34,7 +35,13 @@ $(function(){
 		});
 		
 		this.bind('selectedDayChanged', function(e, data) {
-			console.log(data.date);
+			var context = new Sammy.EventContext(app);
+			context.loadOptions = loadOptions;
+			if (app.getLocation().indexOf('new') < 0) {
+				Days.getDay(context, data.date.replace(/\./g, '\/'));
+			} else {
+				console.log('new');
+			}
 		});
 		
 		this.bind('newDayError', function(e, data) {
