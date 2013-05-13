@@ -30,6 +30,13 @@ $(function(){
 			Days.newDay(context);
 		});
 
+		this.get('#/day/:year/:month/:day', function(context) {
+			console.log(this.params['year']);
+			console.log(this.params['month']);
+			console.log(this.params['day']);
+			Days.getDay(context, this.params['year'] + '/' + this.params['month'] + '/' + this.params['day']);
+		});
+		
 		this.post('#/addday', function(context) {
 			Days.addDay(context);
 		});
@@ -38,7 +45,7 @@ $(function(){
 			var context = new Sammy.EventContext(app);
 			context.loadOptions = loadOptions;
 			if (app.getLocation().indexOf('new') < 0) {
-				Days.getDay(context, data.date.replace(/\./g, '\/'));
+				app.setLocation('#/day/' + data.date.replace(/\./g, '\/'));
 			} else {
 				console.log('new');
 			}
