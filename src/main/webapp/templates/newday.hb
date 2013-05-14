@@ -13,7 +13,7 @@
 			<div class="control-group">
 				<label class="control-label" for="inputTheDay">A nap dátuma</label>
 			    <div class="controls">
-			    	<input class="span3 hasDatepicker" type="text" id="inputTheDay" name="theDay" placeholder="">
+			    	<input class="span3" type="text" id="inputTheDay" name="theDay" placeholder="">
 			    </div>
 			</div>
 			<div class="control-group">
@@ -25,13 +25,13 @@
 			<div class="control-group">
 				<label class="control-label" for="inputStartDate">Esemény kezdete</label>
 			    <div class="controls">
-			    	<input class="span3 hasDatepicker" type="text" id="inputStartDate" name="startDate" placeholder="">
+			    	<input class="span3" type="text" id="inputStartDate" name="startDate" placeholder="">
 			    </div>
 			</div>
 			<div class="control-group">
 				<label class="control-label" for="inputDuration">Esemény időtartama</label>
 			    <div class="controls">
-			    	<input class="span3 hasDatepicker" type="text" id="inputDuration" name="duration" placeholder="">
+			    	<input class="span3" type="text" id="inputDuration" name="duration" placeholder="">
 			    </div>
 			</div>
 			<div class="control-group">

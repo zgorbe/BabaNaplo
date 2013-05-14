@@ -1,14 +1,24 @@
 var Events = (function() {
 	
 	return {
+		initEvent: function(event) {
+			event.startTime = $.format.date(event.startTime, 'yyyy.MM.dd HH:mm');
+			event.hasDuration = (event.duration > 0) ? true : false;
+			if (event.hasDuration) {
+				var hour = Math.floor(event.duration / (1000 * 60 * 60));
+				var minute = Math.floor((event.duration - (hour * 1000 * 60 * 60)) / (1000 * 60));
+				var hh = (hour < 10) ? '0' + hour : '' + hour;
+				var mm = (minute < 10) ? '0' + minute : '' + minute;
+				event.duration = hh + ':' + mm;
+			}
+			event.inited = true;
+		},
 		getLatests: function(context) {
 			context.load('/json/events/latests/5', context.loadOptions)
 		    	.then(function(items) {
 					$.each(items, function(i, item) {
 						if (!item.inited) {
-							item.startTime = $.format.date(item.startTime, 'yyyy.MM.dd HH:mm');
-							item.hasDuration = (item.duration > 0) ? true : false;
-							item.inited = true;
+							Events.initEvent(item);
 						}
 					});
 					return items;
@@ -26,9 +36,7 @@ var Events = (function() {
 					$.each(items, function(i, item) {
 						if (!item.inited) {
 							item.isotopeFilter = 'm' + $.format.date(item.startTime, 'yyyy-MM');
-							item.startTime = $.format.date(item.startTime, 'yyyy.MM.dd HH:mm');
-							item.hasDuration = (item.duration > 0) ? true : false;
-							item.inited = true;
+							Events.initEvent(item);
 						}
 					});
 					return items;

@@ -2,7 +2,8 @@
 	<div class="span4">
 		<div id="datepicker1" style="font-size: 16px;"></div>
 	</div>
-	<div class="span8">	
+	<div class="span8">
+		<div class="selected"></div>
 		{{#each items}}
 		<div class="row">
 		    <p>{{this.description}}</p>

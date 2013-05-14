@@ -3,9 +3,16 @@ var Days = (function() {
 	return {
 		newDay: function(context) {
 			context.render('/templates/newday.hb')
-			.swap(context.$element()).then(function(){
-				context.app.trigger('initCalendar');
-			});
+				.swap(context.$element())
+				.then(function() {
+					context.app.trigger('initCalendar');
+				})
+				.then(function() {
+					$('#inputTheDay').val($('#datepicker1').val());
+					$('#inputTheDay').datepicker();
+					$('#inputStartDate').datetimepicker();
+					$('#inputDuration').timepicker({});
+				});
 		},
 		addDay: function(context) {
 			$.ajax({
@@ -28,42 +35,24 @@ var Days = (function() {
 				url: '/json/days/' + date,
 				dataType: 'json',
 				complete: function(data, type, xmlhttp){
+					var $div = $('div.span8');
+					var day;
 					if (data.responseText.length > 0) {
-						var day = $.parseJSON(data.responseText);
+						day = $.parseJSON(data.responseText);
 						$.each(day.eventsOfTheDay, function(i, item) {
 							if (!item.inited) {
-								item.startTime = $.format.date(item.startTime, 'yyyy.MM.dd HH:mm');
-								item.hasDuration = (item.duration > 0) ? true : false;
-								item.inited = true;
+								Events.initEvent(item);
 							}
 						});
-						console.log(day);
-						context.render('/templates/day.hb', {day: day}).prependTo('div.span8');
-					} else {
-						console.log('No day found');
-						context.render('/templates/day.hb', {day: day}).prependTo('div.span8');
 					}
-					
+					var selectedDate = date.replace(/\//g, '\.');
+					if ($div.length) {
+						context.render('/templates/day.hb', {day: day, date: selectedDate}).replace('div.span8 > div.selected');
+					} else {
+						context.render('/templates/day.hb', {day: day, date: selectedDate}).replace('div#main');
+					}
 				}
 			});
-			
-	    	/*.then(function(day) {
-				context.render('/templates/latests.hb', {day: day})
-					.swap(context.$element());
-	    	}); */
-			
-			/*
-			context.load('/json/days/' + date, context.loadOptions)
-	    	.then(function(day) {
-				$.each(day.eventsOfTheDay, function(i, item) {
-					if (!item.inited) {
-						item.startTime = $.format.date(item.startTime, 'yyyy.MM.dd HH:mm');
-						item.hasDuration = (item.duration > 0) ? true : false;
-						item.inited = true;
-					}
-				});
-				console.log(day);
-	    	}); */
 		}
 	};	
 })();
