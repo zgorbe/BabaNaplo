@@ -3,6 +3,7 @@ package com.zotyo.diary.jsonws;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Properties;
@@ -51,7 +52,7 @@ public class DayJSONController {
 		if (diaryHelper.md5(keyword).equals(password)) {
 			Day day = new Day();
 			GregorianCalendar theDayCal = diaryHelper.getDayCal(theDay);
-			day.setTheDay(theDayCal.getTime());
+			day.setTheDay(DateUtil.resetHMS(theDayCal.getTime()));
 			day.setDescriptionOfTheDay(descriptionOfTheDay);
 
 			Event event = new Event();
@@ -78,7 +79,7 @@ public class DayJSONController {
 	@ResponseBody
 	public List<Day> getDaysForAMonth(@PathVariable int year,
 			@PathVariable int month) {
-		return diaryDAO.getDaysForAMonth(year, month);
+		return diaryDAO.getDaysForAMonth(year, month - 1);
 	}
 
 	@RequestMapping(value = "/{year}/{month}/{day}", method = RequestMethod.GET)
@@ -87,7 +88,10 @@ public class DayJSONController {
 			@PathVariable int day) throws DayNotFoundException {
 		Calendar c = GregorianCalendar.getInstance();
 		c.set(year, month - 1, day);
-		Day d = diaryDAO.getDay(DateUtil.resetHMS(c.getTime()));
+		Date date = DateUtil.resetHMS(c.getTime());
+		logger.info("Checking the date: " + date);
+		Day d = diaryDAO.getDay(date);
+
 		/*if (d == null) {
 			throw new DayNotFoundException("Day not found");
 		}*/
