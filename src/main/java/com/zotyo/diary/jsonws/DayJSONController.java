@@ -87,9 +87,11 @@ public class DayJSONController {
 	public Day getDay(@PathVariable int year, @PathVariable int month,
 			@PathVariable int day) throws DayNotFoundException {
 		Calendar c = GregorianCalendar.getInstance();
+		logger.info("*** TimeZone details" + c.getTimeZone());
 		c.set(year, month - 1, day);
 		Date date = DateUtil.resetHMS(c.getTime());
-		logger.info("Checking the date: " + date);
+		logger.info("*** Checking the date: " + date);
+		logger.info("*** Checking the date: " + date.getTime());
 		Day d = diaryDAO.getDay(date);
 
 		/*if (d == null) {
