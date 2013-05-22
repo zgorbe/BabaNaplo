@@ -31,16 +31,14 @@ import com.zotyo.diary.pojos.Event;
 
 @Controller
 @RequestMapping("/days")
-public class DayJSONController {
+public class DayJSONController extends BaseJSONController {
 	private static Logger logger = Logger.getLogger(DayJSONController.class);
 
 	@Autowired
-	private DiaryHelper diaryHelper;
+	protected DiaryHelper diaryHelper;
 
 	@Autowired
 	private DiaryDAO diaryDAO;
-
-	private String password;
 
 	@RequestMapping(value = "/form", method = RequestMethod.POST, consumes = "application/x-www-form-urlencoded")
 	@ResponseBody
@@ -95,20 +93,6 @@ public class DayJSONController {
 			throw new DayNotFoundException("Day not found");
 		}*/
 		return d;
-	}
-
-	@PostConstruct
-	public void init() {
-		try {
-			InputStream inputStream = ClassLoader
-					.getSystemResourceAsStream("diary.properties");
-			Properties props = new Properties();
-			props.load(inputStream);
-
-			password = props.getProperty("keyword");
-		} catch (IOException ioex) {
-			ioex.printStackTrace();
-		}
 	}
 
 	@ExceptionHandler(DayNotFoundException.class)

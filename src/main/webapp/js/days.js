@@ -17,7 +17,7 @@ var Days = (function() {
 		addDay: function(context) {
 			$.ajax({
 				type: 'POST',
-				data: $('#formAddDay').serialize(),
+				data: $('form.new').serialize(),
 				url: '/json/days/form',
 				success: function(data, type, xmlhttp){
 					if (data.id == null) {

@@ -4,13 +4,18 @@
 	</div>
 	<div class="span8">
 		<div class="selected"></div>
+		<div class="row">
+			<h4>Legfrissebb események</h4>
+		</div>
 		{{#each items}}
 		<div class="row">
 		    <p>{{this.description}}</p>
-		    <p>{{this.startTime}}</p>
-			{{#if this.hasDuration}}
-		    <p>{{this.duration}}</p>
-			{{/if}}
+		    <p>
+		    	<small>{{this.startTime}}</small>
+				{{#if this.hasDuration}}
+			    <br/><small>Időtartam (óra:perc): {{this.duration}}</small>
+				{{/if}}
+			</p>
 		</div>
 		<div class="row">
 			<hr>

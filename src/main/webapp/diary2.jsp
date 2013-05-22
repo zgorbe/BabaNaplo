@@ -35,7 +35,7 @@
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-comment"></i> Új bejegyzés <b class="caret"></b></a>
 								<ul class="dropdown-menu">
 									<li><a href="#/newday"><i class="icon-pencil"></i> Új nap</a></li>
-									<li><a href="#"><i class="icon-edit"></i> Új esemény</a></li>
+									<li><a href="#/newevent"><i class="icon-edit"></i> Új esemény</a></li>
 								</ul>
 							</li>
 	            		</ul>

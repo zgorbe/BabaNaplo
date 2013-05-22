@@ -64,19 +64,22 @@ public class DiaryDAOJPAImpl implements DiaryDAO {
         return PersistenceUtil.getDay(de);
 	}
 	
-	public void addEvent(Date theDay, Event event) {
+	public int addEvent(Date theDay, Event event) {
         Query query = em.createNamedQuery("DayEntity.findByTheDay");
         query.setParameter("theDay", theDay);
         List<DayEntity> result = (List<DayEntity>)query.getResultList();
         
         if (result.size() == 0) {
         	logger.warn("Date not found in database - " + theDay);
-            return;
+            return -1;
         }
         DayEntity de = result.get(0);
         EventEntity ee = PersistenceUtil.getEventEntity(event);
         ee.setTheDay(de);
         em.persist(ee);
+        em.flush();
+        em.refresh(ee);
+		return ee.getId();
 	}
 
 	public List<Day> getAllDaysInDiary() {

@@ -30,6 +30,10 @@ $(function(){
 		this.get('#/newday', function(context) {
 			Days.newDay(context);
 		});
+		
+		this.get('#/newevent', function(context) {
+			Events.newEvent(context);
+		});
 
 		this.get('#/day/:year/:month/:day', function(context) {
 			Days.getDay(context, this.params['year'] + '/' + this.params['month'] + '/' + this.params['day']);
@@ -37,6 +41,10 @@ $(function(){
 		
 		this.post('#/addday', function(context) {
 			Days.addDay(context);
+		});
+		
+		this.post('#/addevent', function(context) {
+			Events.addEvent(context);
 		});
 		
 		// Custom events
@@ -49,10 +57,12 @@ $(function(){
 		});
 		
 		this.bind('newDayError', function(e, data) {
-			var error_div = $('<div class="alert alert-error">' +
-					'<button type="button" class="close" data-dismiss="alert">×</button>' +
-					'Nem sikerült elmenteni a napot! Próbáld meg újra!</div>');
-			$('#formAddDay').before(error_div);
+			if (!$('div.alert-error').length) {
+				var error_div = $('<div class="alert alert-error">' +
+						'<button type="button" class="close" data-dismiss="alert">×</button>' +
+						'Nem sikerült elmenteni a napot! Próbáld meg újra!</div>');
+				$('form.new').before(error_div);
+			}
 		});
 		
 		this.bind('dropDownMenuChanged', function() {
@@ -76,4 +86,5 @@ $(function(){
     $('ul.nav > li.dropdown').on('click', 'a', function() {
 		app.trigger('dropDownMenuChanged');
 	});
+    
 });

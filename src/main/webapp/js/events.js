@@ -2,6 +2,7 @@ var Events = (function() {
 	
 	return {
 		initEvent: function(event) {
+			event.theDay = $.format.date(event.startTime, 'yyyy.MM.dd');
 			event.startTime = $.format.date(event.startTime, 'yyyy.MM.dd HH:mm');
 			event.hasDuration = (event.duration > 0) ? true : false;
 			if (event.hasDuration) {
@@ -12,6 +13,33 @@ var Events = (function() {
 				event.duration = hh + ':' + mm;
 			}
 			event.inited = true;
+		},
+		newEvent: function(context) {
+			context.render('/templates/newevent.hb')
+				.swap(context.$element())
+				.then(function() {
+					context.app.trigger('initCalendar');
+				})
+				.then(function() {
+					$('#inputTheDay').val($('#datepicker1').val());
+					$('#inputStartDate').datetimepicker();
+					$('#inputDuration').timepicker({});
+				});
+		},
+		addEvent: function(context) {
+			$.ajax({
+				type: 'POST',
+				data: $('form.new').serialize(),
+				url: '/json/events/form',
+				success: function(data, type, xmlhttp){
+					if (data.id == null) {
+						context.app.trigger('newDayError');
+					} else {
+						context.app.clearTemplateCache();
+						context.redirect('#/');
+					}
+				}
+			});
 		},
 		getLatests: function(context) {
 			context.load('/json/events/latests/5', context.loadOptions)
@@ -52,6 +80,7 @@ var Events = (function() {
 				       			sortBy : 'original-order', 
 				       			sortAscending : false
 				       		});
+				       		Events.smiley();
 				       		$('ul.filter').on('click', 'a', function() {
 				       			var filterValue = $(this).data('filter').toString();
 				       			var filterStr = '';
@@ -73,6 +102,16 @@ var Events = (function() {
 				       		});
 		    			});
 		    	});
+		},
+		smiley: function() {
+			$('div.row').each(function(index, element) {
+				var tmp = $(element).html().replace(/:\)/g, '<img src="/images/smiley.png" alt=":-)" />');
+				$(element).html(tmp);
+			});
+		    $('.isotope_item').each(function(index, element) {
+		    	var tmp = $(element).html().replace(/:\)/g, '<img src="/images/smiley.png" alt=":-)" />');
+		    	$(element).html(tmp);
+			});
 		}
 	};
 })();

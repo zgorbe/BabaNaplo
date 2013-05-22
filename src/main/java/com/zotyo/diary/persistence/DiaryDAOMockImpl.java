@@ -28,8 +28,8 @@ public class DiaryDAOMockImpl implements DiaryDAO {
 		return 0;
 	}
 
-	public void addEvent(Date theDay, Event event) {
-
+	public int addEvent(Date theDay, Event event) {
+		return 0;
 	}
 
 	public List<Day> getAllDaysInDiary() {

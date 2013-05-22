@@ -16,5 +16,5 @@ public interface DiaryDAO {
 	List<String> searchTerms(String term);
 	
 	int addDay(Day day);
-	void addEvent(Date theDay, Event event);
+	int addEvent(Date theDay, Event event);
 }

@@ -5,10 +5,11 @@
 	{{#each day.eventsOfTheDay}}
 		<div class="row">
 		    <p>{{this.description}}</p>
-		    <p>{{this.startTime}}</p>
+		    <p>{{this.startTime}}
 			{{#if this.hasDuration}}
-		    <p>{{this.duration}}</p>
+		    <br/><small>Időtartam (óra:perc): {{this.duration}}</small>
 			{{/if}}
+			</p>
 		</div>
 		<div class="row">
 			<hr>

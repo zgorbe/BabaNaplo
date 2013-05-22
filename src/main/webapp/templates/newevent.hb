@@ -3,7 +3,7 @@
 		<div id="datepicker1" style="font-size: 16px;"></div>
 	</div>
 	<div class="span8">	
-		<form action="#/addday" method="post" class="form-horizontal new">
+		<form action="#/addevent" method="post" class="form-horizontal new">
 			<div class="control-group">
 				<label class="control-label" for="inputKeyword">Kulcsszó</label>
 				<div class="controls">
@@ -13,14 +13,8 @@
 			<div class="control-group">
 				<label class="control-label" for="inputTheDay">A nap dátuma</label>
 			    <div class="controls">
-			    	<input class="span3" type="text" id="inputTheDay" name="theDay" placeholder="">
+			    	<input class="span3 uneditable-input" type="text" id="inputTheDay" name="theDay" placeholder="">
 			    </div>
-			</div>
-			<div class="control-group">
-				<label class="control-label" for="descriptionOfTheDay">Leírása</label>
-				<div class="controls">
-					<textarea class="span5" rows="2" id="descriptionOfTheDay" name="descriptionOfTheDay" placeholder="Leírás"></textarea>
-				</div>
 			</div>
 			<div class="control-group">
 				<label class="control-label" for="inputStartDate">Esemény kezdete</label>

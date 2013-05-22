@@ -42,10 +42,10 @@
 <div id="isotope_container">
 	{{#each events}}
 	<div class="isotope_item {{this.isotopeFilter}}">
-		<b>{{this.startTime}}</b>
+		<b>{{this.theDay}}</b>
 		{{this.description}}
 		{{#if this.hasDuration}}
-			<br>Időtartam (óra:perc): {{this.duration}}
+			<br><small>Időtartam (óra:perc): {{this.duration}}</small>
 		{{/if}}
 	</div>
 	{{/each}}

@@ -1,11 +1,16 @@
 package com.zotyo.diary.jsonws;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Properties;
+
+import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,18 +18,44 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.zotyo.diary.persistence.DiaryDAO;
 import com.zotyo.diary.pojos.Event;
 import com.zotyo.diary.util.DateUtil;
+import com.zotyo.diary.web.DiaryHelper;
 
 @Controller
 @RequestMapping("/events")
-public class EventJSONController {
+public class EventJSONController extends BaseJSONController {
 	
 	@Autowired
+	protected DiaryHelper diaryHelper;
+
+	@Autowired
 	private DiaryDAO diaryDAO;
+
+	@RequestMapping(value = "/form", method = RequestMethod.POST, consumes = "application/x-www-form-urlencoded")
+	@ResponseBody
+	public Event addEventForm(@RequestParam String keyword,
+			@RequestParam String theDay,
+			@RequestParam String startDate, @RequestParam String duration,
+			@RequestParam String initialEvent) {
+		if (diaryHelper.md5(keyword).equals(password)) {
+			Event event = new Event();
+			event.setDescription(initialEvent);
+			event.setDuration(diaryHelper.getDuration(duration));
+			GregorianCalendar startDateCal = diaryHelper
+					.getStartDateCal(startDate);
+			event.setStartTime(startDateCal.getTime());
+			
+			event.setId(diaryDAO.addEvent(DateUtil.resetHMS(diaryHelper.getDayCal(theDay).getTime()), event));
+
+			return event;
+		}
+		return new Event();
+	}
 
 	@RequestMapping(method = RequestMethod.GET)
 	@ResponseBody
