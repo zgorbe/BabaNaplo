@@ -47,6 +47,10 @@ $(function(){
 			Events.addEvent(context);
 		});
 		
+		this.post('#/search', function(context) {
+			Events.search(context);
+		});
+		
 		// Custom events
 		this.bind('selectedDayChanged', function(e, data) {
 			if (app.getLocation().indexOf('new') < 0) {

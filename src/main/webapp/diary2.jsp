@@ -39,8 +39,8 @@
 								</ul>
 							</li>
 	            		</ul>
-			            <form class="navbar-form pull-right">
-							<input class="span2" type="text" placeholder="Keresés...">
+			            <form action="#/search" method="post" class="navbar-form pull-right">
+							<input id="inputSearch" class="span2" type="text" placeholder="Keresés...">
 							<button type="submit" class="btn btn-primary"><i class="icon-search icon-white"></i></button>
 						</form>
 	        		</div>

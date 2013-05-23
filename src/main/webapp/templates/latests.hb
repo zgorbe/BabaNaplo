@@ -21,5 +21,8 @@
 			<hr>
 		</div>
 		{{/each}}
+		<div class="row">
+			<a href="#/events">További események</a>
+		</div>
 	</div>
 </div>

@@ -112,6 +112,22 @@ var Events = (function() {
 		    	var tmp = $(element).html().replace(/:\)/g, '<img src="/images/smiley.png" alt=":-)" />');
 		    	$(element).html(tmp);
 			});
+		},
+		search: function(context) {
+			var searchTerm = $('inputSearch').val();
+			context.load('/json/events/search/' + searchTerm, context.loadOptions)
+	    	.then(function(items) {
+				$.each(items, function(i, item) {
+					if (!item.inited) {
+						Events.initEvent(item);
+					}
+				});
+				return items;
+	    	})
+	    	.then(function(items) {
+				context.render('/templates/latests.hb', {items: items})
+				.swap(context.$element());
+	    	});
 		}
 	};
 })();
