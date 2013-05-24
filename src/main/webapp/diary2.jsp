@@ -30,7 +30,7 @@
 							<li class="active"><a href="#/"><i class="icon-home"></i> Home</a></li>
 							<li><a href="#/events"><i class="icon-book"></i> Összes esemény</a></li>
 							<li><a href="#contact"><i class="icon-facetime-video"></i> Videók</a></li>
-							<li><a href="#contact"><i class="icon-camera"></i> Képek</a></li>
+							<li><a href="#/photos"><i class="icon-camera"></i> Képek</a></li>
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-comment"></i> Új bejegyzés <b class="caret"></b></a>
 								<ul class="dropdown-menu">
@@ -73,6 +73,7 @@
 		<script src="/js/sammy.handlebars-0.7.4.min.js"></script>
 		<script src="/js/days.js"></script>
 		<script src="/js/events.js"></script>
+		<script src="/js/mymedia.js"></script>
 		<script src="/js/mysammy.js"></script>
 		<script src="/js/jquery.dateFormat-1.0.js"></script>
     </body>

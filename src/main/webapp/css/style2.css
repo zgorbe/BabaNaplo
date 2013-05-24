@@ -73,3 +73,29 @@ body {
 footer {
 	padding-top: 30px;
 }
+
+img.cancel, img.zoom {
+	cursor: pointer;
+	border: 2px solid #D4D4D4;
+	border-radius: 3px 3px 3px 3px;
+}
+img.baba {
+	border: 5px solid #D4D4D4;
+    border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+    cursor: pointer;
+}
+
+img.selected {
+	border: 5px solid #FBE2F3;
+    cursor: default;
+}
+
+#isotope_container img:hover {
+	border-color: #004BCC;
+}
+
+.photo_item {
+	padding: 10px;
+}

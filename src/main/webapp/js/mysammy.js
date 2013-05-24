@@ -43,6 +43,10 @@ $(function(){
 			Events.search(context, this.params['searchTerm']);
 		});
 		
+		this.get('#/photos', function(context) {
+			Photos.getAll(context);
+		});
+		
 		this.post('#/addday', function(context) {
 			Days.addDay(context);
 		});
