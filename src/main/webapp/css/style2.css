@@ -65,3 +65,11 @@ body {
        -o-transition-duration: 0s;
           transition-duration: 0s;
 }
+
+.highlight {
+	background-color:yellow;
+}
+
+footer {
+	padding-top: 30px;
+}

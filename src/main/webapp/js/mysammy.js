@@ -38,6 +38,10 @@ $(function(){
 		this.get('#/day/:year/:month/:day', function(context) {
 			Days.getDay(context, this.params['year'] + '/' + this.params['month'] + '/' + this.params['day']);
 		});
+
+		this.get('#/search/:searchTerm', function(context) {
+			Events.search(context, this.params['searchTerm']);
+		});
 		
 		this.post('#/addday', function(context) {
 			Days.addDay(context);
@@ -45,10 +49,6 @@ $(function(){
 		
 		this.post('#/addevent', function(context) {
 			Events.addEvent(context);
-		});
-		
-		this.post('#/search', function(context) {
-			Events.search(context);
 		});
 		
 		// Custom events
@@ -90,5 +90,7 @@ $(function(){
     $('ul.nav > li.dropdown').on('click', 'a', function() {
 		app.trigger('dropDownMenuChanged');
 	});
+    
+    Events.initSearch(app);
     
 });

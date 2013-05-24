@@ -39,10 +39,10 @@
 								</ul>
 							</li>
 	            		</ul>
-			            <form action="#/search" method="post" class="navbar-form pull-right">
+			            <div class="navbar-form pull-right">
 							<input id="inputSearch" class="span2" type="text" placeholder="Keresés...">
-							<button type="submit" class="btn btn-primary"><i class="icon-search icon-white"></i></button>
-						</form>
+							<button id="buttonSearch" type="button" class="btn btn-primary"><i class="icon-search icon-white"></i></button>
+						</div>
 	        		</div>
 	        	</div>
 	    	</div>
@@ -66,6 +66,7 @@
 		<script src="/js/jquery-ui-timepicker-addon.js"></script>
 		<script src="/js/jquery.ui.datepicker-hu.js"></script>
 		<script src="/js/jquery.isotope.min.js"></script>
+		<script src="/js/jquery-highlight.js"></script>
 		<script src="/js/bootstrap.min.js"></script>
 		<script src="/js/sammy-0.7.4.min.js"></script>
 		<script src="/js/handlebars.js"></script>

@@ -113,8 +113,20 @@ var Events = (function() {
 		    	$(element).html(tmp);
 			});
 		},
-		search: function(context) {
-			var searchTerm = $('inputSearch').val();
+		initSearch: function(app) {
+			$('#buttonSearch').on('click', function() {
+		    	var searchTerm = $('#inputSearch').val();
+		    	if (searchTerm.length < 2) {
+		    		var $inputSearch = $('#inputSearch');
+		    		$inputSearch.tooltip({placement: 'bottom', title: 'Legalább 2 karakter hosszú legyen!'});
+		    		$inputSearch.tooltip('show');
+					return;
+		    	}
+		    	$('#inputSearch').tooltip('destroy');
+		    	app.setLocation('#/search/' + searchTerm);
+		    });
+		},
+		search: function(context, searchTerm) {
 			context.load('/json/events/search/' + searchTerm, context.loadOptions)
 	    	.then(function(items) {
 				$.each(items, function(i, item) {
@@ -125,8 +137,15 @@ var Events = (function() {
 				return items;
 	    	})
 	    	.then(function(items) {
-				context.render('/templates/latests.hb', {items: items})
-				.swap(context.$element());
+	    		var renderOptions = {
+    				items: items, 
+    				searchTerm: searchTerm
+	    		};
+				context.render('/templates/search.hb', renderOptions)
+				.swap(context.$element()).then(function() {
+					context.$element().highlight(searchTerm, true);
+					Events.smiley();
+				});
 	    	});
 		}
 	};
