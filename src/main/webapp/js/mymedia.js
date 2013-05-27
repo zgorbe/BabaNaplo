@@ -1,6 +1,22 @@
 var Photos = (function() {
 	
 	return {
+		initMainScoller: function() {
+			$('div.jTscroller').on('click', 'a', function() {
+				var $this = $(this);
+				ImagePreview.showimage($this.data('url'), $this.data('date'), $this.data('filename')); 
+			});
+			$(window).on('load', function() { 
+				$('#tS1').thumbnailScroller({ 
+					scrollerType: 'hoverAccelerate', 
+					scrollerOrientation: 'horizontal', 
+					scrollEasing: 'easeOutCirc', 
+					scrollEasingAmount: 600, 
+					acceleration: 1, 
+					noScrollCenterSpace: 0 
+				});
+			});
+		},
 		getAll: function(context) {
 			context.load('/photos?cmd=photos', context.loadOptions)
 	    	.then(function(items) {

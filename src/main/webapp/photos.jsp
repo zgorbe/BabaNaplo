@@ -53,7 +53,6 @@
 					<% } %>
 					</tr>
 				</table>
-				<div id="dialog" style="display: none;"></div>
 			</c:otherwise>
 		</c:choose>
 	</c:if>

@@ -108,4 +108,5 @@ $(function(){
     
     Events.initSearch(app);
     
+    Photos.initMainScoller();
 });

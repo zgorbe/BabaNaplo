@@ -1,5 +1,12 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
+  
+<%@page import="com.zotyo.photos.pojo.Photo"%>  
+<%@page import="com.zotyo.diary.web.DiaryHelper"%>
+
+<% DiaryHelper diaryHelper = new DiaryHelper(); %>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -51,10 +58,24 @@
 		</div>
 
 		<div class="container">
-			<div class="page-header">
-				<p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-				<p><a href="#" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+			<div class="my-page-header">
+				<c:if test="${not empty photos}" >
+					<div id="tS1" class="jThumbnailScroller">
+						<div class="jTscrollerContainer">
+							<div class="jTscroller">
+								<c:forEach items="${photos}" var="photo">
+									<a data-url="/photos?cmd=data&filename=<%= ((Photo)pageContext.getAttribute("photo")).getFilename() %>" 
+										data-date="<%= diaryHelper.formatDateTime(((Photo)pageContext.getAttribute("photo")).getCreatedate()) %>" 
+										data-filename="<%= ((Photo)pageContext.getAttribute("photo")).getFilename() %>">
+										<img src="/photos?cmd=thumbdata&filename=<%= ((Photo)pageContext.getAttribute("photo")).getFilename() %>" />
+									</a>
+								</c:forEach>
+							</div>
+						</div>
+					</div>
+				</c:if>
 			</div>
+			<div id="dialog" style="display: none;"></div>
 			<div id="main">
 			</div>
 			<footer>
