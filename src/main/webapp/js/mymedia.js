@@ -28,6 +28,68 @@ var Photos = (function() {
 	};	
 })();
 
+var Videos = (function() {
+	
+	return {
+		init: function(context) {
+			$('#tS2').thumbnailScroller({ 
+			    scrollerType: 'hoverAccelerate', 
+			    scrollerOrientation:'horizontal', 
+			    scrollEasing:'easeOutCirc', 
+			    scrollEasingAmount: 600, 
+			    acceleration: 1, 
+			    noScrollCenterSpace: 0 
+			});
+			$('.video_thumbnails').on('click', 'a', function() {
+				var $this = $(this);
+				$("#video_frame").attr('src', 'http://www.youtube.com/embed/' + $this.data('video-id'));
+				$("#video_text").html($this.data('description'));					
+			});
+		},
+		newVideo: function(context) {
+			context.render('/templates/newvideo.hb')
+				.swap(context.$element())
+				.then(function() {
+					context.app.trigger('initCalendar');
+				})
+				.then(function() {
+					$('#inputTheDay').val($('#datepicker1').val());
+					$('#inputStartDate').datetimepicker();
+					$('#inputDuration').timepicker({});
+				});
+		},
+		addVideo: function(context) {
+			$.ajax({
+				type: 'POST',
+				data: $('form.new').serialize(),
+				url: '/json/videos/form',
+				success: function(data, type, xmlhttp){
+					if (data.id == null) {
+						context.app.trigger('newDayError');
+					} else {
+						context.app.clearTemplateCache();
+						context.redirect('#/');
+					}
+				}
+			});
+		},
+		getAll: function(context) {
+			context.load('/json/videos', context.loadOptions)
+	    	.then(function(items) {
+	    		$.each(items, function(i, item) {
+					if (!item.inited) {
+						item.createDate = $.format.date(item.createDate, 'yyyy.MM.dd');
+						item.inited = true;
+					}
+				});
+				context.render('/templates/videos.hb', {items: items, first: items[0]})
+					.swap(context.$element());
+	    	});					
+		}
+	};	
+})();
+
+
 
 /**** ImagePreview with Module Pattern ****/
 var ImagePreview = (function(){

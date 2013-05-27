@@ -64,6 +64,8 @@
 
 	<!-- ====================== Mongo ========================= -->
 
+	<mongo:repositories base-package="com.zotyo.videos.dao" />
+
 	<bean class="java.net.URI" id="mongoUrl">
     	<constructor-arg value="${MONGOLAB_URI}"/>
 	</bean>
@@ -75,7 +77,7 @@
  		username="#{ @mongoUrl.getUserInfo().split(':')[0] }" 
  		password="#{ @mongoUrl.getUserInfo().split(':')[1] }" />
 	
-	<bean id="photoMongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
   		<constructor-arg name="mongoDbFactory" ref="mongoDbFactory"/>
 	</bean>
 

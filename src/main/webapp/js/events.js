@@ -32,7 +32,7 @@ var Events = (function() {
 				data: $('form.new').serialize(),
 				url: '/json/events/form',
 				success: function(data, type, xmlhttp){
-					if (data.id == null) {
+					if (data.videoId == null) {
 						context.app.trigger('newDayError');
 					} else {
 						context.app.clearTemplateCache();

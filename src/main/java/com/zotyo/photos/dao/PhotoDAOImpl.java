@@ -21,30 +21,30 @@ import com.zotyo.photos.util.PhotoDataEnum;
 public class PhotoDAOImpl implements PhotoDAO {
 
 	@Autowired
-	private MongoTemplate photoMongoTemplate;
+	private MongoTemplate mongoTemplate;
 	
 	@Override
 	public void save(Photo photo, PhotoData photoData) {
-		photoMongoTemplate.insert(photoData);
+		mongoTemplate.insert(photoData);
 		String data_id = photoData.getId();
 		photo.setDataId(data_id);
-		photoMongoTemplate.insert(photo);
+		mongoTemplate.insert(photo);
 	}
 
 
 	@Override
 	public void deleteByFilename(String filename) {
-		Photo photo = photoMongoTemplate.findAndRemove(new Query(where("filename").is(filename)), Photo.class);
+		Photo photo = mongoTemplate.findAndRemove(new Query(where("filename").is(filename)), Photo.class);
 		if (photo != null) {
 			String data_id = photo.getDataId();
-			photoMongoTemplate.findAndRemove(new Query(where("id").is(data_id)), PhotoData.class);
+			mongoTemplate.findAndRemove(new Query(where("id").is(data_id)), PhotoData.class);
 		}
 	}
 
 	@Override
 	public void update(Photo photo) {
 		// TODO Auto-generated method stub
-		//photoMongoTemplate.updateFirst(new Query(where("filename").is(photo.getFilename())), Update.update("keywords", photo.getKeywords()), Photo.class);
+		//mongoTemplate.updateFirst(new Query(where("filename").is(photo.getFilename())), Update.update("keywords", photo.getKeywords()), Photo.class);
 		
 	}
 
@@ -52,7 +52,7 @@ public class PhotoDAOImpl implements PhotoDAO {
 	public List<Photo> findByCategory(String category) {
 		Query query = new Query(where("category").is(category));
 		query.sort().on("createdate", Order.DESCENDING);
-		List<Photo> photos = photoMongoTemplate.find(query, Photo.class);
+		List<Photo> photos = mongoTemplate.find(query, Photo.class);
 		return photos;
 	}
 
@@ -60,7 +60,7 @@ public class PhotoDAOImpl implements PhotoDAO {
 	public List<PhotoData> getAllThumbsByCategory(String category) {
 		Query query = new Query(where("category").is(category));
 		query.sort().on("createdate", Order.DESCENDING);
-		List<Photo> photos = photoMongoTemplate.find(query, Photo.class);
+		List<Photo> photos = mongoTemplate.find(query, Photo.class);
 		List<String> data_ids = new ArrayList<String>();
 		for (Photo p : photos) {
 			data_ids.add(p.getDataId());
@@ -68,25 +68,25 @@ public class PhotoDAOImpl implements PhotoDAO {
 		Query dataQuery = new Query();
 		dataQuery.fields().include("thumbdata");
 		dataQuery.addCriteria(where("id").in(data_ids));
-		List<PhotoData> thumbs = photoMongoTemplate.find(dataQuery, PhotoData.class);
+		List<PhotoData> thumbs = mongoTemplate.find(dataQuery, PhotoData.class);
 		return thumbs;
 	}
 	
 	@Override
 	public List<Photo> findAll() {
-		List<Photo> photos = photoMongoTemplate.findAll(Photo.class);
+		List<Photo> photos = mongoTemplate.findAll(Photo.class);
 		return photos;
 	}
 	
 	@Override
 	public Photo findByFilename(String filename) {
-		Photo photo = photoMongoTemplate.findOne(new Query(where("filename").is(filename)), Photo.class);
+		Photo photo = mongoTemplate.findOne(new Query(where("filename").is(filename)), Photo.class);
 		return photo;
 	}
 
 	@Override
 	public PhotoData getDataByFilename(String filename, PhotoDataEnum dataFlag) {
-		Photo photo = photoMongoTemplate.findOne(new Query(where("filename").is(filename)), Photo.class);
+		Photo photo = mongoTemplate.findOne(new Query(where("filename").is(filename)), Photo.class);
 		String data_id = photo.getDataId();
 		
 		Query dataQuery = new Query();
@@ -101,7 +101,7 @@ public class PhotoDAOImpl implements PhotoDAO {
 				break;
 		}
 		dataQuery.addCriteria(where("id").is(data_id));
-		PhotoData photoData = photoMongoTemplate.findOne(dataQuery, PhotoData.class);
+		PhotoData photoData = mongoTemplate.findOne(dataQuery, PhotoData.class);
 		
 		return photoData;
 	}
@@ -109,7 +109,7 @@ public class PhotoDAOImpl implements PhotoDAO {
 
 	@Override
 	public List<Photo> searchPhotos(String searchTerm) {
-		List<Photo> photos = photoMongoTemplate.find(new Query(where("keywords").is(searchTerm)), Photo.class);
+		List<Photo> photos = mongoTemplate.find(new Query(where("keywords").is(searchTerm)), Photo.class);
 		return photos;
 	}
 
@@ -119,7 +119,7 @@ public class PhotoDAOImpl implements PhotoDAO {
 		List<String> keywords = new ArrayList<String>();
 		Query query = new Query(where("keywords").regex("^"+term));
 		query.fields().include("keywords");
-		List<Photo> photos = photoMongoTemplate.find(query, Photo.class);
+		List<Photo> photos = mongoTemplate.find(query, Photo.class);
 		for (Photo p : photos) {
 			List<String> k = p.getKeywords();
 			for (String s : k) {

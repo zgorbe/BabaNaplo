@@ -10,6 +10,7 @@
 		<link href="/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
 		<link href="/css/style2.css" rel="stylesheet" media="screen">
 		<link href="/css/jquery-ui-1.10.2.css" rel="stylesheet" media="screen">
+		<link href="/css/jquery.thumbnailScroller2.css" rel="stylesheet" media="screen">
 		<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     	<!--[if lt IE 9]>
     		<script src="../assets/js/html5shiv.js"></script>
@@ -29,13 +30,14 @@
 						<ul class="nav">
 							<li class="active"><a href="#/"><i class="icon-home"></i> Home</a></li>
 							<li><a href="#/events"><i class="icon-book"></i> Összes esemény</a></li>
-							<li><a href="#contact"><i class="icon-facetime-video"></i> Videók</a></li>
+							<li><a href="#/videos"><i class="icon-facetime-video"></i> Videók</a></li>
 							<li><a href="#/photos"><i class="icon-camera"></i> Képek</a></li>
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-comment"></i> Új bejegyzés <b class="caret"></b></a>
 								<ul class="dropdown-menu">
 									<li><a href="#/newday"><i class="icon-pencil"></i> Új nap</a></li>
 									<li><a href="#/newevent"><i class="icon-edit"></i> Új esemény</a></li>
+									<li><a href="#/newvideo"><i class="icon-film"></i> Új videó</a></li>
 								</ul>
 							</li>
 	            		</ul>
@@ -67,6 +69,7 @@
 		<script src="/js/jquery.ui.datepicker-hu.js"></script>
 		<script src="/js/jquery.isotope.min.js"></script>
 		<script src="/js/jquery-highlight.js"></script>
+		<script src="/js/jquery.thumbnailScroller.js"></script>
 		<script src="/js/bootstrap.min.js"></script>
 		<script src="/js/sammy-0.7.4.min.js"></script>
 		<script src="/js/handlebars.js"></script>

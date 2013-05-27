@@ -34,7 +34,11 @@ $(function(){
 		this.get('#/newevent', function(context) {
 			Events.newEvent(context);
 		});
-
+		
+		this.get('#/newvideo', function(context) {
+			Videos.newVideo(context);
+		});
+		
 		this.get('#/day/:year/:month/:day', function(context) {
 			Days.getDay(context, this.params['year'] + '/' + this.params['month'] + '/' + this.params['day']);
 		});
@@ -47,6 +51,10 @@ $(function(){
 			Photos.getAll(context);
 		});
 		
+		this.get('#/videos', function(context) {
+			Videos.getAll(context);
+		});
+		
 		this.post('#/addday', function(context) {
 			Days.addDay(context);
 		});
@@ -55,6 +63,9 @@ $(function(){
 			Events.addEvent(context);
 		});
 		
+		this.post('#/addvideo', function(context) {
+			Videos.addVideo(context);
+		});
 		// Custom events
 		this.bind('selectedDayChanged', function(e, data) {
 			if (app.getLocation().indexOf('new') < 0) {
