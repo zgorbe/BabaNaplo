@@ -2,7 +2,8 @@
 	<div class="span4">
 		<div id="datepicker1" style="font-size: 16px;"></div>
 	</div>
-	<div class="span8">	
+	<div class="span8">
+		<h4>Új esemény</h4>
 		<form action="#/addevent" method="post" class="form-horizontal new">
 			<div class="control-group">
 				<label class="control-label" for="inputKeyword">Kulcsszó</label>

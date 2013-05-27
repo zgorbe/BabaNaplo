@@ -6,9 +6,9 @@ scrollers styling
 */
 .jThumbnailScroller {
 	position: relative;
-	height: 135px;
+	height: 142px;
 	margin: 0;
-	border: 5px solid #D4D4D4;
+	border: 1px solid #AAAAAA;
 	background: #EEEEEE;
 	padding: 0;
 	overflow: hidden;
@@ -61,7 +61,7 @@ scrollers styling
 	display: block;
 	float: left;
 	border: 5px solid #D4D4D4;
-	margin: 6px 10px 6px 0;
+	margin: 10px 10px 10px 0;
 	background: #fff;
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
