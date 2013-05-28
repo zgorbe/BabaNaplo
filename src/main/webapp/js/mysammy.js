@@ -66,6 +66,7 @@ $(function(){
 		this.post('#/addvideo', function(context) {
 			Videos.addVideo(context);
 		});
+		
 		// Custom events
 		this.bind('selectedDayChanged', function(e, data) {
 			if (app.getLocation().indexOf('new') < 0) {
@@ -73,6 +74,10 @@ $(function(){
 			} else {
 				$('#inputTheDay').val(data.date);
 			}
+		});
+		
+		this.bind('selectedMonthChanged', function(e, data) {
+			Days.getDayForAMonth(data.y, data.m);
 		});
 		
 		this.bind('newDayError', function(e, data) {
@@ -92,9 +97,11 @@ $(function(){
 		this.bind('initCalendar', function(e, data) {
 			$.datepicker.setDefaults($.extend({showMonthAfterYear: true}, $.datepicker.regional['hu']));
 			$('#datepicker1').datepicker({
-				onSelect: function(dateText, inst) { app.trigger('selectedDayChanged', { date: dateText}); },
-				onChangeMonthYear: function(year, month, inst) {  }
+				onSelect: function(dateText, inst) { app.trigger('selectedDayChanged', {date: dateText}); },
+				onChangeMonthYear: function(year, month, inst) { app.trigger('selectedMonthChanged', {y: year, m: month}); }
 			});
+			var now = new Date();
+			app.trigger('selectedMonthChanged', {y: now.getFullYear(), m: now.getMonth() + 1});
 		});
     });
 	

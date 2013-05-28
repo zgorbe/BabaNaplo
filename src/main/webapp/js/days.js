@@ -1,4 +1,5 @@
 var Days = (function() {
+	var dayMonthCache;	
 	
 	return {
 		newDay: function(context) {
@@ -51,7 +52,43 @@ var Days = (function() {
 					} else {
 						Events.getLatests(context, {day: day, date: selectedDate});
 					}
+					Days.updateCalendar();
 				}
+			});
+		},
+		getDayForAMonth: function(year, month) {
+			$.ajax({
+				type: 'GET',
+				url: '/json/days/list/' + year + '/' + month,
+				dataType: 'json',
+				complete: function(data, type, xmlhttp){
+					if (data.responseText.length > 0) {
+						var dayList = $.parseJSON(data.responseText);
+						dayMonthCache = dayList.dates;
+						Days.updateCalendar(dayList.dates);
+					}
+				}
+			});
+		},
+		updateCalendar: function(dates) {
+			if (!dates && dayMonthCache) {
+				dates = dayMonthCache;
+			}
+			$('#datepicker1 tr').each(function() {
+				$.each(this.cells, function() {
+					var cell = $(this);
+					var cellAnchor = $(this).find('a');
+					if (cellAnchor) {
+						var cellData = cellAnchor.html();
+						if (cellData) {
+							$.each(dates, function(index, value) {
+								if (value == cellData) {
+									cellAnchor.addClass('ui-state-has-event');
+								}        
+							});
+						}
+					}
+			    });
 			});
 		}
 	};	

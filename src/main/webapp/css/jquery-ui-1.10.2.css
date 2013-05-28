@@ -842,6 +842,12 @@ body .ui-tooltip {
 	font-weight: normal;
 	color: #212121;
 }
+
+.ui-state-has-event { 
+    border: 1px dashed #555555 !important;
+    font-weight: bold; 
+}
+
 .ui-state-hover a,
 .ui-state-hover a:hover,
 .ui-state-hover a:link,

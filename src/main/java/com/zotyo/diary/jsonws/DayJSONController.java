@@ -3,7 +3,9 @@ package com.zotyo.diary.jsonws;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import com.zotyo.diary.exception.DayNotFoundException;
 import com.zotyo.diary.persistence.DiaryDAO;
 import com.zotyo.diary.pojos.Day;
+import com.zotyo.diary.pojos.DayList;
 import com.zotyo.diary.util.DateUtil;
 import com.zotyo.diary.web.DiaryHelper;
 import com.zotyo.diary.pojos.Event;
@@ -75,6 +78,25 @@ public class DayJSONController extends BaseJSONController {
 		return diaryDAO.getDaysForAMonth(year, month - 1);
 	}
 
+	@RequestMapping(value = "/list/{year}/{month}", method = RequestMethod.GET)
+	@ResponseBody
+	public DayList getDayListForAMonth(@PathVariable int year,
+			@PathVariable int month) {
+		List<Day> days = diaryDAO.getDaysForAMonth(year, month - 1);
+		DayList dayList = new DayList();
+		dayList.setYear(year);
+		dayList.setMonth(month);
+		Set<Integer> dates = new HashSet<Integer>();
+		for (Day day : days) {
+			Calendar cal = GregorianCalendar.getInstance();
+			cal.setTime(day.getTheDay());
+			dates.add(cal.get(Calendar.DAY_OF_MONTH));
+		}
+		dayList.setDates(dates);
+		return dayList;
+	}
+
+	
 	@RequestMapping(value = "/{year}/{month}/{day}", method = RequestMethod.GET)
 	@ResponseBody
 	public Day getDay(@PathVariable int year, @PathVariable int month,
