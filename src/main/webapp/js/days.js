@@ -49,7 +49,7 @@ var Days = (function() {
 					if ($div.length) {
 						context.render('/templates/day.hb', {day: day, date: selectedDate}).replace('div.span8 > div.selected');
 					} else {
-						context.render('/templates/day.hb', {day: day, date: selectedDate}).replace('div#main');
+						Events.getLatests(context, {day: day, date: selectedDate});
 					}
 				}
 			});

@@ -41,7 +41,7 @@ var Events = (function() {
 				}
 			});
 		},
-		getLatests: function(context) {
+		getLatests: function(context, selectedDay) {
 			context.load('/json/events/latests/5', context.loadOptions)
 		    	.then(function(items) {
 					$.each(items, function(i, item) {
@@ -53,7 +53,13 @@ var Events = (function() {
 		    	})
 		    	.then(function(items) {
 					context.render('/templates/latests.hb', {items: items})
-					.swap(context.$element()).then(function(){
+					.swap(context.$element())
+					.then(function() {
+						if (selectedDay) {
+							context.render('/templates/day.hb', selectedDay).replace('div.span8 > div.selected');
+						}
+					})
+					.then(function() {
 						context.app.trigger('initCalendar');
 					});
 		    	});
