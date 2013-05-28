@@ -5,7 +5,7 @@
 <%
 	Device currentDevice = DeviceUtils.getCurrentDevice(request);
 	if (currentDevice.isNormal()) {
-		response.sendRedirect("/naplo");
+		response.sendRedirect("/naplo2/");
 	} else {
 		response.sendRedirect("/m/naplo");
 	}

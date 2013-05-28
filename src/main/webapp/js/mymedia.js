@@ -59,7 +59,7 @@ var Videos = (function() {
 			$('.video_thumbnails').on('click', 'a', function() {
 				var $this = $(this);
 				$("#video_frame").attr('src', 'http://www.youtube.com/embed/' + $this.data('video-id'));
-				$("#video_text").html($this.data('description'));					
+				$("#video_text").html($this.data('create-date') + ', ' + $this.data('description'));					
 			});
 		},
 		newVideo: function(context) {
