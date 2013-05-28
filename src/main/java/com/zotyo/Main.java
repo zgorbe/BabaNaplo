@@ -50,6 +50,9 @@ public class Main {
         //Read more here: http://wiki.eclipse.org/Jetty/Reference/Jetty_Classloading
         root.setParentLoaderPriority(true);
         
+        //Trying to remove jsessionid from the URL
+        root.getSessionHandler().getSessionManager().setSessionIdPathParameterName("none");
+        
         server.setHandler(root);
         
         server.start();
