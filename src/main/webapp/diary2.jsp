@@ -81,7 +81,7 @@
 			<footer>
 				<p>&copy; Baba napló 2013</p>
 			</footer>
-		
+			<a href="/naplo" class="btn btn-primary old-style-btn">Kattints ide a régi naplóhoz</a>		
 		</div> 
 
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
