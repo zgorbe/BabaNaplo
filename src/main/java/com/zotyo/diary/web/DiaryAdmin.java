@@ -157,6 +157,15 @@ public class DiaryAdmin extends HttpServlet {
 			return;
 		}
 		
+		if ("delete_event".equals(command)) {
+			String id = request.getParameter("id");
+			diaryAdminDAO.deleteEvent(Integer.parseInt(id));
+			
+			RequestDispatcher rd = getServletContext().getRequestDispatcher("/admin/admin.jsp");
+			rd.forward(request, response);
+			return;
+		}
+		
 		if ("dbfix".equals(command)) {
 			List<Day> allDays = diaryAdminDAO.getAllDays();
 			List<Event> allEvents = diaryAdminDAO.getAllEvents();

@@ -362,6 +362,11 @@ function getWordsForDBFix() {
 	});
 }
 
+function deleteEvent(eventId) {
+	$('#eventIdInput').val(eventId);
+	$('#formDeleteEvent').submit();
+}
+
 
 /**** ImagePreview with Module Pattern ****/
 var ImagePreview = (function(){

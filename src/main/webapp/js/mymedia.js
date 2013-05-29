@@ -80,7 +80,7 @@ var Videos = (function() {
 				data: $('form.new').serialize(),
 				url: '/json/videos/form',
 				success: function(data, type, xmlhttp){
-					if (data.id == null) {
+					if (data.videoId == null) {
 						context.app.trigger('newDayError');
 					} else {
 						context.app.clearTemplateCache();

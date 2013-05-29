@@ -48,14 +48,21 @@
 					        <td><textarea name="description" cols="56" rows="6" ><c:out value="${event.description}" /></textarea></td>
 					    </tr>
 					    <tr>
-					    	<td colspan="2" align="center"><button type="submit">Módosít</button></td>
+					    	<td colspan="2" align="center">
+					    		<button type="submit">Módosít</button>
+					    		<button type="button" onclick="deleteEvent(<c:out value="${event.id}" />);">Törlés</button>
+					    	</td>
 					    </tr>
 				    </table>
 				    <input type="hidden" name="cmd" value="update_event" />
 				    <input type="hidden" name="id" value="<c:out value="${event.id}" />" />
-				</form>	
+				</form>
 				<br />		
 			</c:forEach>
+			<form id="formDeleteEvent" action="/naplo/admin" method="POST">
+				<input type="hidden" name="cmd" value="delete_event" />
+				<input id="eventIdInput" type="hidden" name="id" value="-1" />
+			</form>
 		</div>
 	</c:when>
 	<c:otherwise>

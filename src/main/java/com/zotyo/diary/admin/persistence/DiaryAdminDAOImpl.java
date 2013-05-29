@@ -103,8 +103,8 @@ public class DiaryAdminDAOImpl extends SimpleJdbcDaoSupport implements DiaryAdmi
 
 	@Override
 	public void deleteEvent(Integer eventId) {
-		// TODO Auto-generated method stub
-		
+		String sql = "delete from events where id = ?";
+		getSimpleJdbcTemplate().update(sql, eventId);
 	}
 
 	@Override
