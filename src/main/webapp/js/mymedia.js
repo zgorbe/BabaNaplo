@@ -1,5 +1,15 @@
 var Photos = (function() {
 	
+	var readPreview = function(input) {
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+			reader.onload = function (e) {
+				$('#img_preview').attr('src', e.target.result).width(200).height(150);
+			};
+			reader.readAsDataURL(input.files[0]);
+		}
+	};
+	
 	return {
 		initMainScoller: function() {
 			$('div.jTscroller').on('click', 'a', function() {
@@ -16,6 +26,39 @@ var Photos = (function() {
 					noScrollCenterSpace: 0 
 				});
 			});
+		},
+		newPhoto: function(context) {
+			context.render('/templates/newphoto.hb')
+				.swap(context.$element())
+				.then(function() {
+					context.app.trigger('initCalendar');
+				})
+				.then(function() {
+					$('#fileInput').on('change', function() {
+						readPreview(this);
+					});
+				})
+				.then(function() {
+					$('#inputTheDay').val($('#datepicker1').val());
+					$('#inputStartDate').datetimepicker();
+					$('#inputDuration').timepicker({});
+				});
+		},
+		addPhoto: function(context) {
+			//TODO post multipart form with jquery
+			/*$.ajax({
+				type: 'POST',
+				data: $('form.new').serialize(),
+				url: '/json/videos/form',
+				success: function(data, type, xmlhttp){
+					if (data.videoId == null) {
+						context.app.trigger('newDayError');
+					} else {
+						context.app.clearTemplateCache();
+						context.redirect('#/');
+					}
+				}
+			});*/
 		},
 		getAll: function(context) {
 			context.load('/photos?cmd=photos', context.loadOptions)

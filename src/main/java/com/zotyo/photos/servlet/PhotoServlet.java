@@ -238,7 +238,9 @@ public class PhotoServlet extends HttpServlet {
                     }
                 }
             }
-
+            if (category.isEmpty()) {
+            	category = "baba";
+            }
             if (isMobile) {
             	if (!diaryHelper.md5(kw).equals(keyword)) {
 					return isMobile;

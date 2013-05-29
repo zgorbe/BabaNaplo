@@ -3,8 +3,8 @@
 		<div id="datepicker1" style="font-size: 16px;"></div>
 	</div>
 	<div class="span8">
-		<h4>Új videó</h4>	
-		<form action="#/addvideo" method="post" class="form-horizontal new">
+		<h4>Új kép</h4>	
+		<form action="#/addphoto" method="post" enctype="multipart/form-data" class="form-horizontal new">
 			<div class="control-group">
 				<label class="control-label" for="inputKeyword">Kulcsszó</label>
 				<div class="controls">
@@ -12,16 +12,22 @@
 				</div>
 			</div>
 			<div class="control-group">
-				<label class="control-label" for="inputTheDay">A videó dátuma</label>
+				<label class="control-label" for="inputTheDay">A kép dátuma</label>
 			    <div class="controls">
-			    	<input class="span3 uneditable-input" type="text" id="inputTheDay" name="theDay" placeholder="">
+			    	<input class="span3 uneditable-input" type="text" id="inputTheDay" name="createdate" placeholder="">
 			    </div>
 			</div>
 			<div class="control-group">
-				<label class="control-label" for="inputVideoId">A videó azonosítója</label>
+				<label class="control-label" for="fileInput">A fájl</label>
 			    <div class="controls">
-			    	<input class="span3" type="text" id="inputVideoId" name="videoId" placeholder="Youtube azonosító">
+			    	<input type="file" name="file" id="fileInput">
 			    </div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="img_preview"></label>
+				<div class="controls">
+					<img id="img_preview" src="#">
+				</div>
 			</div>
 			<div class="control-group">
 				<label class="control-label" for="description">Leírása</label>

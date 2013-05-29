@@ -39,6 +39,10 @@ $(function(){
 			Videos.newVideo(context);
 		});
 		
+		this.get('#/newphoto', function(context) {
+			Photos.newPhoto(context);
+		});
+		
 		this.get('#/day/:year/:month/:day', function(context) {
 			Days.getDay(context, this.params['year'] + '/' + this.params['month'] + '/' + this.params['day']);
 		});
@@ -65,6 +69,10 @@ $(function(){
 		
 		this.post('#/addvideo', function(context) {
 			Videos.addVideo(context);
+		});
+		
+		this.post('#/addphoto', function(context) {
+			Photos.addPhoto(context);
 		});
 		
 		// Custom events

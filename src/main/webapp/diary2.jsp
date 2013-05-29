@@ -44,7 +44,8 @@
 								<ul class="dropdown-menu">
 									<li><a href="#/newday"><i class="icon-pencil"></i> Új nap</a></li>
 									<li><a href="#/newevent"><i class="icon-edit"></i> Új esemény</a></li>
-									<li><a href="#/newvideo"><i class="icon-film"></i> Új videó</a></li>
+									<li><a href="#/newvideo"><i class="icon-facetime-video"></i> Új videó</a></li>
+									<li><a href="#/newphoto"><i class="icon-camera"></i> Új kép</a></li>
 								</ul>
 							</li>
 	            		</ul>
