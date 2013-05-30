@@ -10,7 +10,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import org.apache.log4j.Logger;
 import org.apache.lucene.index.IndexReader;
@@ -52,9 +52,9 @@ public class DiaryDAOJPAImpl implements DiaryDAO {
 
 	public Day getDay(Date theDay) {
 		logger.info("*** Getting day for: " + theDay + ", in milliseconds " + theDay.getTime());
-		Query query = em.createNamedQuery("DayEntity.findByTheDay");
+		TypedQuery<DayEntity> query = em.createNamedQuery("DayEntity.findByTheDay", DayEntity.class);
 		query.setParameter("theDay", theDay);
-        List<DayEntity> result = (List<DayEntity>)query.getResultList();
+        List<DayEntity> result = query.getResultList();
         
         if (result.size() == 0) {
         	logger.warn("Date not found in database - " + theDay);
@@ -65,9 +65,9 @@ public class DiaryDAOJPAImpl implements DiaryDAO {
 	}
 	
 	public int addEvent(Date theDay, Event event) {
-        Query query = em.createNamedQuery("DayEntity.findByTheDay");
+		TypedQuery<DayEntity> query = em.createNamedQuery("DayEntity.findByTheDay", DayEntity.class);
         query.setParameter("theDay", theDay);
-        List<DayEntity> result = (List<DayEntity>)query.getResultList();
+        List<DayEntity> result = query.getResultList();
         
         if (result.size() == 0) {
         	logger.warn("Date not found in database - " + theDay);
@@ -83,7 +83,7 @@ public class DiaryDAOJPAImpl implements DiaryDAO {
 	}
 
 	public List<Day> getAllDaysInDiary() {
-		List<DayEntity> result = (List<DayEntity>)em.createQuery("select object(o) from DayEntity as o order by o.theDay desc").getResultList();
+		List<DayEntity> result = em.createQuery("select object(o) from DayEntity as o order by o.theDay desc", DayEntity.class).getResultList();
 		List<Day> rv = new ArrayList<Day>();
 		for (DayEntity de : result) {
 			rv.add(PersistenceUtil.getDay(de));
@@ -92,7 +92,7 @@ public class DiaryDAOJPAImpl implements DiaryDAO {
 	}
 
 	public List<Event> getAllEvents() {
-		List<EventEntity> result = (List<EventEntity>)em.createQuery("select object(o) from EventEntity as o order by o.startTime desc").getResultList();
+		List<EventEntity> result = em.createQuery("select object(o) from EventEntity as o order by o.startTime desc", EventEntity.class).getResultList();
 		List<Event> rv = new ArrayList<Event>();
 		for (EventEntity ee : result) {
 			rv.add(PersistenceUtil.getEvent(ee));
@@ -108,10 +108,10 @@ public class DiaryDAOJPAImpl implements DiaryDAO {
 		Calendar endDay = GregorianCalendar.getInstance();
 		endDay.set(year, month, 1, 23, 59, 59);
 		endDay.set(GregorianCalendar.DAY_OF_MONTH, endDay.getActualMaximum(GregorianCalendar.DAY_OF_MONTH));
-		Query query = em.createNamedQuery("DayEntity.findByMonth");
+		TypedQuery<DayEntity> query = em.createNamedQuery("DayEntity.findByMonth", DayEntity.class);
         query.setParameter("startDay", startDay.getTime());
         query.setParameter("endDay", endDay.getTime());
-        List<DayEntity> result = (List<DayEntity>)query.getResultList();
+        List<DayEntity> result = query.getResultList();
         
         for (DayEntity de : result) {
         	rv.add(PersistenceUtil.getDay(de));
@@ -121,7 +121,7 @@ public class DiaryDAOJPAImpl implements DiaryDAO {
 
 	public List<Event> getEventsForADay(Date theDay) {
 		List<Event> events = new ArrayList<Event>();
-        Query query = em.createNamedQuery("DayEntity.findByTheDay");
+        TypedQuery<DayEntity> query = em.createNamedQuery("DayEntity.findByTheDay", DayEntity.class);
         query.setParameter("theDay", theDay);
         List<DayEntity> result = query.getResultList();
         
