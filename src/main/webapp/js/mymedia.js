@@ -45,20 +45,27 @@ var Photos = (function() {
 				});
 		},
 		addPhoto: function(context) {
-			//TODO post multipart form with jquery
-			/*$.ajax({
-				type: 'POST',
-				data: $('form.new').serialize(),
-				url: '/json/videos/form',
-				success: function(data, type, xmlhttp){
-					if (data.videoId == null) {
-						context.app.trigger('newDayError');
-					} else {
-						context.app.clearTemplateCache();
+			var data = new FormData();
+			data.append('file', $('#fileInput')[0].files[0]);
+			data.append('keyword', $('#inputKeyword').val());
+			data.append('createdate', $('#inputTheDay').val());
+			data.append('description', $('#description').val());
+				
+            $.ajax({
+                type: 'POST',
+                url: '/photos',
+                contentType: false,
+                processData: false,
+                data: data,
+                success: function (res) {
+                    if (res == 'success') {
+                    	context.app.clearTemplateCache();
 						context.redirect('#/');
-					}
-				}
-			});*/
+                    } else {
+                    	context.app.trigger('uploadError');
+                    }
+                }
+            });
 		},
 		getAll: function(context) {
 			context.load('/photos?cmd=photos', context.loadOptions)

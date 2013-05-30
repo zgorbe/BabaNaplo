@@ -146,12 +146,14 @@ public class PhotoServlet extends HttpServlet {
 			throws ServletException, IOException {
 		
 		boolean isMultipart = ServletFileUpload.isMultipartContent(request);
-		boolean isMobile = false;
+		boolean isXHR = "XMLHttpRequest".equalsIgnoreCase(request.getHeader("X-Requested-With")) ? true : false;
+		Boolean[] result = new Boolean[2];
+		
 		if (isMultipart) {
-			isMobile = processMultipartRequest(request, response);
+			result = processMultipartRequest(request, response, isXHR);
 		}
 		else {
-			isMobile = Boolean.valueOf(request.getParameter("isMobile"));
+			result[0] = Boolean.valueOf(request.getParameter("isMobile"));
 			String cmd = request.getParameter("cmd");
 			if ("delete".equals(cmd)) {
 				String fileName = request.getParameter("file2delete");
@@ -188,15 +190,27 @@ public class PhotoServlet extends HttpServlet {
 			}
 			
 		}
-		if (isMobile) {
+		
+		if (isXHR) {
+			PrintWriter out = response.getWriter();
+			if (result[1]) {
+				out.print("success");
+			} else {
+				out.print("failure");
+			}
+			return;
+		}
+		
+		if (result[0]) {
 			response.sendRedirect("/m/naplo?cmd=photos");
 		} else {
 			response.sendRedirect("/photos");
 		}
 	}
 	
-	private boolean processMultipartRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	private Boolean[] processMultipartRequest(HttpServletRequest request, HttpServletResponse response, boolean isXHR) throws ServletException, IOException {
 		boolean isMobile = false;
+		
 		try {
 			SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd HH:mm");
 			
@@ -241,12 +255,12 @@ public class PhotoServlet extends HttpServlet {
             if (category.isEmpty()) {
             	category = "baba";
             }
-            if (isMobile) {
+            if (isMobile || isXHR) {
             	if (!diaryHelper.md5(kw).equals(keyword)) {
-					return isMobile;
+					return new Boolean[] { isMobile, false};
 				}
             }
-
+            
             Date createDate = null;
     		try {
     			createDate = format.parse(createdateStr);
@@ -262,8 +276,9 @@ public class PhotoServlet extends HttpServlet {
             }
         } catch (FileUploadException fuex) {
         	fuex.printStackTrace();
+        	return new Boolean[] { isMobile, false };
         }
-        return isMobile;
+        return new Boolean[] { isMobile, true };
 	}
 	
 	private byte[] createThumbnail(byte[] data) throws IOException {

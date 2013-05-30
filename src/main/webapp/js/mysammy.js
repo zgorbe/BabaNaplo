@@ -97,6 +97,15 @@ $(function(){
 			}
 		});
 		
+		this.bind('uploadError', function(e, data) {
+			if (!$('div.alert-error').length) {
+				var error_div = $('<div class="alert alert-error">' +
+						'<button type="button" class="close" data-dismiss="alert">×</button>' +
+						'Nem sikerült a feltöltés! Próbáld meg újra!</div>');
+				$('form.new').before(error_div);
+			}
+		});
+		
 		this.bind('dropDownMenuChanged', function() {
 			$('.dropdown.open').removeClass('open');
 			$('ul.dropdown-menu > li').removeClass('active');
