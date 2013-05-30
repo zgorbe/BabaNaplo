@@ -273,12 +273,12 @@ public class PhotoServlet extends HttpServlet {
 					new Photo(description, fileName, category, createDate),
 					new PhotoData(data, thumbdata)
 					);
+				return new Boolean[] { isMobile, true };
             }
         } catch (FileUploadException fuex) {
         	fuex.printStackTrace();
-        	return new Boolean[] { isMobile, false };
         }
-        return new Boolean[] { isMobile, true };
+        return new Boolean[] { isMobile, false };
 	}
 	
 	private byte[] createThumbnail(byte[] data) throws IOException {

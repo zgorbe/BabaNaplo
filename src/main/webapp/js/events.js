@@ -149,6 +149,7 @@ var Events = (function() {
 	    		};
 				context.render('/templates/search.hb', renderOptions)
 				.swap(context.$element()).then(function() {
+					$('#inputSearch').val('');
 					context.$element().highlight(searchTerm, true);
 					Events.smiley();
 				});

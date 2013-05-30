@@ -78,7 +78,13 @@ $(function(){
 		// Custom events
 		this.bind('selectedDayChanged', function(e, data) {
 			if (app.getLocation().indexOf('new') < 0) {
-				app.setLocation('#/day/' + data.date.replace(/\./g, '\/'));
+				var newLocation = '/naplo2/#/day/' + data.date.replace(/\./g, '\/');
+				if (newLocation != app.getLocation()) {
+					app.setLocation(newLocation);
+				} else {
+					// I don't like this below ;(
+					setTimeout("Days.updateCalendar()", 100);
+				}
 			} else {
 				$('#inputTheDay').val(data.date);
 			}
