@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="span4">
-		<div id="datepicker1" style="font-size: 16px;"></div>
+		<div id="datepicker1"></div>
 	</div>
 	<div class="span8">
 		<h4>Új kép</h4>	
