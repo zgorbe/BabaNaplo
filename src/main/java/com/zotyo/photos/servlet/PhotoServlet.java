@@ -73,12 +73,10 @@ public class PhotoServlet extends HttpServlet {
 												throws ServletException, IOException {
 		String cmd = request.getParameter("cmd");
  
-		if ("count".equals(cmd)) {
-			
-		}
 		if ("thumbdata".equals(cmd)) {
 			String fileName = request.getParameter("filename");
 			if (fileName != null && !fileName.isEmpty()) {
+				response.setHeader("Expires", "Tue May 01 2016 01:00:00 GMT+0100 (CET)");
             	response.setContentType("image/jpeg");
             	PhotoData photoData = photoService.getDataByFilename(fileName, PhotoDataEnum.THUMB_ONLY);
             	if (photoData != null && photoData.getThumbdata() != null) {
@@ -89,6 +87,7 @@ public class PhotoServlet extends HttpServlet {
 		else if ("data".equals(cmd)) {
 			String fileName = request.getParameter("filename");
 			if (fileName != null && !fileName.isEmpty()) {
+				response.setHeader("Expires", "Tue May 01 2016 01:00:00 GMT+0100 (CET)");
             	response.setContentType("image/jpeg");
             	PhotoData photoData = photoService.getDataByFilename(fileName, PhotoDataEnum.PICTURE_ONLY);
             	if (photoData != null && photoData.getData() != null) {
