@@ -130,4 +130,9 @@ public class PhotoDAOImpl implements PhotoDAO {
 		}
 		return keywords;
 	}
+
+	@Override
+	public long count() {
+		return mongoTemplate.count(new Query(), Photo.class);
+	}
 }

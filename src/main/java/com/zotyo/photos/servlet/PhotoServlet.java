@@ -73,6 +73,9 @@ public class PhotoServlet extends HttpServlet {
 												throws ServletException, IOException {
 		String cmd = request.getParameter("cmd");
  
+		if ("count".equals(cmd)) {
+			
+		}
 		if ("thumbdata".equals(cmd)) {
 			String fileName = request.getParameter("filename");
 			if (fileName != null && !fileName.isEmpty()) {

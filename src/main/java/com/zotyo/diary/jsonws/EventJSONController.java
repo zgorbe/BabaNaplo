@@ -101,4 +101,10 @@ public class EventJSONController extends BaseJSONController {
 		}
 		return diaryDAO.searchTerms(term.toLowerCase());
 	}
+	
+	@RequestMapping(value = "/count", method = RequestMethod.GET)
+	@ResponseBody
+	public long getEventCount() {
+		return diaryDAO.getEventCount();
+	}
 }

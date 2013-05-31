@@ -155,6 +155,21 @@ var Videos = (function() {
 	};	
 })();
 
+var Counts = (function() {
+	return {
+		initCounts: function() {
+			$.ajax({
+                type: 'GET',
+                url: '/json/counts',
+                success: function (data) {
+                	$('#eventCount').html(data.eventCount);
+                	$('#photoCount').html(data.photoCount);
+                	$('#videoCount').html(data.videoCount);
+                }
+            });
+		}
+	};
+})();
 
 
 /**** ImagePreview with Module Pattern ****/

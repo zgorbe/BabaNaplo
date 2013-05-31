@@ -35,10 +35,15 @@
 					<a class="brand" href="/naplo2/">Baba napló</a>
 					<div class="nav-collapse collapse">
 						<ul class="nav">
-							<li class="active"><a href="#/"><i class="icon-home"></i> Home</a></li>
-							<li><a href="#/events"><i class="icon-book"></i> Összes esemény</a></li>
-							<li><a href="#/videos"><i class="icon-facetime-video"></i> Videók</a></li>
-							<li><a href="#/photos"><i class="icon-camera"></i> Képek</a></li>
+							<li>
+								<a href="#/events"><i class="icon-book"></i> Összes esemény <sup><span id="eventCount" class="badge"></span></sup></a>
+							</li>
+							<li>
+								<a href="#/videos"><i class="icon-facetime-video"></i> Videók <sup><span id="videoCount" class="badge"></span></sup></a>
+							</li>
+							<li>
+								<a href="#/photos"><i class="icon-camera"></i> Képek <sup><span id="photoCount" class="badge"></span></sup></a>
+							</li>
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-comment"></i> Új bejegyzés <b class="caret"></b></a>
 								<ul class="dropdown-menu">

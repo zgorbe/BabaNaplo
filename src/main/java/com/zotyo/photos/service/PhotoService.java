@@ -16,4 +16,5 @@ public interface PhotoService {
 	PhotoData getDataByFilename(String filename, PhotoDataEnum dataFlag);
 	List<Photo> searchPhotos(String searchTerm);
 	List<String> searchKeywords(String term);
+	long count();
 }

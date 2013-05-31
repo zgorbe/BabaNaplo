@@ -110,3 +110,14 @@ img.selected {
 	right: 0;
 	z-index: 1000;
 }
+
+.navbar .nav > li > a:hover {
+	background: #E5E5E5;
+}
+
+.navbar .badge {
+	padding-left: 6px;
+	padding-right: 6px;
+	font-size: 9px;
+	background-color: #004BCC;
+}

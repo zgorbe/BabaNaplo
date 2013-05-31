@@ -69,4 +69,9 @@ public class PhotoServiceImpl implements PhotoService {
 		return photoDAO.searchKeywords(term);
 	}
 
+
+	@Override
+	public long count() {
+		return photoDAO.count();
+	}
 }

@@ -92,4 +92,9 @@ public class DiaryDAOMockImpl implements DiaryDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	@Override
+	public long getEventCount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

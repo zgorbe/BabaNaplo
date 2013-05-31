@@ -228,4 +228,9 @@ public class DiaryDAOJPAImpl implements DiaryDAO {
 			e.printStackTrace();
 		}
 	}
+
+	@Override
+	public long getEventCount() {
+		return em.createQuery("select count(o.id) from EventEntity as o", Long.class).getSingleResult();
+	}
 }

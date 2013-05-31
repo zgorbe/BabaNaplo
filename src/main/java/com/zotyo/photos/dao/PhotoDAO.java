@@ -17,4 +17,5 @@ public interface PhotoDAO {
 	List<Photo> searchPhotos(String searchTerm);
 	List<String> searchKeywords(String term);
 	List<PhotoData> getAllThumbsByCategory(String category);
+	long count();
 }

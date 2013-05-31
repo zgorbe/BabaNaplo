@@ -17,4 +17,5 @@ public interface DiaryDAO {
 	
 	int addDay(Day day);
 	int addEvent(Date theDay, Event event);
+	long getEventCount();
 }
