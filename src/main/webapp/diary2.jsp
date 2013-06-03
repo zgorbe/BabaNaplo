@@ -36,13 +36,13 @@
 					<div class="nav-collapse collapse">
 						<ul class="nav">
 							<li>
-								<a href="#/events"><i class="icon-book"></i> Összes esemény <sup><span id="eventCount" class="badge"></span></sup></a>
+								<a href="#/events"><i class="icon-book"></i> Összes esemény <sup><span id="eventCount" class="badge"><c:out value="${countsBean.eventCount}" /></span></sup></a>
 							</li>
 							<li>
-								<a href="#/videos"><i class="icon-facetime-video"></i> Videók <sup><span id="videoCount" class="badge"></span></sup></a>
+								<a href="#/videos"><i class="icon-facetime-video"></i> Videók <sup><span id="videoCount" class="badge"><c:out value="${countsBean.videoCount}" /></span></sup></a>
 							</li>
 							<li>
-								<a href="#/photos"><i class="icon-camera"></i> Képek <sup><span id="photoCount" class="badge"></span></sup></a>
+								<a href="#/photos"><i class="icon-camera"></i> Képek <sup><span id="photoCount" class="badge"><c:out value="${countsBean.photoCount}" /></span></sup></a>
 							</li>
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-comment"></i> Új bejegyzés <b class="caret"></b></a>

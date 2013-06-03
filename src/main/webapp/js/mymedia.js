@@ -157,7 +157,7 @@ var Videos = (function() {
 
 var Counts = (function() {
 	return {
-		initCounts: function() {
+		getCounts: function() {
 			$.ajax({
                 type: 'GET',
                 url: '/json/counts',

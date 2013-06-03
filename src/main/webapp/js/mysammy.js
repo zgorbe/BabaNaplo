@@ -138,5 +138,4 @@ $(function(){
     
     Events.initSearch(app);
     Photos.initMainScoller();
-    Counts.initCounts(); 
 });
