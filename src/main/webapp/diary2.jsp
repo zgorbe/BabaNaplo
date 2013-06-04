@@ -39,7 +39,7 @@
 								<a href="#/events/2011/09"><i class="icon-book"></i> Összes esemény <sup><span id="eventCount" class="badge"><c:out value="${countsBean.eventCount}" /></span></sup></a>
 							</li>
 							<li>
-								<a href="#/videos"><i class="icon-facetime-video"></i> Videók <sup><span id="videoCount" class="badge"><c:out value="${countsBean.videoCount}" /></span></sup></a>
+								<a href="#/videos/<c:out value="${firstVideoId}" />"><i class="icon-facetime-video"></i> Videók <sup><span id="videoCount" class="badge"><c:out value="${countsBean.videoCount}" /></span></sup></a>
 							</li>
 							<li>
 								<a href="#/photos"><i class="icon-camera"></i> Képek <sup><span id="photoCount" class="badge"><c:out value="${countsBean.photoCount}" /></span></sup></a>

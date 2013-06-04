@@ -4,9 +4,9 @@
 	</div>
 
 	<div class="row span6">
-		<p id="video_text">{{first.createDate}}, {{first.description}}</p>
+		<p id="video_text">{{video.createDate}}, {{video.description}}</p>
 	
-		<iframe id="video_frame" onload="Videos.init();" src="http://www.youtube.com/embed/{{first.videoId}}" allowfullscreen="1" width="560" frameborder="1" height="420"></iframe>
+		<iframe id="video_frame" onload="Videos.initThumbnails();" src="http://www.youtube.com/embed/{{video.videoId}}" allowfullscreen="1" width="560" frameborder="1" height="420"></iframe>
 	  
 		<div id="tS2" class="jThumbnailScroller" style="height: 118px;">
 			<div class="jTscrollerContainer">

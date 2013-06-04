@@ -55,8 +55,8 @@ $(function(){
 			Photos.getAll(context);
 		});
 		
-		this.get('#/videos', function(context) {
-			Videos.getAll(context);
+		this.get('#/videos/:selectedVideoId', function(context) {
+			Videos.getAll(context, this.params['selectedVideoId']);
 		});
 		
 		this.post('#/addday', function(context) {

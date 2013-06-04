@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 import com.zotyo.diary.persistence.DiaryDAO;
@@ -18,6 +19,7 @@ import com.zotyo.diary.pojos.CountsBean;
 import com.zotyo.photos.pojo.Photo;
 import com.zotyo.photos.service.PhotoService;
 import com.zotyo.videos.dao.VideoDAO;
+import com.zotyo.videos.pojo.Video;
 
 
 public class DiaryServlet2 extends HttpServlet {
@@ -49,6 +51,9 @@ public class DiaryServlet2 extends HttpServlet {
 		cb.setPhotoCount(photoService.count());
 		cb.setVideoCount(videoDAO.count());
 		request.setAttribute("countsBean", cb);
+		
+		Video first = videoDAO.findAll(new Sort(Sort.Direction.DESC, "createDate")).iterator().next();
+		request.setAttribute("firstVideoId", first.getVideoId());
 		
         RequestDispatcher rd = getServletContext().getRequestDispatcher("/diary2.jsp");
         rd.forward(request, response);

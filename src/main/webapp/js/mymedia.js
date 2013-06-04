@@ -97,7 +97,7 @@ var Photos = (function() {
 var Videos = (function() {
 	
 	return {
-		init: function(context) {
+		initThumbnails: function() {
 			$('#tS2').thumbnailScroller({ 
 			    scrollerType: 'hoverAccelerate', 
 			    scrollerOrientation:'horizontal', 
@@ -105,11 +105,6 @@ var Videos = (function() {
 			    scrollEasingAmount: 600, 
 			    acceleration: 1, 
 			    noScrollCenterSpace: 0 
-			});
-			$('.video_thumbnails').on('click', 'a', function() {
-				var $this = $(this);
-				$("#video_frame").attr('src', 'http://www.youtube.com/embed/' + $this.data('video-id'));
-				$("#video_text").html($this.data('create-date') + ', ' + $this.data('description'));					
 			});
 		},
 		newVideo: function(context) {
@@ -139,17 +134,26 @@ var Videos = (function() {
 				}
 			});
 		},
-		getAll: function(context) {
+		getAll: function(context, videoId) {
 			context.load('/json/videos', context.loadOptions)
 	    	.then(function(items) {
+	    		var selectedVideo = {};
 	    		$.each(items, function(i, item) {
 					if (!item.inited) {
 						item.createDate = $.format.date(item.createDate, 'yyyy.MM.dd');
 						item.inited = true;
 					}
+					if (item.videoId == videoId) {
+						selectedVideo = item;
+					}
 				});
-				context.render('/templates/videos.hb', {items: items, first: items[0]})
-					.swap(context.$element());
+				context.render('/templates/videos.hb', {items: items, video: selectedVideo})
+					.swap(context.$element())
+					.then(function() {
+						$('.video_thumbnails').on('click', 'a', function() {
+							context.app.setLocation('#/videos/' + $(this).data('video-id'));
+						});
+					});
 	    	});					
 		}
 	};	
