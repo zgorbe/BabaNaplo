@@ -64,7 +64,7 @@ var Events = (function() {
 					});
 		    	});
 		},
-		getAll: function(context) {
+		getAll: function(context, year, month) {
 			context.load('/json/events', context.loadOptions)
 		    	.then(function(items) {
 					$.each(items, function(i, item) {
@@ -79,32 +79,34 @@ var Events = (function() {
 		    		context.render('/templates/allevents.hb', {events: items})
 		    			.swap(context.$element())
 		    			.then(function() {
-		    				var $container = $('#isotope_container'); 
-				       		$container.isotope({
+		    				var $container = $('#isotope_container');
+							$container.isotope({
 				       			itemSelector: '.isotope_item',
-				       			filter: '.m2011-09',
+				       			filter: '.m' + year + '-' + month,
 				       			sortBy : 'original-order', 
 				       			sortAscending : false
 				       		});
-				       		Events.smiley();
-				       		$('ul.filter').on('click', 'a', function() {
+							Events.smiley();
+							$('#prependedDropdownButton').val(year);
+							var monthStr = $('ul#monthFilter > li > a[data-filter="' + month + '"]').html();
+							$('#appendedDropdownButton').val(monthStr);
+
+				       		$('ul.filter').on('click', 'a', function() { 
 				       			var filterValue = $(this).data('filter').toString();
-				       			var filterStr = '';
+				       			var filterYear = '';
+				       			var filterMonth = '';
 				       			if (filterValue.length > 2) {
-				       				filterStr = '.m' + filterValue + '-' + $('#appendedDropdownButton').data('filter');
+				       				filterYear = filterValue;
+				       				var filterMonthStr = $('#appendedDropdownButton').val();
+				       				filterMonth = $('ul#monthFilter > li > a:contains(' + filterMonthStr + ')').data('filter');
 				       				$('#prependedDropdownButton').val(filterValue);
 				       			} else {
-				       				filterStr = '.m' + $('#prependedDropdownButton').val() + '-' + filterValue;
+				       				filterYear = $('#prependedDropdownButton').val();
+				       				filterMonth = filterValue; 
 				       				$('#appendedDropdownButton').val($(this).html());
 				       				$('#appendedDropdownButton').data('filter', filterValue);
 				       			}
-				    			 
-				    			$container.isotope({
-				    				itemSelector: '.isotope_item',
-				    				filter: filterStr,
-				    				sortBy : 'original-order', 
-				    				sortAscending : false
-				    			});
+				       			context.app.setLocation('#/events/' + filterYear + '/' + filterMonth);
 				       		});
 		    			});
 		    	});

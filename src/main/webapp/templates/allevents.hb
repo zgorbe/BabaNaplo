@@ -6,22 +6,22 @@
 		      Év
 		      <span class="caret"></span>
 		    </button>
-		    <ul class="dropdown-menu filter">
+		    <ul id="yearFilter" class="dropdown-menu filter">
 		      <li><a href="javascript:void(0);" data-filter="2011">2011</a></li>
 		      <li><a href="javascript:void(0);" data-filter="2012">2012</a></li>
 		      <li><a href="javascript:void(0);" data-filter="2013">2013</a></li>
 		    </ul>
 		  </div>
-		  <input class="input-mini uneditable-input" id="prependedDropdownButton" type="text" disabled="disabled" value="2011">
+		  <input class="input-mini uneditable-input" id="prependedDropdownButton" type="text" disabled="disabled" value="">
 		</div>
 		<div class="input-append">
-		  <input class="input-small uneditable-input" id="appendedDropdownButton" type="text" disabled="disabled" value="Szeptember" data-filter="09">
+		  <input class="input-small uneditable-input" id="appendedDropdownButton" type="text" disabled="disabled" value="" data-filter="09">
 		  <div class="btn-group">
 		    <button class="btn dropdown-toggle" data-toggle="dropdown">
 		      Hónap
 		      <span class="caret"></span>
 		    </button>
-		    <ul class="dropdown-menu filter">
+		    <ul id="monthFilter" class="dropdown-menu filter">
 				<li><a href="javascript:void(0);" data-filter="01">Január</a></li>
 				<li><a href="javascript:void(0);" data-filter="02">Február</a></li>
 				<li><a href="javascript:void(0);" data-filter="03">Március</a></li>
