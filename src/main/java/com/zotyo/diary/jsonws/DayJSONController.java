@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -20,23 +19,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.zotyo.diary.exception.DayNotFoundException;
-import com.zotyo.diary.persistence.DiaryDAO;
 import com.zotyo.diary.pojos.Day;
 import com.zotyo.diary.pojos.DayList;
 import com.zotyo.diary.util.DateUtil;
-import com.zotyo.diary.web.DiaryHelper;
 import com.zotyo.diary.pojos.Event;
 
 @Controller
 @RequestMapping("/days")
 public class DayJSONController extends BaseJSONController {
 	private static Logger logger = Logger.getLogger(DayJSONController.class);
-
-	@Autowired
-	protected DiaryHelper diaryHelper;
-
-	@Autowired
-	private DiaryDAO diaryDAO;
 
 	@RequestMapping(value = "/form", method = RequestMethod.POST, consumes = "application/x-www-form-urlencoded")
 	@ResponseBody
@@ -100,7 +91,7 @@ public class DayJSONController extends BaseJSONController {
 	@RequestMapping(value = "/{year}/{month}/{day}", method = RequestMethod.GET)
 	@ResponseBody
 	public Day getDay(@PathVariable int year, @PathVariable int month,
-			@PathVariable int day) throws DayNotFoundException {
+			@PathVariable int day) {
 		Calendar c = GregorianCalendar.getInstance();
 		c.set(year, month - 1, day);
 		Date date = DateUtil.resetHMS(c.getTime());

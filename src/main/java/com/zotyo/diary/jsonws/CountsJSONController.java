@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.zotyo.diary.persistence.DiaryDAO;
 import com.zotyo.diary.pojos.CountsBean;
 import com.zotyo.photos.service.PhotoService;
 import com.zotyo.videos.dao.VideoDAO;
@@ -15,9 +14,6 @@ import com.zotyo.videos.dao.VideoDAO;
 @RequestMapping("/counts")
 public class CountsJSONController extends BaseJSONController {
 
-	@Autowired
-	private DiaryDAO diaryDAO;
-	
 	@Autowired
 	protected PhotoService photoService;
 

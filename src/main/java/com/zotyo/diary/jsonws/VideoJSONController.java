@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.zotyo.diary.util.DateUtil;
-import com.zotyo.diary.web.DiaryHelper;
 import com.zotyo.videos.dao.VideoDAO;
 import com.zotyo.videos.pojo.Video;
 
@@ -17,9 +16,6 @@ import com.zotyo.videos.pojo.Video;
 @RequestMapping("/videos")
 public class VideoJSONController extends BaseJSONController {
 	
-	@Autowired
-	protected DiaryHelper diaryHelper;
-
 	@Autowired
 	private VideoDAO videoDAO;
 

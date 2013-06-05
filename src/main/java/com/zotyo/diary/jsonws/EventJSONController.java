@@ -7,7 +7,6 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,21 +15,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.zotyo.diary.persistence.DiaryDAO;
 import com.zotyo.diary.pojos.Event;
 import com.zotyo.diary.util.DateUtil;
-import com.zotyo.diary.web.DiaryHelper;
 
 @Controller
 @RequestMapping("/events")
 public class EventJSONController extends BaseJSONController {
 	
-	@Autowired
-	protected DiaryHelper diaryHelper;
-
-	@Autowired
-	private DiaryDAO diaryDAO;
-
 	@RequestMapping(value = "/form", method = RequestMethod.POST, consumes = "application/x-www-form-urlencoded")
 	@ResponseBody
 	public Event addEventForm(@RequestParam String keyword,

@@ -51,7 +51,6 @@ public class DiaryDAOJPAImpl implements DiaryDAO {
 	}
 
 	public Day getDay(Date theDay) {
-		logger.info("*** Getting day for: " + theDay + ", in milliseconds " + theDay.getTime());
 		TypedQuery<DayEntity> query = em.createNamedQuery("DayEntity.findByTheDay", DayEntity.class);
 		query.setParameter("theDay", theDay);
         List<DayEntity> result = query.getResultList();
