@@ -39,9 +39,13 @@ public class DiaryDAOJPAImpl implements DiaryDAO {
 
 	private static Logger logger = Logger.getLogger(DiaryDAOJPAImpl.class);
 	
-    @PersistenceContext(unitName = "DiaryPU")
     private EntityManager em;
-    
+
+    @PersistenceContext(unitName = "DiaryPU")
+	public void setEm(EntityManager em) {
+		this.em = em;
+	}
+
 	public int addDay(Day day) {
 		DayEntity de = PersistenceUtil.getDayEntity(day);
 		em.persist(de);

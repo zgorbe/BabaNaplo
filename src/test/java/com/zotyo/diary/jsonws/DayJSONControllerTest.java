@@ -13,7 +13,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
-import com.zotyo.diary.persistence.DiaryDAOJPAImpl;
+import com.zotyo.diary.persistence.DiaryDAO;
 import com.zotyo.diary.pojos.Day;
 import com.zotyo.diary.pojos.DayList;
 
@@ -21,7 +21,7 @@ import com.zotyo.diary.pojos.DayList;
 public class DayJSONControllerTest {
 	
 	@Mock
-	private DiaryDAOJPAImpl diaryDAO; 
+	private DiaryDAO diaryDAO; 
 	
 	private DayJSONController controller;
 	
@@ -29,7 +29,6 @@ public class DayJSONControllerTest {
 	public void setUp() {
 		controller = new DayJSONController();
 		controller.setDiaryDAO(diaryDAO);
-		
 	}
 	
 	@Test
@@ -37,11 +36,12 @@ public class DayJSONControllerTest {
 		List<Day> days = spy(new ArrayList<Day>());
 		when(diaryDAO.getAllDaysInDiary()).thenReturn(days);
 		
-		controller.getDays();
+		List<Day> result = controller.getDays();
 		
+		assertNotNull(result);
+		assertSame(days, result);
 		verify(diaryDAO).getAllDaysInDiary();
-		verifyNoMoreInteractions(diaryDAO);
-		verifyNoMoreInteractions(days);
+		verifyZeroInteractions(days);
 	}
 	
 	@Test
@@ -49,11 +49,12 @@ public class DayJSONControllerTest {
 		List<Day> days = spy(new ArrayList<Day>());
 		when(diaryDAO.getDaysForAMonth(anyInt(), anyInt())).thenReturn(days);
 		
-		controller.getDaysForAMonth(2011, 9);
+		List<Day> result = controller.getDaysForAMonth(2011, 9);
 		
+		assertNotNull(result);
+		assertSame(days, result);
 		verify(diaryDAO).getDaysForAMonth(2011, 8);
-		verifyNoMoreInteractions(diaryDAO);
-		verifyNoMoreInteractions(days);
+		verifyZeroInteractions(days);
 	}
 	
 	@Test
@@ -70,10 +71,14 @@ public class DayJSONControllerTest {
 	
 	@Test
 	public void testGetDay() {
-		when(diaryDAO.getDay(any(Date.class))).thenReturn(new Day());
+		Day d = spy(new Day());
+		when(diaryDAO.getDay(any(Date.class))).thenReturn(d);
 		
 		Day day = controller.getDay(2011, 9, 17);
 		
+		assertNotNull(day);
+		assertSame(d, day);
 		verify(diaryDAO).getDay(any(Date.class));
+		verifyZeroInteractions(day);		
 	}
 }
