@@ -39,9 +39,7 @@ var Photos = (function() {
 					});
 				})
 				.then(function() {
-					$('#inputTheDay').val($('#datepicker1').val());
-					$('#inputStartDate').datetimepicker();
-					$('#inputDuration').timepicker({});
+					$('#inputTheDay').datetimepicker();
 				});
 		},
 		addPhoto: function(context) {
