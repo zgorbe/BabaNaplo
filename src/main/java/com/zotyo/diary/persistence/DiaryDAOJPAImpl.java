@@ -9,6 +9,7 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
@@ -57,12 +58,16 @@ public class DiaryDAOJPAImpl implements DiaryDAO {
 	public Day getDay(Date theDay) {
 		TypedQuery<DayEntity> query = em.createNamedQuery("DayEntity.findByTheDay", DayEntity.class);
 		query.setParameter("theDay", theDay);
-        DayEntity de = query.getSingleResult();
+		
+        DayEntity de = null;
         
-        if (de == null) {
+        try {
+        	de = query.getSingleResult();
+        } catch(NoResultException nre) { 
         	logger.warn("Date not found in database - " + theDay);
             return null;
         }
+        
         return PersistenceUtil.getDay(de);
 	}
 	
