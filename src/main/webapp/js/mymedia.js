@@ -124,7 +124,7 @@ var Videos = (function() {
 				url: '/json/videos/form',
 				success: function(data, type, xmlhttp){
 					if (data.videoId == null) {
-						context.app.trigger('newDayError');
+						context.app.trigger('uploadError');
 					} else {
 						context.app.clearTemplateCache();
 						context.redirect('#/');
