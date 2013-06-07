@@ -248,6 +248,47 @@
 					</execution>
 				</executions>
 			</plugin>
+			
+			<plugin>
+				<groupId>net.alchim31.maven</groupId>
+				<artifactId>yuicompressor-maven-plugin</artifactId>
+				<version>1.3.0</version>
+				<executions>
+				    <execution>
+				        <goals>
+				            <goal>compress</goal>
+			            </goals>
+		            </execution>
+				</executions>    
+				<configuration>
+					<gzip>false</gzip>
+					<nosuffix>true</nosuffix>
+					<sourceDirectory>src/main/webapp/js</sourceDirectory>
+					<outputDirectory>src/main/webapp/js/min</outputDirectory>
+					<jswarn>false</jswarn>
+					<excludes>
+                    	<exclude>jquery-1.7.min.js</exclude>
+                    	<exclude>jquery-ui-1.8.9.custom.min.js</exclude>
+                    	<exclude>waypoints*.min.js</exclude>
+                    	<exclude>mob*.js</exclude>
+					    <exclude>fotorama.js</exclude>
+					    <exclude>main.js</exclude>
+                	</excludes>
+					<aggregations>
+						<aggregation>
+							<removeIncluded>false</removeIncluded>
+							<insertNewLine>true</insertNewLine>
+							<output>src/main/webapp/js/min/application.js</output>
+							<inputDir>src/main/webapp/js/min</inputDir>
+							<includes>
+								<include>*.js</include>
+							</includes>
+						</aggregation>
+					</aggregations>
+				</configuration>
+			</plugin>
+			
+			
 			<!-- The maven app assembler plugin will generate a script that sets up 
 				the classpath and runs your project -->
 			<plugin>

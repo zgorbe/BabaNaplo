@@ -92,7 +92,8 @@
 
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
-		<script src="/js/jquery-ui-timepicker-addon.js"></script>
+		<script src="/js/min/application.js"></script>
+		<!-- script src="/js/jquery-ui-timepicker-addon.js"></script>
 		<script src="/js/jquery.ui.datepicker-hu.js"></script>
 		<script src="/js/jquery.isotope.min.js"></script>
 		<script src="/js/jquery-highlight.js"></script>
@@ -105,6 +106,6 @@
 		<script src="/js/events.js"></script>
 		<script src="/js/mymedia.js"></script>
 		<script src="/js/mysammy.js"></script>
-		<script src="/js/jquery.dateFormat-1.0.js"></script>
+		<script src="/js/jquery.dateFormat-1.0.js"></script -->
     </body>
 </html>
