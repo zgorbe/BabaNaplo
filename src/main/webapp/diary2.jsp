@@ -92,7 +92,7 @@
 
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
-		<script src="/js/min/application.js"></script>
+		<script src="/js/application.js"></script>
 		<!-- script src="/js/jquery-ui-timepicker-addon.js"></script>
 		<script src="/js/jquery.ui.datepicker-hu.js"></script>
 		<script src="/js/jquery.isotope.min.js"></script>
