@@ -22,7 +22,7 @@
 		</div>
 		{{/each}}
 		<div class="row">
-			<a href="#/events">További események</a>
+			<a href="#/events/{{date.y}}/{{date.m}}">További események</a>
 		</div>
 	</div>
 </div>
