@@ -2447,7 +2447,7 @@ jQuery(function(a){a.datepicker.regional.hu={closeText:"bezárás",prevText:"&la
 a.datepicker.setDefaults(a.datepicker.regional.hu)
 });
 var Photos=(function(){var a=function(c){if(c.files&&c.files[0]){var b=new FileReader();
-b.onload=function(d){$("#img_preview").attr("src",d.target.result).width(200).height(150)
+b.onload=function(d){$("#img_preview").attr("src",d.target.result).width(200).height(150).show()
 };
 b.readAsDataURL(c.files[0])
 }};

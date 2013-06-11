@@ -4,7 +4,7 @@ var Photos = (function() {
 		if (input.files && input.files[0]) {
 			var reader = new FileReader();
 			reader.onload = function (e) {
-				$('#img_preview').attr('src', e.target.result).width(200).height(150);
+				$('#img_preview').attr('src', e.target.result).width(200).height(150).show();
 			};
 			reader.readAsDataURL(input.files[0]);
 		}

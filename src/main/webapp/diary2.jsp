@@ -98,6 +98,7 @@
 		<script src="/js/jquery.isotope.min.js"></script>
 		<script src="/js/jquery-highlight.js"></script>
 		<script src="/js/jquery.thumbnailScroller.js"></script>
+		<script src="/js/jquery.dateFormat-1.0.js"></script>
 		<script src="/js/bootstrap.min.js"></script>
 		<script src="/js/sammy-0.7.4.min.js"></script>
 		<script src="/js/handlebars.js"></script>
@@ -105,7 +106,6 @@
 		<script src="/js/days.js"></script>
 		<script src="/js/events.js"></script>
 		<script src="/js/mymedia.js"></script>
-		<script src="/js/mysammy.js"></script>
-		<script src="/js/jquery.dateFormat-1.0.js"></script -->
+		<script src="/js/mysammy.js"></script -->
     </body>
 </html>

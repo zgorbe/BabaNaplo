@@ -121,3 +121,7 @@ img.selected {
 	font-size: 10px;
 	background-color: #004BCC;
 }
+
+img#img_preview {
+	display: none;
+}
