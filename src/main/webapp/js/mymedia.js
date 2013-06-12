@@ -173,8 +173,6 @@ var Counts = (function() {
 	};
 })();
 
-
-/**** ImagePreview with Module Pattern ****/
 var ImagePreview = (function(){
 	var $container;
 	

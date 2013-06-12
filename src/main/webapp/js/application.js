@@ -2537,7 +2537,7 @@ d.toggleClass("selected");
 d.siblings("div.buttons").hide();
 a.isotope("reLayout")
 },showimage:function(d,c,b){$("#dialog").html('<img src="'+d+'" height="684" width="912" />');
-$("#dialog").dialog({modal:true,width:945,height:740,resizable:false,title:c+" - "+b})
+$("#dialog").dialog({modal:true,width:945,height:740,resizable:false,title:c+" - "+b,hide:{effect:"scale",duration:1000},show:{effect:"scale",duration:1000}})
 }}
 })();
 $(function(){var a={type:"get",dataType:"json"};
