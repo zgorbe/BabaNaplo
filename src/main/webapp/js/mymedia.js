@@ -226,7 +226,15 @@ var ImagePreview = (function(){
 				width: 945,
 				height: 740,
 				resizable: false,
-				title: date + ' - ' + filename
+				title: date + ' - ' + filename,
+				hide: {
+					effect: "scale",
+					duration: 1000
+				},
+				show: {
+					effect: "scale",
+					duration: 1000
+				}
 			});
 		}
 	};

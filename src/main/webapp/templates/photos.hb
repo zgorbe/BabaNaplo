@@ -12,7 +12,6 @@
 				<img alt="X" class="cancel" src="/images/cancel.png" />
 			</div>
 			<img class="baba" data-filename="{{this.filename}}" data-createdate="{{this.createdate}}" src="/photos?cmd=thumbdata&filename={{this.filename}}" title="{{this.description}}" />
-			<div id="dialog" style="display: none;"></div>	
 		</div>
 	{{/each}}
 </div>

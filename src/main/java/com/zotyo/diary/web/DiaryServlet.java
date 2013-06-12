@@ -72,6 +72,7 @@ public class DiaryServlet extends HttpServlet {
             df = DatatypeFactory.newInstance();
             diaryCache = DiaryCache.getInstance();
             
+            inputStream.close();
 		} catch(IOException ioex) {
 			ioex.printStackTrace();
 		} catch (DatatypeConfigurationException dce) {

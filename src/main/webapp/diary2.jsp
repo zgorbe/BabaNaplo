@@ -16,7 +16,7 @@
 		<link href="/css/bootstrap.min.css" rel="stylesheet" media="screen">
 		<link href="/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
 		<link href="/css/style2.css" rel="stylesheet" media="screen">
-		<link href="/css/jquery-ui-1.10.2.css" rel="stylesheet" media="screen">
+		<link href="/css/jquery-ui-1.10.3.custom.css" rel="stylesheet" media="screen">
 		<link href="/css/jquery.thumbnailScroller2.css" rel="stylesheet" media="screen">
 		<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     	<!--[if lt IE 9]>
@@ -91,21 +91,27 @@
 		</div> 
 
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
-		<script src="/js/application.js"></script>
-		<!-- script src="/js/jquery-ui-timepicker-addon.js"></script>
-		<script src="/js/jquery.ui.datepicker-hu.js"></script>
-		<script src="/js/jquery.isotope.min.js"></script>
-		<script src="/js/jquery-highlight.js"></script>
-		<script src="/js/jquery.thumbnailScroller.js"></script>
-		<script src="/js/jquery.dateFormat-1.0.js"></script>
-		<script src="/js/bootstrap.min.js"></script>
-		<script src="/js/sammy-0.7.4.min.js"></script>
-		<script src="/js/handlebars.js"></script>
-		<script src="/js/sammy.handlebars-0.7.4.min.js"></script>
-		<script src="/js/days.js"></script>
-		<script src="/js/events.js"></script>
-		<script src="/js/mymedia.js"></script>
-		<script src="/js/mysammy.js"></script -->
+		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+		<c:choose>
+			<c:when test="${js_minify}">
+				<script src="/js/application.js"></script>
+			</c:when>
+			<c:otherwise>
+				<script src="/js/jquery-ui-timepicker-addon.js"></script>
+				<script src="/js/jquery.ui.datepicker-hu.js"></script>
+				<script src="/js/jquery.isotope.min.js"></script>
+				<script src="/js/jquery-highlight.js"></script>
+				<script src="/js/jquery.thumbnailScroller.js"></script>
+				<script src="/js/jquery.dateFormat-1.0.js"></script>
+				<script src="/js/bootstrap.min.js"></script>
+				<script src="/js/sammy-0.7.4.min.js"></script>
+				<script src="/js/handlebars.js"></script>
+				<script src="/js/sammy.handlebars-0.7.4.min.js"></script>
+				<script src="/js/days.js"></script>
+				<script src="/js/events.js"></script>
+				<script src="/js/mymedia.js"></script>
+				<script src="/js/mysammy.js"></script>
+			</c:otherwise>
+		</c:choose>
     </body>
 </html>

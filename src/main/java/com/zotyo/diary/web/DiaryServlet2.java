@@ -1,7 +1,9 @@
 package com.zotyo.diary.web;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
+import java.util.Properties;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -42,6 +44,14 @@ public class DiaryServlet2 extends HttpServlet {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) 
 											throws ServletException, IOException {
+		
+		InputStream inputStream = ClassLoader.getSystemResourceAsStream("diary.properties");
+		Properties props = new Properties();
+		props.load(inputStream);
+		
+		boolean js_minify = Boolean.parseBoolean(props.getProperty("js_minify"));
+		request.setAttribute("js_minify", js_minify);
+		inputStream.close();
 		
 		List<Photo> photos = photoService.findByCategory("baba");
 		request.setAttribute("photos", photos);
