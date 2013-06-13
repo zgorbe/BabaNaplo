@@ -129,4 +129,15 @@ img#img_preview {
 div.tooltip-inner {
 	background-color: #004BCC;
 	font-weight: bold;
+	
+	/* IE 8 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=75)";
+	/* IE 5-7 */
+	filter: alpha(opacity=75);
+	/* Netscape */
+	-moz-opacity: 0.75;
+	/* Safari 1.x */
+	-khtml-opacity: 0.75;
+	/* Good browsers */
+	opacity: 0.75;
 }
