@@ -125,3 +125,8 @@ img.selected {
 img#img_preview {
 	display: none;
 }
+
+div.tooltip-inner {
+	background-color: #004BCC;
+	font-weight: bold;
+}

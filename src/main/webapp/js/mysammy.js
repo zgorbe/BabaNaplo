@@ -132,10 +132,6 @@ $(function(){
         app.run('#/');
     });
 	
-    $('ul.nav > li.dropdown').on('click', 'a', function() {
-		app.trigger('dropDownMenuChanged');
-	});
-    
-    Events.initSearch(app);
+    Events.initNavbar(app);
     Photos.initMainScoller();
 });

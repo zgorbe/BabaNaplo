@@ -129,7 +129,13 @@ var Events = (function() {
 		    	$(element).html(tmp);
 			});
 		},
-		initSearch: function(app) {
+		initNavbar: function(app) {
+			// init dropdown menu..
+			$('ul.nav > li.dropdown').on('click', 'a', function() {
+					app.trigger('dropDownMenuChanged');
+			});
+			
+			// init search...
 			$('#buttonSearch').on('click', function() {
 		    	var searchTerm = $('#inputSearch').val();
 		    	if (searchTerm.length < 2) {
@@ -140,6 +146,15 @@ var Events = (function() {
 		    	}
 		    	$('#inputSearch').tooltip('destroy');
 		    	app.setLocation('#/search/' + searchTerm);
+		    });
+			
+			// init all events...
+			var $liAllEvents = $('li#liAllEvents'); 
+			var dayCount = $liAllEvents.data('day-count');
+			var eventCount = $liAllEvents.data('event-count');
+			$liAllEvents.tooltip({
+		    	placement: 'bottom',
+		    	title: dayCount + ' napon ' + eventCount + ' esemény van a naplóban.'
 		    });
 		},
 		search: function(context, searchTerm) {

@@ -24,6 +24,7 @@ public class CountsJSONController extends BaseJSONController {
 	@ResponseBody
 	public CountsBean getCounts() {
 		CountsBean cb = new CountsBean();
+		cb.setDayCount(diaryDAO.getDayCount());
 		cb.setEventCount(diaryDAO.getEventCount());
 		cb.setPhotoCount(photoService.count());
 		cb.setVideoCount(videoDAO.count());

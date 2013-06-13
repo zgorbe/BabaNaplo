@@ -232,12 +232,15 @@ public class DiaryDAOJPAImpl implements DiaryDAO {
 			fullTextEntityManager.createIndexer().startAndWait();
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error(e);
 		}
 	}
 
-	@Override
 	public long getEventCount() {
 		return em.createQuery("select count(o.id) from EventEntity as o", Long.class).getSingleResult();
+	}
+
+	public long getDayCount() {
+		return em.createQuery("select count(o.id) from DayEntity as o", Long.class).getSingleResult();		
 	}
 }

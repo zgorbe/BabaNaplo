@@ -484,14 +484,20 @@ $(c).html(b)
 $(".isotope_item").each(function(a,c){var b=$(c).html().replace(/:\)/g,'<img src="/images/smiley.png" alt=":-)" />');
 $(c).html(b)
 })
-},initSearch:function(a){$("#buttonSearch").on("click",function(){var b=$("#inputSearch").val();
-if(b.length<2){var c=$("#inputSearch");
-c.tooltip({placement:"bottom",title:"Legalább 2 karakter hosszú legyen!"});
-c.tooltip("show");
+},initNavbar:function(d){$("ul.nav > li.dropdown").on("click","a",function(){d.trigger("dropDownMenuChanged")
+});
+$("#buttonSearch").on("click",function(){var e=$("#inputSearch").val();
+if(e.length<2){var f=$("#inputSearch");
+f.tooltip({placement:"bottom",title:"Legalább 2 karakter hosszú legyen!"});
+f.tooltip("show");
 return
 }$("#inputSearch").tooltip("destroy");
-a.setLocation("#/search/"+b)
-})
+d.setLocation("#/search/"+e)
+});
+var a=$("li#liAllEvents");
+var c=a.data("day-count");
+var b=a.data("event-count");
+a.tooltip({placement:"bottom",title:c+" napon "+b+" esemény van a naplóban."})
 },search:function(b,a){b.load("/json/events/search/"+a,b.loadOptions).then(function(c){$.each(c,function(d,e){if(!e.inited){Events.initEvent(e)
 }});
 return c
@@ -2605,9 +2611,7 @@ b.trigger("selectedMonthChanged",{y:c.getFullYear(),m:c.getMonth()+1})
 });
 $(function(){b.run("#/")
 });
-$("ul.nav > li.dropdown").on("click","a",function(){b.trigger("dropDownMenuChanged")
-});
-Events.initSearch(b);
+Events.initNavbar(b);
 Photos.initMainScoller()
 });
 (function(b,a){(function(c){typeof define=="function"&&define.amd?define(["jquery"],c):b.sammy=a.Sammy=c(b)

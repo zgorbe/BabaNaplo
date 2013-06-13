@@ -57,6 +57,7 @@ public class DiaryServlet2 extends HttpServlet {
 		request.setAttribute("photos", photos);
 			
 		CountsBean cb = new CountsBean();
+		cb.setDayCount(diaryDAO.getDayCount());
 		cb.setEventCount(diaryDAO.getEventCount());
 		cb.setPhotoCount(photoService.count());
 		cb.setVideoCount(videoDAO.count());

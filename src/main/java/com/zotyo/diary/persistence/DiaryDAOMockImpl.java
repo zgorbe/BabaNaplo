@@ -97,4 +97,9 @@ public class DiaryDAOMockImpl implements DiaryDAO {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	@Override
+	public long getDayCount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

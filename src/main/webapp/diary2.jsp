@@ -35,7 +35,7 @@
 					<a class="brand" href="/naplo2/">Baba napló</a>
 					<div class="nav-collapse collapse">
 						<ul class="nav">
-							<li>
+							<li id="liAllEvents" data-day-count="<c:out value="${countsBean.dayCount}" />" data-event-count="<c:out value="${countsBean.eventCount}" />">
 								<a href="#/events/2011/09"><i class="icon-book"></i> Összes esemény <sup><span id="eventCount" class="badge"><c:out value="${countsBean.eventCount}" /></span></sup></a>
 							</li>
 							<li>
