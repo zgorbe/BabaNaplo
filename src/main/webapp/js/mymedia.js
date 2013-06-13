@@ -232,8 +232,13 @@ var ImagePreview = (function(){
 				show: {
 					effect: "scale",
 					duration: 1000
-				}
+				},
+				open: function(event, ui) { ImagePreview.fixMissingX(); }
 			});
+		},
+		// It's not nice, but i don't want to investigate further why the 'x' is missing...
+		fixMissingX: function() {
+			$('button.ui-dialog-titlebar-close').html('<span class="ui-icon ui-icon-closethick">close</span>');
 		}
 	};
 })();
