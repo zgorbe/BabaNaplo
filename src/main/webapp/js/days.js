@@ -48,7 +48,7 @@ var Days = (function() {
 					}
 					var selectedDate = date.replace(/\//g, '\.');
 					if ($div.length) {
-						context.render('/templates/day.hb', {day: day, date: selectedDate}).replace('div.span4 > div.selected');
+						context.render('/templates/day.hb', {day: day, date: selectedDate}).replace('div.selected');
 					} else {
 						Events.getLatests(context, {day: day, date: selectedDate});
 					}

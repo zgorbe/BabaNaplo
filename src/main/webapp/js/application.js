@@ -407,7 +407,7 @@ if(i.responseText.length>0){e=$.parseJSON(i.responseText);
 $.each(e.eventsOfTheDay,function(j,k){if(!k.inited){Events.initEvent(k)
 }})
 }var f=b.replace(/\//g,".");
-if(d.length){c.render("/templates/day.hb",{day:e,date:f}).replace("div.span4 > div.selected")
+if(d.length){c.render("/templates/day.hb",{day:e,date:f}).replace("div.selected")
 }else{Events.getLatests(c,{day:e,date:f})
 }Days.updateCalendar()
 }})
@@ -454,7 +454,7 @@ return d
 }).then(function(d){var e=new Date();
 var f={y:e.getFullYear(),m:(e.getMonth()+1).toString()};
 if(f.m.length<2){f.m="0"+f.m
-}a.render("/templates/latests.hb",{items:d,date:f,photos:b}).swap(a.$element()).then(function(){if(c){a.render("/templates/day.hb",c).replace("div.span8 > div.selected")
+}a.render("/templates/latests.hb",{items:d,date:f,photos:b}).swap(a.$element()).then(function(){if(c){a.render("/templates/day.hb",c).replace("div.selected")
 }}).then(function(){a.app.trigger("initCalendar")
 }).then(function(){$("#myCarousel").carousel({interval:5000,cycle:true})
 })

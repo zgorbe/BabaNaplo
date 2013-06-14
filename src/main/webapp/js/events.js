@@ -74,7 +74,7 @@ var Events = (function() {
 					.swap(context.$element())
 					.then(function() {
 						if (selectedDay) {
-							context.render('/templates/day.hb', selectedDay).replace('div.span8 > div.selected');
+							context.render('/templates/day.hb', selectedDay).replace('div.selected');
 						}
 					})
 					.then(function() {

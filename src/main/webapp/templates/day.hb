@@ -18,6 +18,7 @@
 	{{/each}}
 {{else}}
 	<div class="row">
+		<h3>{{date}} eseményei</h3>
 		<p>Nincs esemény a választott napra ({{date}}).</p>
 	</div>
 {{/if}}
