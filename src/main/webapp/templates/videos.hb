@@ -3,11 +3,11 @@
 		<h4>Videók</h4>
 	</div>
 
-	<div class="row span6">
+	<div class="row span10">
 		<p id="video_text">{{video.createDate}}, {{video.description}}</p>
-	
-		<iframe id="video_frame" onload="Videos.initThumbnails();" src="http://www.youtube.com/embed/{{video.videoId}}" allowfullscreen="1" width="560" frameborder="1" height="420"></iframe>
-	  
+		<div class="flex-video widescreen">
+			<iframe id="video_frame" onload="Videos.initThumbnails();" src="http://www.youtube.com/embed/{{video.videoId}}" allowfullscreen="1" frameborder="1"></iframe>
+	  	</div>
 		<div id="tS2" class="jThumbnailScroller" style="height: 118px;">
 			<div class="jTscrollerContainer">
 				<div class="jTscroller video_thumbnails">

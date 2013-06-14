@@ -82,7 +82,7 @@ var Events = (function() {
 					})
 					.then(function() {
 						$('#myCarousel').carousel({
-							interval: 3000,
+							interval: 5000,
 							cycle: true
 						});
 					});

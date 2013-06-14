@@ -456,7 +456,7 @@ var f={y:e.getFullYear(),m:(e.getMonth()+1).toString()};
 if(f.m.length<2){f.m="0"+f.m
 }a.render("/templates/latests.hb",{items:d,date:f,photos:b}).swap(a.$element()).then(function(){if(c){a.render("/templates/day.hb",c).replace("div.span8 > div.selected")
 }}).then(function(){a.app.trigger("initCalendar")
-}).then(function(){$("#myCarousel").carousel({interval:3000,cycle:true})
+}).then(function(){$("#myCarousel").carousel({interval:5000,cycle:true})
 })
 })
 },getAll:function(a,b,c){a.load("/json/events",a.loadOptions).then(function(d){$.each(d,function(e,f){if(!f.inited){f.isotopeFilter="m"+$.format.date(f.startTime,"yyyy-MM");
