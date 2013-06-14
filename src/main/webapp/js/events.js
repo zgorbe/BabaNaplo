@@ -42,6 +42,16 @@ var Events = (function() {
 			});
 		},
 		getLatests: function(context, selectedDay) {
+			var latestPhotos = $.parseJSON($('#latestPhotosJSON').val());
+			$.each(latestPhotos, function(i, item) {
+				if (!item.inited) {
+					item.createdate = $.format.date(item.createdate, 'yyyy.MM.dd HH:mm');
+					item.inited = true;
+				}
+				if (i == 0) {
+					item.first = true;
+				}
+			});
 			context.load('/json/events/latests/5', context.loadOptions)
 		    	.then(function(items) {
 					$.each(items, function(i, item) {
@@ -60,7 +70,7 @@ var Events = (function() {
 					if (dateParam.m.length < 2) {
 						dateParam.m = '0' + dateParam.m;
 					}
-					context.render('/templates/latests.hb', {items: items, date: dateParam})
+					context.render('/templates/latests.hb', {items: items, date: dateParam, photos: latestPhotos})
 					.swap(context.$element())
 					.then(function() {
 						if (selectedDay) {

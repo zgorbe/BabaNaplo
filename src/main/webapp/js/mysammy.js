@@ -20,7 +20,7 @@ $(function(){
 		
 		// Routes
 		this.get('#/', function(context) {
-			Events.getLatests(context);
+    		Events.getLatests(context);
 		});
 		
 		this.get('#/events/:year/:month', function(context) {
@@ -133,5 +133,5 @@ $(function(){
     });
 	
     Events.initNavbar(app);
-    Photos.initMainScoller();
+    //Photos.initMainScoller();
 });

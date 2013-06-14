@@ -12,6 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
+import org.codehaus.jackson.JsonGenerationException;
+import org.codehaus.jackson.map.JsonMappingException;
+import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jackson.map.SerializationConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
@@ -56,6 +60,22 @@ public class DiaryServlet2 extends HttpServlet {
 		List<Photo> photos = photoService.findByCategory("baba");
 		request.setAttribute("photos", photos);
 			
+		List<Photo> latestPhotos = photoService.findLatestsByCategory("baba", 6);
+		ObjectMapper mapper = new ObjectMapper();
+
+		mapper.configure(SerializationConfig.Feature.WRITE_DATES_AS_TIMESTAMPS,	false);
+
+		try {
+			request.setAttribute("latestPhotosJSON", mapper.writeValueAsString(latestPhotos));
+		} catch (JsonGenerationException e) {
+			logger.error(e);
+		} catch (JsonMappingException e) {
+			logger.error(e);
+		} catch (IOException e) {
+			logger.error(e);
+		}
+		
+		
 		CountsBean cb = new CountsBean();
 		cb.setDayCount(diaryDAO.getDayCount());
 		cb.setEventCount(diaryDAO.getEventCount());

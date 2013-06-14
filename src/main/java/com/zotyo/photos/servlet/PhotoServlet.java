@@ -107,8 +107,18 @@ public class PhotoServlet extends HttpServlet {
                         
 		}
 		else if ("photos".equals(cmd)) {
-			response.setContentType("application/json; charset=UTF-8");
-			List<Photo> photos = photoService.findByCategory("baba");
+			response.setContentType("application/json; charset=UTF-8");			
+			String latests = request.getParameter("latests");
+			int count = -1;
+			if (latests != null && !latests.isEmpty()) {
+				count = Integer.parseInt(latests); 
+			}
+			List<Photo> photos;
+			if (count < 0) {
+				photos = photoService.findByCategory("baba");
+			} else {
+				photos = photoService.findLatestsByCategory("baba", count);
+			}
 			ObjectMapper mapper = new ObjectMapper();
 
 			mapper.configure(SerializationConfig.Feature.WRITE_DATES_AS_TIMESTAMPS,	false);

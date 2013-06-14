@@ -100,8 +100,9 @@ img.selected {
 	padding: 10px;
 }
 
-.my-page-header {
+div.my-page-header {
 	padding-bottom: 30px;
+	display: none;
 }
 
 .old-style-btn {
@@ -140,4 +141,8 @@ div.tooltip-inner {
 	-khtml-opacity: 0.75;
 	/* Good browsers */
 	opacity: 0.75;
+}
+
+.extra-padding-bottom {
+	padding-bottom: 30px;
 }

@@ -401,13 +401,13 @@ $("#inputDuration").timepicker({})
 }else{b.app.clearTemplateCache();
 b.redirect("#/")
 }}})
-},getDay:function(c,b){$.ajax({type:"GET",url:"/json/days/"+b,dataType:"json",complete:function(i,h,g){var d=$("div.span8");
+},getDay:function(c,b){$.ajax({type:"GET",url:"/json/days/"+b,dataType:"json",complete:function(i,h,g){var d=$("div.span12");
 var e;
 if(i.responseText.length>0){e=$.parseJSON(i.responseText);
 $.each(e.eventsOfTheDay,function(j,k){if(!k.inited){Events.initEvent(k)
 }})
 }var f=b.replace(/\//g,".");
-if(d.length){c.render("/templates/day.hb",{day:e,date:f}).replace("div.span8 > div.selected")
+if(d.length){c.render("/templates/day.hb",{day:e,date:f}).replace("div.span12 > div.selected")
 }else{Events.getLatests(c,{day:e,date:f})
 }Days.updateCalendar()
 }})
@@ -443,13 +443,18 @@ $("#inputDuration").timepicker({})
 }else{a.app.clearTemplateCache();
 a.redirect("#/")
 }}})
-},getLatests:function(a,b){a.load("/json/events/latests/5",a.loadOptions).then(function(c){$.each(c,function(d,e){if(!e.inited){Events.initEvent(e)
+},getLatests:function(a,c){var b=$.parseJSON($("#latestPhotosJSON").val());
+$.each(b,function(d,e){if(!e.inited){e.createdate=$.format.date(e.createdate,"yyyy.MM.dd HH:mm");
+e.inited=true
+}if(d==0){e.first=true
 }});
-return c
-}).then(function(c){var d=new Date();
-var e={y:d.getFullYear(),m:(d.getMonth()+1).toString()};
-if(e.m.length<2){e.m="0"+e.m
-}a.render("/templates/latests.hb",{items:c,date:e}).swap(a.$element()).then(function(){if(b){a.render("/templates/day.hb",b).replace("div.span8 > div.selected")
+a.load("/json/events/latests/5",a.loadOptions).then(function(d){$.each(d,function(e,f){if(!f.inited){Events.initEvent(f)
+}});
+return d
+}).then(function(d){var e=new Date();
+var f={y:e.getFullYear(),m:(e.getMonth()+1).toString()};
+if(f.m.length<2){f.m="0"+f.m
+}a.render("/templates/latests.hb",{items:d,date:f,photos:b}).swap(a.$element()).then(function(){if(c){a.render("/templates/day.hb",c).replace("div.span8 > div.selected")
 }}).then(function(){a.app.trigger("initCalendar")
 })
 })
@@ -2611,8 +2616,7 @@ b.trigger("selectedMonthChanged",{y:c.getFullYear(),m:c.getMonth()+1})
 });
 $(function(){b.run("#/")
 });
-Events.initNavbar(b);
-Photos.initMainScoller()
+Events.initNavbar(b)
 });
 (function(b,a){(function(c){typeof define=="function"&&define.amd?define(["jquery"],c):b.sammy=a.Sammy=c(b)
 })(function(A){var q,g="([^/]+)",x=/:([\w\d]+)/g,G=/\?([^#]*)?$/,k=function(c){return Array.prototype.slice.call(c)

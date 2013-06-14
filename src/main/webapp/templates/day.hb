@@ -1,5 +1,6 @@
 {{#if day}}
 	<div class="row">
+		<h3>{{date}} eseményei</h3>
 		<h4>{{day.descriptionOfTheDay}}</h4>
 	</div>
 	{{#each day.eventsOfTheDay}}

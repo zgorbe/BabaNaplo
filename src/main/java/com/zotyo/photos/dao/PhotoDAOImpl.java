@@ -57,6 +57,15 @@ public class PhotoDAOImpl implements PhotoDAO {
 	}
 
 	@Override
+	public List<Photo> findLatestsByCategory(String category, int count) {
+		Query query = new Query(where("category").is(category));
+		query.sort().on("createdate", Order.DESCENDING);
+		query.limit(count);
+		List<Photo> photos = mongoTemplate.find(query, Photo.class);
+		return photos;
+	}
+	
+	@Override
 	public List<PhotoData> getAllThumbsByCategory(String category) {
 		Query query = new Query(where("category").is(category));
 		query.sort().on("createdate", Order.DESCENDING);

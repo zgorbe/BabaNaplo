@@ -42,6 +42,11 @@ public class PhotoServiceImpl implements PhotoService {
 	}
 
 	@Override
+	public List<Photo> findLatestsByCategory(String category, int count) {
+		return photoDAO.findLatestsByCategory(category, count);
+	}
+	
+	@Override
 	public List<Photo> findAll() {
 		// TODO Auto-generated method stub
 		return photoDAO.findAll();

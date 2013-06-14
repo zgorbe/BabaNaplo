@@ -11,6 +11,7 @@ public interface PhotoDAO {
 	void deleteByFilename(String filename);
 	void update(Photo photo);
 	List<Photo> findByCategory(String category);
+	List<Photo> findLatestsByCategory(String category, int count);
 	List<Photo> findAll();
 	Photo findByFilename(String filename);
 	PhotoData getDataByFilename(String filename, PhotoDataEnum dataFlag);
