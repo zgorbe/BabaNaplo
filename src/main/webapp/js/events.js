@@ -79,6 +79,12 @@ var Events = (function() {
 					})
 					.then(function() {
 						context.app.trigger('initCalendar');
+					})
+					.then(function() {
+						$('#myCarousel').carousel({
+							interval: 3000,
+							cycle: true
+						});
 					});
 		    	});
 		},
