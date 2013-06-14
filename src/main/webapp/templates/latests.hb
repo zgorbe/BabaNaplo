@@ -1,8 +1,7 @@
 <div class="row">
 	<div class="span4">
-		<h2 style="color: #777777">Timcsi és Réka<br/>naplója</h2>
-		<br />
 		<div id="datepicker1"></div>
+		<div class="selected"></div>
 	</div>
 	<div class="span8">
 		<div id="myCarousel" class="carousel slide">
@@ -24,8 +23,8 @@
 					{{/if}}
 					<img src="/photos?cmd=data&filename={{filename}}" alt="">
 					<div class="carousel-caption">
-						<h4>{{createdate}}</h4>
-						<p>{{description}}</p>
+						<h4>{{description}}</h4>
+						<p>{{createdate}}</p>
 					</div>
 				</div>
 				{{/each}}
@@ -36,7 +35,6 @@
 	</div>
 </div>
 <div class="row span12">
-	<div class="selected"></div>
 	<div class="row">
 		<h3>Legfrissebb események</h3>
 	</div>

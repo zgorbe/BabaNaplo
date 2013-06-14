@@ -36,7 +36,7 @@ var Days = (function() {
 				url: '/json/days/' + date,
 				dataType: 'json',
 				complete: function(data, type, xmlhttp){
-					var $div = $('div.span12');
+					var $div = $('div.span4');
 					var day;
 					if (data.responseText.length > 0) {
 						day = $.parseJSON(data.responseText);
@@ -48,7 +48,7 @@ var Days = (function() {
 					}
 					var selectedDate = date.replace(/\//g, '\.');
 					if ($div.length) {
-						context.render('/templates/day.hb', {day: day, date: selectedDate}).replace('div.span12 > div.selected');
+						context.render('/templates/day.hb', {day: day, date: selectedDate}).replace('div.span4 > div.selected');
 					} else {
 						Events.getLatests(context, {day: day, date: selectedDate});
 					}

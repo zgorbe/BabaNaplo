@@ -176,4 +176,8 @@ a.more-events-link {
 	.flex-video { padding-top: 0; }
 }
 
+div.selected {
+	padding-left: 10%;
+}
+
 

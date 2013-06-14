@@ -401,13 +401,13 @@ $("#inputDuration").timepicker({})
 }else{b.app.clearTemplateCache();
 b.redirect("#/")
 }}})
-},getDay:function(c,b){$.ajax({type:"GET",url:"/json/days/"+b,dataType:"json",complete:function(i,h,g){var d=$("div.span12");
+},getDay:function(c,b){$.ajax({type:"GET",url:"/json/days/"+b,dataType:"json",complete:function(i,h,g){var d=$("div.span4");
 var e;
 if(i.responseText.length>0){e=$.parseJSON(i.responseText);
 $.each(e.eventsOfTheDay,function(j,k){if(!k.inited){Events.initEvent(k)
 }})
 }var f=b.replace(/\//g,".");
-if(d.length){c.render("/templates/day.hb",{day:e,date:f}).replace("div.span12 > div.selected")
+if(d.length){c.render("/templates/day.hb",{day:e,date:f}).replace("div.span4 > div.selected")
 }else{Events.getLatests(c,{day:e,date:f})
 }Days.updateCalendar()
 }})
