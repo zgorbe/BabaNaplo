@@ -81,7 +81,6 @@
 					</div>
 				</c:if>
 			</div --%>
-			<div id="dialog" style="display: none;"></div>
 			<div id="main">
 			</div>
 			<footer>

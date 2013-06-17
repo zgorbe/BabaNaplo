@@ -180,4 +180,10 @@ div.selected {
 	padding-left: 10%;
 }
 
+div.carousel, div.hasDatepicker {
+	margin-top: 20px;
+}
 
+div.first-row {
+	background-color: #F0F0F0;
+}

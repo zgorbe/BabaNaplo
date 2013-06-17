@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row first-row">
 	<div class="span8">
 		<div id="myCarousel" class="carousel slide">
 			<ol class="carousel-indicators">
