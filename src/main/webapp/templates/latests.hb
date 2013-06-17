@@ -39,7 +39,7 @@
 		<h3>Legfrissebb események</h3>
 	</div>
 	{{#each items}}
-	<div class="row">
+	<div class="row event" data-eventid="{{this.id}}">
 	    <p>{{this.description}}</p>
 	    <p>
 	    	<small>{{this.startTime}}</small>
@@ -47,8 +47,6 @@
 		    <br/><small>Időtartam (óra:perc): {{this.duration}}</small>
 			{{/if}}
 		</p>
-	</div>
-	<div class="row">
 		<hr>
 	</div>
 	{{/each}}

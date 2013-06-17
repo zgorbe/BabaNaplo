@@ -126,6 +126,14 @@ $(function(){
 			var now = new Date();
 			app.trigger('selectedMonthChanged', {y: now.getFullYear(), m: now.getMonth() + 1});
 		});
+		
+		this.bind('removeSelectedFromLatests', function(e, eventIds) {
+			var $events = $('div.span12');
+			$events.find('div.row').show();
+			$.each(eventIds, function(i, item) {
+				$events.find('div[data-eventid=' + item + ']').hide();
+			});
+		});
     });
 	
 	$(function() {

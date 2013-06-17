@@ -401,13 +401,16 @@ $("#inputDuration").timepicker({})
 }else{b.app.clearTemplateCache();
 b.redirect("#/")
 }}})
-},getDay:function(c,b){$.ajax({type:"GET",url:"/json/days/"+b,dataType:"json",complete:function(i,h,g){var d=$("div.span4");
+},getDay:function(c,b){$.ajax({type:"GET",url:"/json/days/"+b,dataType:"json",complete:function(j,i,h){var d=$("div.span4");
 var e;
-if(i.responseText.length>0){e=$.parseJSON(i.responseText);
-$.each(e.eventsOfTheDay,function(j,k){if(!k.inited){Events.initEvent(k)
-}})
+var g=[];
+if(j.responseText.length>0){e=$.parseJSON(j.responseText);
+$.each(e.eventsOfTheDay,function(k,l){if(!l.inited){Events.initEvent(l)
+}g.push(l.id)
+})
 }var f=b.replace(/\//g,".");
-if(d.length){c.render("/templates/day.hb",{day:e,date:f}).replace("div.selected")
+if(d.length){c.render("/templates/day.hb",{day:e,date:f}).replace("div.selected");
+c.app.trigger("removeSelectedFromLatests",g)
 }else{Events.getLatests(c,{day:e,date:f})
 }Days.updateCalendar()
 }})
@@ -2613,6 +2616,11 @@ $("#datepicker1").datepicker({onSelect:function(g,e){b.trigger("selectedDayChang
 }});
 var c=new Date();
 b.trigger("selectedMonthChanged",{y:c.getFullYear(),m:c.getMonth()+1})
+});
+this.bind("removeSelectedFromLatests",function(f,c){var d=$("div.span12");
+d.find("div.row").show();
+$.each(c,function(e,g){d.find("div[data-eventid="+g+"]").hide()
+})
 })
 });
 $(function(){b.run("#/")

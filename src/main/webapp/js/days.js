@@ -38,17 +38,20 @@ var Days = (function() {
 				complete: function(data, type, xmlhttp){
 					var $div = $('div.span4');
 					var day;
+					var eventIds = [];
 					if (data.responseText.length > 0) {
 						day = $.parseJSON(data.responseText);
 						$.each(day.eventsOfTheDay, function(i, item) {
 							if (!item.inited) {
 								Events.initEvent(item);
 							}
+							eventIds.push(item.id);
 						});
 					}
 					var selectedDate = date.replace(/\//g, '\.');
 					if ($div.length) {
 						context.render('/templates/day.hb', {day: day, date: selectedDate}).replace('div.selected');
+						context.app.trigger('removeSelectedFromLatests', eventIds);
 					} else {
 						Events.getLatests(context, {day: day, date: selectedDate});
 					}
