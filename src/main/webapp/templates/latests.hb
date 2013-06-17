@@ -1,8 +1,4 @@
 <div class="row">
-	<div class="span4">
-		<div id="datepicker1"></div>
-		<div class="selected"></div>
-	</div>
 	<div class="span8">
 		<div id="myCarousel" class="carousel slide">
 			<ol class="carousel-indicators">
@@ -33,6 +29,10 @@
 			<a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
 		</div>
 	</div>
+	<div class="span4">
+		<div id="datepicker1"></div>
+		<div class="selected"></div>
+	</div>	
 </div>
 <div class="row span12">
 	<div class="row">

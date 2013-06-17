@@ -64,7 +64,7 @@
 		</div>
 
 		<div class="container">
-			<div class="my-page-header">
+			<%-- div class="my-page-header">
 				<c:if test="${not empty photos}" >
 					<div id="tS1" class="jThumbnailScroller">
 						<div class="jTscrollerContainer">
@@ -80,7 +80,7 @@
 						</div>
 					</div>
 				</c:if>
-			</div>
+			</div --%>
 			<div id="dialog" style="display: none;"></div>
 			<div id="main">
 			</div>

@@ -1,7 +1,4 @@
 <div class="row">
-	<div class="span4">
-		<div id="datepicker1"></div>
-	</div>
 	<div class="span8">
 		<h4>Új esemény</h4>
 		<form action="#/addevent" method="post" class="form-horizontal new">
@@ -41,5 +38,8 @@
 			</div>
 		</form>		
 	</div>
+	<div class="span4">
+		<div id="datepicker1"></div>
+	</div>	
 </div>
 

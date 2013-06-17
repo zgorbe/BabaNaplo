@@ -49,14 +49,18 @@ public class DiaryServlet2 extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) 
 											throws ServletException, IOException {
 		
-		InputStream inputStream = ClassLoader.getSystemResourceAsStream("diary.properties");
-		Properties props = new Properties();
-		props.load(inputStream);
-		
-		boolean js_minify = Boolean.parseBoolean(props.getProperty("js_minify"));
-		request.setAttribute("js_minify", js_minify);
-		inputStream.close();
-		
+		String jsMinifyParam = request.getParameter("js_minify");
+		if ("false".equals(jsMinifyParam)) {
+			request.setAttribute("js_minify", false);	
+		} else {
+			InputStream inputStream = ClassLoader.getSystemResourceAsStream("diary.properties");
+			Properties props = new Properties();
+			props.load(inputStream);
+			
+			boolean js_minify = Boolean.parseBoolean(props.getProperty("js_minify"));
+			request.setAttribute("js_minify", js_minify);
+			inputStream.close();
+		}
 		List<Photo> photos = photoService.findByCategory("baba");
 		request.setAttribute("photos", photos);
 			
