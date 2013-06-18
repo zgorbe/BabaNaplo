@@ -79,6 +79,8 @@ public class DiaryServlet2 extends HttpServlet {
 			logger.error(e);
 		}
 		
+		Video video = videoDAO.findNewest();
+		request.setAttribute("newestVideoId", video.getVideoId());
 		
 		CountsBean cb = new CountsBean();
 		cb.setDayCount(diaryDAO.getDayCount());

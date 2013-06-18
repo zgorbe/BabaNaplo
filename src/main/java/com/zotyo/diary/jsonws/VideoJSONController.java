@@ -43,4 +43,9 @@ public class VideoJSONController extends BaseJSONController {
 		return videoDAO.findAll(new Sort(Sort.Direction.DESC, "createDate"));
 	}
 	
+	@RequestMapping(value = "/newest", method = RequestMethod.GET)
+	@ResponseBody
+	public Video getNewest() {
+		return videoDAO.findNewest();
+	}
 }

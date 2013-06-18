@@ -114,5 +114,6 @@
 		</c:choose>
 		
 		<input id="latestPhotosJSON" type="hidden" value="<c:out value="${latestPhotosJSON}" />" />
+		<input id="newestVideo" type="hidden" value="<c:out value="${newestVideoId}" />" />
     </body>
 </html>

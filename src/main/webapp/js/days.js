@@ -53,7 +53,7 @@ var Days = (function() {
 						context.render('/templates/day.hb', {day: day, date: selectedDate}).replace('div.selected');
 						context.app.trigger('removeSelectedFromLatests', eventIds);
 					} else {
-						Events.getLatests(context, {day: day, date: selectedDate});
+						Events.getLatests(context, {day: day, date: selectedDate, eventIds: eventIds});
 					}
 					Days.updateCalendar();
 				}

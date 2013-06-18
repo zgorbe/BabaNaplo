@@ -47,7 +47,7 @@
 
 	<!-- ====================== Mongo ========================= -->
 	
-	<mongo:repositories base-package="com.zotyo.videos.dao" />
+	<mongo:repositories base-package="com.zotyo.videos.dao" repository-impl-postfix="CustomImpl" />
     
     <mongo:db-factory id="mongoDbFactory" host="localhost" port="27017" dbname="local" />
     

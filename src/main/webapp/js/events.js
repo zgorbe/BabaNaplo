@@ -52,6 +52,7 @@ var Events = (function() {
 					item.first = true;
 				}
 			});
+			var newestVideo = $('#newestVideo').val();
 			context.load('/json/events/latests/5', context.loadOptions)
 		    	.then(function(items) {
 					$.each(items, function(i, item) {
@@ -70,11 +71,14 @@ var Events = (function() {
 					if (dateParam.m.length < 2) {
 						dateParam.m = '0' + dateParam.m;
 					}
-					context.render('/templates/latests.hb', {items: items, date: dateParam, photos: latestPhotos})
+					context.render('/templates/latests.hb', {items: items, date: dateParam, photos: latestPhotos, videoId: newestVideo})
 					.swap(context.$element())
 					.then(function() {
 						if (selectedDay) {
 							context.render('/templates/day.hb', selectedDay).replace('div.selected');
+							if (selectedDay.eventIds.length > 0) {
+								context.app.trigger('removeSelectedFromLatests', selectedDay.eventIds);
+							}
 						}
 					})
 					.then(function() {

@@ -411,7 +411,7 @@ $.each(e.eventsOfTheDay,function(k,l){if(!l.inited){Events.initEvent(l)
 }var f=b.replace(/\//g,".");
 if(d.length){c.render("/templates/day.hb",{day:e,date:f}).replace("div.selected");
 c.app.trigger("removeSelectedFromLatests",g)
-}else{Events.getLatests(c,{day:e,date:f})
+}else{Events.getLatests(c,{day:e,date:f,eventIds:g})
 }Days.updateCalendar()
 }})
 },getDayForAMonth:function(b,c){$.ajax({type:"GET",url:"/json/days/list/"+b+"/"+c,dataType:"json",complete:function(g,f,e){if(g.responseText.length>0){var d=$.parseJSON(g.responseText);
@@ -446,19 +446,21 @@ $("#inputDuration").timepicker({})
 }else{a.app.clearTemplateCache();
 a.redirect("#/")
 }}})
-},getLatests:function(a,c){var b=$.parseJSON($("#latestPhotosJSON").val());
-$.each(b,function(d,e){if(!e.inited){e.createdate=$.format.date(e.createdate,"yyyy.MM.dd HH:mm");
-e.inited=true
-}if(d==0){e.first=true
+},getLatests:function(b,d){var c=$.parseJSON($("#latestPhotosJSON").val());
+$.each(c,function(e,f){if(!f.inited){f.createdate=$.format.date(f.createdate,"yyyy.MM.dd HH:mm");
+f.inited=true
+}if(e==0){f.first=true
 }});
-a.load("/json/events/latests/5",a.loadOptions).then(function(d){$.each(d,function(e,f){if(!f.inited){Events.initEvent(f)
+var a=$("#newestVideo").val();
+b.load("/json/events/latests/5",b.loadOptions).then(function(e){$.each(e,function(f,g){if(!g.inited){Events.initEvent(g)
 }});
-return d
-}).then(function(d){var e=new Date();
-var f={y:e.getFullYear(),m:(e.getMonth()+1).toString()};
-if(f.m.length<2){f.m="0"+f.m
-}a.render("/templates/latests.hb",{items:d,date:f,photos:b}).swap(a.$element()).then(function(){if(c){a.render("/templates/day.hb",c).replace("div.selected")
-}}).then(function(){a.app.trigger("initCalendar")
+return e
+}).then(function(e){var f=new Date();
+var g={y:f.getFullYear(),m:(f.getMonth()+1).toString()};
+if(g.m.length<2){g.m="0"+g.m
+}b.render("/templates/latests.hb",{items:e,date:g,photos:c,videoId:a}).swap(b.$element()).then(function(){if(d){b.render("/templates/day.hb",d).replace("div.selected");
+if(d.eventIds.length>0){b.app.trigger("removeSelectedFromLatests",d.eventIds)
+}}}).then(function(){b.app.trigger("initCalendar")
 }).then(function(){$("#myCarousel").carousel({interval:5000,cycle:true})
 })
 })
@@ -2617,8 +2619,8 @@ $("#datepicker1").datepicker({onSelect:function(g,e){b.trigger("selectedDayChang
 var c=new Date();
 b.trigger("selectedMonthChanged",{y:c.getFullYear(),m:c.getMonth()+1})
 });
-this.bind("removeSelectedFromLatests",function(f,c){var d=$("div.span12");
-d.find("div.row").show();
+this.bind("removeSelectedFromLatests",function(f,c){var d=$("div#latest-events");
+d.find("div.event").show();
 $.each(c,function(e,g){d.find("div[data-eventid="+g+"]").hide()
 })
 })

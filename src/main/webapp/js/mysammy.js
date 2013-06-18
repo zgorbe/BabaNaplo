@@ -128,8 +128,8 @@ $(function(){
 		});
 		
 		this.bind('removeSelectedFromLatests', function(e, eventIds) {
-			var $events = $('div.span12');
-			$events.find('div.row').show();
+			var $events = $('div#latest-events');
+			$events.find('div.event').show();
 			$.each(eventIds, function(i, item) {
 				$events.find('div[data-eventid=' + item + ']').hide();
 			});

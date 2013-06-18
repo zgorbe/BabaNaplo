@@ -64,7 +64,7 @@
 
 	<!-- ====================== Mongo ========================= -->
 
-	<mongo:repositories base-package="com.zotyo.videos.dao" />
+	<mongo:repositories base-package="com.zotyo.videos.dao" repository-impl-postfix="CustomImpl" />
 
 	<bean class="java.net.URI" id="mongoUrl">
     	<constructor-arg value="${MONGOLAB_URI}"/>

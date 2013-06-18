@@ -143,11 +143,12 @@ div.tooltip-inner {
 	opacity: 0.75;
 }
 
-.extra-padding-bottom {
-	padding-bottom: 30px;
+.extra-padding {
+	padding: 30px 0px;
 }
 
 a.more-events-link {
+	margin-top: 20px;
 	font-size: 22px;
 	font-weight: bold;
 }
@@ -186,4 +187,5 @@ div.carousel, div.hasDatepicker {
 
 div.first-row {
 	background-color: #F0F0F0;
+	margin-bottom: 30px;
 }
