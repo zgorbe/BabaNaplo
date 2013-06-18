@@ -179,6 +179,7 @@ a.more-events-link {
 
 div.selected {
 	padding-left: 10%;
+	padding-right: 10%;
 }
 
 div.carousel, div.hasDatepicker {
