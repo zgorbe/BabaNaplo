@@ -56,7 +56,7 @@
 	<div class="span6">
 		<h3>Legújabb videó</h3>
 		<div class="flex-video widescreen">
-			<iframe src="http://www.youtube.com/embed/{{videoId}}?controls=0&rel=0&showinfo=0" allowfullscreen="" frameborder="0"></iframe>
+			<iframe src="http://www.youtube.com/embed/{{videoId}}?controls=0&rel=0&showinfo=0&wmode=transparent" allowfullscreen="" frameborder="0"></iframe>
 	  	</div>
 	  	<div class="extra-padding">
 			<a href="#/videos/{{videoId}}" class="more-events-link">További videók</a>

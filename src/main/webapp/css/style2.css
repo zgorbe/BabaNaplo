@@ -190,3 +190,7 @@ div.first-row {
 	background-color: #F0F0F0;
 	margin-bottom: 30px;
 }
+
+div.event {
+	text-align: justify;
+}

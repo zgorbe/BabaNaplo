@@ -74,15 +74,20 @@ var Events = (function() {
 					context.render('/templates/latests.hb', {items: items, date: dateParam, photos: latestPhotos, videoId: newestVideo})
 					.swap(context.$element())
 					.then(function() {
+						context.app.trigger('initCalendar');
+					})					
+					.then(function() {
 						if (selectedDay) {
 							context.render('/templates/day.hb', selectedDay).replace('div.selected');
 							if (selectedDay.eventIds.length > 0) {
 								context.app.trigger('removeSelectedFromLatests', selectedDay.eventIds);
 							}
+						} else {
+							var currentDate = $('#datepicker1').datepicker('getDate');
+							context.app.trigger('selectedDayChanged', {
+								date: $.format.date(currentDate, 'yyyy.MM.dd')
+							});
 						}
-					})
-					.then(function() {
-						context.app.trigger('initCalendar');
 					})
 					.then(function() {
 						$('#myCarousel').carousel({

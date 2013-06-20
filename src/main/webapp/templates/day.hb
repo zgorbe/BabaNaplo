@@ -4,7 +4,7 @@
 		<h4>{{day.descriptionOfTheDay}}</h4>
 	</div>
 	{{#each day.eventsOfTheDay}}
-		<div class="row">
+		<div class="row event">
 		    <p>{{this.description}}</p>
 		    <p>{{this.startTime}}
 			{{#if this.hasDuration}}
