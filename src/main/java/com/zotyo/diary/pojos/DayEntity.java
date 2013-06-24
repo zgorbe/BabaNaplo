@@ -55,7 +55,6 @@ public class DayEntity {
 	
 	public DayEntity() { }
 	public DayEntity(Date theDay, EventEntity initialEvent, String descriptionOfTheDay) {
-		this();
 		setTheDay(theDay);
 		addEvent(initialEvent);
 		setDescriptionOfTheDay(descriptionOfTheDay);

@@ -22,7 +22,7 @@ var Days = (function() {
 				url: '/json/days/form',
 				success: function(data, type, xmlhttp){
 					if (data.id == null) {
-						context.app.trigger('newDayError');
+						context.app.trigger('newError');
 					} else {
 						context.app.clearTemplateCache();
 						context.redirect('#/');

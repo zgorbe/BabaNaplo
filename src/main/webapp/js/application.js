@@ -397,7 +397,7 @@ $("#inputTheDay").datepicker();
 $("#inputStartDate").datetimepicker();
 $("#inputDuration").timepicker({})
 })
-},addDay:function(b){$.ajax({type:"POST",data:$("form.new").serialize(),url:"/json/days/form",success:function(e,d,c){if(e.id==null){b.app.trigger("newDayError")
+},addDay:function(b){$.ajax({type:"POST",data:$("form.new").serialize(),url:"/json/days/form",success:function(e,d,c){if(e.id==null){b.app.trigger("newError")
 }else{b.app.clearTemplateCache();
 b.redirect("#/")
 }}})
@@ -442,10 +442,23 @@ c.duration=b+":"+d
 $("#inputStartDate").datetimepicker();
 $("#inputDuration").timepicker({})
 })
-},addEvent:function(a){$.ajax({type:"POST",data:$("form.new").serialize(),url:"/json/events/form",success:function(d,c,b){if(d.id==null){a.app.trigger("newDayError")
+},newWord:function(a){a.render("/templates/newword.hb").swap(a.$element()).then(function(){$("ul.thumbnails").on("click","div.thumbnail",function(){var b=$(this);
+$("div.thumbnail").removeClass("selected-img");
+b.addClass("selected-img");
+$("#kid_input").val(b.data("kid"))
+})
+})
+},addEvent:function(a){$.ajax({type:"POST",data:$("form.new").serialize(),url:"/json/events/form",success:function(d,c,b){if(d.id==null){a.app.trigger("newError")
 }else{a.app.clearTemplateCache();
 a.redirect("#/")
 }}})
+},addWord:function(a){$.ajax({type:"POST",data:$("form.new").serialize(),url:"/json/words/form",success:function(d,c,b){if(d.id==null){a.app.trigger("newError")
+}else{a.app.clearTemplateCache();
+a.redirect("#/")
+}}})
+},getLatestWords:function(a){$.ajax({type:"GET",url:"/json/words/latests/5",dataType:"json",complete:function(e,d,c){var b=$.parseJSON(e.responseText);
+a.render("/templates/latest_words.hb",{words:b}).replace("div#latest-words")
+}})
 },getLatests:function(b,d){var c=$.parseJSON($("#latestPhotosJSON").val());
 $.each(c,function(e,f){if(!f.inited){f.createdate=$.format.date(f.createdate,"yyyy.MM.dd HH:mm");
 f.inited=true
@@ -464,6 +477,7 @@ if(d.eventIds.length>0){b.app.trigger("removeSelectedFromLatests",d.eventIds)
 }}else{var h=$("#datepicker1").datepicker("getDate");
 b.app.trigger("selectedDayChanged",{date:$.format.date(h,"yyyy.MM.dd")})
 }}).then(function(){$("#myCarousel").carousel({interval:5000,cycle:true})
+}).then(function(){Events.getLatestWords(b)
 })
 })
 },getAll:function(a,b,c){a.load("/json/events",a.loadOptions).then(function(d){$.each(d,function(e,f){if(!f.inited){f.isotopeFilter="m"+$.format.date(f.startTime,"yyyy-MM");
@@ -2582,6 +2596,8 @@ this.get("#/newvideo",function(c){Videos.newVideo(c)
 });
 this.get("#/newphoto",function(c){Photos.newPhoto(c)
 });
+this.get("#/newword",function(c){Events.newWord(c)
+});
 this.get("#/day/:year/:month/:day",function(c){Days.getDay(c,this.params.year+"/"+this.params.month+"/"+this.params.day)
 });
 this.get("#/search/:searchTerm",function(c){Events.search(c,this.params.searchTerm)
@@ -2598,6 +2614,8 @@ this.post("#/addvideo",function(c){Videos.addVideo(c)
 });
 this.post("#/addphoto",function(c){Photos.addPhoto(c)
 });
+this.post("#/addword",function(c){Events.addWord(c)
+});
 this.bind("selectedDayChanged",function(f,d){if(b.getLocation().indexOf("new")<0){var c="/naplo2/#/day/"+d.date.replace(/\./g,"/");
 if(c!=b.getLocation()){b.setLocation(c)
 }else{setTimeout("Days.updateCalendar()",100)
@@ -2605,7 +2623,7 @@ if(c!=b.getLocation()){b.setLocation(c)
 }});
 this.bind("selectedMonthChanged",function(d,c){Days.getDayForAMonth(c.y,c.m)
 });
-this.bind("newDayError",function(f,d){if(!$("div.alert-error").length){var c=$('<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">×</button>Nem sikerült elmenteni a napot! Próbáld meg újra!</div>');
+this.bind("newError",function(f,d){if(!$("div.alert-error").length){var c=$('<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">×</button>Nem sikerült a mentés! Próbáld meg újra!</div>');
 $("form.new").before(c)
 }});
 this.bind("uploadError",function(f,d){if(!$("div.alert-error").length){var c=$('<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">×</button>Nem sikerült a feltöltés! Próbáld meg újra!</div>');

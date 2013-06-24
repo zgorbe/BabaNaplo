@@ -26,6 +26,18 @@ var Events = (function() {
 					$('#inputDuration').timepicker({});
 				});
 		},
+		newWord: function(context) {
+			context.render('/templates/newword.hb')
+				.swap(context.$element())
+				.then(function() {
+					$('ul.thumbnails').on('click', 'div.thumbnail', function() {
+						var $this = $(this);
+						$('div.thumbnail').removeClass('selected-img');
+						$this.addClass('selected-img');
+						$('#kid_input').val($this.data('kid'));
+					});
+				});
+		},
 		addEvent: function(context) {
 			$.ajax({
 				type: 'POST',
@@ -33,11 +45,38 @@ var Events = (function() {
 				url: '/json/events/form',
 				success: function(data, type, xmlhttp){
 					if (data.id == null) {
-						context.app.trigger('newDayError');
+						context.app.trigger('newError');
 					} else {
 						context.app.clearTemplateCache();
 						context.redirect('#/');
 					}
+				}
+			});
+		},
+		addWord: function(context) {
+			$.ajax({
+				type: 'POST',
+				data: $('form.new').serialize(),
+				url: '/json/words/form',
+				success: function(data, type, xmlhttp){
+					if (data.id == null) {
+						context.app.trigger('newError');
+					} else {
+						context.app.clearTemplateCache();
+						context.redirect('#/');
+					}
+				}
+			});
+		},
+		getLatestWords: function(context) {
+			$.ajax({
+				type: 'GET',
+				url: '/json/words/latests/5',
+				dataType: 'json',
+				complete: function(data, type, xmlhttp){
+					var items = $.parseJSON(data.responseText);
+		    		context.render('/templates/latest_words.hb', {words: items})
+						.replace('div#latest-words');
 				}
 			});
 		},
@@ -94,6 +133,9 @@ var Events = (function() {
 							interval: 5000,
 							cycle: true
 						});
+					})
+					.then(function() {
+						Events.getLatestWords(context);
 					});
 		    	});
 		},

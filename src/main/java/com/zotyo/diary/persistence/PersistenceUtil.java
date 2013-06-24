@@ -7,6 +7,8 @@ import com.zotyo.diary.pojos.Day;
 import com.zotyo.diary.pojos.DayEntity;
 import com.zotyo.diary.pojos.Event;
 import com.zotyo.diary.pojos.EventEntity;
+import com.zotyo.diary.pojos.UniqueWord;
+import com.zotyo.diary.pojos.UniqueWordEntity;
 
 public class PersistenceUtil {
 
@@ -45,4 +47,11 @@ public class PersistenceUtil {
 		return rv;
 	}
 
+	public static UniqueWord getWord(UniqueWordEntity we) {
+		return new UniqueWord(we.getId(), we.getKid(), we.getWord(), we.getOriginalWord(), we.getDescription());
+	}
+	
+	public static UniqueWordEntity getWordEntity(UniqueWord w) {
+		return new UniqueWordEntity(w.getKid(), w.getWord(), w.getOriginalWord(), w.getDescription());
+	}
 }

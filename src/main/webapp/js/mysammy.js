@@ -43,6 +43,10 @@ $(function(){
 			Photos.newPhoto(context);
 		});
 		
+		this.get('#/newword', function(context) {
+			Events.newWord(context);
+		});
+		
 		this.get('#/day/:year/:month/:day', function(context) {
 			Days.getDay(context, this.params['year'] + '/' + this.params['month'] + '/' + this.params['day']);
 		});
@@ -75,6 +79,10 @@ $(function(){
 			Photos.addPhoto(context);
 		});
 		
+		this.post('#/addword', function(context) {
+			Events.addWord(context);
+		});
+		
 		// Custom events
 		this.bind('selectedDayChanged', function(e, data) {
 			if (app.getLocation().indexOf('new') < 0) {
@@ -94,11 +102,11 @@ $(function(){
 			Days.getDayForAMonth(data.y, data.m);
 		});
 		
-		this.bind('newDayError', function(e, data) {
+		this.bind('newError', function(e, data) {
 			if (!$('div.alert-error').length) {
 				var error_div = $('<div class="alert alert-error">' +
 						'<button type="button" class="close" data-dismiss="alert">×</button>' +
-						'Nem sikerült elmenteni a napot! Próbáld meg újra!</div>');
+						'Nem sikerült a mentés! Próbáld meg újra!</div>');
 				$('form.new').before(error_div);
 			}
 		});

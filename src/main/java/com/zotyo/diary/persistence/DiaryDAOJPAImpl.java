@@ -32,6 +32,8 @@ import com.zotyo.diary.pojos.Day;
 import com.zotyo.diary.pojos.DayEntity;
 import com.zotyo.diary.pojos.Event;
 import com.zotyo.diary.pojos.EventEntity;
+import com.zotyo.diary.pojos.UniqueWord;
+import com.zotyo.diary.pojos.UniqueWordEntity;
 
 @Repository
 @Primary
@@ -242,5 +244,38 @@ public class DiaryDAOJPAImpl implements DiaryDAO {
 
 	public long getDayCount() {
 		return em.createQuery("select count(o.id) from DayEntity as o", Long.class).getSingleResult();		
+	}
+
+	public int addWord(UniqueWord word) {
+		UniqueWordEntity we = PersistenceUtil.getWordEntity(word);
+		em.persist(we);
+		em.flush();
+		em.refresh(we);
+		return we.getId();
+	}
+
+	public List<UniqueWord> getLatestWords(int count) {
+		TypedQuery<UniqueWordEntity> query = em.createNamedQuery("UniqueWordEntity.latests", UniqueWordEntity.class);
+		query.setMaxResults(count);
+        List<UniqueWordEntity> result = query.getResultList();
+
+        List<UniqueWord> rv = new ArrayList<UniqueWord>();
+        for (UniqueWordEntity we : result) {
+        	rv.add(PersistenceUtil.getWord(we));
+        }
+        return rv;
+	}
+
+	public List<UniqueWord> getAllWords() {
+		List<UniqueWordEntity> result = em.createQuery("select object(o) from UniqueWordEntity as o order by o.id desc", UniqueWordEntity.class).getResultList();
+		List<UniqueWord> rv = new ArrayList<UniqueWord>();
+		for (UniqueWordEntity we : result) {
+			rv.add(PersistenceUtil.getWord(we));
+		}
+		return rv;
+	}
+
+	public long getWordCount() {
+		return em.createQuery("select count(o.id) from UniqueWordEntity as o", Long.class).getSingleResult();
 	}
 }

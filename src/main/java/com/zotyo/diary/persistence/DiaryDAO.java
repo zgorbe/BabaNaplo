@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.zotyo.diary.pojos.Day;
 import com.zotyo.diary.pojos.Event;
+import com.zotyo.diary.pojos.UniqueWord;
 
 public interface DiaryDAO {
 	List<Event> getEventsForADay(Date theDay);
@@ -19,4 +20,9 @@ public interface DiaryDAO {
 	int addEvent(Date theDay, Event event);
 	long getDayCount();	
 	long getEventCount();
+	
+	int addWord(UniqueWord word);
+	List<UniqueWord> getLatestWords(int count);
+	List<UniqueWord> getAllWords();
+	long getWordCount();
 }

@@ -51,6 +51,7 @@
 									<li><a href="#/newevent"><i class="icon-edit"></i> Új esemény</a></li>
 									<li><a href="#/newvideo"><i class="icon-facetime-video"></i> Új videó</a></li>
 									<li><a href="#/newphoto"><i class="icon-camera"></i> Új kép</a></li>
+									<li><a href="#/newword"><i class="icon-bullhorn"></i> Új saját szó</a></li>
 								</ul>
 							</li>
 	            		</ul>

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.zotyo.diary.pojos.Day;
 import com.zotyo.diary.pojos.Event;
+import com.zotyo.diary.pojos.UniqueWord;
 
 @Repository
 public class DiaryDAOMockImpl implements DiaryDAO {
@@ -99,6 +100,26 @@ public class DiaryDAOMockImpl implements DiaryDAO {
 	}
 	@Override
 	public long getDayCount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	@Override
+	public int addWord(UniqueWord word) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	@Override
+	public List<UniqueWord> getLatestWords(int count) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public List<UniqueWord> getAllWords() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public long getWordCount() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
