@@ -2647,7 +2647,22 @@ $.each(c,function(e,g){d.find("div[data-eventid="+g+"]").hide()
 });
 $(function(){b.run("#/")
 });
-Events.initNavbar(b)
+Events.initNavbar(b);
+Handlebars.registerHelper("ifCond",function(f,c,e,d){switch(c){case"==":return(f==e)?d.fn(this):d.inverse(this);
+break;
+case"===":return(f===e)?d.fn(this):d.inverse(this);
+break;
+case"<":return(f<e)?d.fn(this):d.inverse(this);
+break;
+case"<=":return(f<=e)?d.fn(this):d.inverse(this);
+break;
+case">":return(f>e)?d.fn(this):d.inverse(this);
+break;
+case">=":return(f>=e)?d.fn(this):d.inverse(this);
+break;
+default:return d.inverse(this);
+break
+}})
 });
 (function(b,a){(function(c){typeof define=="function"&&define.amd?define(["jquery"],c):b.sammy=a.Sammy=c(b)
 })(function(A){var q,g="([^/]+)",x=/:([\w\d]+)/g,G=/\?([^#]*)?$/,k=function(c){return Array.prototype.slice.call(c)

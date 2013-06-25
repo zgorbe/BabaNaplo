@@ -61,7 +61,7 @@
 	  	<div class="extra-padding">
 			<a href="#/videos/{{videoId}}" class="more-events-link">További videók</a>
 		</div>
-		<div id="latest-words">
+		<div id="latest-words" class="span10">
 		</div>
 	</div>
 </div>	

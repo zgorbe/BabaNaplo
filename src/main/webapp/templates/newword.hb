@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="span12">
-		<h4>Új saját szó</h4>
+		<h4>Új mondás</h4>
 		<form action="#/addword" method="post" class="form-horizontal new">
 			<div class="offset1">
 				<ul class="thumbnails">

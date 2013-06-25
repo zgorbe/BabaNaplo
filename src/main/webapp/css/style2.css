@@ -210,8 +210,13 @@ div.selected-img {
 	color: white;
 }
 
-.thumbnails > li {
-    display: inline-block;
-    *display: inline; /* ie7 fix */
-    float: none; /* this is the part that makes it work */
+div.accordion-heading {
+	font-size: 20px;
+	margin: 6px;
+}
+
+div.accordion-heading > img {
+	width: 75px;
+	height: 56px;
+	padding-right: 20px;
 }
