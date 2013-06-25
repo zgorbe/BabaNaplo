@@ -2575,7 +2575,10 @@ $("#dialog").dialog({modal:true,width:945,height:740,resizable:false,title:c+" -
 },fixMissingX:function(){$("button.ui-dialog-titlebar-close").html('<span class="ui-icon ui-icon-closethick">close</span>')
 }}
 })();
-$(function(){var a={type:"get",dataType:"json"};
+$(function(){Handlebars.registerHelper("ifCond",function(e,d,c){if(e===d){return c.fn(this)
+}return c.inverse(this)
+});
+var a={type:"get",dataType:"json"};
 var b=$.sammy("#main",function(){this.use("Handlebars","hb");
 this.before({},function(e){e.loadOptions=a;
 var c=e.app.getLocation();
@@ -2647,22 +2650,7 @@ $.each(c,function(e,g){d.find("div[data-eventid="+g+"]").hide()
 });
 $(function(){b.run("#/")
 });
-Events.initNavbar(b);
-Handlebars.registerHelper("ifCond",function(f,c,e,d){switch(c){case"==":return(f==e)?d.fn(this):d.inverse(this);
-break;
-case"===":return(f===e)?d.fn(this):d.inverse(this);
-break;
-case"<":return(f<e)?d.fn(this):d.inverse(this);
-break;
-case"<=":return(f<=e)?d.fn(this):d.inverse(this);
-break;
-case">":return(f>e)?d.fn(this):d.inverse(this);
-break;
-case">=":return(f>=e)?d.fn(this):d.inverse(this);
-break;
-default:return d.inverse(this);
-break
-}})
+Events.initNavbar(b)
 });
 (function(b,a){(function(c){typeof define=="function"&&define.amd?define(["jquery"],c):b.sammy=a.Sammy=c(b)
 })(function(A){var q,g="([^/]+)",x=/:([\w\d]+)/g,G=/\?([^#]*)?$/,k=function(c){return Array.prototype.slice.call(c)
