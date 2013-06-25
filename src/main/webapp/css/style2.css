@@ -220,3 +220,7 @@ div.accordion-heading > img {
 	height: 56px;
 	padding-right: 20px;
 }
+
+div.accordion-inner > p {
+	text-align: justify;
+}
