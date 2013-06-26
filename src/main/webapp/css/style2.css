@@ -195,10 +195,10 @@ div.event {
 	text-align: justify;
 }
 
-div.thumbnail > h3 {
+div.thumbnail {
+	color: #006FDD;
 	text-align: center;
 }
-
 div.thumbnail:hover {
 	background-color: #006FDD;
 	color: white;

@@ -80,17 +80,15 @@ public class DiaryServlet2 extends HttpServlet {
 		}
 		
 		Video video = videoDAO.findNewest();
-		request.setAttribute("newestVideoId", video.getVideoId());
-		
+		if (video != null) {
+			request.setAttribute("newestVideoId", video.getVideoId());
+		}
 		CountsBean cb = new CountsBean();
 		cb.setDayCount(diaryDAO.getDayCount());
 		cb.setEventCount(diaryDAO.getEventCount());
 		cb.setPhotoCount(photoService.count());
 		cb.setVideoCount(videoDAO.count());
 		request.setAttribute("countsBean", cb);
-		
-		Video first = videoDAO.findAll(new Sort(Sort.Direction.DESC, "createDate")).iterator().next();
-		request.setAttribute("firstVideoId", first.getVideoId());
 		
         RequestDispatcher rd = getServletContext().getRequestDispatcher("/diary2.jsp");
         rd.forward(request, response);

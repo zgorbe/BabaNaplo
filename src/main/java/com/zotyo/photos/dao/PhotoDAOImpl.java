@@ -96,6 +96,7 @@ public class PhotoDAOImpl implements PhotoDAO {
 	@Override
 	public PhotoData getDataByFilename(String filename, PhotoDataEnum dataFlag) {
 		Photo photo = mongoTemplate.findOne(new Query(where("filename").is(filename)), Photo.class);
+		if (photo == null) return null;
 		String data_id = photo.getDataId();
 		
 		Query dataQuery = new Query();
