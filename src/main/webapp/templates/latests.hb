@@ -61,7 +61,26 @@
 	  	<div class="extra-padding">
 			<a href="#/videos/{{videoId}}" class="more-events-link">További videók</a>
 		</div>
-		<div id="latest-words" class="span10">
-		</div>
+		<div class="span10">
+			<h3>Legújabb mondások</h3>
+			<div id="latest-words">
+			</div>
+			<div class="extra-padding">
+				<a id="more-words-link" href="javascript:void(0)" class="more-events-link">További mondások</a>
+			</div>
+			
+			<!-- Modal -->
+			<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+					<h3 id="myModalLabel">Mondások</h3>
+				</div>
+				<div id="modal-unique-words" class="modal-body">
+				</div>
+				<div class="modal-footer">
+					<button class="btn" data-dismiss="modal" aria-hidden="true">Bezár</button>
+				</div>
+			</div>
+		</div
 	</div>
 </div>	

@@ -69,13 +69,28 @@ var Events = (function() {
 			});
 		},
 		getLatestWords: function(context) {
+			$('a#more-words-link').on('click', function() {
+				$.ajax({
+					type: 'GET',
+					url: '/json/words',
+					dataType: 'json',
+					complete: function(data, type, xmlhttp){
+						var items = $.parseJSON(data.responseText);
+			    		context.render('/templates/uniquewords.hb', {accordion: "modal", words: items})
+							.replace('div#modal-unique-words')
+							.then(function() {
+								$('div#myModal').modal();
+							});
+					}
+				});
+			});
 			$.ajax({
 				type: 'GET',
 				url: '/json/words/latests/5',
 				dataType: 'json',
 				complete: function(data, type, xmlhttp){
 					var items = $.parseJSON(data.responseText);
-		    		context.render('/templates/latest_words.hb', {words: items})
+		    		context.render('/templates/uniquewords.hb', {accordion: "original", words: items})
 						.replace('div#latest-words');
 				}
 			});

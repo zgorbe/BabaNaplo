@@ -456,8 +456,13 @@ a.redirect("#/")
 }else{a.app.clearTemplateCache();
 a.redirect("#/")
 }}})
-},getLatestWords:function(a){$.ajax({type:"GET",url:"/json/words/latests/5",dataType:"json",complete:function(e,d,c){var b=$.parseJSON(e.responseText);
-a.render("/templates/latest_words.hb",{words:b}).replace("div#latest-words")
+},getLatestWords:function(a){$("a#more-words-link").on("click",function(){$.ajax({type:"GET",url:"/json/words",dataType:"json",complete:function(e,d,c){var b=$.parseJSON(e.responseText);
+a.render("/templates/uniquewords.hb",{accordion:"modal",words:b}).replace("div#modal-unique-words").then(function(){$("div#myModal").modal()
+})
+}})
+});
+$.ajax({type:"GET",url:"/json/words/latests/5",dataType:"json",complete:function(e,d,c){var b=$.parseJSON(e.responseText);
+a.render("/templates/uniquewords.hb",{accordion:"original",words:b}).replace("div#latest-words")
 }})
 },getLatests:function(b,d){var c=$.parseJSON($("#latestPhotosJSON").val());
 $.each(c,function(e,f){if(!f.inited){f.createdate=$.format.date(f.createdate,"yyyy.MM.dd HH:mm");
@@ -2578,6 +2583,13 @@ $("#dialog").dialog({modal:true,width:945,height:740,resizable:false,title:c+" -
 $(function(){Handlebars.registerHelper("ifCond",function(e,d,c){if(e===d){return c.fn(this)
 }return c.inverse(this)
 });
+Handlebars.registerHelper("debug",function(c){console.log("Current Context");
+console.log("====================");
+console.log(this);
+if(c){console.log("Value");
+console.log("====================");
+console.log(c)
+}});
 var a={type:"get",dataType:"json"};
 var b=$.sammy("#main",function(){this.use("Handlebars","hb");
 this.before({},function(e){e.loadOptions=a;
