@@ -1,8 +1,9 @@
 package com.zotyo.diary.pojos;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Event {
+public class Event implements Serializable {
 	private Integer id;
 	private String description;
 	private Date startTime;

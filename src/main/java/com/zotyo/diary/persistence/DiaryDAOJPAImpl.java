@@ -108,7 +108,7 @@ public class DiaryDAOJPAImpl implements DiaryDAO {
 		}
 		return rv;
 	}
-
+	
 	public List<Day> getDaysForAMonth(int year, int month) {
 		List<Day> rv = new ArrayList<Day>();
 		Calendar startDay = GregorianCalendar.getInstance();

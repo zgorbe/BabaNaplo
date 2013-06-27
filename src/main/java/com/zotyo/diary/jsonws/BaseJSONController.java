@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.zotyo.diary.persistence.DiaryDAO;
+import com.zotyo.diary.service.DiaryService;
 import com.zotyo.diary.web.DiaryHelper;
 
 @Component
@@ -17,7 +18,7 @@ public abstract class BaseJSONController {
 	
 	protected String password;
 	
-	protected DiaryDAO diaryDAO;
+	protected DiaryService diaryService;
 	protected DiaryHelper diaryHelper;
 
 	@Autowired
@@ -26,8 +27,8 @@ public abstract class BaseJSONController {
 	}
 
 	@Autowired
-	public void setDiaryDAO(DiaryDAO diaryDAO) {
-		this.diaryDAO = diaryDAO;
+	public void setDiaryService(DiaryService diaryService) {
+		this.diaryService = diaryService;
 	}
 
 	@PostConstruct

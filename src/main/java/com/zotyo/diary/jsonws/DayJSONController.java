@@ -49,7 +49,7 @@ public class DayJSONController extends BaseJSONController {
 					.getStartDateCal(startDate);
 			event.setStartTime(startDateCal.getTime());
 			day.getEventsOfTheDay().add(event);
-			day.setId(diaryDAO.addDay(day));
+			day.setId(diaryService.addDay(day));
 
 			return day;
 		}
@@ -59,21 +59,20 @@ public class DayJSONController extends BaseJSONController {
 	@RequestMapping(method = RequestMethod.GET)
 	@ResponseBody
 	public List<Day> getDays() {
-		return diaryDAO.getAllDaysInDiary();
+		return diaryService.getAllDaysInDiary();
 	}
 
 	@RequestMapping(value = "/{year}/{month}", method = RequestMethod.GET)
 	@ResponseBody
-	public List<Day> getDaysForAMonth(@PathVariable int year,
-			@PathVariable int month) {
-		return diaryDAO.getDaysForAMonth(year, month - 1);
+	public List<Day> getDaysForAMonth(@PathVariable int year, @PathVariable int month) {
+		return diaryService.getDaysForAMonth(year, month - 1);
 	}
 
 	@RequestMapping(value = "/list/{year}/{month}", method = RequestMethod.GET)
 	@ResponseBody
 	public DayList getDayListForAMonth(@PathVariable int year,
 			@PathVariable int month) {
-		List<Day> days = diaryDAO.getDaysForAMonth(year, month - 1);
+		List<Day> days = diaryService.getDaysForAMonth(year, month - 1);
 		DayList dayList = new DayList();
 		dayList.setYear(year);
 		dayList.setMonth(month);
@@ -95,7 +94,7 @@ public class DayJSONController extends BaseJSONController {
 		Calendar c = GregorianCalendar.getInstance();
 		c.set(year, month - 1, day);
 		Date date = DateUtil.resetHMS(c.getTime());
-		Day d = diaryDAO.getDay(date);
+		Day d = diaryService.getDay(date);
 
 		/*if (d == null) {
 			throw new DayNotFoundException("Day not found");

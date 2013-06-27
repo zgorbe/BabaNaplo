@@ -17,11 +17,10 @@ import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.SerializationConfig;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
-import com.zotyo.diary.persistence.DiaryDAO;
 import com.zotyo.diary.pojos.CountsBean;
+import com.zotyo.diary.service.DiaryService;
 import com.zotyo.photos.pojo.Photo;
 import com.zotyo.photos.service.PhotoService;
 import com.zotyo.videos.dao.VideoDAO;
@@ -33,7 +32,7 @@ public class DiaryServlet2 extends HttpServlet {
 	private static Logger logger = Logger.getLogger(DiaryServlet2.class); 
 	
 	@Autowired
-	private DiaryDAO diaryDAO;
+	private DiaryService diaryService;
 	
 	@Autowired
 	protected PhotoService photoService;
@@ -84,8 +83,8 @@ public class DiaryServlet2 extends HttpServlet {
 			request.setAttribute("newestVideoId", video.getVideoId());
 		}
 		CountsBean cb = new CountsBean();
-		cb.setDayCount(diaryDAO.getDayCount());
-		cb.setEventCount(diaryDAO.getEventCount());
+		cb.setDayCount(diaryService.getDayCount());
+		cb.setEventCount(diaryService.getEventCount());
 		cb.setPhotoCount(photoService.count());
 		cb.setVideoCount(videoDAO.count());
 		request.setAttribute("countsBean", cb);

@@ -18,9 +18,6 @@ import com.zotyo.diary.pojos.UniqueWord;
 @RequestMapping("/words")
 public class UniqueWordJSONController extends BaseJSONController {
 	
-	@Autowired
-	private DiaryDAO diaryDAO;
-
 	@RequestMapping(value = "/form", method = RequestMethod.POST, consumes = "application/x-www-form-urlencoded")
 	@ResponseBody
 	public UniqueWord addVideoForm(@RequestParam String keyword,
@@ -35,7 +32,7 @@ public class UniqueWordJSONController extends BaseJSONController {
 			uw.setOriginalWord(original);
 			uw.setDescription(description);
 			
-			uw.setId(diaryDAO.addWord(uw));
+			uw.setId(diaryService.addWord(uw));
 			
 			return uw;
 		}
@@ -45,12 +42,12 @@ public class UniqueWordJSONController extends BaseJSONController {
 	@RequestMapping(method = RequestMethod.GET)
 	@ResponseBody
 	public Iterable<UniqueWord> getAllEvents() {
-		return diaryDAO.getAllWords();
+		return diaryService.getAllWords();
 	}
 	
 	@RequestMapping(value = "/latests/{count}", method = RequestMethod.GET)
 	@ResponseBody
 	public List<UniqueWord> getLatests(@PathVariable int count) {
-		return diaryDAO.getLatestWords(count);
+		return diaryService.getLatestWords(count);
 	}
 }

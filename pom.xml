@@ -10,7 +10,7 @@
 
 	<properties>
 		<java.version>1.6</java.version>
-		<spring.version>3.1.1.RELEASE</spring.version>
+		<spring.version>3.1.2.RELEASE</spring.version>
 		<spring.mobile.version>1.0.1.RELEASE</spring.mobile.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
@@ -135,6 +135,11 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
@@ -209,6 +214,11 @@
 			<version>1.9.5</version>
 		</dependency>
 		
+		<dependency>
+			<groupId>com.google.code.simple-spring-memcached</groupId>
+			<artifactId>spymemcached-provider</artifactId>
+			<version>3.2.0</version>
+		</dependency> 
 	</dependencies>
 
 	<build>

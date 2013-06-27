@@ -4,24 +4,29 @@
 	xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:mongo="http://www.springframework.org/schema/data/mongo"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
 		http://www.springframework.org/schema/data/mongo http://www.springframework.org/schema/data/mongo/spring-mongo-1.0.xsd">
 
+    <import resource="classpath:simplesm-context.xml" />
+    
     <context:annotation-config />
     <context:component-scan base-package="com.zotyo.diary" />
     <context:component-scan base-package="com.zotyo.photos" />
 
-  
+	<aop:aspectj-autoproxy />
+	
 	<!-- ====================== DataSource ==================== -->
   
-  <bean class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" id="dataSource">
-    <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-    <property name="url" value="jdbc:mysql://localhost:3306/diary"/>
-    <property name="username" value="root" />
-  </bean>
+	<bean class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" id="dataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+		<property name="url" value="jdbc:mysql://localhost:3306/diary"/>
+		<property name="username" value="root" />
+	</bean>
     
 	<!-- ====================== EntityManagerFactory ==================== -->
 	
@@ -55,7 +60,24 @@
   		<constructor-arg name="mongoDbFactory" ref="mongoDbFactory"/>
 	</bean>
 	
+    <!-- ====================== Memcached ========================= -->
     
+	<bean name="defaultMemcachedClient" class="com.google.code.ssm.CacheFactory">
+		<property name="cacheClientFactory">
+			<bean name="cacheClientFactory" class="com.google.code.ssm.providers.spymemcached.MemcacheClientFactoryImpl" />
+		</property>
+		<property name="addressProvider">
+			<bean class="com.google.code.ssm.config.DefaultAddressProvider">
+				<property name="address" value="127.0.0.1:11211" />
+			</bean>
+		</property>
+		<property name="configuration">
+			<bean class="com.google.code.ssm.providers.CacheConfiguration">
+				<property name="consistentHashing" value="true" />
+			</bean>
+		</property>
+	</bean>
+	<bean name="ssmSettings" class="com.google.code.ssm.Settings" />
 </beans>
 
 

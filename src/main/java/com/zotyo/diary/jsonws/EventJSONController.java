@@ -36,7 +36,7 @@ public class EventJSONController extends BaseJSONController {
 					.getStartDateCal(startDate);
 			event.setStartTime(startDateCal.getTime());
 			
-			event.setId(diaryDAO.addEvent(DateUtil.resetHMS(diaryHelper.getDayCal(theDay).getTime()), event));
+			event.setId(diaryService.addEvent(DateUtil.resetHMS(diaryHelper.getDayCal(theDay).getTime()), event));
 
 			return event;
 		}
@@ -46,13 +46,13 @@ public class EventJSONController extends BaseJSONController {
 	@RequestMapping(method = RequestMethod.GET)
 	@ResponseBody
 	public List<Event> getAllEvents() {
-		return diaryDAO.getAllEvents();
+		return diaryService.getAllEvents();
 	}
 	
 	@RequestMapping(value = "/latests/{count}", method = RequestMethod.GET)
 	@ResponseBody
 	public List<Event> getLatests(@PathVariable int count) {
-		List<Event> allEvents = diaryDAO.getAllEvents();
+		List<Event> allEvents = diaryService.getAllEvents();
 		count = (count < 3) ? 3 : count;
 		List<Event> events = new ArrayList<Event>(count);
 		for (int i=0; i < count; i++) {
@@ -65,7 +65,7 @@ public class EventJSONController extends BaseJSONController {
 	public void addEvent(@RequestBody Event event, @PathVariable int year, @PathVariable int month, @PathVariable int day) {
 		Calendar c = GregorianCalendar.getInstance();
 		c.set(year, month, day);
-		diaryDAO.addEvent(DateUtil.resetHMS(c.getTime()), event);
+		diaryService.addEvent(DateUtil.resetHMS(c.getTime()), event);
 	}
 	
 	@RequestMapping(value = "/{year}/{month}/{day}", method = RequestMethod.GET)
@@ -73,14 +73,14 @@ public class EventJSONController extends BaseJSONController {
 	public List<Event> getEventsForADay(@PathVariable int year, @PathVariable int month, @PathVariable int day) {
 		Calendar c = GregorianCalendar.getInstance();
 		c.set(year, month, day);
-		return diaryDAO.getEventsForADay(DateUtil.resetHMS(c.getTime()));
+		return diaryService.getEventsForADay(DateUtil.resetHMS(c.getTime()));
 	}
 	
 	@RequestMapping(value = "/search/{searchTerm}", method = RequestMethod.GET)
 	@ResponseBody
 	public List<Event> searchEvents(@PathVariable String searchTerm) throws UnsupportedEncodingException {
 		searchTerm = URLDecoder.decode(searchTerm, "UTF8");
-		return diaryDAO.searchEvents(searchTerm);
+		return diaryService.searchEvents(searchTerm);
 	}
 
 	@RequestMapping(value = "/search/terms/{term}", method = RequestMethod.GET)
@@ -90,12 +90,12 @@ public class EventJSONController extends BaseJSONController {
 		if (term.length() < 2) {
 			return new ArrayList<String>();
 		}
-		return diaryDAO.searchTerms(term.toLowerCase());
+		return diaryService.searchTerms(term.toLowerCase());
 	}
 	
 	@RequestMapping(value = "/count", method = RequestMethod.GET)
 	@ResponseBody
 	public long getEventCount() {
-		return diaryDAO.getEventCount();
+		return diaryService.getEventCount();
 	}
 }

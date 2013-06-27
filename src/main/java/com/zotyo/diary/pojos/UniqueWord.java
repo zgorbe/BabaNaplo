@@ -1,6 +1,8 @@
 package com.zotyo.diary.pojos;
 
-public class UniqueWord {
+import java.io.Serializable;
+
+public class UniqueWord implements Serializable {
 	
     private Integer id;
 	private KidEnum kid;

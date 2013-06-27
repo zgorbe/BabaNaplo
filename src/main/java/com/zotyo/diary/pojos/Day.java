@@ -1,10 +1,11 @@
 package com.zotyo.diary.pojos;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class Day {
+public class Day implements Serializable {
 	private Integer id;
 	private Date theDay;
 	private List<Event> eventsOfTheDay;
