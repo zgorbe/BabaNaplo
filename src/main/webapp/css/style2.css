@@ -224,3 +224,9 @@ div.accordion-heading > img {
 div.accordion-inner > p {
 	text-align: justify;
 }
+
+div.accordion-heading a.accordion-toggle {
+	display: inline-block;
+	margin-top: 8px;
+	*display: inline;
+}
