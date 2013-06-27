@@ -131,6 +131,7 @@ var Events = (function() {
 						context.app.trigger('initCalendar');
 					})					
 					.then(function() {
+						Events.getLatestWords(context);
 						if (selectedDay) {
 							context.render('/templates/day.hb', selectedDay).replace('div.selected');
 							if (selectedDay.eventIds.length > 0) {
@@ -142,15 +143,10 @@ var Events = (function() {
 								date: $.format.date(currentDate, 'yyyy.MM.dd')
 							});
 						}
-					})
-					.then(function() {
 						$('#myCarousel').carousel({
 							interval: 5000,
 							cycle: true
 						});
-					})
-					.then(function() {
-						Events.getLatestWords(context);
 					});
 		    	});
 		},

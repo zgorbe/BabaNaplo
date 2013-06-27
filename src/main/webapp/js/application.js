@@ -477,12 +477,12 @@ return e
 var g={y:f.getFullYear(),m:(f.getMonth()+1).toString()};
 if(g.m.length<2){g.m="0"+g.m
 }b.render("/templates/latests.hb",{items:e,date:g,photos:c,videoId:a}).swap(b.$element()).then(function(){b.app.trigger("initCalendar")
-}).then(function(){if(d){b.render("/templates/day.hb",d).replace("div.selected");
+}).then(function(){Events.getLatestWords(b);
+if(d){b.render("/templates/day.hb",d).replace("div.selected");
 if(d.eventIds.length>0){b.app.trigger("removeSelectedFromLatests",d.eventIds)
 }}else{var h=$("#datepicker1").datepicker("getDate");
 b.app.trigger("selectedDayChanged",{date:$.format.date(h,"yyyy.MM.dd")})
-}}).then(function(){$("#myCarousel").carousel({interval:5000,cycle:true})
-}).then(function(){Events.getLatestWords(b)
+}$("#myCarousel").carousel({interval:5000,cycle:true})
 })
 })
 },getAll:function(a,b,c){a.load("/json/events",a.loadOptions).then(function(d){$.each(d,function(e,f){if(!f.inited){f.isotopeFilter="m"+$.format.date(f.startTime,"yyyy-MM");
