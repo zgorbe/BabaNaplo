@@ -3,11 +3,12 @@ package com.zotyo.diary.service;
 import java.util.Date;
 import java.util.List;
 
+import net.spy.memcached.MemcachedClient;
+
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.google.code.ssm.api.ParameterValueKeyProvider;
-import com.google.code.ssm.api.ReadThroughSingleCache;
 import com.zotyo.diary.persistence.DiaryDAO;
 import com.zotyo.diary.pojos.Day;
 import com.zotyo.diary.pojos.Event;
@@ -16,20 +17,21 @@ import com.zotyo.diary.pojos.UniqueWord;
 @Service
 public class DiaryServiceImpl implements DiaryService {
 	
+	private static Logger logger = Logger.getLogger(DiaryServiceImpl.class);
+	
+	private static final String DIARY_CACHE = "diarycache";
+	
+	@Autowired
 	private DiaryDAO diaryDAO;
 
-	@Autowired
-	public void setDiaryDAO(DiaryDAO diaryDAO) {
-		this.diaryDAO = diaryDAO;
-	}
+	//@Autowired
+	private MemcachedClient memcachedClient;
 	
 	public List<Event> getEventsForADay(Date theDay) {
 		return diaryDAO.getEventsForADay(theDay);
 	}
 
-	@ReadThroughSingleCache(namespace = "diarycache", expiration = 86400)
-	public List<Day> getDaysForAMonth(@ParameterValueKeyProvider(order = 1) int year, 
-				@ParameterValueKeyProvider(order = 2) int month) {
+	public List<Day> getDaysForAMonth(int year, int month) {
 		return diaryDAO.getDaysForAMonth(year, month);
 	}
 
@@ -52,7 +54,7 @@ public class DiaryServiceImpl implements DiaryService {
 	public List<String> searchTerms(String term) {
 		return diaryDAO.searchTerms(term);
 	}
-
+	
 	public int addDay(Day day) {
 		return diaryDAO.addDay(day);
 	}
@@ -84,4 +86,13 @@ public class DiaryServiceImpl implements DiaryService {
 	public long getWordCount() {
 		return diaryDAO.getWordCount();
 	}
+	
+	public void setDiaryDAO(DiaryDAO diaryDAO) {
+		this.diaryDAO = diaryDAO;
+	}
+	
+	public void setMemcachedClient(MemcachedClient memcachedClient) {
+		this.memcachedClient = memcachedClient;
+	}
+
 }
