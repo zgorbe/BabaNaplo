@@ -81,6 +81,26 @@
   		<constructor-arg name="mongoDbFactory" ref="mongoDbFactory"/>
 	</bean>
 
+    <!-- ====================== Memcached =========================>
+
+	<bean id="plainCallbackHandler" class="net.spy.memcached.auth.PlainCallbackHandler">
+       <constructor-arg index="0" value="${MEMCACHE_USERNAME}"/>
+       <constructor-arg index="1" value="${MEMCACHE_PASSWORD}"/> 
+  </bean>
+  
+  <bean id="authDescriptor" class="net.spy.memcached.auth.AuthDescriptor">
+       <constructor-arg index="0">
+         <array><value>PLAIN</value></array>
+       </constructor-arg>
+       <constructor-arg index="1" ref="plainCallbackHandler"/> 
+  </bean>
+  
+  <bean id="memcachedClient" class="net.spy.memcached.spring.MemcachedClientFactoryBean">
+    <property name="servers" value="${MEMCACHE_SERVERS}:11211"/>
+    <property name="protocol" value="BINARY"/>
+    <property name="authDescriptor" ref="authDescriptor"/>
+  </bean -->
+
 </beans>
 
 

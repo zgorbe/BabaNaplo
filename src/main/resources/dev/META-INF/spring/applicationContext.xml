@@ -54,9 +54,9 @@
   		<constructor-arg name="mongoDbFactory" ref="mongoDbFactory"/>
 	</bean>
 	
-    <!-- ====================== Memcached =========================>
+    <!-- ====================== Memcached ========================= -->
 
-	<bean id="memcachedClientFactory" class="net.spy.memcached.spring.MemcachedClientFactoryBean">
+	<bean id="memcachedClient" class="net.spy.memcached.spring.MemcachedClientFactoryBean">
 	    <property name="servers" value="127.0.0.1:11211"/>
 	    <property name="protocol" value="BINARY"/>
 	    <property name="transcoder">
@@ -74,7 +74,6 @@
 	    <property name="useNagleAlgorithm" value="false"/>
 	</bean>
 	
-	<bean id="memcachedClient" factory-bean="memcachedClientFactory" factory-method="getObject"></bean -->
 </beans>
 
 
