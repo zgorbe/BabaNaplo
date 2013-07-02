@@ -90,7 +90,12 @@ public class PhotoServlet extends HttpServlet {
 			if (fileName != null && !fileName.isEmpty()) {
 				response.setHeader("Expires", "Tue May 01 2016 01:00:00 GMT+0100 (CET)");
             	response.setContentType("image/jpeg");
-            	PhotoData photoData = photoService.getDataByFilename(fileName, PhotoDataEnum.PICTURE_ONLY, cache);
+            	PhotoData photoData = null;
+            	if (cache) {
+            		photoData = photoService.getDataByFilename(fileName, PhotoDataEnum.BOTH_DATA, cache);
+            	} else {
+            		photoData = photoService.getDataByFilename(fileName, PhotoDataEnum.PICTURE_ONLY, cache);
+            	}
             	if (photoData != null && photoData.getData() != null) {
             		response.getOutputStream().write(photoData.getData());
             	}
