@@ -1,6 +1,8 @@
 package com.zotyo.photos.pojo;
 
-public class PhotoData {
+import java.io.Serializable;
+
+public class PhotoData implements Serializable {
 	private String id;
 	private byte[] data;
 	private byte[] thumbdata;

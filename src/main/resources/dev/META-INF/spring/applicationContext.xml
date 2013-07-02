@@ -83,6 +83,7 @@
 		<property name="configuration">
 			<bean class="com.google.code.ssm.providers.CacheConfiguration">
 				<property name="consistentHashing" value="true" />
+				<property name="useBinaryProtocol" value="true" />
 			</bean>
 		</property>
 	</bean>

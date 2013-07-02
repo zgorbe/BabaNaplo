@@ -14,7 +14,7 @@ public interface PhotoService {
 	List<Photo> findLatestsByCategory(String category, int count);
 	List<Photo> findAll();
 	Photo findByFilename(String filename);
-	PhotoData getDataByFilename(String filename, PhotoDataEnum dataFlag);
+	PhotoData getDataByFilename(String filename, PhotoDataEnum dataFlag, boolean cache);
 	List<Photo> searchPhotos(String searchTerm);
 	List<String> searchKeywords(String term);
 	long count();

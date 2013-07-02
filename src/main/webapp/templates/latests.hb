@@ -17,7 +17,7 @@
 					{{else}}
 						<div class="item">
 					{{/if}}
-					<img src="/photos?cmd=data&filename={{filename}}" alt="">
+					<img src="/photos?cmd=data&filename={{filename}}&cache=true" alt="">
 					<div class="carousel-caption">
 						<h4>{{description}}</h4>
 						<p>{{createdate}}</p>

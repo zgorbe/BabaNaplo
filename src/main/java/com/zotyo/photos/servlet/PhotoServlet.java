@@ -78,7 +78,7 @@ public class PhotoServlet extends HttpServlet {
 			if (fileName != null && !fileName.isEmpty()) {
 				response.setHeader("Expires", "Tue May 01 2016 01:00:00 GMT+0100 (CET)");
             	response.setContentType("image/jpeg");
-            	PhotoData photoData = photoService.getDataByFilename(fileName, PhotoDataEnum.THUMB_ONLY);
+            	PhotoData photoData = photoService.getDataByFilename(fileName, PhotoDataEnum.THUMB_ONLY, true);
             	if (photoData != null && photoData.getThumbdata() != null) {
             		response.getOutputStream().write(photoData.getThumbdata());
             	}
@@ -86,10 +86,11 @@ public class PhotoServlet extends HttpServlet {
 		}
 		else if ("data".equals(cmd)) {
 			String fileName = request.getParameter("filename");
+			boolean cache = Boolean.valueOf(request.getParameter("cache"));
 			if (fileName != null && !fileName.isEmpty()) {
 				response.setHeader("Expires", "Tue May 01 2016 01:00:00 GMT+0100 (CET)");
             	response.setContentType("image/jpeg");
-            	PhotoData photoData = photoService.getDataByFilename(fileName, PhotoDataEnum.PICTURE_ONLY);
+            	PhotoData photoData = photoService.getDataByFilename(fileName, PhotoDataEnum.PICTURE_ONLY, cache);
             	if (photoData != null && photoData.getData() != null) {
             		response.getOutputStream().write(photoData.getData());
             	}

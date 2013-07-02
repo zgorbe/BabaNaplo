@@ -1,10 +1,11 @@
 package com.zotyo.photos.pojo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class Photo {
+public class Photo implements Serializable {
 	private String id;
 	private String description;
 	private String filename;

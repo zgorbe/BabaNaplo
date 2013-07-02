@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Order;
@@ -51,7 +53,7 @@ public class PhotoDAOImpl implements PhotoDAO {
 	@Override
 	public List<Photo> findByCategory(String category) {
 		Query query = new Query(where("category").is(category));
-		query.sort().on("createdate", Order.DESCENDING);
+		query.with(new Sort(Direction.DESC, "createdate"));
 		List<Photo> photos = mongoTemplate.find(query, Photo.class);
 		return photos;
 	}
@@ -59,8 +61,7 @@ public class PhotoDAOImpl implements PhotoDAO {
 	@Override
 	public List<Photo> findLatestsByCategory(String category, int count) {
 		Query query = new Query(where("category").is(category));
-		query.sort().on("createdate", Order.DESCENDING);
-		query.limit(count);
+		query.limit(count).with(new Sort(Direction.DESC, "createdate"));
 		List<Photo> photos = mongoTemplate.find(query, Photo.class);
 		return photos;
 	}
@@ -68,7 +69,7 @@ public class PhotoDAOImpl implements PhotoDAO {
 	@Override
 	public List<PhotoData> getAllThumbsByCategory(String category) {
 		Query query = new Query(where("category").is(category));
-		query.sort().on("createdate", Order.DESCENDING);
+		query.with(new Sort(Direction.DESC, "createdate"));		
 		List<Photo> photos = mongoTemplate.find(query, Photo.class);
 		List<String> data_ids = new ArrayList<String>();
 		for (Photo p : photos) {
