@@ -516,7 +516,8 @@ $(c).html(b)
 $(".isotope_item").each(function(a,c){var b=$(c).html().replace(/:\)/g,'<img src="/images/smiley.png" alt=":-)" />');
 $(c).html(b)
 })
-},initNavbar:function(d){$("ul.nav > li.dropdown").on("click","a",function(){d.trigger("dropDownMenuChanged")
+},initNavbar:function(d){$("ul.nav li.dropdown").hover(function(){$(this).find(".dropdown-menu").stop(true,true).delay(50).fadeIn()
+},function(){$(this).removeClass("active").find(".dropdown-menu").stop(true,true).delay(50).fadeOut()
 });
 $("#buttonSearch").on("click",function(){var e=$("#inputSearch").val();
 if(e.length<2){var f=$("#inputSearch");
