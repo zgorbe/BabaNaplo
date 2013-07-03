@@ -230,3 +230,7 @@ div.accordion-heading a.accordion-toggle {
 	margin-top: 8px;
 	*display: inline;
 }
+
+a.brand:hover {
+	color: #0088cc;
+}

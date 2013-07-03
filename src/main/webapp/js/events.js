@@ -209,8 +209,12 @@ var Events = (function() {
 		},
 		initNavbar: function(app) {
 			// init dropdown menu..
-			$('ul.nav > li.dropdown').on('click', 'a', function() {
-					app.trigger('dropDownMenuChanged');
+			$('ul.nav li.dropdown').hover(function() {
+				  $(this).find('.dropdown-menu').stop(true, true).delay(50).fadeIn();
+			}, function() {
+				  $(this)
+				  	.removeClass('active')
+				  	.find('.dropdown-menu').stop(true, true).delay(50).fadeOut();
 			});
 			
 			// init search...
