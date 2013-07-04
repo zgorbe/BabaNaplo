@@ -534,7 +534,10 @@ a.tooltip({placement:"bottom",title:c+" napon "+b+" esemény van a naplóban."})
 },search:function(b,a){b.load("/json/events/search/"+a,b.loadOptions).then(function(c){$.each(c,function(d,e){if(!e.inited){Events.initEvent(e)
 }});
 return c
-}).then(function(d){var c={items:d,searchTerm:a};
+}).then(function(d){var e=new Date();
+var f={y:e.getFullYear(),m:(e.getMonth()+1).toString()};
+if(f.m.length<2){f.m="0"+f.m
+}var c={items:d,searchTerm:a,date:f};
 b.render("/templates/search.hb",c).swap(b.$element()).then(function(){$("#inputSearch").val("");
 b.$element().highlight(a,true);
 Events.smiley()

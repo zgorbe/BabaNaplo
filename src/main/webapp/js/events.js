@@ -250,9 +250,18 @@ var Events = (function() {
 				return items;
 	    	})
 	    	.then(function(items) {
+	    		var now = new Date();
+				var dateParam = {
+						y: now.getFullYear(), 
+						m: (now.getMonth() + 1).toString()
+				};
+				if (dateParam.m.length < 2) {
+					dateParam.m = '0' + dateParam.m;
+				}
 	    		var renderOptions = {
     				items: items, 
-    				searchTerm: searchTerm
+    				searchTerm: searchTerm,
+    				date: dateParam
 	    		};
 				context.render('/templates/search.hb', renderOptions)
 				.swap(context.$element()).then(function() {
