@@ -39,8 +39,8 @@ $(function(){
     		Events.getLatests(context);
 		});
 		
-		this.get('#/events/:year/:month', function(context) {
-			Events.getAll(context, this.params['year'], this.params['month']);
+		this.get('#/days/:year/:month', function(context) {
+			Days.getAll(context, this.params['year'], this.params['month']);
 		});
 		
 		this.get('#/newday', function(context) {

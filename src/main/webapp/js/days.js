@@ -2,6 +2,13 @@ var Days = (function() {
 	var dayMonthCache;	
 	
 	return {
+		initDay: function(day) {
+			var date = new Date(day.theDay);
+			day.year =  date.getFullYear();
+			day.month = date.getMonth() + 1;
+			day.day = date.getDate();
+			day.inited = true;
+		},
 		newDay: function(context) {
 			context.render('/templates/newday.hb')
 				.swap(context.$element())
@@ -72,6 +79,50 @@ var Days = (function() {
 					}
 				}
 			});
+		},
+		getAll: function(context, year, month) {
+			context.load('/json/days/' + year + '/' + month, context.loadOptions)
+		    	.then(function(items) {
+					$.each(items, function(i, day) {
+						if (!day.inited) {
+							Days.initDay(day);
+						}
+						$.each(day.eventsOfTheDay, function(j, event) {
+							if (!event.inited) {
+								Events.initEvent(event);
+							}						
+						}); 
+					});
+					return items;
+		    	})
+		    	.then(function(items) {
+		    		context.render('/templates/allevents.hb', {days: items})
+		    			.swap(context.$element())
+		    			.then(function() {
+							Events.smiley();
+							$('#prependedDropdownButton').val(year);
+							var monthStr = $('ul#monthFilter > li > a[data-filter="' + month + '"]').html();
+							$('#appendedDropdownButton').val(monthStr);
+
+				       		$('ul.filter').on('click', 'a', function() { 
+				       			var filterValue = $(this).data('filter').toString();
+				       			var filterYear = '';
+				       			var filterMonth = '';
+				       			if (filterValue.length > 2) {
+				       				filterYear = filterValue;
+				       				var filterMonthStr = $('#appendedDropdownButton').val();
+				       				filterMonth = $('ul#monthFilter > li > a:contains(' + filterMonthStr + ')').data('filter');
+				       				$('#prependedDropdownButton').val(filterValue);
+				       			} else {
+				       				filterYear = $('#prependedDropdownButton').val();
+				       				filterMonth = filterValue; 
+				       				$('#appendedDropdownButton').val($(this).html());
+				       				$('#appendedDropdownButton').data('filter', filterValue);
+				       			}
+				       			context.app.setLocation('#/days/' + filterYear + '/' + filterMonth);
+				       		});
+		    			});
+		    	});
 		},
 		updateCalendar: function(dates) {
 			if (!dates && dayMonthCache) {

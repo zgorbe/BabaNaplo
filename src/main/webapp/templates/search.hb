@@ -18,6 +18,6 @@
 	</div>
 	{{/each}}
 	<div class="row span12 extra-padding">
-		<a href="#/events/{{date.y}}/{{date.m}}" class="more-events-link">Összes esemény</a>
+		<a href="#/days/{{date.y}}/{{date.m}}" class="more-events-link">Összes esemény</a>
 	</div>
 </div>

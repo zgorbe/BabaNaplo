@@ -150,53 +150,6 @@ var Events = (function() {
 					});
 		    	});
 		},
-		getAll: function(context, year, month) {
-			context.load('/json/events', context.loadOptions)
-		    	.then(function(items) {
-					$.each(items, function(i, item) {
-						if (!item.inited) {
-							item.isotopeFilter = 'm' + $.format.date(item.startTime, 'yyyy-MM');
-							Events.initEvent(item);
-						}
-					});
-					return items;
-		    	})
-		    	.then(function(items) {
-		    		context.render('/templates/allevents.hb', {events: items})
-		    			.swap(context.$element())
-		    			.then(function() {
-		    				var $container = $('#isotope_container');
-							$container.isotope({
-				       			itemSelector: '.isotope_item',
-				       			filter: '.m' + year + '-' + month,
-				       			sortBy : 'original-order', 
-				       			sortAscending : false
-				       		});
-							Events.smiley();
-							$('#prependedDropdownButton').val(year);
-							var monthStr = $('ul#monthFilter > li > a[data-filter="' + month + '"]').html();
-							$('#appendedDropdownButton').val(monthStr);
-
-				       		$('ul.filter').on('click', 'a', function() { 
-				       			var filterValue = $(this).data('filter').toString();
-				       			var filterYear = '';
-				       			var filterMonth = '';
-				       			if (filterValue.length > 2) {
-				       				filterYear = filterValue;
-				       				var filterMonthStr = $('#appendedDropdownButton').val();
-				       				filterMonth = $('ul#monthFilter > li > a:contains(' + filterMonthStr + ')').data('filter');
-				       				$('#prependedDropdownButton').val(filterValue);
-				       			} else {
-				       				filterYear = $('#prependedDropdownButton').val();
-				       				filterMonth = filterValue; 
-				       				$('#appendedDropdownButton').val($(this).html());
-				       				$('#appendedDropdownButton').data('filter', filterValue);
-				       			}
-				       			context.app.setLocation('#/events/' + filterYear + '/' + filterMonth);
-				       		});
-		    			});
-		    	});
-		},
 		smiley: function() {
 			$('div.row').each(function(index, element) {
 				var tmp = $(element).html().replace(/:\)/g, '<img src="/images/smiley.png" alt=":-)" />');

@@ -234,3 +234,18 @@ div.accordion-heading a.accordion-toggle {
 a.brand:hover {
 	color: #0088cc;
 }
+
+div.alldays > div.row-fluid {
+	margin: 10px 0px;
+}
+div.row-fluid > div.span1 {
+	text-align: center;
+	color: rgb(228, 229, 235); 
+	color: rgba(228, 229, 235, .75);
+	background-color: rgb(14, 32, 59); 
+	background-color: rgba(14, 32, 59, .5);
+	-webkit-box-shadow: 0 0 10px rgba(14, 32, 59, .25);
+	-moz-box-shadow: 0 0 10px rgba(14, 32, 59, .25);
+	box-shadow: 0 0 10px rgba(14, 32, 59, .25);
+	padding: 5px;
+}

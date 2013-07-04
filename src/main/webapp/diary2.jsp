@@ -36,7 +36,7 @@
 					<div class="nav-collapse collapse">
 						<ul class="nav">
 							<li id="liAllEvents" data-day-count="<c:out value="${countsBean.dayCount}" />" data-event-count="<c:out value="${countsBean.eventCount}" />">
-								<a href="#/events/2011/09"><i class="icon-book"></i> Összes esemény <sup><span id="eventCount" class="badge"><c:out value="${countsBean.eventCount}" /></span></sup></a>
+								<a href="#/days/2011/09"><i class="icon-book"></i> Összes esemény <sup><span id="eventCount" class="badge"><c:out value="${countsBean.eventCount}" /></span></sup></a>
 							</li>
 							<li>
 								<a href="#/videos/<c:out value="${newestVideoId}" />"><i class="icon-facetime-video"></i> Videók <sup><span id="videoCount" class="badge"><c:out value="${countsBean.videoCount}" /></span></sup></a>

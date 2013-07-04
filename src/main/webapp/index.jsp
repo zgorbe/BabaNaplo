@@ -4,9 +4,9 @@
 	
 <%
 	Device currentDevice = DeviceUtils.getCurrentDevice(request);
-	if (currentDevice.isNormal()) {
-		response.sendRedirect("/naplo2/");
-	} else {
+	if (currentDevice.isMobile()) {
 		response.sendRedirect("/m/naplo");
+	} else {
+		response.sendRedirect("/naplo2/");
 	}
 %>

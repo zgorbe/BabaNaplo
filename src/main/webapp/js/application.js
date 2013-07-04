@@ -391,7 +391,12 @@ if(g.data("typeahead")){return
 })
 }(window.jQuery);
 var Days=(function(){var a;
-return{newDay:function(b){b.render("/templates/newday.hb").swap(b.$element()).then(function(){b.app.trigger("initCalendar")
+return{initDay:function(b){var c=new Date(b.theDay);
+b.year=c.getFullYear();
+b.month=c.getMonth()+1;
+b.day=c.getDate();
+b.inited=true
+},newDay:function(b){b.render("/templates/newday.hb").swap(b.$element()).then(function(){b.app.trigger("initCalendar")
 }).then(function(){$("#inputTheDay").val($("#datepicker1").val());
 $("#inputTheDay").datepicker();
 $("#inputStartDate").datetimepicker();
@@ -418,6 +423,30 @@ c.app.trigger("removeSelectedFromLatests",g)
 a=d.dates;
 Days.updateCalendar(d.dates)
 }}})
+},getAll:function(b,c,d){b.load("/json/days/"+c+"/"+d,b.loadOptions).then(function(e){$.each(e,function(g,f){if(!f.inited){Days.initDay(f)
+}$.each(f.eventsOfTheDay,function(h,i){if(!i.inited){Events.initEvent(i)
+}})
+});
+return e
+}).then(function(e){b.render("/templates/allevents.hb",{days:e}).swap(b.$element()).then(function(){Events.smiley();
+$("#prependedDropdownButton").val(c);
+var f=$('ul#monthFilter > li > a[data-filter="'+d+'"]').html();
+$("#appendedDropdownButton").val(f);
+$("ul.filter").on("click","a",function(){var j=$(this).data("filter").toString();
+var i="";
+var g="";
+if(j.length>2){i=j;
+var h=$("#appendedDropdownButton").val();
+g=$("ul#monthFilter > li > a:contains("+h+")").data("filter");
+$("#prependedDropdownButton").val(j)
+}else{i=$("#prependedDropdownButton").val();
+g=j;
+$("#appendedDropdownButton").val($(this).html());
+$("#appendedDropdownButton").data("filter",j)
+}b.app.setLocation("#/days/"+i+"/"+g)
+})
+})
+})
 },updateCalendar:function(b){if(!b&&a){b=a
 }$("#datepicker1 tr").each(function(){$.each(this.cells,function(){var c=$(this);
 var e=$(this).find("a");
@@ -483,31 +512,6 @@ if(d.eventIds.length>0){b.app.trigger("removeSelectedFromLatests",d.eventIds)
 }}else{var h=$("#datepicker1").datepicker("getDate");
 b.app.trigger("selectedDayChanged",{date:$.format.date(h,"yyyy.MM.dd")})
 }$("#myCarousel").carousel({interval:5000,cycle:true})
-})
-})
-},getAll:function(a,b,c){a.load("/json/events",a.loadOptions).then(function(d){$.each(d,function(e,f){if(!f.inited){f.isotopeFilter="m"+$.format.date(f.startTime,"yyyy-MM");
-Events.initEvent(f)
-}});
-return d
-}).then(function(d){a.render("/templates/allevents.hb",{events:d}).swap(a.$element()).then(function(){var f=$("#isotope_container");
-f.isotope({itemSelector:".isotope_item",filter:".m"+b+"-"+c,sortBy:"original-order",sortAscending:false});
-Events.smiley();
-$("#prependedDropdownButton").val(b);
-var e=$('ul#monthFilter > li > a[data-filter="'+c+'"]').html();
-$("#appendedDropdownButton").val(e);
-$("ul.filter").on("click","a",function(){var j=$(this).data("filter").toString();
-var i="";
-var g="";
-if(j.length>2){i=j;
-var h=$("#appendedDropdownButton").val();
-g=$("ul#monthFilter > li > a:contains("+h+")").data("filter");
-$("#prependedDropdownButton").val(j)
-}else{i=$("#prependedDropdownButton").val();
-g=j;
-$("#appendedDropdownButton").val($(this).html());
-$("#appendedDropdownButton").data("filter",j)
-}a.app.setLocation("#/events/"+i+"/"+g)
-})
 })
 })
 },smiley:function(){$("div.row").each(function(a,c){var b=$(c).html().replace(/:\)/g,'<img src="/images/smiley.png" alt=":-)" />');
@@ -2605,7 +2609,7 @@ e.app.trigger("dropDownMenuChanged")
 });
 this.get("#/",function(c){Events.getLatests(c)
 });
-this.get("#/events/:year/:month",function(c){Events.getAll(c,this.params.year,this.params.month)
+this.get("#/days/:year/:month",function(c){Days.getAll(c,this.params.year,this.params.month)
 });
 this.get("#/newday",function(c){Days.newDay(c)
 });

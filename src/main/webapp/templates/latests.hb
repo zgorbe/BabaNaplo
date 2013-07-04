@@ -50,7 +50,7 @@
 		</div>
 		{{/each}}
 		<div class="extra-padding">
-			<a href="#/events/{{date.y}}/{{date.m}}" class="more-events-link">További események</a>
+			<a href="#/days/{{date.y}}/{{date.m}}" class="more-events-link">További események</a>
 		</div>
 	</div>
 	<div class="span6">

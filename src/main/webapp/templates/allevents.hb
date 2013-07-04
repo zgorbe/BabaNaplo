@@ -39,14 +39,24 @@
 		</div>
 	</div>
 </div>
-<div id="isotope_container">
-	{{#each events}}
-	<div class="isotope_item {{this.isotopeFilter}}">
-		<b>{{this.theDay}}</b>
-		{{this.description}}
-		{{#if this.hasDuration}}
-			<br><small>Időtartam (óra:perc): {{this.duration}}</small>
-		{{/if}}
+<div class="alldays">
+{{#each days}}
+	<div class="row-fluid">
+		<div class="span1">
+			<h3>{{this.day}}</h3>
+			<em>{{this.year}}.{{this.month}}</em> 
+		</div>
+		<div class="span6">
+		{{#each eventsOfTheDay}}
+			<div>
+				{{this.description}}
+				{{#if this.hasDuration}}
+					<br><small>Időtartam (óra:perc): {{this.duration}}</small>
+				{{/if}}
+			</div>
+			<br>
+		{{/each}}
+		</div>
 	</div>
-	{{/each}}
+{{/each}}
 </div>
