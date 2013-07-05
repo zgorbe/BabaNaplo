@@ -283,8 +283,7 @@ div.date-box > p {
 div.date-box > div.ems {
 	background-color: rgb(14, 32, 59); 
 	background-color: rgba(14, 32, 59, .5);
-	line-height: 20px;
-	margin-top: 5px;
+	color: white;
 }
 
 div.event-item {
