@@ -194,6 +194,10 @@ var Events = (function() {
 				$.each(items, function(i, item) {
 					if (!item.inited) {
 						Events.initEvent(item);
+						var date = new Date(item.startTime);
+						item.year =  date.getFullYear();
+						item.month = $.datepicker._defaults.monthNamesShort[date.getMonth()];
+						item.day = date.getDate();
 					}
 				});
 				return items;

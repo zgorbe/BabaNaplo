@@ -532,7 +532,11 @@ var a=$("li#liAllEvents");
 var c=a.data("day-count");
 var b=a.data("event-count");
 a.tooltip({placement:"bottom",title:c+" napon "+b+" esemény van a naplóban."})
-},search:function(b,a){b.load("/json/events/search/"+a,b.loadOptions).then(function(c){$.each(c,function(d,e){if(!e.inited){Events.initEvent(e)
+},search:function(b,a){b.load("/json/events/search/"+a,b.loadOptions).then(function(c){$.each(c,function(e,f){if(!f.inited){Events.initEvent(f);
+var d=new Date(f.startTime);
+f.year=d.getFullYear();
+f.month=$.datepicker._defaults.monthNamesShort[d.getMonth()];
+f.day=d.getDate()
 }});
 return c
 }).then(function(d){var e=new Date();
