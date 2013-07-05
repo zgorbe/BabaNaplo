@@ -235,17 +235,39 @@ a.brand:hover {
 	color: #0088cc;
 }
 
-div.alldays > div.row-fluid {
-	margin: 10px 0px;
+div.alldays {
+	padding-top: 20px;
 }
-div.row-fluid > div.span1 {
+
+div.date-box {
 	text-align: center;
-	color: rgb(228, 229, 235); 
-	color: rgba(228, 229, 235, .75);
-	background-color: rgb(14, 32, 59); 
-	background-color: rgba(14, 32, 59, .5);
+	color: rgb(14, 32, 59); 
+	color: rgba(14, 32, 59, .75);
 	-webkit-box-shadow: 0 0 10px rgba(14, 32, 59, .25);
 	-moz-box-shadow: 0 0 10px rgba(14, 32, 59, .25);
 	box-shadow: 0 0 10px rgba(14, 32, 59, .25);
-	padding: 5px;
+	padding: 5px 0px 5px 0px;
+	margin: 10px 0px 10px 0px;
+	float: left;
+	width: 70px;
+}
+
+div.event-box {
+	border-bottom: 1px solid #EEEEEE;
+	margin-left: 90px;
+	min-height: 100px;
+	padding-top: 10px;
+	text-align: justify;
+}
+
+div.date-box > p {
+	font-size: 36px;
+	font-weight: bold;
+	padding: 10px 0px 10px 0px;
+}
+div.date-box > div.ems {
+	background-color: rgb(14, 32, 59); 
+	background-color: rgba(14, 32, 59, .5);
+	line-height: 20px;
+	margin-top: 5px;
 }

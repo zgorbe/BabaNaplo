@@ -393,7 +393,7 @@ if(g.data("typeahead")){return
 var Days=(function(){var a;
 return{initDay:function(b){var c=new Date(b.theDay);
 b.year=c.getFullYear();
-b.month=c.getMonth()+1;
+b.month=$.datepicker._defaults.monthNamesShort[c.getMonth()];
 b.day=c.getDate();
 b.inited=true
 },newDay:function(b){b.render("/templates/newday.hb").swap(b.$element()).then(function(){b.app.trigger("initCalendar")

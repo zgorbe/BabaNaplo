@@ -39,14 +39,18 @@
 		</div>
 	</div>
 </div>
-<div class="alldays">
+<div class="alldays clearfix">
 {{#each days}}
-	<div class="row-fluid">
-		<div class="span1">
-			<h3>{{this.day}}</h3>
-			<em>{{this.year}}.{{this.month}}</em> 
+	<div class="row span8">
+		<div class="date-box">
+			<p>{{this.day}}</p>
+			<div class="ems">
+				<em>{{this.month}}</em>
+				<br>
+				<em>{{this.year}}</em>
+			</div> 
 		</div>
-		<div class="span6">
+		<div class="event-box">
 		{{#each eventsOfTheDay}}
 			<div>
 				{{this.description}}

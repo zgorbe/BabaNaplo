@@ -5,7 +5,7 @@ var Days = (function() {
 		initDay: function(day) {
 			var date = new Date(day.theDay);
 			day.year =  date.getFullYear();
-			day.month = date.getMonth() + 1;
+			day.month = $.datepicker._defaults.monthNamesShort[date.getMonth()];
 			day.day = date.getDate();
 			day.inited = true;
 		},
