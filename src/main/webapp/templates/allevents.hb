@@ -1,5 +1,6 @@
-<div class="row">
-	<div class="span12">
+<div class="alldays clearfix">
+	<div class="row span8">
+		<div class="day-box">
 		<div class="input-prepend">
 		  <div class="btn-group">
 		    <button class="btn dropdown-toggle" data-toggle="dropdown">
@@ -37,30 +38,32 @@
 		    </ul>
 		  </div>
 		</div>
+		</div>
 	</div>
-</div>
-<div class="alldays clearfix">
-{{#each days}}
+
+	{{#each days}}
 	<div class="row span8">
-		<div class="date-box">
-			<p>{{this.day}}</p>
-			<div class="ems">
-				<em>{{this.month}}</em>
-				<br>
-				<em>{{this.year}}</em>
-			</div> 
-		</div>
-		<div class="event-box">
-		{{#each eventsOfTheDay}}
-			<div>
-				{{this.description}}
-				{{#if this.hasDuration}}
-					<br><small>Időtartam (óra:perc): {{this.duration}}</small>
-				{{/if}}
+		<div class="day-box">
+			<div class="date-box">
+				<p>{{this.day}}</p>
+				<div class="ems">
+					<em>{{this.month}}</em>
+					<br>
+					<em>{{this.year}}</em>
+				</div> 
 			</div>
-			<br>
-		{{/each}}
+			<div class="event-box">
+			<h4>{{this.descriptionOfTheDay}}</h4>
+			{{#each eventsOfTheDay}}
+				<div class="event-item">
+					{{this.description}}
+					{{#if this.hasDuration}}
+						<br><small>Időtartam (óra:perc): {{this.duration}}</small>
+					{{/if}}
+				</div>
+			{{/each}}
+			</div>
 		</div>
 	</div>
-{{/each}}
+	{{/each}}
 </div>

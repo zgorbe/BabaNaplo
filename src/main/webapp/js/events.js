@@ -155,10 +155,6 @@ var Events = (function() {
 				var tmp = $(element).html().replace(/:\)/g, '<img src="/images/smiley.png" alt=":-)" />');
 				$(element).html(tmp);
 			});
-		    $('.isotope_item').each(function(index, element) {
-		    	var tmp = $(element).html().replace(/:\)/g, '<img src="/images/smiley.png" alt=":-)" />');
-		    	$(element).html(tmp);
-			});
 		},
 		initNavbar: function(app) {
 			// init dropdown menu..

@@ -239,8 +239,19 @@ div.alldays {
 	padding-top: 20px;
 }
 
+div.day-box {
+	background-color: #DEE1E4;
+	border-bottom: 1px solid #EEEEEE;
+	padding: 10px 20px 20px 20px;
+	-webkit-box-shadow: 0 0 10px rgba(4, 75, 204, .45);
+	-moz-box-shadow: 0 0 10px rgba(4, 75, 204, .45);
+	box-shadow: 0 0 10px rgba(4, 75, 204, .45);
+}
+
 div.date-box {
 	text-align: center;
+	background-color: rgb(255, 255, 255);
+	background-color: rgba(255, 255, 255, 0.75);
 	color: rgb(14, 32, 59); 
 	color: rgba(14, 32, 59, .75);
 	-webkit-box-shadow: 0 0 10px rgba(14, 32, 59, .25);
@@ -253,11 +264,13 @@ div.date-box {
 }
 
 div.event-box {
-	border-bottom: 1px solid #EEEEEE;
 	margin-left: 90px;
 	min-height: 100px;
-	padding-top: 10px;
 	text-align: justify;
+}
+
+div.event-box > h4 {
+	color: #0088cc;
 }
 
 div.date-box > p {
@@ -270,4 +283,8 @@ div.date-box > div.ems {
 	background-color: rgba(14, 32, 59, .5);
 	line-height: 20px;
 	margin-top: 5px;
+}
+
+div.event-item {
+	padding-top: 10px;
 }
