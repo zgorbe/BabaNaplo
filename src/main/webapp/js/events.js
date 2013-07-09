@@ -2,6 +2,7 @@ var Events = (function() {
 	
 	return {
 		initEvent: function(event) {
+			var date = new Date(event.startTime);
 			event.theDay = $.format.date(event.startTime, 'yyyy.MM.dd');
 			event.startTime = $.format.date(event.startTime, 'yyyy.MM.dd HH:mm');
 			event.hasDuration = (event.duration > 0) ? true : false;
@@ -11,6 +12,20 @@ var Events = (function() {
 				var hh = (hour < 10) ? '0' + hour : '' + hour;
 				var mm = (minute < 10) ? '0' + minute : '' + minute;
 				event.duration = hh + ':' + mm;
+			}
+			event.year =  date.getFullYear();
+			event.month = $.datepicker._defaults.monthNamesShort[date.getMonth()];
+			event.day = date.getDate();
+			if (date.getHours() > 0 || date.getMinutes() > 0) { 
+				event.hours = date.getHours().toString();
+				event.minutes = date.getMinutes().toString();
+				if (event.hours.length < 2) {
+					event.hours = '0' + event.hours;
+				}
+				if (event.minutes.length < 2) {
+					event.minutes = '0' + event.minutes;
+				}
+				event.hasTimePart = true;
 			}
 			event.inited = true;
 		},

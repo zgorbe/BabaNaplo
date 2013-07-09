@@ -38,16 +38,27 @@
 	<div id="latest-events" class="span6">
 		<h3>Legfrissebb események</h3>	
 		{{#each items}}
-		<div class="event" data-eventid="{{this.id}}">
-		    <p>{{this.description}}</p>
-		    <p>
-		    	<small>{{this.startTime}}</small>
-				{{#if this.hasDuration}}
-			    <br/><small>Időtartam (óra:perc): {{this.duration}}</small>
-				{{/if}}
-			</p>
-			<hr>
-		</div>
+			<div class="day-box">
+				<div class="date-box">
+					<p>{{this.day}}</p>
+					<div class="ems">
+						<em>{{this.month}}</em>
+						<br>
+						<em>{{this.year}}</em>
+					</div> 
+				</div>
+				<div class="event-box">
+					<div class="event-item">
+							{{#if this.hasTimePart}}
+								<b>{{this.hours}}:{{this.minutes}}</b>
+							{{/if}}
+							{{this.description}}
+							{{#if this.hasDuration}}
+								<br><small>Időtartam (óra:perc): {{this.duration}}</small>
+							{{/if}}
+					</div>
+				</div>
+			</div>
 		{{/each}}
 		<div class="extra-padding">
 			<a href="#/days/{{date.y}}/{{date.m}}" class="more-events-link">További események</a>

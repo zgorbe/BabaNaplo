@@ -457,15 +457,24 @@ if(d){$.each(b,function(f,g){if(g==d){e.addClass("ui-state-has-event")
 })
 }}
 })();
-var Events=(function(){return{initEvent:function(c){c.theDay=$.format.date(c.startTime,"yyyy.MM.dd");
-c.startTime=$.format.date(c.startTime,"yyyy.MM.dd HH:mm");
-c.hasDuration=(c.duration>0)?true:false;
-if(c.hasDuration){var a=Math.floor(c.duration/(1000*60*60));
-var e=Math.floor((c.duration-(a*1000*60*60))/(1000*60));
-var b=(a<10)?"0"+a:""+a;
-var d=(e<10)?"0"+e:""+e;
-c.duration=b+":"+d
-}c.inited=true
+var Events=(function(){return{initEvent:function(d){var b=new Date(d.startTime);
+d.theDay=$.format.date(d.startTime,"yyyy.MM.dd");
+d.startTime=$.format.date(d.startTime,"yyyy.MM.dd HH:mm");
+d.hasDuration=(d.duration>0)?true:false;
+if(d.hasDuration){var a=Math.floor(d.duration/(1000*60*60));
+var f=Math.floor((d.duration-(a*1000*60*60))/(1000*60));
+var c=(a<10)?"0"+a:""+a;
+var e=(f<10)?"0"+f:""+f;
+d.duration=c+":"+e
+}d.year=b.getFullYear();
+d.month=$.datepicker._defaults.monthNamesShort[b.getMonth()];
+d.day=b.getDate();
+if(b.getHours()>0||b.getMinutes()>0){d.hours=b.getHours().toString();
+d.minutes=b.getMinutes().toString();
+if(d.hours.length<2){d.hours="0"+d.hours
+}if(d.minutes.length<2){d.minutes="0"+d.minutes
+}d.hasTimePart=true
+}d.inited=true
 },newEvent:function(a){a.render("/templates/newevent.hb").swap(a.$element()).then(function(){a.app.trigger("initCalendar")
 }).then(function(){$("#inputTheDay").val($("#datepicker1").val());
 $("#inputStartDate").datetimepicker();
