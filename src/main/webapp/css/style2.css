@@ -161,6 +161,9 @@ a.more-events-link {
 	height: 0;
 	margin-bottom: 16px;
 	overflow: hidden;
+	-webkit-box-shadow: 0 0 10px rgba(4, 75, 204, .45);
+	-moz-box-shadow: 0 0 10px rgba(4, 75, 204, .45);
+	box-shadow: 0 0 10px rgba(4, 75, 204, .45);
 }
 .flex-video.widescreen { padding-bottom: 57.25%; }
 .flex-video.vimeo { padding-top: 0; }
@@ -189,6 +192,9 @@ div.carousel, div.hasDatepicker {
 div.first-row {
 	background-color: #F0F0F0;
 	margin-bottom: 30px;
+	-webkit-box-shadow: 0 0 10px rgba(4, 75, 204, .45);
+	-moz-box-shadow: 0 0 10px rgba(4, 75, 204, .45);
+	box-shadow: 0 0 10px rgba(4, 75, 204, .45);
 }
 
 div.event {
@@ -255,9 +261,9 @@ div.date-box {
 	background-color: rgba(255, 255, 255, 0.75);
 	color: rgb(14, 32, 59); 
 	color: rgba(14, 32, 59, .75);
-	-webkit-box-shadow: 0 0 10px rgba(14, 32, 59, .25);
-	-moz-box-shadow: 0 0 10px rgba(14, 32, 59, .25);
-	box-shadow: 0 0 10px rgba(14, 32, 59, .25);
+	-webkit-box-shadow: 0 0 5px rgba(14, 32, 59, .25);
+	-moz-box-shadow: 0 0 5px rgba(14, 32, 59, .25);
+	box-shadow: 0 0 5px rgba(14, 32, 59, .25);
 	padding: 5px 0px 5px 0px;
 	margin: 10px 0px 10px 0px;
 	float: left;
@@ -287,4 +293,12 @@ div.date-box > div.ems {
 
 div.event-item {
 	padding-top: 10px;
+}
+
+div.accordion-group {
+	border: none;
+	-webkit-box-shadow: 0 0 10px rgba(4, 75, 204, .45);
+	-moz-box-shadow: 0 0 10px rgba(4, 75, 204, .45);
+	box-shadow: 0 0 10px rgba(4, 75, 204, .45);
+	padding: 5px;
 }
