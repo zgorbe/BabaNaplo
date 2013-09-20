@@ -242,3 +242,21 @@ var ImagePreview = (function(){
 		}
 	};
 })();
+
+var SiteUtils = (function() {
+	return {
+		initScrollToTop: function() {
+		 	$(window).scroll(function() {
+	        	if ($(this).scrollTop() > 500) {
+	        		$('a.back-top-link').fadeIn();
+	        	} else { 
+	        		$('a.back-top-link').fadeOut();
+	        	}
+	        });
+	        $('a.back-top-link').on('click', function() {
+	        	$('body,html').animate({scrollTop:0},800);
+	        	return false;
+	        });
+		}
+	};
+})();

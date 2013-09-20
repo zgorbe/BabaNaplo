@@ -2598,6 +2598,14 @@ $("#dialog").dialog({modal:true,width:945,height:740,resizable:false,title:c+" -
 },fixMissingX:function(){$("button.ui-dialog-titlebar-close").html('<span class="ui-icon ui-icon-closethick">close</span>')
 }}
 })();
+var SiteUtils=(function(){return{initScrollToTop:function(){$(window).scroll(function(){if($(this).scrollTop()>500){$("a.back-top-link").fadeIn()
+}else{$("a.back-top-link").fadeOut()
+}});
+$("a.back-top-link").on("click",function(){$("body,html").animate({scrollTop:0},800);
+return false
+})
+}}
+})();
 $(function(){Handlebars.registerHelper("ifCond",function(e,d,c){if(e===d){return c.fn(this)
 }return c.inverse(this)
 });
@@ -2678,8 +2686,8 @@ $.each(c,function(e,g){d.find("div[data-eventid="+g+"]").hide()
 })
 })
 });
-$(function(){b.run("#/")
-});
+b.run("#/");
+SiteUtils.initScrollToTop();
 Events.initNavbar(b)
 });
 (function(b,a){(function(c){typeof define=="function"&&define.amd?define(["jquery"],c):b.sammy=a.Sammy=c(b)

@@ -160,10 +160,9 @@ $(function(){
 		});
     });
 	
-	$(function() {
-        app.run('#/');
-    });
-	
+
+    app.run('#/');
+    SiteUtils.initScrollToTop();
     Events.initNavbar(app);
     //Photos.initMainScoller();
 });

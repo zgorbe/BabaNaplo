@@ -302,3 +302,30 @@ div.accordion-group {
 	box-shadow: 0 0 5px rgba(4, 75, 204, .45);
 	padding: 5px;
 }
+
+a.back-top-link {
+	position: fixed;
+	left: 48%;
+	bottom: 30px;
+	z-index: 1000;
+	display: none;
+}
+
+a.back-top-link > span {
+	display: block;
+	background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA7CAMAAAAZzLmCAAAAaVBMVEX///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////9tAe1xAAAAInRSTlMAAwYJDxIVGBskLTM2Qk5XWl1peIeWpbG9ydLb5Orw9vn8YnnlZwAAAOFJREFUSMftlMkSgjAQBYMrRhYVooK48P7/I11QCmOWGW5Wpc/Tp341QtjJMjGK5HpNxnirM3Be8b3FCQ9OC643rfCimvG8yRFvjhOWuEfPnuOVGFDSvR2+2FG9rP0W24waHhq0ITzD61CG0IXX8Q/hE16nmrq96AALh8gpKlhRLq+Ag8LubeFkQw2vYxvCb3jaEEzhKUMwh/cPwRbeNwR7eM8QFMgocnjHEDZg0Q8hvfHEW9p58gImF/n04gZsmliIeY0R1DOxXBvIh0e56cLySuRQlIxPHsQgBjGIQfwf8Q6ehaEZTfyFPQAAAABJRU5ErkJggg==") no-repeat scroll center center #AEBCD5;
+	border-radius: 15px;
+	-moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+	transition: all 1s ease 0s;
+	opacity: 0.4;
+	filter: alpha(opacity=40);
+	height: 90px;
+	width: 90px;
+}
+
+a.back-top-link > span:hover {
+	background-color: #0044EE;
+	opacity: 0.8;
+	filter: alpha(opacity=80);
+}
