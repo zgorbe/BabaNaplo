@@ -2681,7 +2681,7 @@ var c=new Date();
 b.trigger("selectedMonthChanged",{y:c.getFullYear(),m:c.getMonth()+1})
 });
 this.bind("removeSelectedFromLatests",function(f,c){var d=$("div#latest-events");
-d.find("div.event").show();
+d.find("div.day-box").show();
 $.each(c,function(e,g){d.find("div[data-eventid="+g+"]").hide()
 })
 })
