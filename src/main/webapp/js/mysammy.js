@@ -153,7 +153,7 @@ $(function(){
 		
 		this.bind('removeSelectedFromLatests', function(e, eventIds) {
 			var $events = $('div#latest-events');
-			$events.find('div.event').show();
+			$events.find('div.day-box').show();
 			$.each(eventIds, function(i, item) {
 				$events.find('div[data-eventid=' + item + ']').hide();
 			});

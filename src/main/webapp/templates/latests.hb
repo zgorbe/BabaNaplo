@@ -38,7 +38,7 @@
 	<div id="latest-events" class="span6">
 		<h3>Legfrissebb események</h3>	
 		{{#each items}}
-			<div class="day-box">
+			<div class="day-box" data-eventid="{{this.id}}">
 				<div class="date-box">
 					<p>{{this.day}}</p>
 					<div class="ems">
