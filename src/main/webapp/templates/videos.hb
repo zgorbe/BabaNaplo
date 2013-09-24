@@ -6,7 +6,7 @@
 	<div class="row span10">
 		<p id="video_text">{{video.createDate}}, {{video.description}}</p>
 		<div class="flex-video widescreen">
-			<iframe id="video_frame" onload="Videos.initThumbnails();" src="http://www.youtube.com/embed/{{video.videoId}}?wmode=transparent" allowfullscreen="1" frameborder="1"></iframe>
+			<iframe id="video_frame" src="http://www.youtube.com/embed/{{video.videoId}}?wmode=transparent" allowfullscreen="1" frameborder="1"></iframe>
 	  	</div>
 		<div id="tS2" class="jThumbnailScroller" style="height: 118px;">
 			<div class="jTscrollerContainer">

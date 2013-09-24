@@ -2554,7 +2554,8 @@ f.inited=true
 }if(f.videoId==b){d=f
 }});
 a.render("/templates/videos.hb",{items:c,video:d}).swap(a.$element()).then(function(){$(".video_thumbnails").on("click","a",function(){a.app.setLocation("#/videos/"+$(this).data("video-id"))
-})
+});
+Videos.initThumbnails()
 })
 })
 }}
