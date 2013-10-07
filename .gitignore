@@ -3,5 +3,5 @@
 .project
 .settings
 .springBeans
-target
-src/main/webapp/js/min/
+*/target/*
+naplo-webapp/src/main/webapp/js/min/
