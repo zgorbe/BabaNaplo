@@ -79,7 +79,7 @@ public class DiaryImpl /* extends SpringBeanAutowiringSupport */ implements Diar
 	}
 	
 	
-	//@PostConstruct
+	@PostConstruct
 	private void getDAOBean() {
 		SpringBeanAutowiringSupport.processInjectionBasedOnCurrentContext(this);	
 	}	
