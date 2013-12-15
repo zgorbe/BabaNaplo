@@ -329,3 +329,10 @@ a.back-top-link > span:hover {
 	opacity: 0.8;
 	filter: alpha(opacity=80);
 }
+
+@media screen and ( max-width: 980px ) {
+	.span8 {
+		width: 100%;
+		margin-left: 0px;
+	}
+}
