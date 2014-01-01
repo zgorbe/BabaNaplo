@@ -23,6 +23,7 @@
 					<option value="2011">2011</option>
 					<option value="2012">2012</option>
 					<option value="2013">2013</option>
+					<option value="2014">2014</option>
 				</select>
 				<select id="monthsFilter" name="monthsFilter" onchange="datefilter();">
 					<option value="0">Január</option>

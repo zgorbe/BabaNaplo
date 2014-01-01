@@ -11,6 +11,7 @@
 			      <li><a href="javascript:void(0);" data-filter="2011">2011</a></li>
 			      <li><a href="javascript:void(0);" data-filter="2012">2012</a></li>
 			      <li><a href="javascript:void(0);" data-filter="2013">2013</a></li>
+			      <li><a href="javascript:void(0);" data-filter="2014">2014</a></li>
 			    </ul>
 			  </div>
 			  <input class="input-mini uneditable-input" id="prependedDropdownButton" type="text" disabled="disabled" value="">
