@@ -3,10 +3,10 @@
 <%@page import="org.springframework.mobile.device.Device" %>
 	
 <%
-	Device currentDevice = DeviceUtils.getCurrentDevice(request);
+	/*Device currentDevice = DeviceUtils.getCurrentDevice(request);
 	if (currentDevice.isMobile()) {
 		response.sendRedirect("/m/naplo");
-	} else {
+	} else { */
 		response.sendRedirect("/naplo2/");
-	}
+	//}
 %>
