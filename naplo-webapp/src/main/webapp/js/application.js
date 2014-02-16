@@ -2522,7 +2522,8 @@ c.append("file",$("#fileInput")[0].files[0]);
 c.append("keyword",$("#inputKeyword").val());
 c.append("createdate",$("#inputTheDay").val());
 c.append("description",$("#description").val());
-$.ajax({type:"POST",url:"/photos",contentType:false,processData:false,data:c,success:function(d){if(d=="success"){b.app.clearTemplateCache();
+if($("#halveSize").is(":checked")){c.append("halveSize","true")
+}$.ajax({type:"POST",url:"/photos",contentType:false,processData:false,data:c,success:function(d){if(d=="success"){b.app.clearTemplateCache();
 b.redirect("#/")
 }else{b.app.trigger("uploadError")
 }}})

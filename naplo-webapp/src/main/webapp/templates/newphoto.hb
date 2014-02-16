@@ -32,6 +32,12 @@
 					<textarea class="span5" rows="6" id="description" name="description" placeholder="Leírás"></textarea>
 				</div>
 			</div>
+			<div class="control-group">
+				<label class="control-label" for="halveSize">A kép méretének csökkentése</label>
+				<div class="controls">
+					<input id="halveSize" name="halveSize" type="checkbox" value="true" checked />
+				</div>
+			</div>
 			<div class="control-group offset2">
 				<button type="submit" class="btn btn-primary">Küldés</button>
 				<a class="btn" href="#/">Mégse</a>

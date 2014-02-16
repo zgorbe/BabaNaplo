@@ -48,7 +48,10 @@ var Photos = (function() {
 			data.append('keyword', $('#inputKeyword').val());
 			data.append('createdate', $('#inputTheDay').val());
 			data.append('description', $('#description').val());
-				
+			if ($('#halveSize').is(':checked')) {
+				data.append('halveSize', 'true');
+			}
+
             $.ajax({
                 type: 'POST',
                 url: '/photos',

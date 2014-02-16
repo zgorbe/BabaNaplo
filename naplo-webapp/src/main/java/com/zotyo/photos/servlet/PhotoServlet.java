@@ -244,6 +244,7 @@ public class PhotoServlet extends HttpServlet {
             String category = "";
             String createdateStr = "";
             String kw = "";
+            boolean halveSize = false;
             while (it.hasNext()) {
                 FileItem item = (FileItem) it.next();
                 if (!item.isFormField()) {
@@ -268,6 +269,9 @@ public class PhotoServlet extends HttpServlet {
                     if (item.getFieldName().equals("keyword")) {
                     	kw = item.getString();
                     }
+                    if (item.getFieldName().equals("halveSize")) {
+                    	halveSize = Boolean.valueOf(item.getString());
+                    }
                 }
             }
             if (category.isEmpty()) {
@@ -287,6 +291,9 @@ public class PhotoServlet extends HttpServlet {
     		}
             if (data != null && !fileName.isEmpty()) {
             	byte[] thumbdata = createThumbnail(data);
+            	if (halveSize) {
+            		data = resizeOriginalImageToHalf(data);
+            	}
 				photoService.save(
 					new Photo(description, fileName, category, createDate),
 					new PhotoData(data, thumbdata)
@@ -299,7 +306,22 @@ public class PhotoServlet extends HttpServlet {
         return new Boolean[] { isMobile, false };
 	}
 	
-	private byte[] createThumbnail(byte[] data) throws IOException {
+	private byte[] resizeOriginalImageToHalf(final byte[] data) throws IOException {
+    	InputStream in = new ByteArrayInputStream(data);
+    	BufferedImage img = ImageIO.read(in);
+
+		img = resize(img, Method.ULTRA_QUALITY, img.getWidth() / 2, img.getHeight() / 2, OP_ANTIALIAS);
+
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		ImageIO.write(img, "jpg", baos);
+		baos.flush();
+		byte[] imageInByte = baos.toByteArray();
+		baos.close();
+		in.close();
+		return imageInByte;
+	}
+
+	private byte[] createThumbnail(final byte[] data) throws IOException {
     	InputStream in = new ByteArrayInputStream(data);
     	BufferedImage img = ImageIO.read(in);
 
@@ -310,7 +332,7 @@ public class PhotoServlet extends HttpServlet {
 		baos.flush();
 		byte[] imageInByte = baos.toByteArray();
 		baos.close();
-		
+		in.close();
 		return imageInByte;
 	}
 }
