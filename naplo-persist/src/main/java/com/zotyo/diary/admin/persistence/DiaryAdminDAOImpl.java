@@ -109,8 +109,8 @@ public class DiaryAdminDAOImpl extends SimpleJdbcDaoSupport implements DiaryAdmi
 
 	@Override
 	public void deleteDay(Integer dayId) {
-		// TODO Auto-generated method stub
-		
+		String sql = "delete from days where id = ?";
+		getSimpleJdbcTemplate().update(sql, dayId);
 	}
 	
 	@PostConstruct

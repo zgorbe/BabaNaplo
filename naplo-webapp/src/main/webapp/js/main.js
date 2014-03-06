@@ -367,6 +367,10 @@ function deleteEvent(eventId) {
 	$('#formDeleteEvent').submit();
 }
 
+function deleteDay(dayId) {
+	$('#dayIdInput').val(dayId);
+	$('#formDeleteDay').submit();
+}
 
 /**** ImagePreview with Module Pattern ****/
 var ImagePreview = (function(){

@@ -15,9 +15,6 @@
 	</head>
 	<body>
 		<div id="admin_login">
-			<h3>
-				<c:out value="${msg}" />	
-			</h3>
 			<c:choose>
 			<c:when test="${redirect_to == 'photos'}">
 				<form action="/photos" method="post" accept-charset="UTF-8">

@@ -23,7 +23,12 @@
 				        <td><textarea name="descriptionOfTheDay" cols="56" rows="2" ><c:out value="${day.descriptionOfTheDay}" /></textarea></td>
 				    </tr>
 				    <tr>
-				    	<td colspan="2" align="center"><button type="submit">Módosít</button></td>
+				    	<td colspan="2" align="center">
+				    		<button type="submit">Módosít</button>
+				    		<c:if test="${empty events}">
+				    			<button type="button" onclick="deleteDay(<c:out value="${day.id}" />);">Törlés</button>
+				    		</c:if>
+				    	</td>
 				    </tr>
 			    </table>
 			    <input type="hidden" name="cmd" value="update_day" />
