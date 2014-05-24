@@ -71,7 +71,7 @@
  	<mongo:db-factory id="mongoDbFactory" 
  		host="#{ @mongoUrl.getHost() }" 
  		port="#{ @mongoUrl.getPort() }" 
- 		dbname="#{ @mongoUrl.getUserInfo().split(':')[0] }"
+ 		dbname="#{ @mongoUrl.getPath().split('/')[1] }"
  		username="#{ @mongoUrl.getUserInfo().split(':')[0] }" 
  		password="#{ @mongoUrl.getUserInfo().split(':')[1] }" />
 	
