@@ -339,6 +339,13 @@ a.back-top-link > span:hover {
 	}
 }
 
+@media screen and ( min-width: 581px ) and ( max-width: 980px ) {
+	.hasDatepicker {
+		float: left;
+		margin-right: 20px;
+	}
+}
+
 @media screen and ( max-width: 980px ) {
 	.span8 {
 		width: 100%;
@@ -346,9 +353,5 @@ a.back-top-link > span:hover {
 	}
 	.span4 {
 		width: 100%;
-	}
-	.hasDatepicker {
-		float: left;
-		margin-right: 20px;
 	}
 }
