@@ -330,6 +330,15 @@ a.back-top-link > span:hover {
 	filter: alpha(opacity=80);
 }
 
+@media screen and ( max-width: 580px ) {
+	.ui-datepicker-inline {
+		margin: 0 auto;
+	}
+	.hasDatepicker {
+		margin: 20px 0px;
+	}
+}
+
 @media screen and ( max-width: 980px ) {
 	.span8 {
 		width: 100%;
