@@ -526,21 +526,24 @@ b.app.trigger("selectedDayChanged",{date:$.format.date(h,"yyyy.MM.dd")})
 },smiley:function(){$("div.row").each(function(a,c){var b=$(c).html().replace(/:\)/g,'<img src="/images/smiley.png" alt=":-)" />');
 $(c).html(b)
 })
-},initNavbar:function(d){$("ul.nav li.dropdown").hover(function(){$(this).find(".dropdown-menu").stop(true,true).delay(50).fadeIn()
+},initNavbar:function(e){$("ul.nav li.dropdown").hover(function(){$(this).find(".dropdown-menu").stop(true,true).delay(50).fadeIn()
 },function(){$(this).removeClass("active").find(".dropdown-menu").stop(true,true).delay(50).fadeOut()
 });
-$("#buttonSearch").on("click",function(){var e=$("#inputSearch").val();
-if(e.length<2){var f=$("#inputSearch");
-f.tooltip({placement:"bottom",title:"Legalább 2 karakter hosszú legyen!"});
-f.tooltip("show");
+$("#buttonSearch").on("click",function(){var f=$("#inputSearch").val();
+if(f.length<2){var g=$("#inputSearch");
+g.tooltip({placement:"bottom",title:"Legalább 2 karakter hosszú legyen!"});
+g.tooltip("show");
 return
 }$("#inputSearch").tooltip("destroy");
-d.setLocation("#/search/"+e)
+e.setLocation("#/search/"+f)
 });
-var a=$("li#liAllEvents");
-var c=a.data("day-count");
-var b=a.data("event-count");
-a.tooltip({placement:"bottom",title:c+" napon "+b+" esemény van a naplóban."})
+var b=$("li#liAllEvents");
+var d=b.data("day-count");
+var c=b.data("event-count");
+b.tooltip({placement:"bottom",title:d+" napon "+c+" esemény van a naplóban."});
+var a=$(".nav-collapse");
+a.on("click","a",function(){a.collapse("hide")
+})
 },search:function(b,a){b.load("/json/events/search/"+a,b.loadOptions).then(function(c){$.each(c,function(e,f){if(!f.inited){Events.initEvent(f);
 var d=new Date(f.startTime);
 f.year=d.getFullYear();

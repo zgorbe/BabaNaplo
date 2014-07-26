@@ -159,7 +159,6 @@ $(function(){
 			});
 		});
     });
-	
 
     app.run('#/');
     SiteUtils.initScrollToTop();

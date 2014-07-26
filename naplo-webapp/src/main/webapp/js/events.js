@@ -202,6 +202,12 @@ var Events = (function() {
 		    	placement: 'bottom',
 		    	title: dayCount + ' napon ' + eventCount + ' esemény van a naplóban.'
 		    });
+
+			// init navbar collapse
+		    var $nav = $('.nav-collapse');
+			$nav.on('click', 'a', function() {
+				$nav.collapse('hide');
+			});
 		},
 		search: function(context, searchTerm) {
 			context.load('/json/events/search/' + searchTerm, context.loadOptions)
