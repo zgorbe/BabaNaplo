@@ -205,7 +205,7 @@ var Events = (function() {
 
 			// init navbar collapse
 		    var $nav = $('.nav-collapse');
-			$nav.on('click', 'a:not(.dropdown-toggle)', function() {
+			$nav.on('click', 'a.menu-link', function() {
 				$nav.collapse('hide');
 			});
 		},

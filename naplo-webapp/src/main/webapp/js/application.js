@@ -542,7 +542,7 @@ var d=b.data("day-count");
 var c=b.data("event-count");
 b.tooltip({placement:"bottom",title:d+" napon "+c+" esemény van a naplóban."});
 var a=$(".nav-collapse");
-a.on("click","a",function(){a.collapse("hide")
+a.on("click","a.menu-link",function(){a.collapse("hide")
 })
 },search:function(b,a){b.load("/json/events/search/"+a,b.loadOptions).then(function(c){$.each(c,function(e,f){if(!f.inited){Events.initEvent(f);
 var d=new Date(f.startTime);

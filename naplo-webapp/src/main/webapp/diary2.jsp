@@ -36,22 +36,22 @@
 					<div class="nav-collapse collapse">
 						<ul class="nav">
 							<li id="liAllEvents" data-day-count="<c:out value="${countsBean.dayCount}" />" data-event-count="<c:out value="${countsBean.eventCount}" />">
-								<a href="#/days/2011/09"><i class="icon-book"></i> Összes esemény <sup><span id="eventCount" class="badge"><c:out value="${countsBean.eventCount}" /></span></sup></a>
+								<a href="#/days/2011/09" class="menu-link"><i class="icon-book"></i> Összes esemény <sup><span id="eventCount" class="badge"><c:out value="${countsBean.eventCount}" /></span></sup></a>
 							</li>
 							<li>
-								<a href="#/videos/<c:out value="${newestVideoId}" />"><i class="icon-facetime-video"></i> Videók <sup><span id="videoCount" class="badge"><c:out value="${countsBean.videoCount}" /></span></sup></a>
+								<a href="#/videos/<c:out value="${newestVideoId}" />" class="menu-link"><i class="icon-facetime-video"></i> Videók <sup><span id="videoCount" class="badge"><c:out value="${countsBean.videoCount}" /></span></sup></a>
 							</li>
 							<li>
-								<a href="#/photos"><i class="icon-camera"></i> Képek <sup><span id="photoCount" class="badge"><c:out value="${countsBean.photoCount}" /></span></sup></a>
+								<a href="#/photos" class="menu-link"><i class="icon-camera"></i> Képek <sup><span id="photoCount" class="badge"><c:out value="${countsBean.photoCount}" /></span></sup></a>
 							</li>
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-comment"></i> Új bejegyzés <b class="caret"></b></a>
 								<ul class="dropdown-menu">
-									<li><a href="#/newday"><i class="icon-pencil"></i> Új nap</a></li>
-									<li><a href="#/newevent"><i class="icon-edit"></i> Új esemény</a></li>
-									<li><a href="#/newvideo"><i class="icon-facetime-video"></i> Új videó</a></li>
-									<li><a href="#/newphoto"><i class="icon-camera"></i> Új kép</a></li>
-									<li><a href="#/newword"><i class="icon-bullhorn"></i> Új mondás</a></li>
+									<li><a href="#/newday" class="menu-link"><i class="icon-pencil"></i> Új nap</a></li>
+									<li><a href="#/newevent" class="menu-link"><i class="icon-edit"></i> Új esemény</a></li>
+									<li><a href="#/newvideo" class="menu-link"><i class="icon-facetime-video"></i> Új videó</a></li>
+									<li><a href="#/newphoto" class="menu-link"><i class="icon-camera"></i> Új kép</a></li>
+									<li><a href="#/newword" class="menu-link"><i class="icon-bullhorn"></i> Új mondás</a></li>
 								</ul>
 							</li>
 	            		</ul>
