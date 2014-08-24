@@ -154,7 +154,7 @@ var Videos = (function() {
 						$('.video_thumbnails').on('click', 'a', function() {
 							context.app.setLocation('#/videos/' + $(this).data('video-id'));
 						});
-						Videos.initThumbnails();
+						setTimeout("Videos.initThumbnails()", 200);
 					});
 	    	});					
 		}
