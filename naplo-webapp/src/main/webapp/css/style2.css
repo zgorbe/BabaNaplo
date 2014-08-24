@@ -106,6 +106,7 @@ div.my-page-header {
 }
 
 .old-style-btn {
+	display: none;
 	position: fixed;
 	bottom: 0;
 	right: 0;
@@ -233,7 +234,6 @@ div.accordion-inner > p {
 
 div.accordion-heading a.accordion-toggle {
 	overflow: hidden;
-	margin-top: 8px;
 }
 .input-append,.input-prepend { 
 	*display: inline;
@@ -302,10 +302,15 @@ div.accordion-group {
 	padding: 5px;
 }
 
-a.back-top-link {
+.back-top-wrappper {
 	position: fixed;
-	left: 48%;
 	bottom: 30px;
+	left: 0;
+	right: 0;
+	text-align: center;
+	width: 100%;
+}
+a.back-top-link {
 	z-index: 1000;
 	display: none;
 }
@@ -338,19 +343,25 @@ a.back-top-link > span:hover {
 	}
 }
 
-@media screen and ( min-width: 581px ) and ( max-width: 980px ) {
+@media screen and ( min-width: 581px ) and ( max-width: 979px ) {
 	.hasDatepicker {
 		float: left;
 		margin-right: 20px;
 	}
 }
 
-@media screen and ( max-width: 980px ) {
+@media screen and ( max-width: 979px ) {
 	.span8 {
 		width: 100%;
 		margin-left: 0px;
 	}
 	.span4 {
 		width: 100%;
+	}
+}
+
+@media screen and ( min-width: 980px ) {
+	.old-style-btn {
+		display: block;
 	}
 }
