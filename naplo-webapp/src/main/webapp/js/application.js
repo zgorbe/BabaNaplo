@@ -2542,8 +2542,7 @@ ImagePreview.init(d)
 })
 }}
 })();
-var Videos=(function(){return{initThumbnails:function(){$("#tS2").thumbnailScroller({scrollerType:"hoverAccelerate",scrollerOrientation:"horizontal",scrollEasing:"easeOutCirc",scrollEasingAmount:600,acceleration:1,noScrollCenterSpace:0})
-},newVideo:function(a){a.render("/templates/newvideo.hb").swap(a.$element()).then(function(){a.app.trigger("initCalendar")
+var Videos=(function(){return{newVideo:function(a){a.render("/templates/newvideo.hb").swap(a.$element()).then(function(){a.app.trigger("initCalendar")
 }).then(function(){$("#inputTheDay").val($("#datepicker1").val());
 $("#inputStartDate").datetimepicker();
 $("#inputDuration").timepicker({})
@@ -2552,14 +2551,10 @@ $("#inputDuration").timepicker({})
 }else{a.app.clearTemplateCache();
 a.redirect("#/")
 }}})
-},getAll:function(a,b){a.load("/json/videos",a.loadOptions).then(function(c){var d={};
-$.each(c,function(e,f){if(!f.inited){f.createDate=$.format.date(f.createDate,"yyyy.MM.dd");
-f.inited=true
-}if(f.videoId==b){d=f
+},getAll:function(a){a.load("/json/videos",a.loadOptions).then(function(b){$.each(b,function(c,d){if(!d.inited){d.createDate=$.format.date(d.createDate,"yyyy.MM.dd");
+d.inited=true
 }});
-a.render("/templates/videos.hb",{items:c,video:d}).swap(a.$element()).then(function(){$(".video_thumbnails").on("click","a",function(){a.app.setLocation("#/videos/"+$(this).data("video-id"))
-});
-setTimeout("Videos.initThumbnails()",200)
+a.render("/templates/videos.hb",{items:b}).swap(a.$element()).then(function(){$(".fotorama").fotorama()
 })
 })
 }}
@@ -2650,7 +2645,7 @@ this.get("#/search/:searchTerm",function(c){Events.search(c,this.params.searchTe
 });
 this.get("#/photos",function(c){Photos.getAll(c)
 });
-this.get("#/videos/:selectedVideoId",function(c){Videos.getAll(c,this.params.selectedVideoId)
+this.get("#/videos",function(c){Videos.getAll(c)
 });
 this.post("#/addday",function(c){Days.addDay(c)
 });

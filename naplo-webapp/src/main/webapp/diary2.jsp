@@ -18,6 +18,8 @@
 		<link href="/css/style2.css" rel="stylesheet" media="screen">
 		<link href="/css/jquery-ui-1.10.3.custom.css" rel="stylesheet" media="screen">
 		<link href="/css/jquery.thumbnailScroller2.css" rel="stylesheet" media="screen">
+		<link  href="http://fotorama.s3.amazonaws.com/4.6.0/fotorama.css" rel="stylesheet">
+		
 		<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     	<!--[if lt IE 9]>
     		<script src="/js/html5shiv.js"></script>
@@ -39,7 +41,7 @@
 								<a href="#/days/2011/09" class="menu-link"><i class="icon-book"></i> Összes esemény <sup><span id="eventCount" class="badge"><c:out value="${countsBean.eventCount}" /></span></sup></a>
 							</li>
 							<li>
-								<a href="#/videos/<c:out value="${newestVideoId}" />" class="menu-link"><i class="icon-facetime-video"></i> Videók <sup><span id="videoCount" class="badge"><c:out value="${countsBean.videoCount}" /></span></sup></a>
+								<a href="#/videos" class="menu-link"><i class="icon-facetime-video"></i> Videók <sup><span id="videoCount" class="badge"><c:out value="${countsBean.videoCount}" /></span></sup></a>
 							</li>
 							<li>
 								<a href="#/photos" class="menu-link"><i class="icon-camera"></i> Képek <sup><span id="photoCount" class="badge"><c:out value="${countsBean.photoCount}" /></span></sup></a>
@@ -96,6 +98,7 @@
 		
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+		<script src="http://fotorama.s3.amazonaws.com/4.6.0/fotorama.js"></script>
 		<c:choose>
 			<c:when test="${js_minify}">
 				<script src="/js/application.js"></script>
@@ -105,7 +108,6 @@
 				<script src="/js/jquery.ui.datepicker-hu.js"></script>
 				<script src="/js/jquery.isotope.min.js"></script>
 				<script src="/js/jquery-highlight.js"></script>
-				<script src="/js/jquery.thumbnailScroller.js"></script>
 				<script src="/js/jquery.dateFormat-1.0.js"></script>
 				<script src="/js/bootstrap.min.js"></script>
 				<script src="/js/sammy-0.7.4.min.js"></script>

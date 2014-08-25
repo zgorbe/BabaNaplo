@@ -98,16 +98,6 @@ var Photos = (function() {
 var Videos = (function() {
 	
 	return {
-		initThumbnails: function() {
-			$('#tS2').thumbnailScroller({ 
-			    scrollerType: 'hoverAccelerate', 
-			    scrollerOrientation:'horizontal', 
-			    scrollEasing:'easeOutCirc', 
-			    scrollEasingAmount: 600, 
-			    acceleration: 1, 
-			    noScrollCenterSpace: 0 
-			});
-		},
 		newVideo: function(context) {
 			context.render('/templates/newvideo.hb')
 				.swap(context.$element())
@@ -135,26 +125,19 @@ var Videos = (function() {
 				}
 			});
 		},
-		getAll: function(context, videoId) {
+		getAll: function(context) {
 			context.load('/json/videos', context.loadOptions)
 	    	.then(function(items) {
-	    		var selectedVideo = {};
 	    		$.each(items, function(i, item) {
 					if (!item.inited) {
 						item.createDate = $.format.date(item.createDate, 'yyyy.MM.dd');
 						item.inited = true;
 					}
-					if (item.videoId == videoId) {
-						selectedVideo = item;
-					}
 				});
-				context.render('/templates/videos.hb', {items: items, video: selectedVideo})
+				context.render('/templates/videos.hb', {items: items})
 					.swap(context.$element())
 					.then(function() {
-						$('.video_thumbnails').on('click', 'a', function() {
-							context.app.setLocation('#/videos/' + $(this).data('video-id'));
-						});
-						setTimeout("Videos.initThumbnails()", 200);
+						$('.fotorama').fotorama();
 					});
 	    	});					
 		}

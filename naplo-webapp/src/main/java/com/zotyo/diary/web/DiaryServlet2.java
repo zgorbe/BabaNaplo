@@ -78,10 +78,10 @@ public class DiaryServlet2 extends HttpServlet {
 			logger.error(e);
 		}
 		
-		Video video = videoDAO.findNewest();
+		/*Video video = videoDAO.findNewest();
 		if (video != null) {
 			request.setAttribute("newestVideoId", video.getVideoId());
-		}
+		}*/
 		CountsBean cb = new CountsBean();
 		cb.setDayCount(diaryService.getDayCount());
 		cb.setEventCount(diaryService.getEventCount());
