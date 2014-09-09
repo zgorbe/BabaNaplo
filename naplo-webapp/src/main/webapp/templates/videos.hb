@@ -4,7 +4,7 @@
 	</div>
 	<div class="row span10 fotorama" data-nav="thumbs" data-width="100%" data-ratio="4/3">
 		{{#each items}}
-			<a href="http://youtube.com/watch?v={{this.videoId}}" data-caption="{{this.createDate}}, {{this.description}}">{{this.description}}</a>
+			<a href="http://youtube.com/watch?v={{this.videoId}}" data-caption="{{this.createDate}}, {{this.description}}"></a>
 		{{/each}}
 	</div>
 </div>
