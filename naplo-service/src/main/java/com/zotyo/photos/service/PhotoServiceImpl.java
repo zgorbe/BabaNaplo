@@ -1,6 +1,11 @@
 package com.zotyo.photos.service;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
@@ -35,12 +40,33 @@ public class PhotoServiceImpl implements PhotoService {
 
 	@Cacheable(value = DIARY_CACHE, key="'photos'")
 	public List<Photo> findByCategory(String category) {
-		return photoDAO.findByCategory(category);
+		List<Photo> photos = photoDAO.findByCategory(category);
+		return photos; 
 	}
 
 	@Cacheable(value = DIARY_CACHE, key="'photos:latests'")
 	public List<Photo> findLatestsByCategory(String category, int count) {
 		return photoDAO.findLatestsByCategory(category, count);
+	}
+	
+	@Cacheable(value = DIARY_CACHE, key="'photos:map'")
+	public Map<Integer, List<Photo>> findMapByCategory(String category) {
+		Map<Integer, List<Photo>> photoMap = new LinkedHashMap<Integer, List<Photo>>();
+		List<Photo> photos = photoDAO.findByCategory(category);
+		for (Photo photo : photos) {
+			Calendar calendar = new GregorianCalendar();
+			calendar.setTime(photo.getCreatedate()); 
+			int year = calendar.get(Calendar.YEAR);
+			if (photoMap.containsKey(year)) {
+				List<Photo> photoList = photoMap.get(year);
+				photoList.add(photo);
+			} else {
+				List<Photo> photoList = new ArrayList<Photo>();
+				photoList.add(photo);
+				photoMap.put(year, photoList);
+			}
+		}
+		return photoMap; 
 	}
 	
 	public List<Photo> findAll() {

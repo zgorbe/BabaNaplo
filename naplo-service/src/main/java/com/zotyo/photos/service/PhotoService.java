@@ -1,6 +1,7 @@
 package com.zotyo.photos.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.zotyo.photos.pojo.Photo;
 import com.zotyo.photos.pojo.PhotoData;
@@ -12,6 +13,7 @@ public interface PhotoService {
 	void update(Photo photo);
 	List<Photo> findByCategory(String category);
 	List<Photo> findLatestsByCategory(String category, int count);
+	Map<Integer, List<Photo>> findMapByCategory(String category);
 	List<Photo> findAll();
 	Photo findByFilename(String filename);
 	PhotoData getDataByFilename(String filename, PhotoDataEnum dataFlag, boolean cache);

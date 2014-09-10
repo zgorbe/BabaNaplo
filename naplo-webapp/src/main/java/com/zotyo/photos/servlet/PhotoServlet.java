@@ -11,6 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 import java.net.URLDecoder;
 
@@ -142,6 +143,26 @@ public class PhotoServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
+		else if ("photosmap".equals(cmd)) {
+			response.setContentType("application/json; charset=UTF-8");			
+			Map<Integer, List<Photo>> photos = photoService.findMapByCategory("baba");
+			ObjectMapper mapper = new ObjectMapper();
+
+			mapper.configure(SerializationConfig.Feature.WRITE_DATES_AS_TIMESTAMPS,	false);
+
+			try {
+				mapper.writeValue(response.getOutputStream(), photos);
+			} catch (JsonGenerationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (JsonMappingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}		
 		else {
 			String isAdmin = (String) request.getSession().getAttribute("admin");
 			
