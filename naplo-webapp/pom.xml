@@ -114,7 +114,7 @@
 							<name>webapp</name>
 						</program>
 					</programs>
-					<!--  extraJvmArguments>-Xdebug -Xrunjdwp:transport=dt_socket,address=5000,server=y,suspend=n</extraJvmArguments -->
+					<!--extraJvmArguments>-Xdebug -Xrunjdwp:transport=dt_socket,address=5000,server=y,suspend=n</extraJvmArguments -->
 				</configuration>
 				<executions>
 					<execution>
@@ -172,7 +172,6 @@
 		                    	<exclude>jquery-ui-1.8.9.custom.min.js</exclude>
 		                    	<exclude>waypoints*.min.js</exclude>
 		                    	<exclude>mob*.js</exclude>
-							    <exclude>fotorama.js</exclude>
 							    <exclude>main.js</exclude>
 							    <exclude>application.js</exclude>
 		                	</excludes>

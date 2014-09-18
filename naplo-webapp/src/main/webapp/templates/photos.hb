@@ -4,14 +4,13 @@
 	</div>
 </div>
 
-<div id="isotope_container">
+<div id="fotorama_container">
 	{{#each items}}
-		<div class="photo_item">
-			<div class="buttons" align="right" style="display:none;">
-				<img alt="P" class="zoom" src="/images/zoom.png" />
-				<img alt="X" class="cancel" src="/images/cancel.png" />
-			</div>
-			<img class="baba" data-filename="{{this.filename}}" data-createdate="{{this.createdate}}" src="/photos?cmd=thumbdata&filename={{this.filename}}" title="{{this.description}}" />
+		<h2>{{@key}}</h2>
+		<div class="row span12 fotorama" data-nav="thumbs" data-width="100%" data-ratio="4/3" data-allowfullscreen="true">
+		{{#each this}}
+			<a href="/photos?cmd=data&filename={{this.filename}}" data-caption="{{this.createdate}}, {{this.description}}"><img src="/photos?cmd=thumbdata&filename={{this.filename}}"/></a>
+		{{/each}}
 		</div>
 	{{/each}}
 </div>

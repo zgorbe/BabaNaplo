@@ -9,7 +9,14 @@ var Photos = (function() {
 			reader.readAsDataURL(input.files[0]);
 		}
 	};
-	
+	var initDates = function(items) {
+		$.each(items, function(i, item) {
+			if (!item.inited) {
+				item.createdate = $.format.date(item.createdate, 'yyyy.MM.dd HH:mm');
+				item.inited = true;
+			}
+		});
+	};
 	return {
 		initMainScoller: function() {
 			$('div.jTscroller').on('click', 'a', function() {
@@ -68,28 +75,19 @@ var Photos = (function() {
                 }
             });
 		},
+		
 		getAll: function(context) {
-			context.load('/photos?cmd=photos', context.loadOptions)
+			context.load('/photos?cmd=photosmap', context.loadOptions)
 	    	.then(function(items) {
-	    		$.each(items, function(i, item) {
-					if (!item.inited) {
-						item.createdate = $.format.date(item.createdate, 'yyyy.MM.dd HH:mm');
-						item.inited = true;
-					}
+	    		$.each(items, function(i, itemList) {
+					initDates(itemList);
 				});
-				context.render('/templates/photos.hb', {items: items})
-				.swap(context.$element()).then(function(){
-					var $container = $('#isotope_container'); 
-					$container.isotope({
-						itemSelector: '.photo_item',
-						filter: '*'
+				context
+					.render('/templates/photos.hb', {items: items})
+					.swap(context.$element())
+					.then(function() {
+						$('#fotorama_container .fotorama').fotorama();
 					});
-					$('#isotope_container img').last().on('load', function() {
-						$container.isotope('reLayout');
-					});
-					
-					ImagePreview.init($container);
-				});
 	    	});					
 		}
 	};	
