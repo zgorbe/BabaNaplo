@@ -16,6 +16,24 @@ $(function(){
 			console.log(optionalValue);
 		}
 	});
+	Handlebars.registerHelper("eachObjectKeyReverse", function(context, options) {
+		var ret = '',
+			keys = [],
+			data;
+		
+		for(var k in context) keys.push(parseInt(k));
+		keys.sort().reverse();
+
+		for(var i=0; i < keys.length; i++) {
+			if (options.data) {
+      			data = Handlebars.createFrame(options.data || {});
+      			data.key = keys[i];
+    		}
+			ret = ret + options.fn(context[keys[i]],  {data: data});
+		}
+
+		return ret;
+	});
 	var loadOptions = {
             type: 'get', 
             dataType: 'json'

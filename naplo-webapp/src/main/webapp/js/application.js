@@ -3154,6 +3154,16 @@ if(c){console.log("Value");
 console.log("====================");
 console.log(c)
 }});
+Handlebars.registerHelper("eachObjectKeyReverse",function(g,e){var d="",h=[],j;
+for(var c in g){h.push(parseInt(c))
+}h.sort().reverse();
+for(var f=0;
+f<h.length;
+f++){if(e.data){j=Handlebars.createFrame(e.data||{});
+j.key=h[f]
+}d=d+e.fn(g[h[f]],{data:j})
+}return d
+});
 var a={type:"get",dataType:"json"};
 var b=$.sammy("#main",function(){this.use("Handlebars","hb");
 this.before({},function(e){e.loadOptions=a;
