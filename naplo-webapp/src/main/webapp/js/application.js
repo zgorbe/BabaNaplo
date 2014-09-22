@@ -3142,6 +3142,8 @@ var SiteUtils=(function(){return{initScrollToTop:function(){$(window).scroll(fun
 $("a.back-top-link").on("click",function(){$("body,html").animate({scrollTop:0},800);
 return false
 })
+},addLoading:function(){$("div.control-buttons").addClass("loading")
+},removeLoading:function(){$("div.control-buttons").removeClass("loading")
 }}
 })();
 $(function(){Handlebars.registerHelper("ifCond",function(e,d,c){if(e===d){return c.fn(this)
@@ -3171,8 +3173,9 @@ var c=e.app.getLocation();
 var d=c.substring(c.indexOf("#"));
 $("ul.nav > li").removeClass("active");
 $('li > a[href="'+d+'"]').parent().addClass("active");
-e.app.trigger("dropDownMenuChanged")
-});
+e.app.trigger("dropDownMenuChanged");
+if(e.verb==="post"){SiteUtils.addLoading()
+}});
 this.get("#/",function(c){Events.getLatests(c)
 });
 this.get("#/days/:year/:month",function(c){Days.getAll(c,this.params.year,this.params.month)
@@ -3212,10 +3215,12 @@ if(c!=b.getLocation()){b.setLocation(c)
 }});
 this.bind("selectedMonthChanged",function(d,c){Days.getDayForAMonth(c.y,c.m)
 });
-this.bind("newError",function(f,d){if(!$("div.alert-error").length){var c=$('<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">×</button>Nem sikerült a mentés! Próbáld meg újra!</div>');
+this.bind("newError",function(f,d){SiteUtils.removeLoading();
+if(!$("div.alert-error").length){var c=$('<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">×</button>Nem sikerült a mentés! Próbáld meg újra!</div>');
 $("form.new").before(c)
 }});
-this.bind("uploadError",function(f,d){if(!$("div.alert-error").length){var c=$('<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">×</button>Nem sikerült a feltöltés! Próbáld meg újra!</div>');
+this.bind("uploadError",function(f,d){SiteUtils.removeLoading();
+if(!$("div.alert-error").length){var c=$('<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">×</button>Nem sikerült a feltöltés! Próbáld meg újra!</div>');
 $("form.new").before(c)
 }});
 this.bind("dropDownMenuChanged",function(){$(".dropdown.open").removeClass("open");

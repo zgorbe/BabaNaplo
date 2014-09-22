@@ -288,3 +288,14 @@ a.back-top-link > span:hover {
 #fotorama_container .fotorama {
 	margin: 15px 0px 30px 0px;
 }
+.control-buttons img {
+	display: none;
+}
+.control-buttons.loading img {
+	display: block;
+}
+@media screen and ( max-width: 400px ) {
+	.control-buttons {
+		margin-left: 0;
+	}
+}

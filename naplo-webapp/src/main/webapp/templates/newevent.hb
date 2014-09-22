@@ -32,9 +32,10 @@
 					<textarea class="span5" rows="6" id="initialEvent" name="initialEvent" placeholder="Leírás"></textarea>
 				</div>
 			</div>
-			<div class="control-group offset2">
+			<div class="control-group offset2 control-buttons">
 				<button type="submit" class="btn btn-primary">Küldés</button>
 				<a class="btn" href="#/">Mégse</a>
+				<img src="/images/loading_blue.gif" />
 			</div>
 		</form>		
 	</div>

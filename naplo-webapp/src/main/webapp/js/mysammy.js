@@ -50,6 +50,10 @@ $(function(){
 			$('ul.nav > li').removeClass('active');
 			$('li > a[href="' + href + '"]').parent().addClass('active');
 			context.app.trigger('dropDownMenuChanged');
+
+			if (context.verb === 'post') {
+				SiteUtils.addLoading();
+			}
 		});
 		
 		// Routes
@@ -137,6 +141,7 @@ $(function(){
 		});
 		
 		this.bind('newError', function(e, data) {
+			SiteUtils.removeLoading();
 			if (!$('div.alert-error').length) {
 				var error_div = $('<div class="alert alert-error">' +
 						'<button type="button" class="close" data-dismiss="alert">×</button>' +
@@ -146,6 +151,7 @@ $(function(){
 		});
 		
 		this.bind('uploadError', function(e, data) {
+			SiteUtils.removeLoading();
 			if (!$('div.alert-error').length) {
 				var error_div = $('<div class="alert alert-error">' +
 						'<button type="button" class="close" data-dismiss="alert">×</button>' +

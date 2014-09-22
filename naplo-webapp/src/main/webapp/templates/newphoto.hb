@@ -38,9 +38,10 @@
 					<input id="halveSize" name="halveSize" type="checkbox" value="true" checked />
 				</div>
 			</div>
-			<div class="control-group offset2">
+			<div class="control-group offset2 control-buttons">
 				<button type="submit" class="btn btn-primary">Küldés</button>
 				<a class="btn" href="#/">Mégse</a>
+				<img src="/images/loading_blue.gif" />
 			</div>
 		</form>		
 	</div>

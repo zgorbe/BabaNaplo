@@ -242,6 +242,12 @@ var SiteUtils = (function() {
 	        	$('body,html').animate({scrollTop:0},800);
 	        	return false;
 	        });
+		},
+		addLoading: function() {
+			$('div.control-buttons').addClass('loading');
+		},
+		removeLoading: function() {
+			$('div.control-buttons').removeClass('loading');
 		}
 	};
 })();

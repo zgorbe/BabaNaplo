@@ -42,9 +42,10 @@
 					<textarea class="span5" rows="6" id="description" name="description" placeholder="Magyarázat"></textarea>
 				</div>
 			</div>
-			<div class="control-group offset2">
+			<div class="control-group offset2 control-buttons">
 				<button type="submit" class="btn btn-primary">Küldés</button>
 				<a class="btn" href="#/">Mégse</a>
+				<img src="/images/loading_blue.gif" />
 			</div>
 			<input type="hidden" name="kid" id="kid_input" value="TIMCSI" />
 		</form>		
