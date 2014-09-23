@@ -292,7 +292,7 @@ a.back-top-link > span:hover {
 	display: none;
 }
 .control-buttons.loading img {
-	display: block;
+	display: inline-block;
 }
 @media screen and ( max-width: 400px ) {
 	.control-buttons {
