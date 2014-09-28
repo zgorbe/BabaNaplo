@@ -3136,7 +3136,7 @@ $("#dialog").dialog({modal:true,width:945,height:740,resizable:false,title:c+" -
 },fixMissingX:function(){$("button.ui-dialog-titlebar-close").html('<span class="ui-icon ui-icon-closethick">close</span>')
 }}
 })();
-var SiteUtils=(function(){return{initScrollToTop:function(){$(window).scroll(function(){if($(this).scrollTop()>500){$("a.back-top-link").fadeIn().css("display","inline-block")
+var SiteUtils=(function(){return{initScrollToTop:function(){$(window).scroll(function(){if($(this).scrollTop()>500){$("a.back-top-link").fadeIn().css("display","block")
 }else{$("a.back-top-link").fadeOut()
 }});
 $("a.back-top-link").on("click",function(){$("body,html").animate({scrollTop:0},800);

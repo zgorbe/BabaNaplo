@@ -121,6 +121,7 @@ div.accordion-inner > p {
 }
 
 div.accordion-heading a.accordion-toggle {
+	display: inline-block;
 	overflow: hidden;
 }
 .input-append,.input-prepend { 
@@ -190,17 +191,15 @@ div.accordion-group {
 	padding: 5px;
 }
 
-.back-top-wrappper {
-	position: fixed;
-	bottom: 30px;
-	left: 0;
-	right: 0;
-	text-align: center;
-	width: 100%;
-}
 a.back-top-link {
 	z-index: 1000;
 	display: none;
+	position: fixed;
+	bottom: 30px;
+	left: 50%;
+	margin-left: -45px;
+	width: 90px;
+	height: 90px;
 }
 
 a.back-top-link > span {
@@ -299,3 +298,4 @@ a.back-top-link > span:hover {
 		margin-left: 0;
 	}
 }
+

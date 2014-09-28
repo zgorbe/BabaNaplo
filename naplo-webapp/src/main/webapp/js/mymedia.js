@@ -233,7 +233,7 @@ var SiteUtils = (function() {
 		initScrollToTop: function() {
 		 	$(window).scroll(function() {
 	        	if ($(this).scrollTop() > 500) {
-	        		$('a.back-top-link').fadeIn().css("display","inline-block");
+	        		$('a.back-top-link').fadeIn().css("display","block");
 	        	} else { 
 	        		$('a.back-top-link').fadeOut();
 	        	}

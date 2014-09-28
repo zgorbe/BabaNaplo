@@ -92,9 +92,7 @@
 			<a href="/naplo" class="btn btn-primary old-style-btn">Kattints ide a régi naplóhoz</a>
 		</div> 
 
-		<div class="back-top-wrappper">
-			<a href="#" class="back-top-link"><span></span></a>
-		</div>
+		<a href="#" class="back-top-link"><span></span></a>
 		
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
