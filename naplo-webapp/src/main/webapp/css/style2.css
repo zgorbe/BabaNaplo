@@ -121,7 +121,6 @@ div.accordion-inner > p {
 }
 
 div.accordion-heading a.accordion-toggle {
-	display: inline-block;
 	overflow: hidden;
 }
 .input-append,.input-prepend { 
