@@ -287,7 +287,8 @@ a.back-top-link > span:hover {
 }
 
 #fotorama_container .fotorama {
-	margin: 15px 0px 45px 0px;
+	margin-top: 15px;
+	margin-bottom: 45px;
 }
 .control-buttons img {
 	display: none;
@@ -299,5 +300,9 @@ a.back-top-link > span:hover {
 	.control-buttons {
 		margin-left: 0;
 	}
+}
+
+h2 .image-count {
+	font-size: .5em;
 }
 

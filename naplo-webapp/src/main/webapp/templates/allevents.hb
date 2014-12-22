@@ -1,5 +1,5 @@
 <div class="alldays clearfix">
-	<div class="row span8">
+	<div class="row span8 offset2">
 		<div class="day-box">
 			<div class="input-prepend">
 			  <div class="btn-group">
@@ -43,7 +43,7 @@
 	</div>
 
 	{{#each days}}
-	<div class="row span8">
+	<div class="row span8 offset2">
 		<div class="day-box">
 			<div class="date-box">
 				<p>{{this.day}}</p>
