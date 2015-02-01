@@ -18,7 +18,7 @@
 		<link href="/css/style2.css" rel="stylesheet" media="screen">
 		<link href="/css/jquery-ui-1.10.3.custom.css" rel="stylesheet" media="screen">
 		<link href="/css/jquery.thumbnailScroller2.css" rel="stylesheet" media="screen">
-		<link  href="http://fotorama.s3.amazonaws.com/4.6.0/fotorama.css" rel="stylesheet">
+		<link  href="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.3/fotorama.css" rel="stylesheet">
 		
 		<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     	<!--[if lt IE 9]>
