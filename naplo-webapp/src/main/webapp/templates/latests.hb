@@ -70,7 +70,7 @@
 			<iframe src="http://www.youtube.com/embed/{{videoId}}?controls=0&rel=0&showinfo=0&wmode=transparent" allowfullscreen="" frameborder="0"></iframe>
 	  	</div>
 	  	<div class="extra-padding">
-			<a href="#/videos/{{videoId}}" class="more-events-link">További videók</a>
+			<a href="#/videos" class="more-events-link">További videók</a>
 		</div>
 		
 		<h3>Legújabb mondások</h3>
