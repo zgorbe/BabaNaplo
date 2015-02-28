@@ -87,7 +87,7 @@
 			<div id="main">
 			</div>
 			<footer>
-				<p>&copy; Baba napló 2013</p>
+				<p>&copy; Baba napló 2015</p>
 			</footer>
 			<a href="/naplo" class="btn btn-primary old-style-btn">Kattints ide a régi naplóhoz</a>
 		</div> 
