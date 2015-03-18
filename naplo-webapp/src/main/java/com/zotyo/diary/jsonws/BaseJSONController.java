@@ -5,9 +5,11 @@ import java.io.InputStream;
 import java.util.Properties;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 import com.zotyo.diary.persistence.DiaryDAO;
 import com.zotyo.diary.service.DiaryService;
@@ -43,5 +45,9 @@ public abstract class BaseJSONController {
 		} catch (IOException ioex) {
 			ioex.printStackTrace();
 		}
+	}
+	@ModelAttribute
+	public void setCORSResponseHeader(final HttpServletResponse response) {
+		response.setHeader("Access-Control-Allow-Origin", "*");
 	}
 }
