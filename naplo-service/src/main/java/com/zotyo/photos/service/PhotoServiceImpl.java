@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
@@ -19,12 +20,13 @@ import com.zotyo.photos.util.PhotoDataEnum;
 
 @Service
 public class PhotoServiceImpl implements PhotoService {
-	
+
 	private static final String DIARY_CACHE = "diaryCache";
-	
+
 	@Autowired
+	@Qualifier("PhotoDAOMock")
 	private PhotoDAO photoDAO;
-	
+
 	@CacheEvict(value = DIARY_CACHE, allEntries = true)
 	public void save(Photo photo, PhotoData photoData) {
 		photoDAO.save(photo, photoData);
@@ -41,21 +43,21 @@ public class PhotoServiceImpl implements PhotoService {
 	@Cacheable(value = DIARY_CACHE, key="'photos'")
 	public List<Photo> findByCategory(String category) {
 		List<Photo> photos = photoDAO.findByCategory(category);
-		return photos; 
+		return photos;
 	}
 
 	@Cacheable(value = DIARY_CACHE, key="'photos:latests'")
 	public List<Photo> findLatestsByCategory(String category, int count) {
 		return photoDAO.findLatestsByCategory(category, count);
 	}
-	
+
 	@Cacheable(value = DIARY_CACHE, key="'photos:map'")
 	public Map<Integer, List<Photo>> findMapByCategory(String category) {
 		Map<Integer, List<Photo>> photoMap = new LinkedHashMap<Integer, List<Photo>>();
 		List<Photo> photos = photoDAO.findByCategory(category);
 		for (Photo photo : photos) {
 			Calendar calendar = new GregorianCalendar();
-			calendar.setTime(photo.getCreatedate()); 
+			calendar.setTime(photo.getCreatedate());
 			int year = calendar.get(Calendar.YEAR);
 			if (photoMap.containsKey(year)) {
 				List<Photo> photoList = photoMap.get(year);
@@ -66,13 +68,13 @@ public class PhotoServiceImpl implements PhotoService {
 				photoMap.put(year, photoList);
 			}
 		}
-		return photoMap; 
+		return photoMap;
 	}
-	
+
 	public List<Photo> findAll() {
 		return photoDAO.findAll();
 	}
-	
+
 	@Cacheable(value = DIARY_CACHE, key="'photos:' + #filename")
 	public Photo findByFilename(String filename) {
 		return photoDAO.findByFilename(filename);

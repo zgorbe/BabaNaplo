@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -20,11 +21,12 @@ import com.zotyo.photos.pojo.PhotoData;
 import com.zotyo.photos.util.PhotoDataEnum;
 
 @Repository
+@Qualifier("PhotoDAO")
 public class PhotoDAOImpl implements PhotoDAO {
 
 	@Autowired
 	private MongoTemplate mongoTemplate;
-	
+
 	@Override
 	public void save(Photo photo, PhotoData photoData) {
 		mongoTemplate.insert(photoData);
@@ -47,7 +49,7 @@ public class PhotoDAOImpl implements PhotoDAO {
 	public void update(Photo photo) {
 		// TODO Auto-generated method stub
 		//mongoTemplate.updateFirst(new Query(where("filename").is(photo.getFilename())), Update.update("keywords", photo.getKeywords()), Photo.class);
-		
+
 	}
 
 	@Override
@@ -65,11 +67,11 @@ public class PhotoDAOImpl implements PhotoDAO {
 		List<Photo> photos = mongoTemplate.find(query, Photo.class);
 		return photos;
 	}
-	
+
 	@Override
 	public List<PhotoData> getAllThumbsByCategory(String category) {
 		Query query = new Query(where("category").is(category));
-		query.with(new Sort(Direction.DESC, "createdate"));		
+		query.with(new Sort(Direction.DESC, "createdate"));
 		List<Photo> photos = mongoTemplate.find(query, Photo.class);
 		List<String> data_ids = new ArrayList<String>();
 		for (Photo p : photos) {
@@ -81,13 +83,13 @@ public class PhotoDAOImpl implements PhotoDAO {
 		List<PhotoData> thumbs = mongoTemplate.find(dataQuery, PhotoData.class);
 		return thumbs;
 	}
-	
+
 	@Override
 	public List<Photo> findAll() {
 		List<Photo> photos = mongoTemplate.findAll(Photo.class);
 		return photos;
 	}
-	
+
 	@Override
 	public Photo findByFilename(String filename) {
 		Photo photo = mongoTemplate.findOne(new Query(where("filename").is(filename)), Photo.class);
@@ -99,7 +101,7 @@ public class PhotoDAOImpl implements PhotoDAO {
 		Photo photo = mongoTemplate.findOne(new Query(where("filename").is(filename)), Photo.class);
 		if (photo == null) return null;
 		String data_id = photo.getDataId();
-		
+
 		Query dataQuery = new Query();
 		switch (dataFlag) {
 			case THUMB_ONLY:
@@ -108,12 +110,12 @@ public class PhotoDAOImpl implements PhotoDAO {
 			case PICTURE_ONLY:
 				dataQuery.fields().include("data");
 				break;
-			default: 
+			default:
 				break;
 		}
 		dataQuery.addCriteria(where("id").is(data_id));
 		PhotoData photoData = mongoTemplate.findOne(dataQuery, PhotoData.class);
-		
+
 		return photoData;
 	}
 
