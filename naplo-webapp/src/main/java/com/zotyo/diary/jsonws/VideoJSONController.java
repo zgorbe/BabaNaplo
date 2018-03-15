@@ -1,5 +1,7 @@
 package com.zotyo.diary.jsonws;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
@@ -15,7 +17,7 @@ import com.zotyo.videos.pojo.Video;
 @Controller
 @RequestMapping("/videos")
 public class VideoJSONController extends BaseJSONController {
-	
+
 	@Autowired
 	private VideoDAO videoDAO;
 
@@ -30,7 +32,7 @@ public class VideoJSONController extends BaseJSONController {
 			video.setDescription(description);
 			video.setVideoId(videoId);
 			video.setCreateDate(DateUtil.resetHMS(diaryHelper.getDayCal(theDay).getTime()));
-			
+
 			videoDAO.save(video);
 			return video;
 		}
@@ -40,12 +42,12 @@ public class VideoJSONController extends BaseJSONController {
 	@RequestMapping(method = RequestMethod.GET)
 	@ResponseBody
 	public Iterable<Video> getAllEvents() {
-		return videoDAO.findAll(new Sort(Sort.Direction.DESC, "createDate"));
+		return new ArrayList<Video>(); //videoDAO.findAll(new Sort(Sort.Direction.DESC, "createDate"));
 	}
-	
+
 	@RequestMapping(value = "/newest", method = RequestMethod.GET)
 	@ResponseBody
 	public Video getNewest() {
-		return videoDAO.findNewest();
+		return new Video();//videoDAO.findNewest();
 	}
 }

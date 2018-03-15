@@ -28,41 +28,41 @@ import com.zotyo.videos.pojo.Video;
 
 
 public class DiaryServlet2 extends HttpServlet {
-	
-	private static Logger logger = Logger.getLogger(DiaryServlet2.class); 
-	
+
+	private static Logger logger = Logger.getLogger(DiaryServlet2.class);
+
 	@Autowired
 	private DiaryService diaryService;
-	
+
 	@Autowired
 	protected PhotoService photoService;
 
 	@Autowired
 	private VideoDAO videoDAO;
-	
+
 	public void init() throws ServletException {
 		SpringBeanAutowiringSupport.processInjectionBasedOnCurrentContext(this);
 	}
-	
+
 	@Override
-	public void doGet(HttpServletRequest request, HttpServletResponse response) 
+	public void doGet(HttpServletRequest request, HttpServletResponse response)
 											throws ServletException, IOException {
-		
+
 		String jsMinifyParam = request.getParameter("js_minify");
 		if ("false".equals(jsMinifyParam)) {
-			request.setAttribute("js_minify", false);	
+			request.setAttribute("js_minify", false);
 		} else {
 			InputStream inputStream = ClassLoader.getSystemResourceAsStream("diary.properties");
 			Properties props = new Properties();
 			props.load(inputStream);
-			
+
 			boolean js_minify = Boolean.parseBoolean(props.getProperty("js_minify"));
 			request.setAttribute("js_minify", js_minify);
 			inputStream.close();
 		}
 		List<Photo> photos = photoService.findByCategory("baba");
 		request.setAttribute("photos", photos);
-			
+
 		List<Photo> latestPhotos = photoService.findLatestsByCategory("baba", 6);
 		ObjectMapper mapper = new ObjectMapper();
 
@@ -77,8 +77,8 @@ public class DiaryServlet2 extends HttpServlet {
 		} catch (IOException e) {
 			logger.error(e);
 		}
-		
-		Video video = videoDAO.findNewest();
+
+		Video video = null; //videoDAO.findNewest();
 		if (video != null) {
 			request.setAttribute("newestVideoId", video.getVideoId());
 		}
@@ -86,9 +86,9 @@ public class DiaryServlet2 extends HttpServlet {
 		cb.setDayCount(diaryService.getDayCount());
 		cb.setEventCount(diaryService.getEventCount());
 		cb.setPhotoCount(photoService.count());
-		cb.setVideoCount(videoDAO.count());
+		cb.setVideoCount(0/*videoDAO.count()*/);
 		request.setAttribute("countsBean", cb);
-		
+
         RequestDispatcher rd = getServletContext().getRequestDispatcher("/diary2.jsp");
         rd.forward(request, response);
 	}

@@ -19,7 +19,7 @@ public class CountsJSONController extends BaseJSONController {
 
 	@Autowired
 	private VideoDAO videoDAO;
-	
+
 	@RequestMapping(method = RequestMethod.GET)
 	@ResponseBody
 	public CountsBean getCounts() {
@@ -27,8 +27,8 @@ public class CountsJSONController extends BaseJSONController {
 		cb.setDayCount(diaryService.getDayCount());
 		cb.setEventCount(diaryService.getEventCount());
 		cb.setPhotoCount(photoService.count());
-		cb.setVideoCount(videoDAO.count());
-		
+		cb.setVideoCount(0/*videoDAO.count()*/);
+
 		return cb;
 	}
 }
