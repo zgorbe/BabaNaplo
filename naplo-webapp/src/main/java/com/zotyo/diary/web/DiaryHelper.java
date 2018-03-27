@@ -13,9 +13,9 @@ import com.zotyo.diary.client.Event;
 
 @Component
 public class DiaryHelper {
-	
-	private static Logger logger = Logger.getLogger(DiaryHelper.class); 
-	
+
+	private static Logger logger = Logger.getLogger(DiaryHelper.class);
+
 	private SimpleDateFormat formatHU = new SimpleDateFormat("yyyy.MM.dd");
 	private SimpleDateFormat formatHM = new SimpleDateFormat("yyyy.MM.dd HH:mm");
 	private SimpleDateFormat formatMonth = new SimpleDateFormat("yyyy-MM");
@@ -31,13 +31,13 @@ public class DiaryHelper {
 		if (theDayDate == null) {
 			return new GregorianCalendar();
 		}
-		
+
 		GregorianCalendar theDayCal = new GregorianCalendar();
 		theDayCal.setTime(theDayDate);
-		
+
 		return theDayCal;
 	}
-	
+
 	public GregorianCalendar getStartDateCal(String startDate) {
 		Date startDateDate = null;
 		try {
@@ -49,10 +49,10 @@ public class DiaryHelper {
 		if (startDateDate == null) {
 			return new GregorianCalendar();
 		}
-		
+
 		GregorianCalendar startDateCal = new GregorianCalendar();
 		startDateCal.setTime(startDateDate);
-		
+
 		return startDateCal;
 	}
 
@@ -75,23 +75,23 @@ public class DiaryHelper {
 		String mm = (minute < 10) ? "0" + minute : "" + minute;
 		return hh + ":" + mm;
  	}
- 	
+
  	public String formatDate(Day d) {
 		return formatHU.format(d.getTheDay().toGregorianCalendar().getTime());
 	}
- 	
+
  	public String formatStartTime(Event event) {
 		return formatHM.format(event.getStartTime().toGregorianCalendar().getTime());
 	}
- 	
+
  	public String formatDateTime(Date date) {
 		return formatHM.format(date);
 	}
 
 	public String formatMonth(Day d) {
-		return "m" + formatMonth.format(d.getTheDay().toGregorianCalendar().getTime()); 
+		return "m" + formatMonth.format(d.getTheDay().toGregorianCalendar().getTime());
 	}
- 	
+
 	public String md5(String md5) {
 	   try {
 	        java.security.MessageDigest md = java.security.MessageDigest.getInstance("MD5");
