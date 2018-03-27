@@ -47,9 +47,9 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.codehaus.jackson</groupId>
-			<artifactId>jackson-mapper-asl</artifactId>
-			<version>1.9.3</version>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-databind</artifactId>
+		    <version>${jackson.version}</version>
 		</dependency>
 
 		<dependency>
@@ -77,9 +77,9 @@
 			<resource>
 				<directory>src/main/resources/common</directory>
 			</resource>
-		</resources>		
+		</resources>
 		<plugins>
-			<!-- The jaxws maven plugin generates the stub for the web service client 
+			<!-- The jaxws maven plugin generates the stub for the web service client
 				with wsimport -->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
@@ -99,13 +99,13 @@
 					</execution>
 				</executions>
 			</plugin>
-			
-			<!-- The maven app assembler plugin will generate a script that sets up 
+
+			<!-- The maven app assembler plugin will generate a script that sets up
 				the classpath and runs your project -->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>appassembler-maven-plugin</artifactId>
-				<version>1.1.1</version>
+				<version>2.0.0</version>
 				<configuration>
 					<assembleDirectory>target</assembleDirectory>
 					<programs>
@@ -114,7 +114,7 @@
 							<name>webapp</name>
 						</program>
 					</programs>
-					<!--extraJvmArguments>-Xdebug -Xrunjdwp:transport=dt_socket,address=5000,server=y,suspend=n</extraJvmArguments -->
+					<!-- extraJvmArguments>-Xdebug -Xrunjdwp:transport=dt_socket,address=5000,server=y,suspend=n</extraJvmArguments -->
 				</configuration>
 				<executions>
 					<execution>
@@ -159,7 +159,7 @@
 						            <goal>compress</goal>
 					            </goals>
 				            </execution>
-						</executions>    
+						</executions>
 						<configuration>
 							<gzip>false</gzip>
 							<nosuffix>true</nosuffix>
@@ -187,7 +187,7 @@
 								</aggregation>
 							</aggregations>
 						</configuration>
-					</plugin>				    
+					</plugin>
 				</plugins>
 			</build>
 		</profile>
@@ -203,7 +203,7 @@
 					</resource>
 				</resources>
 			</build>
-		</profile>		
+		</profile>
 	</profiles>
 </project>
 

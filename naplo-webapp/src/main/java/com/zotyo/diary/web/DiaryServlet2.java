@@ -12,10 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
-import org.codehaus.jackson.JsonGenerationException;
-import org.codehaus.jackson.map.JsonMappingException;
-import org.codehaus.jackson.map.ObjectMapper;
-import org.codehaus.jackson.map.SerializationConfig;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
@@ -66,19 +64,15 @@ public class DiaryServlet2 extends HttpServlet {
 		List<Photo> latestPhotos = photoService.findLatestsByCategory("baba", 6);
 		ObjectMapper mapper = new ObjectMapper();
 
-		mapper.configure(SerializationConfig.Feature.WRITE_DATES_AS_TIMESTAMPS,	false);
+		mapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS,	false);
 
 		try {
 			request.setAttribute("latestPhotosJSON", mapper.writeValueAsString(latestPhotos));
-		} catch (JsonGenerationException e) {
-			logger.error(e);
-		} catch (JsonMappingException e) {
-			logger.error(e);
-		} catch (IOException e) {
+		} catch (Exception e) {
 			logger.error(e);
 		}
 
-		Video video = null; //videoDAO.findNewest();
+		Video video = videoDAO.findNewest();
 		if (video != null) {
 			request.setAttribute("newestVideoId", video.getVideoId());
 		}
@@ -86,7 +80,7 @@ public class DiaryServlet2 extends HttpServlet {
 		cb.setDayCount(diaryService.getDayCount());
 		cb.setEventCount(diaryService.getEventCount());
 		cb.setPhotoCount(photoService.count());
-		cb.setVideoCount(0/*videoDAO.count()*/);
+		cb.setVideoCount(videoDAO.count());
 		request.setAttribute("countsBean", cb);
 
         RequestDispatcher rd = getServletContext().getRequestDispatcher("/diary2.jsp");

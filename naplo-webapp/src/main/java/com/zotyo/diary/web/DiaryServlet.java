@@ -29,8 +29,7 @@ import javax.xml.ws.BindingProvider;
 import javax.xml.ws.handler.MessageContext;
 
 import org.apache.log4j.Logger;
-import org.codehaus.jackson.map.ObjectMapper;
-import org.codehaus.jackson.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
@@ -42,36 +41,36 @@ import com.zotyo.photos.pojo.Photo;
 import com.zotyo.photos.service.PhotoService;
 
 public class DiaryServlet extends HttpServlet {
-	
-	private static Logger logger = Logger.getLogger(DiaryServlet.class); 
-	
+
+	private static Logger logger = Logger.getLogger(DiaryServlet.class);
+
 	private Diary diary;
 	private DatatypeFactory df;
 	private String keyword;
 	private DiaryCache diaryCache;
-	
+
 	@Autowired
 	private DiaryHelper diaryHelper;
-	
+
 	@Autowired
 	private PhotoService photoService;
-	
+
 	public void init() throws ServletException {
 		try {
             SpringBeanAutowiringSupport.processInjectionBasedOnCurrentContext(this);
-			
+
 			InputStream inputStream = ClassLoader.getSystemResourceAsStream("diary.properties");
 			Properties props = new Properties();
 			props.load(inputStream);
-			
+
 			keyword = props.getProperty("keyword");
-			
+
 			URL wsdlURL = new URL(props.getProperty("wsdlURL"));
-			DiaryImplService diaryService = new DiaryImplService(wsdlURL, new QName("http://ws.diary.zotyo.com/", "DiaryImplService")); 
+			DiaryImplService diaryService = new DiaryImplService(wsdlURL, new QName("http://ws.diary.zotyo.com/", "DiaryImplService"));
 			diary = diaryService.getDiaryImplPort();
             df = DatatypeFactory.newInstance();
             diaryCache = DiaryCache.getInstance();
-            
+
             inputStream.close();
 		} catch(IOException ioex) {
 			ioex.printStackTrace();
@@ -79,23 +78,23 @@ public class DiaryServlet extends HttpServlet {
             throw new IllegalStateException("Exception while obtaining DatatypeFactory instance", dce);
 		}
 	}
-	
+
 	@Override
-	public void doGet(HttpServletRequest request, HttpServletResponse response) 
+	public void doGet(HttpServletRequest request, HttpServletResponse response)
 											throws ServletException, IOException {
-		
+
 		String theDayString = request.getParameter("theDay");
 		String command = request.getParameter("cmd");
 		if ("addday".equals(command)) {
 			RequestDispatcher rd = getServletContext().getRequestDispatcher("/addday.jsp");
 			rd.forward(request, response);
-			
+
 			return;
 		}
 		if ("addevent".equals(command)) {
 			RequestDispatcher rd = getServletContext().getRequestDispatcher("/addevent.jsp");
 			rd.forward(request, response);
-			
+
 			return;
 		}
 		if ("allday".equals(command)) {
@@ -119,7 +118,7 @@ public class DiaryServlet extends HttpServlet {
 			request.setAttribute("alldays", days);
 			RequestDispatcher rd = getServletContext().getRequestDispatcher("/alldays.jsp");
 			rd.forward(request, response);
-			
+
 			return;
 		}
 		if ("isotopedays".equals(command)) {
@@ -130,7 +129,7 @@ public class DiaryServlet extends HttpServlet {
 			request.setAttribute("alldays", days);
 			RequestDispatcher rd = getServletContext().getRequestDispatcher("/isotopedays.jsp");
 			rd.forward(request, response);
-			
+
 			return;
 		}
 		if ("latests".equals(command)) {
@@ -142,34 +141,34 @@ public class DiaryServlet extends HttpServlet {
 			request.setAttribute("latests", latests);
 			RequestDispatcher rd = getServletContext().getRequestDispatcher("/latests.jsp");
 			rd.forward(request, response);
-			
+
 			return;
 		}
 		if ("videos".equals(command)) {
 			RequestDispatcher rd = getServletContext().getRequestDispatcher("/videos.jsp");
 			rd.forward(request, response);
-			
+
 			return;
 		}
 		if ("photos".equals(command)) {
 			boolean slideshow = Boolean.valueOf(request.getParameter("slideshow"));
 			List<Photo> photos = photoService.findByCategory("baba");
-			
+
 			request.setAttribute("slideshow", slideshow);
 			request.setAttribute("photos", photos);
-			
+
 			RequestDispatcher rd = getServletContext().getRequestDispatcher("/photos.jsp");
 			rd.forward(request, response);
-			
+
 			return;
 		}
 		if ("isotopephotos".equals(command)) {
 			List<Photo> photos = photoService.findByCategory("baba");
 			request.setAttribute("photos", photos);
-			
+
 			RequestDispatcher rd = getServletContext().getRequestDispatcher("/isotopephotos.jsp");
 			rd.forward(request, response);
-			
+
 			return;
 		}
 		if ("getDays".equals(command)) {
@@ -180,28 +179,28 @@ public class DiaryServlet extends HttpServlet {
 			for (int i = 0; i < days.size(); i++) {
 				sb.append(days.get(i));
 				if (i != days.size() - 1) {
-					sb.append(",");	
+					sb.append(",");
 				}
 			}
 			sb.append("]");
 			request.setAttribute("days", sb.toString());
 			RequestDispatcher rd = getServletContext().getRequestDispatcher("/calendardays.jsp");
 			rd.forward(request, response);
-			
+
 			return;
 		}
 
 		if ("terms".equals(command)) {
-			String term = URLDecoder.decode(request.getParameter("term"), "UTF-8");	
+			String term = URLDecoder.decode(request.getParameter("term"), "UTF-8");
 			List<String> result = diary.searchTerms(term);
-			
+
 			response.setContentType("application/json; charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			ObjectMapper mapper = new ObjectMapper();
 			mapper.writeValue(out, result);
 			return;
 		}
-		
+
 		SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd");
 		if (theDayString != null && theDayString.length() > 0) {
 			Date theDay = null;
@@ -211,7 +210,7 @@ public class DiaryServlet extends HttpServlet {
 				logger.error(e);
 			}
 			if (theDay == null) theDay = new Date();
-			
+
 			GregorianCalendar theDayCal = new GregorianCalendar();
 			theDayCal.setTime(theDay);
 			Day d = diary.getDay(df.newXMLGregorianCalendar(theDayCal));
@@ -222,7 +221,7 @@ public class DiaryServlet extends HttpServlet {
 				request.setAttribute("eventsOfTheDay", new ArrayList<Event>());
 			}
 			request.setAttribute("theDay", theDayString);
-			
+
 
 			RequestDispatcher rd = getServletContext().getRequestDispatcher("/events.jsp");
 			rd.forward(request, response);
@@ -240,44 +239,44 @@ public class DiaryServlet extends HttpServlet {
 			} else {
 				request.setAttribute("eventsOfTheDay", new ArrayList<Event>());
 			}
-			
+
 			GregorianCalendar birthDate = new GregorianCalendar();
 			birthDate.set(2011, 8, 17, 13, 55, 0);
 			long delta = theDayCal.getTimeInMillis() - birthDate.getTimeInMillis();
-			
+
 			GregorianCalendar deltaDate = new GregorianCalendar();
 			deltaDate.setTimeInMillis(delta);
-			 
+
 			StringBuilder sb = new StringBuilder();
 			sb.append(deltaDate.get(Calendar.WEEK_OF_YEAR));
 			sb.append(" hónapos és ");
 			sb.append(deltaDate.get(Calendar.DATE));
 			sb.append(" napos ");
 			request.setAttribute("age", sb.toString());
-			
+
 			List<Photo> photos = photoService.findByCategory("baba");
 			request.setAttribute("photos", photos);
-			
+
 	        RequestDispatcher rd = getServletContext().getRequestDispatcher("/diary.jsp");
 	        rd.forward(request, response);
 		}
 	}
 
 	@Override
-	public void doPost(HttpServletRequest request, HttpServletResponse response) 
+	public void doPost(HttpServletRequest request, HttpServletResponse response)
 											throws ServletException, IOException {
 		String command = request.getParameter("cmd");
 		if ("search".equals(command)) {
-			String searchTerm = request.getParameter("searchTerm");	
+			String searchTerm = request.getParameter("searchTerm");
 			List<Event> result = diary.searchEvents(searchTerm);
 			request.setAttribute("result", result);
 			request.setAttribute("searchTerm", searchTerm);
 			RequestDispatcher rd = getServletContext().getRequestDispatcher("/result.jsp");
 			rd.forward(request, response);
-			
+
 			return;
 		}
-		
+
 		String key = request.getParameter("keyword");
 		if (!diaryHelper.md5(key).equals(keyword)) {
 			response.sendRedirect("/naplo");
@@ -288,14 +287,14 @@ public class DiaryServlet extends HttpServlet {
 		String duration = request.getParameter("duration");
 		String initialEvent = request.getParameter("initialEvent");
 		String startDate = request.getParameter("startDate");
-		
+
 		if ("add_day".equals(command)) {
 			if (theDay != null && theDay.length() > 0) {
 				Day day = new Day();
 				GregorianCalendar theDayCal = diaryHelper.getDayCal(theDay);
 				day.setTheDay(df.newXMLGregorianCalendar(theDayCal));
 				day.setDescriptionOfTheDay(descriptionOfTheDay);
-				
+
 				Event event = new Event();
 				event.setDescription(initialEvent);
 				event.setDuration(diaryHelper.getDuration(duration));
@@ -318,7 +317,7 @@ public class DiaryServlet extends HttpServlet {
 				    Collections.singletonMap("keyword",Collections.singletonList(key)));
 			diary.addEvent(df.newXMLGregorianCalendar(theDayCal), event);
 		}
-		
+
 		response.sendRedirect("/naplo");
 	}
 

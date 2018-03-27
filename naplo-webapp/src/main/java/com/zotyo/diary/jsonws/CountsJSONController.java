@@ -27,7 +27,7 @@ public class CountsJSONController extends BaseJSONController {
 		cb.setDayCount(diaryService.getDayCount());
 		cb.setEventCount(diaryService.getEventCount());
 		cb.setPhotoCount(photoService.count());
-		cb.setVideoCount(0/*videoDAO.count()*/);
+		cb.setVideoCount(videoDAO.count());
 
 		return cb;
 	}

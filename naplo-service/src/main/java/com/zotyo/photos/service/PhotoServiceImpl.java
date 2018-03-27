@@ -24,7 +24,7 @@ public class PhotoServiceImpl implements PhotoService {
 	private static final String DIARY_CACHE = "diaryCache";
 
 	@Autowired
-	@Qualifier("PhotoDAOMock")
+	@Qualifier("PhotoDAO")
 	private PhotoDAO photoDAO;
 
 	@CacheEvict(value = DIARY_CACHE, allEntries = true)
