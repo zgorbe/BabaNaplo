@@ -213,10 +213,12 @@ a.back-top-link > span {
 	width: 90px;
 }
 
-a.back-top-link > span:hover {
-	background-color: #006FDD;
-	opacity: 0.8;
-	filter: alpha(opacity=80);
+@media screen and ( min-width: 980px ) {
+	a.back-top-link > span:hover {
+		background-color: #006FDD;
+		opacity: 0.8;
+		filter: alpha(opacity=80);
+	}
 }
 
 @media screen and ( max-width: 580px ) {
@@ -306,3 +308,9 @@ h2 .image-count {
 	font-size: .5em;
 }
 
+@media screen and ( max-width: 979px ) {
+	#inputSearch {
+		display: inline-block !important;
+		width: 80% !important;
+	}
+}

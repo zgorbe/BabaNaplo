@@ -1,5 +1,5 @@
 var Photos = (function() {
-	
+
 	var readPreview = function(input) {
 		if (input.files && input.files[0]) {
 			var reader = new FileReader();
@@ -21,16 +21,16 @@ var Photos = (function() {
 		initMainScoller: function() {
 			$('div.jTscroller').on('click', 'a', function() {
 				var $this = $(this);
-				ImagePreview.showimage($this.data('url'), $this.data('date'), $this.data('filename')); 
+				ImagePreview.showimage($this.data('url'), $this.data('date'), $this.data('filename'));
 			});
-			$(window).on('load', function() { 
-				$('#tS1').thumbnailScroller({ 
-					scrollerType: 'hoverAccelerate', 
-					scrollerOrientation: 'horizontal', 
-					scrollEasing: 'easeOutCirc', 
-					scrollEasingAmount: 600, 
-					acceleration: 1, 
-					noScrollCenterSpace: 0 
+			$(window).on('load', function() {
+				$('#tS1').thumbnailScroller({
+					scrollerType: 'hoverAccelerate',
+					scrollerOrientation: 'horizontal',
+					scrollEasing: 'easeOutCirc',
+					scrollEasingAmount: 600,
+					acceleration: 1,
+					noScrollCenterSpace: 0
 				});
 			});
 		},
@@ -75,7 +75,7 @@ var Photos = (function() {
                 }
             });
 		},
-		
+
 		getAll: function(context) {
 			context.load('/photos?cmd=photosmap', context.loadOptions)
 	    	.then(function(items) {
@@ -88,13 +88,13 @@ var Photos = (function() {
 					.then(function() {
 						$('#fotorama_container .fotorama').fotorama();
 					});
-	    	});					
+	    	});
 		}
-	};	
+	};
 })();
 
 var Videos = (function() {
-	
+
 	return {
 		newVideo: function(context) {
 			context.render('/templates/newvideo.hb')
@@ -137,9 +137,9 @@ var Videos = (function() {
 					.then(function() {
 						$('.fotorama').fotorama();
 					});
-	    	});					
+	    	});
 		}
-	};	
+	};
 })();
 
 var Counts = (function() {
@@ -160,7 +160,7 @@ var Counts = (function() {
 
 var ImagePreview = (function(){
 	var $container;
-	
+
 	return {
 		init: function(container) {
 			$container = container;
@@ -190,7 +190,7 @@ var ImagePreview = (function(){
 		},
 		zoom: function($zoomImage) {
 			var $img = $zoomImage.parent().siblings('img.baba');
-			ImagePreview.showimage('/photos?cmd=data&filename='+$img.data('filename'), $img.data('createdate'), $img.data('filename'));					
+			ImagePreview.showimage('/photos?cmd=data&filename='+$img.data('filename'), $img.data('createdate'), $img.data('filename'));
 		},
 		cancel: function($cancelImage) {
 			var $img = $cancelImage.parent().siblings('img.baba');
@@ -231,17 +231,18 @@ var ImagePreview = (function(){
 var SiteUtils = (function() {
 	return {
 		initScrollToTop: function() {
+			var $backToTop = $('a.back-top-link');
 		 	$(window).scroll(function() {
 	        	if ($(this).scrollTop() > 500) {
-	        		$('a.back-top-link').fadeIn().css("display","block");
-	        	} else { 
-	        		$('a.back-top-link').fadeOut();
+	        		$backToTop.fadeIn().css("display","block");
+	        	} else {
+	        		$backToTop.fadeOut();
 	        	}
 	        });
-	        $('a.back-top-link').on('click', function() {
-	        	$('body,html').animate({scrollTop:0},800);
-	        	return false;
-	        });
+			$backToTop.on('click', function() {
+				$('body,html').animate({scrollTop:0}, 800);
+				return false;
+			});
 		},
 		addLoading: function() {
 			$('div.control-buttons').addClass('loading');
