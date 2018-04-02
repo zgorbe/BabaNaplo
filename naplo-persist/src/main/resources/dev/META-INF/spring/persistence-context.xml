@@ -13,17 +13,18 @@
     <context:component-scan base-package="com.zotyo.diary, com.zotyo.photos" />
 
 	<tx:annotation-driven transaction-manager="transactionManager" />
-	
+
 	<!-- ====================== DataSource ==================== -->
-  
+
 	<bean class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" id="dataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
 		<property name="url" value="jdbc:mysql://localhost:3306/diary"/>
 		<property name="username" value="root" />
+		<property name="password" value="root" />
 	</bean>
-    
+
 	<!-- ====================== EntityManagerFactory ==================== -->
-	
+
 	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="dataSource"/>
 		<property name="jpaVendorAdapter">
@@ -32,24 +33,24 @@
 			<property name="generateDdl" value="true" />
 			<property name="databasePlatform" value="org.hibernate.dialect.MySQLDialect" />
 		</bean>
-		</property>	
+		</property>
 	</bean>
 
 	<!-- ====================== TransactionManager ==================== -->
-	
-    <!--Transaction manager for a single JPA EntityManagerFactory (alternative to JTA) --> 
+
+    <!--Transaction manager for a single JPA EntityManagerFactory (alternative to JTA) -->
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
 		<property name="entityManagerFactory" ref="entityManagerFactory"/>
 	</bean>
-	
+
 	<!-- ====================== Mongo ========================= -->
-	
+
 	<mongo:repositories base-package="com.zotyo.videos.dao" repository-impl-postfix="CustomImpl" />
-    
+
     <mongo:db-factory id="mongoDbFactory" host="localhost" port="27017" dbname="local" />
-    
+
     <bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
   		<constructor-arg name="mongoDbFactory" ref="mongoDbFactory"/>
 	</bean>
-	
+
 </beans>

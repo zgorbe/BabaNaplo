@@ -21,7 +21,7 @@ import com.zotyo.diary.util.DateUtil;
 @Controller
 @RequestMapping("/events")
 public class EventJSONController extends BaseJSONController {
-	
+
 	@RequestMapping(value = "/form", method = RequestMethod.POST, consumes = "application/x-www-form-urlencoded")
 	@ResponseBody
 	public Event addEventForm(@RequestParam String keyword,
@@ -35,7 +35,7 @@ public class EventJSONController extends BaseJSONController {
 			GregorianCalendar startDateCal = diaryHelper
 					.getStartDateCal(startDate);
 			event.setStartTime(startDateCal.getTime());
-			
+
 			event.setId(diaryService.addEvent(DateUtil.resetHMS(diaryHelper.getDayCal(theDay).getTime()), event));
 
 			return event;
@@ -48,26 +48,28 @@ public class EventJSONController extends BaseJSONController {
 	public List<Event> getAllEvents() {
 		return diaryService.getAllEvents();
 	}
-	
+
 	@RequestMapping(value = "/latests/{count}", method = RequestMethod.GET)
 	@ResponseBody
 	public List<Event> getLatests(@PathVariable int count) {
 		List<Event> allEvents = diaryService.getAllEvents();
 		count = (count < 3) ? 3 : count;
 		List<Event> events = new ArrayList<Event>(count);
-		for (int i=0; i < count; i++) {
-			events.add(allEvents.get(i));
+		if (allEvents.size() >= count) {
+			for (int i=0; i < count; i++) {
+				events.add(allEvents.get(i));
+			}
 		}
 		return events;
 	}
-	
+
 	@RequestMapping(value = "/{year}/{month}/{day}", method = RequestMethod.POST)
 	public void addEvent(@RequestBody Event event, @PathVariable int year, @PathVariable int month, @PathVariable int day) {
 		Calendar c = GregorianCalendar.getInstance();
 		c.set(year, month, day);
 		diaryService.addEvent(DateUtil.resetHMS(c.getTime()), event);
 	}
-	
+
 	@RequestMapping(value = "/{year}/{month}/{day}", method = RequestMethod.GET)
 	@ResponseBody
 	public List<Event> getEventsForADay(@PathVariable int year, @PathVariable int month, @PathVariable int day) {
@@ -75,7 +77,7 @@ public class EventJSONController extends BaseJSONController {
 		c.set(year, month, day);
 		return diaryService.getEventsForADay(DateUtil.resetHMS(c.getTime()));
 	}
-	
+
 	@RequestMapping(value = "/search/{searchTerm}", method = RequestMethod.GET)
 	@ResponseBody
 	public List<Event> searchEvents(@PathVariable String searchTerm) throws UnsupportedEncodingException {
@@ -92,7 +94,7 @@ public class EventJSONController extends BaseJSONController {
 		}
 		return diaryService.searchTerms(term.toLowerCase());
 	}
-	
+
 	@RequestMapping(value = "/count", method = RequestMethod.GET)
 	@ResponseBody
 	public long getEventCount() {
