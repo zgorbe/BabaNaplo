@@ -4,6 +4,8 @@ Build the project with
 
     $ mvn clean install
 
+use -P dev parameters in development
+
 # Run
 
 Now you can run your webapp with:
